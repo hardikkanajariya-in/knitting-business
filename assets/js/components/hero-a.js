@@ -45,6 +45,7 @@ function renderHeroA(data) {
       </div>
 
       <div class="hero-a-atmosphere" aria-hidden="true">
+        <canvas class="hero-a-webgl"></canvas>
         <div class="hero-a-grid"></div>
         <div class="hero-a-glow hero-a-glow--blue"></div>
         <div class="hero-a-glow hero-a-glow--red"></div>

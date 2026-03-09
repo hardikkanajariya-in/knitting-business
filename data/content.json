@@ -91,6 +91,111 @@
           "icon": "rocket"
         }
       ]
+    },
+    "premium": {
+      "trustStrip": {
+        "label": "Built for automotive interiors",
+        "items": [
+          "Warp Knitting",
+          "3D Spacer Fabrics",
+          "Flame Retardant Textiles",
+          "Direct Coating",
+          "Synthetic Leather",
+          "Sustainable Fibers",
+          "OEM Surface Systems"
+        ]
+      },
+      "showcase": {
+        "eyebrow": "Capabilities",
+        "title": "A premium material partner for every interior touchpoint",
+        "description": "From warp-knitted technical fabrics to coated surfaces and leather systems, we build layered material solutions that perform beautifully in modern vehicles.",
+        "cards": [
+          {
+            "category": "Nirbhai Knitting",
+            "title": "Technical knits engineered for comfort, breathability, and structure",
+            "description": "Performance fabrics for headliners, seats, pillars, and supportive spacer constructions.",
+            "image": "assets/img/products/3d.jpg",
+            "href": "nk.html",
+            "cta": "Explore knitting"
+          },
+          {
+            "category": "NirChem",
+            "title": "Coating and leather systems with premium tactile finish",
+            "description": "Surface technologies that add durability, cleanability, visual richness, and OEM consistency.",
+            "image": "assets/img/products/direct-coating.jpg",
+            "href": "nc.html",
+            "cta": "Explore coatings"
+          },
+          {
+            "category": "Manufacturing",
+            "title": "Integrated production from yarn to finished material stack",
+            "description": "Knitting, coating, finishing, inspection, and QA delivered through a tightly controlled process.",
+            "image": "assets/img/factory/nk-factory.jpg",
+            "href": "about.html",
+            "cta": "See our story"
+          },
+          {
+            "category": "Sustainability",
+            "title": "Future-ready materials with responsible manufacturing at the core",
+            "description": "Eco-conscious raw materials, cleaner coating systems, and a roadmap built for next-generation mobility.",
+            "image": "assets/img/hero/sustainability-bg.jpg",
+            "href": "sustainability.html",
+            "cta": "View commitments"
+          }
+        ]
+      },
+      "process": {
+        "eyebrow": "How we work",
+        "title": "A design-to-production workflow made for OEM confidence",
+        "description": "We collaborate like a strategic material studio: fast sampling, precise engineering, scalable manufacturing, and repeatable quality.",
+        "stats": [
+          { "value": "4", "label": "Material disciplines under one umbrella" },
+          { "value": "24h", "label": "Response cadence for active client discussions" },
+          { "value": "ISO", "label": "Quality and environmental discipline" }
+        ],
+        "steps": [
+          {
+            "title": "Material strategy",
+            "description": "We understand end-use, touch targets, climate exposure, and OEM requirements before recommending the material stack."
+          },
+          {
+            "title": "Sampling & refinement",
+            "description": "Our team iterates on texture, weight, finish, and performance until the sample speaks the same design language as the vehicle program."
+          },
+          {
+            "title": "Scale-up with control",
+            "description": "Production moves with disciplined QA, process consistency, and visual finish control — not just volume for volume’s sake."
+          }
+        ]
+      },
+      "spotlight": {
+        "eyebrow": "Why clients choose us",
+        "title": "Textile craft, chemical expertise, and manufacturing depth — in one partner",
+        "description": "Nirbhai Group combines advanced knitting, coating know-how, and interior-grade finishing into a single premium supply partner for automotive brands.",
+        "panels": [
+          {
+            "title": "Knitting intelligence",
+            "description": "Raised, spacer, FR, and coated textiles tuned for feel, strength, and assembly requirements.",
+            "badge": "NK"
+          },
+          {
+            "title": "Surface chemistry",
+            "description": "Direct coating, leather finishing, and specialty treatments designed to last under real-world use.",
+            "badge": "NC"
+          },
+          {
+            "title": "Sustainable future",
+            "description": "A roadmap centered on recycled fibers, cleaner systems, and lower-impact innovation for future vehicles.",
+            "badge": "ESG"
+          }
+        ]
+      },
+      "finalCta": {
+        "title": "Ready to develop a premium textile program with us?",
+        "description": "Let’s shape materials that elevate cabin comfort, durability, and brand perception — from sample stage to production scale.",
+        "primary": { "label": "Start a conversation", "href": "contact.html" },
+        "secondary": { "label": "Meet our team", "href": "team.html" }
+      }
     }
   },
   "about": {

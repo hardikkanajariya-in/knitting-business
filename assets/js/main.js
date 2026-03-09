@@ -574,11 +574,7 @@ function renderHomePage(data) {
 
   return `
     ${typeof renderHeroA === 'function' ? renderHeroA(hero) : ''}
-    ${typeof renderHeroB === 'function' ? renderHeroB(hero) : ''}
-    <div class="hero-variant-toggle" aria-label="Hero variant preview toggle">
-      <button class="hero-variant-btn active" data-variant="a">Split</button>
-      <button class="hero-variant-btn" data-variant="b">Overlay</button>
-    </div>
+    ${typeof renderHomePremiumSections === 'function' ? renderHomePremiumSections(data) : ''}
     ${typeof renderTimeline === 'function' ? renderTimeline(journey) : ''}
   `;
 }

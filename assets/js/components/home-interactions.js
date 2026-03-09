@@ -1,8 +1,12 @@
 function initHomeInteractiveFX() {
+  if (typeof initHomeWebGL === 'function') {
+    initHomeWebGL();
+  }
   initHeroPointerParallax();
   initMagneticButtons();
   initHomeFloatingScroll();
   initInteractiveCards();
+  initHomeSectionScrollFX();
 }
 
 function prefersReducedMotion() {
@@ -130,6 +134,51 @@ function initHomeFloatingScroll() {
       toggleClass: { targets: item, className: 'is-active' }
     });
   });
+}
+
+function initHomeSectionScrollFX() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  gsap.utils.toArray('.home-process-step').forEach((step) => {
+    if (step.dataset.stepTrigger === 'true') return;
+    step.dataset.stepTrigger = 'true';
+
+    ScrollTrigger.create({
+      trigger: step,
+      start: 'top 70%',
+      end: 'bottom 40%',
+      toggleClass: { targets: step, className: 'is-active' }
+    });
+  });
+
+  gsap.utils.toArray('.home-showcase-card img').forEach((img) => {
+    if (img.dataset.parallaxInit === 'true') return;
+    img.dataset.parallaxInit = 'true';
+
+    gsap.to(img, {
+      yPercent: 10,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: img.closest('.home-showcase-card'),
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1,
+      }
+    });
+  });
+
+  const spotlight = document.querySelector('.home-spotlight-shell');
+  if (spotlight && spotlight.dataset.floatInit !== 'true') {
+    spotlight.dataset.floatInit = 'true';
+    gsap.to('.home-spotlight-panel', {
+      y: (index) => index % 2 === 0 ? -10 : 10,
+      duration: 3.6,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut',
+      stagger: 0.15,
+    });
+  }
 }
 
 function initInteractiveCards() {
