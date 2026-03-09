@@ -531,130 +531,489 @@
   box-shadow: 0 0 12px var(--hero-scroll-dot-shadow);
 }
 
-.timeline-section {
+/* =============================================
+   JOURNEY SECTION — Full-Viewport Pinned Stack
+   ============================================= */
+.jrny-section {
   position: relative;
   scroll-margin-top: calc(var(--header-height) + 2rem);
-  background:
-    radial-gradient(circle at 10% 15%, rgba(59, 130, 246, 0.06), transparent 22%),
-    radial-gradient(circle at 90% 80%, rgba(239, 68, 68, 0.05), transparent 18%),
-    linear-gradient(180deg, rgba(248,250,252,0.9), rgba(255,255,255,1));
+  /* Height set dynamically for ScrollTrigger pin: 100vh * numSlides */
 }
 
-.timeline-section::before {
-  content: '';
+/* ---- Background ---- */
+.jrny-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.jrny-bg-grain {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(15,23,42,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15,23,42,0.03) 1px, transparent 1px);
-  background-size: 52px 52px;
-  mask-image: linear-gradient(180deg, transparent, rgba(0,0,0,0.85) 12%, rgba(0,0,0,0.85) 88%, transparent);
-  pointer-events: none;
+    radial-gradient(circle at 22% 18%, rgba(59, 130, 246, 0.06), transparent 40%),
+    radial-gradient(circle at 78% 82%, rgba(239, 68, 68, 0.04), transparent 35%);
 }
 
-.timeline-wrapper {
-  max-width: 1040px;
+.dark .jrny-bg-grain {
+  background-image:
+    radial-gradient(circle at 22% 18%, rgba(59, 130, 246, 0.1), transparent 40%),
+    radial-gradient(circle at 78% 82%, rgba(239, 68, 68, 0.07), transparent 35%);
 }
 
-.timeline-line {
-  width: 3px;
-  background: linear-gradient(180deg, rgba(71,85,105,0.14), rgba(30,41,59,0.42), rgba(197,49,73,0.2));
+.jrny-bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.4;
 }
 
-.timeline-dot {
-  width: 18px;
-  height: 18px;
-  background: linear-gradient(135deg, #1e293b, #475569);
-  box-shadow: 0 0 0 7px rgba(59,130,246,0.08);
+.jrny-bg-glow--1 {
+  width: 30vw;
+  height: 30vw;
+  top: 10%;
+  left: -5%;
+  background: rgba(59, 130, 246, 0.08);
 }
 
-.timeline-card {
+.jrny-bg-glow--2 {
+  width: 25vw;
+  height: 25vw;
+  bottom: 10%;
+  right: -3%;
+  background: rgba(239, 68, 68, 0.06);
+}
+
+/* ---- Pinned container (100vh) ---- */
+.jrny-pin {
   position: relative;
-  padding: 1.35rem;
-  border-radius: 1.25rem;
-  background: rgba(255,255,255,0.84);
-  border: 1px solid rgba(15,23,42,0.08);
-  box-shadow: 0 25px 55px rgba(15,23,42,0.08);
-  backdrop-filter: blur(20px);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-  transform-style: preserve-3d;
-}
-
-.timeline-card:hover,
-.timeline-item.is-active .timeline-card {
-  transform: translateY(-6px);
-  box-shadow: 0 30px 70px rgba(15,23,42,0.12);
-  border-color: rgba(59,130,246,0.18);
-}
-
-.timeline-card-header {
+  width: 100%;
+  height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 0.9rem;
-}
-
-.timeline-icon-wrap {
-  width: 3rem;
-  height: 3rem;
-  display: inline-flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  border-radius: 1rem;
-  background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(15,23,42,0.06));
-  color: var(--text-primary);
+  align-items: center;
+  overflow: hidden;
+  background: var(--bg-secondary);
+  z-index: 1;
 }
 
-.timeline-icon-wrap svg {
-  width: 1.4rem;
-  height: 1.4rem;
+.dark .jrny-pin {
+  background: linear-gradient(180deg, rgba(10, 12, 18, 1), rgba(14, 16, 24, 1));
 }
 
-.timeline-step {
-  font-size: 0.78rem;
-  line-height: 1;
+/* ---- Header (top-left) ---- */
+.jrny-header {
+  position: absolute;
+  top: 2.5rem;
+  left: 3.5rem;
+  z-index: 10;
+}
+
+.jrny-header-kicker {
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--text-tertiary);
+  margin-bottom: 0.4rem;
 }
 
-.timeline-year {
-  font-size: 2rem;
+.jrny-header-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  line-height: 1.1;
 }
 
-.timeline-title {
-  font-size: 1.22rem;
-  margin-top: 0.4rem;
+/* ---- Stack (absolute positioned slides) ---- */
+.jrny-stack {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
 }
 
-.timeline-desc {
-  margin-top: 0.65rem;
+/* ---- Each Slide ---- */
+.jrny-slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.dark .hero-a-btn-secondary,
-.dark .timeline-card {
+.jrny-slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 5;
+}
+
+.jrny-slide-inner {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  max-width: 820px;
+  width: 100%;
+  padding: 0 2rem;
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s, opacity 0.6s ease 0.1s;
+}
+
+.jrny-slide.is-active .jrny-slide-inner {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ---- Slide Left — Year + Icon ---- */
+.jrny-slide-left {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  min-width: 180px;
+}
+
+.jrny-slide-year {
+  font-size: clamp(4rem, 10vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  line-height: 0.85;
+  color: var(--text-primary);
+  opacity: 0;
+  user-select: none;
+  transform: scale(0.7);
+  transition: opacity 0.6s ease 0.15s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+
+.jrny-slide.is-active .jrny-slide-year {
+  opacity: 0.08;
+  transform: scale(1);
+}
+
+.jrny-slide-icon {
+  position: relative;
+  width: 4.5rem;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  transform: scale(0);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
+}
+
+.jrny-slide.is-active .jrny-slide-icon {
+  transform: scale(1);
+}
+
+.jrny-slide-icon svg {
+  width: 2rem;
+  height: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.jrny-slide-icon-ring {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid rgba(59, 130, 246, 0.15);
+  animation: jrnyRingPulse 2.8s ease-in-out infinite;
+}
+
+.dark .jrny-slide-icon-ring {
+  border-color: rgba(96, 165, 250, 0.2);
+}
+
+.jrny-slide-icon::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.dark .jrny-slide-icon::before {
+  background: rgba(96, 165, 250, 0.1);
+  border-color: rgba(96, 165, 250, 0.12);
+}
+
+.jrny-slide-step {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  opacity: 0.6;
+}
+
+/* ---- Slide Right — Text Content ---- */
+.jrny-slide-right {
+  flex: 1;
+  min-width: 0;
+}
+
+.jrny-slide-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.8rem;
+  border-radius: 2rem;
+  background: rgba(59, 130, 246, 0.08);
+  color: var(--text-secondary);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  margin-bottom: 1rem;
+}
+
+.dark .jrny-slide-tag {
+  background: rgba(96, 165, 250, 0.1);
+  border-color: rgba(96, 165, 250, 0.12);
+}
+
+.jrny-slide-title {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: 0.8rem;
+}
+
+.jrny-slide-desc {
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 30rem;
+}
+
+.jrny-slide-line {
+  width: 3rem;
+  height: 3px;
+  margin-top: 1.5rem;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #3b82f6, #6366f1);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+}
+
+.dark .jrny-slide-line {
+  background: linear-gradient(90deg, #60a5fa, #818cf8);
+}
+
+.jrny-slide.is-active .jrny-slide-line {
+  transform: scaleX(1);
+}
+
+/* ---- Progress (right edge) ---- */
+.jrny-progress {
+  position: absolute;
+  right: 2.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  z-index: 10;
+}
+
+.jrny-progress-track {
+  width: 2px;
+  height: 14rem;
+  background: rgba(15, 23, 42, 0.06);
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.dark .jrny-progress-track {
+  background: rgba(148, 163, 184, 0.08);
+}
+
+.jrny-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0%;
+  background: linear-gradient(180deg, #3b82f6, #6366f1);
+  border-radius: 2px;
+  transition: height 0.4s ease;
+}
+
+.dark .jrny-progress-fill {
+  background: linear-gradient(180deg, #60a5fa, #818cf8);
+}
+
+/* ---- Dots ---- */
+.jrny-dots {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.jrny-dot {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(15, 23, 42, 0.12);
+  background: var(--bg-secondary);
+  cursor: pointer;
+  transition: border-color 0.3s, transform 0.3s;
+  padding: 0;
+}
+
+.dark .jrny-dot {
+  border-color: rgba(148, 163, 184, 0.15);
+  background: rgba(14, 16, 24, 1);
+}
+
+.jrny-dot.is-active {
+  border-color: #3b82f6;
+  transform: scale(1.35);
+}
+
+.dark .jrny-dot.is-active {
+  border-color: #60a5fa;
+}
+
+.jrny-dot-fill {
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: #3b82f6;
+  transform: scale(0);
+  transition: transform 0.3s ease;
+}
+
+.dark .jrny-dot-fill {
+  background: #60a5fa;
+}
+
+.jrny-dot.is-active .jrny-dot-fill {
+  transform: scale(1);
+}
+
+.jrny-dot-year {
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.jrny-dot.is-active .jrny-dot-year,
+.jrny-dot:hover .jrny-dot-year {
+  opacity: 1;
+}
+
+/* ---- Animation keyframes ---- */
+@keyframes jrnyRingPulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 0; }
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .jrny-header {
+    top: 1.5rem;
+    left: 1.5rem;
+  }
+
+  .jrny-slide-inner {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 1.5rem;
+    text-align: center;
+  }
+
+  .jrny-slide-left {
+    min-width: auto;
+  }
+
+  .jrny-slide-year {
+    font-size: clamp(3rem, 16vw, 5rem);
+  }
+
+  .jrny-slide-desc {
+    max-width: none;
+  }
+
+  .jrny-slide-line {
+    margin-left: auto;
+    margin-right: auto;
+    transform-origin: center;
+  }
+
+  .jrny-progress {
+    right: 1rem;
+  }
+
+  .jrny-progress-track {
+    height: 10rem;
+  }
+
+  .jrny-dot-year {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .jrny-header {
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+  }
+
+  .jrny-header-title {
+    font-size: 1.4rem;
+  }
+
+  .jrny-slide-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .jrny-slide-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .jrny-progress {
+    right: 0.5rem;
+  }
+}
+
+.dark .hero-a-btn-secondary {
   background: rgba(16, 22, 34, 0.74);
   border-color: rgba(255,255,255,0.08);
   box-shadow: 0 26px 60px rgba(0,0,0,0.32);
-}
-
-.dark .timeline-icon-wrap {
-  color: var(--text-primary);
-}
-
-.dark .timeline-section {
-  background:
-    radial-gradient(circle at 10% 15%, rgba(59, 130, 246, 0.08), transparent 22%),
-    radial-gradient(circle at 90% 80%, rgba(239, 68, 68, 0.08), transparent 18%),
-    linear-gradient(180deg, rgba(10,12,18,0.96), rgba(16,18,28,1));
-}
-
-.dark .timeline-section::before {
-  background-image:
-    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
 }
 
 @keyframes heroThreadDrop {
@@ -819,8 +1178,6 @@
 
   .hero-a-cta-row .btn-primary::before,
   .hero-a-btn-secondary::before,
-  .hero-a-visual-core-float,
-  .hero-a-asset-float,
   .timeline-card {
     transition: none;
   }

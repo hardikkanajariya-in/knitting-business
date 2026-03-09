@@ -391,44 +391,76 @@ function initHeroBAnimations() {
   }, '-=0.2');
 }
 
-// --- Timeline Animations ---
+// --- Journey / Timeline Animations (Pinned Stack) ---
 function initTimelineAnimations() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-  gsap.utils.toArray('.timeline-item').forEach((item, i) => {
-    gsap.fromTo(item,
-      { opacity: 0, y: 40 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        delay: i * 0.15,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: item,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        }
+  const section = document.querySelector('.jrny-section');
+  if (!section) return;
+
+  const pin = section.querySelector('.jrny-pin');
+  const slides = section.querySelectorAll('.jrny-slide');
+  const dots = section.querySelectorAll('.jrny-dot');
+  const progressFill = section.querySelector('.jrny-progress-fill');
+  const count = slides.length;
+  if (!count) return;
+
+  // Show first slide immediately
+  slides[0].classList.add('is-active');
+  if (dots[0]) dots[0].classList.add('is-active');
+
+  // Create ScrollTrigger for pinning and slide control
+  ScrollTrigger.create({
+    trigger: section,
+    start: 'top top',
+    end: () => '+=' + (count * 100) + '%',
+    pin: pin,
+    pinType: 'transform',
+    scrub: true,
+    snap: {
+      snapTo: 1 / (count - 1),
+      duration: { min: 0.2, max: 0.5 },
+      ease: 'power1.inOut',
+    },
+    onUpdate: (self) => {
+      const progress = self.progress;
+      const rawIndex = progress * (count - 1);
+      const activeIndex = Math.round(rawIndex);
+
+      // Update slides with CSS transition-driven visibility
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('is-active', i === activeIndex);
+      });
+
+      // Update dots
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('is-active', i <= activeIndex);
+      });
+
+      // Update progress fill
+      if (progressFill) {
+        progressFill.style.height = (progress * 100) + '%';
       }
-    );
+    }
   });
 
-  // Animate timeline line growth
-  const line = document.querySelector('.timeline-line');
-  if (line) {
-    gsap.from(line, {
-      scaleY: 0,
-      transformOrigin: 'top center',
-      duration: 1.5,
-      ease: 'power2.out',
+  // No GSAP tweens on slide content — all handled by CSS transitions
+
+  // Background glows parallax
+  const glows = section.querySelectorAll('.jrny-bg-glow');
+  glows.forEach((glow, i) => {
+    gsap.to(glow, {
+      y: i % 2 === 0 ? -30 : 30,
+      x: i % 2 === 0 ? 15 : -15,
+      ease: 'none',
       scrollTrigger: {
-        trigger: '.timeline-wrapper',
-        start: 'top 80%',
-        end: 'bottom 20%',
-        scrub: 1,
+        trigger: section,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 2,
       }
     });
-  }
+  });
 }
 
 // --- Stat Counter Animation ---
