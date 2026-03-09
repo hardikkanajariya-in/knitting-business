@@ -1,0 +1,262 @@
+{
+  "site": {
+    "name": "Nirbhai Group",
+    "tagline": "Crafting Excellence in Textiles & Chemicals",
+    "logo": "assets/img/logo/logo.svg",
+    "logoDark": "assets/img/logo/logo-dark.svg",
+    "metaDescription": "Nirbhai Group — Leading manufacturer of knitted fabrics and specialty chemicals for automotive interiors. Precision engineering meets textile innovation.",
+    "themeColor": "#0a0a0a",
+    "socialLinks": [
+      { "name": "LinkedIn", "url": "#", "icon": "linkedin" },
+      { "name": "Instagram", "url": "#", "icon": "instagram" },
+      { "name": "Facebook", "url": "#", "icon": "facebook" },
+      { "name": "Twitter", "url": "#", "icon": "twitter" }
+    ]
+  },
+  "navigation": [
+    { "label": "Home", "href": "index.html" },
+    { "label": "NK", "href": "nk.html", "title": "Nirbhai Knitting" },
+    { "label": "NC", "href": "nc.html", "title": "NirChem" },
+    { "label": "About Us", "href": "about.html" },
+    { "label": "Sustainability", "href": "sustainability.html" },
+    { "label": "Our Team", "href": "team.html" },
+    { "label": "Contact", "href": "contact.html" }
+  ],
+  "home": {
+    "hero": {
+      "title": "Precision-Engineered Textile Solutions",
+      "subtitle": "Innovative Manufacturing for Automotive & Industrial Partners",
+      "description": "From advanced knitted fabrics to specialty chemical coatings — we deliver materials that define the future of automotive interiors.",
+      "cta": { "label": "Contact Us", "href": "contact.html" },
+      "backgroundImage": "assets/img/hero/hero-bg.jpg",
+      "splitImage": "assets/img/hero/hero-split.jpg"
+    },
+    "journey": {
+      "title": "Our Journey",
+      "subtitle": "From Thread to Road",
+      "description": "A legacy built on precision craftsmanship, innovative materials, and an unwavering commitment to quality and sustainability.",
+      "milestones": [
+        {
+          "year": "1995",
+          "title": "Founded",
+          "description": "Began as a textile workshop specializing in automotive knitted fabrics.",
+          "icon": "factory"
+        },
+        {
+          "year": "2003",
+          "title": "Innovation",
+          "description": "Developed durable, high-performance textiles for car interiors with proprietary techniques.",
+          "icon": "lightbulb"
+        },
+        {
+          "year": "2011",
+          "title": "Advanced Materials",
+          "description": "Introduced recycled fibers and eco-friendly materials into our manufacturing process.",
+          "icon": "leaf"
+        },
+        {
+          "year": "2019",
+          "title": "Global Reach",
+          "description": "Expanded manufacturing capabilities to meet demand from major automakers worldwide.",
+          "icon": "globe"
+        },
+        {
+          "year": "2024",
+          "title": "Future Driven",
+          "description": "Leading with sustainable, smart, and durable textiles for the vehicles of tomorrow.",
+          "icon": "rocket"
+        }
+      ]
+    }
+  },
+  "about": {
+    "banner": {
+      "title": "About Us",
+      "subtitle": "Crafting the Future of Automotive Textiles",
+      "backgroundImage": "assets/img/hero/about-bg.jpg"
+    },
+    "story": {
+      "title": "From Thread to the Road Ahead",
+      "paragraphs": [
+        "Our legacy spans decades in the automotive textile industry. What began as a small weaving workshop has evolved into a multi-division manufacturing powerhouse serving global automotive OEMs.",
+        "At the Nirbhai Group, our companies — Nirbhai Knitting (NK) and NirChem (NC) — represent our dual expertise in advanced knitted fabrics and specialty chemical coatings. Together, they deliver complete material solutions for modern vehicle interiors.",
+        "We are driven by precision craftsmanship, continuous innovation, and an unwavering commitment to quality and sustainability that our partners trust."
+      ]
+    },
+    "stats": [
+      { "value": "25+", "label": "Years of Excellence" },
+      { "value": "500+", "label": "Products Delivered" },
+      { "value": "50+", "label": "Global Partners" },
+      { "value": "100%", "label": "Quality Commitment" }
+    ]
+  },
+  "nk": {
+    "banner": {
+      "title": "Nirbhai Knitting",
+      "subtitle": "Advanced Knitted Fabrics for Automotive Interiors",
+      "description": "Precision-engineered textiles built for performance, comfort, and durability. Our fabrics are trusted by leading automotive manufacturers worldwide.",
+      "backgroundImage": "assets/img/hero/nk-bg.jpg"
+    },
+    "features": [
+      {
+        "name": "Raised",
+        "description": "Premium raised-surface fabrics offering enhanced tactile comfort and visual depth for luxury automotive seating.",
+        "image": "assets/img/products/raised.jpg"
+      },
+      {
+        "name": "3D",
+        "description": "Three-dimensional knitted structures providing superior breathability, cushioning, and modern aesthetics.",
+        "image": "assets/img/products/3d.jpg"
+      },
+      {
+        "name": "FR",
+        "description": "Flame-retardant fabrics engineered to meet stringent automotive safety standards without compromising comfort.",
+        "image": "assets/img/products/fr.jpg"
+      },
+      {
+        "name": "Coated",
+        "description": "Specialty coated textiles offering water resistance, UV protection, and enhanced durability for demanding applications.",
+        "image": "assets/img/products/coated.jpg"
+      }
+    ],
+    "contentBlock": {
+      "title": "Engineering Fabrics for the Future",
+      "description": "Our state-of-the-art manufacturing facility combines traditional craftsmanship with cutting-edge technology to produce fabrics that exceed industry standards.",
+      "image": "assets/img/factory/nk-factory.jpg"
+    }
+  },
+  "nc": {
+    "banner": {
+      "title": "NirChem",
+      "subtitle": "Specialty Chemical Coatings & Leather Solutions",
+      "description": "Advanced chemical formulations and coating technologies that transform raw materials into high-performance automotive interior surfaces.",
+      "backgroundImage": "assets/img/hero/nc-bg.jpg"
+    },
+    "products": [
+      {
+        "name": "Synthetic Leather",
+        "description": "High-quality synthetic leather solutions that replicate the look and feel of genuine leather with superior consistency and sustainability.",
+        "image": "assets/img/products/synthetic-leather.jpg"
+      },
+      {
+        "name": "Genuine Leather",
+        "description": "Premium genuine leather processing and finishing for luxury automotive applications with exquisite texture and durability.",
+        "image": "assets/img/products/genuine-leather.jpg"
+      },
+      {
+        "name": "Direct Coating",
+        "description": "Advanced direct coating technologies applied to textiles for enhanced performance characteristics and surface protection.",
+        "image": "assets/img/products/direct-coating.jpg"
+      },
+      {
+        "name": "Others",
+        "description": "Specialized chemical solutions including adhesives, finishes, and treatments tailored to specific automotive interior requirements.",
+        "image": "assets/img/products/others.jpg"
+      }
+    ],
+    "contentBlock": {
+      "title": "Chemistry Meets Craftsmanship",
+      "description": "Our chemical division leverages decades of formulation expertise to deliver coatings and treatments that enhance the performance and aesthetics of every surface.",
+      "image": "assets/img/factory/nc-factory.jpg"
+    }
+  },
+  "sustainability": {
+    "banner": {
+      "title": "Sustainability",
+      "subtitle": "Committed to a Greener Future",
+      "description": "We believe in manufacturing that respects the planet. Our sustainability initiatives span across materials, processes, and community impact.",
+      "backgroundImage": "assets/img/hero/sustainability-bg.jpg"
+    },
+    "intro": {
+      "title": "Our Commitment to the Environment",
+      "paragraphs": [
+        "Sustainability isn't just a goal — it's woven into every thread of our manufacturing process. From sourcing eco-friendly raw materials to reducing waste in our production lines, we are committed to minimizing our environmental footprint.",
+        "Our facilities are designed with energy efficiency in mind, and we continuously invest in cleaner technologies and renewable energy sources to power our operations."
+      ]
+    },
+    "pillars": [
+      {
+        "title": "Eco-Friendly Materials",
+        "description": "We prioritize recycled and sustainably sourced fibers in our textile manufacturing, reducing dependence on virgin materials.",
+        "icon": "leaf"
+      },
+      {
+        "title": "Energy Efficiency",
+        "description": "Our manufacturing processes are optimized for minimal energy consumption, with ongoing investments in renewable energy sources.",
+        "icon": "bolt"
+      },
+      {
+        "title": "Waste Reduction",
+        "description": "Advanced recycling programs and lean manufacturing techniques help us minimize waste across all production stages.",
+        "icon": "recycle"
+      },
+      {
+        "title": "Community Impact",
+        "description": "We actively support local communities through education, employment, and environmental conservation programs.",
+        "icon": "people"
+      }
+    ],
+    "stats": [
+      { "value": "40%", "label": "Recycled Materials Used" },
+      { "value": "30%", "label": "Energy Reduction Achieved" },
+      { "value": "Zero", "label": "Landfill Waste Target" },
+      { "value": "1000+", "label": "Trees Planted Annually" }
+    ]
+  },
+  "team": {
+    "hero": {
+      "title": "Our Team",
+      "subtitle": "The People Behind the Precision",
+      "description": "A dedicated team of industry veterans and innovators driving excellence in every thread and formulation.",
+      "factoryImage": "assets/img/factory/team-factory.jpg"
+    },
+    "leadership": [
+      {
+        "name": "Rajeev Kumar",
+        "designation": "MD, Chairman",
+        "photo": "assets/img/team/rajeev-kumar.jpg",
+        "bio": "With over 30 years of industry experience, Rajeev has been the visionary force behind the Nirbhai Group's growth and innovation."
+      },
+      {
+        "name": "Prathit Kamdar",
+        "designation": "CEO",
+        "photo": "assets/img/team/prathit-kamdar.jpg",
+        "bio": "Prathit brings strategic leadership and a passion for sustainable manufacturing to drive the company's future direction."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Let's Build Something Together",
+    "description": "Have a question or want to discuss a project? Reach out to us and our team will get back to you promptly.",
+    "address": "Industrial Area, Phase II, Sector 5, Ludhiana, Punjab, India — 141003",
+    "email": "info@nirbhaigroup.com",
+    "phone": "+91 98765 43210",
+    "mapEmbedUrl": "",
+    "formFields": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number (Optional)",
+      "message": "Your Message",
+      "submit": "Send Message"
+    }
+  },
+  "footer": {
+    "tagline": "Crafting precision textiles and chemical solutions for the automotive industry since 1995.",
+    "quickLinks": [
+      { "label": "Home", "href": "index.html" },
+      { "label": "About Us", "href": "about.html" },
+      { "label": "Nirbhai Knitting", "href": "nk.html" },
+      { "label": "NirChem", "href": "nc.html" },
+      { "label": "Sustainability", "href": "sustainability.html" },
+      { "label": "Our Team", "href": "team.html" },
+      { "label": "Contact", "href": "contact.html" }
+    ],
+    "contactInfo": {
+      "address": "Industrial Area, Phase II, Sector 5, Ludhiana, Punjab, India — 141003",
+      "email": "info@nirbhaigroup.com",
+      "phone": "+91 98765 43210"
+    },
+    "copyright": "© 2026 Nirbhai Group. All rights reserved."
+  }
+}
