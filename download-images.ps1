@@ -1,8 +1,9 @@
-# Nirbhai Group — Image Download Script
+# Nirbhai Group — Asset Download Script
 # Run this in PowerShell: .\download-images.ps1
 
 $baseDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $imgDir = Join-Path $baseDir "assets\img"
+$videoDir = Join-Path $baseDir "assets\video"
 
 # Create directories
 @("hero", "products", "factory", "team", "industries") | ForEach-Object {
@@ -10,12 +11,16 @@ $imgDir = Join-Path $baseDir "assets\img"
     if (!(Test-Path $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
 }
 
+if (!(Test-Path $videoDir)) { New-Item -ItemType Directory -Path $videoDir -Force | Out-Null }
+
 $images = @(
     # ── HERO / BANNER BACKGROUNDS ──
     # Home hero: Industrial knitting machine close-up with wires & mechanisms
     @{ url = "https://images.pexels.com/photos/36327501/pexels-photo-36327501.jpeg?auto=compress&cs=tinysrgb&w=1920"; path = "hero\hero-bg.jpg" },
     # Home hero split: Worker operates textile machinery in manufacturing plant
     @{ url = "https://images.pexels.com/photos/6525848/pexels-photo-6525848.jpeg?auto=compress&cs=tinysrgb&w=1920"; path = "hero\hero-split.jpg" },
+    # Home hero video poster: luxury automotive interior
+    @{ url = "https://images.pexels.com/photos/1104768/pexels-photo-1104768.jpeg?auto=compress&cs=tinysrgb&w=1920"; path = "hero\hero-automotive-interior.jpg" },
     # About banner: Long hallway in textile factory with industrial machinery
     @{ url = "https://images.pexels.com/photos/8246487/pexels-photo-8246487.jpeg?auto=compress&cs=tinysrgb&w=1920"; path = "hero\about-bg.jpg" },
     # NK banner: Industrial textile spinning machine in action
@@ -95,5 +100,26 @@ foreach ($img in $images) {
     }
 }
 
+$videos = @(
+    # Home hero variant B: automotive interior motion background (Pexels video 6872084)
+    @{ url = "https://videos.pexels.com/video-files/6872084/6872084-uhd_2560_1440_25fps.mp4"; path = "hero-automotive-interior.mp4" }
+)
+
+foreach ($video in $videos) {
+    $dest = Join-Path $videoDir $video.path
+    $name = "video\$($video.path)"
+    try {
+        Write-Host "  Downloading: $name ... " -NoNewline
+        Invoke-WebRequest -Uri $video.url -OutFile $dest -UseBasicParsing -ErrorAction Stop
+        $size = [math]::Round((Get-Item $dest).Length / 1MB, 2)
+        Write-Host "OK (${size} MB)" -ForegroundColor Green
+        $success++
+    } catch {
+        Write-Host "FAILED: $_" -ForegroundColor Red
+        $failed++
+    }
+}
+
 Write-Host "`n=== Done! $success downloaded, $failed failed ===" -ForegroundColor Cyan
-Write-Host "Images saved to: $imgDir`n"
+Write-Host "Images saved to: $imgDir"
+Write-Host "Videos saved to: $videoDir`n"

@@ -56,6 +56,17 @@
       "imageAlt": "Premium automotive interior with performance seating and modern trim",
       "heroVideo": ""
     },
+    "heroVariantB": {
+      "eyebrow": "Dynamic Video Variant",
+      "title": "Automotive Interiors in Motion",
+      "subtitle": "Video-led storytelling for premium cabin materials",
+      "description": "A cinematic alternate hero using automotive interior motion footage to spotlight the refined surfaces, seating ergonomics, and premium trim environment our materials help create.",
+      "cta": { "label": "Contact Us", "href": "contact.html" },
+      "secondaryCta": { "label": "Explore NC", "href": "nc.html" },
+      "backgroundImage": "assets/img/hero/hero-automotive-interior.jpg",
+      "posterImage": "assets/img/hero/hero-automotive-interior.jpg",
+      "heroVideo": "assets/video/hero-automotive-interior.mp4"
+    },
     "journey": {
       "title": "Our Journey",
       "subtitle": "From Thread to Road",

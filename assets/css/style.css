@@ -434,6 +434,12 @@ ul, ol {
   object-fit: cover;
 }
 
+.hero-b-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .hero-b-overlay {
   position: absolute;
   inset: 0;
@@ -446,6 +452,15 @@ ul, ol {
   z-index: 2;
   color: #ffffff;
   padding-top: var(--header-height);
+}
+
+.hero-b-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.72);
 }
 
 .hero-b-title {
@@ -471,6 +486,19 @@ ul, ol {
   max-width: 540px;
   line-height: 1.7;
   opacity: 0.8;
+}
+
+.hero-b-btn-secondary {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.hero-b-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.44);
 }
 
 /* --- CTA Button --- */
@@ -526,8 +554,9 @@ ul, ol {
 /* --- Hero variant toggle (dev/preview) --- */
 .hero-variant-toggle {
   position: fixed;
-  bottom: 1.5rem;
-  right: 1.5rem;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
   z-index: 9999;
   display: flex;
   gap: 0.5rem;
@@ -535,7 +564,9 @@ ul, ol {
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
   padding: 0.375rem;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 .hero-variant-btn {
@@ -550,6 +581,19 @@ ul, ol {
 .hero-variant-btn.active {
   background: var(--accent);
   color: var(--text-inverse);
+}
+
+@media (max-width: 640px) {
+  .hero-variant-toggle {
+    width: calc(100vw - 1.5rem);
+    max-width: 22rem;
+    justify-content: center;
+  }
+
+  .hero-variant-btn {
+    flex: 1 1 0;
+    text-align: center;
+  }
 }
 
 /* --- Timeline / Journey (see home-interactive.css for styles) --- */

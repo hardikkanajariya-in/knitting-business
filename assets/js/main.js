@@ -29,6 +29,10 @@ const IMAGE_CDN_FALLBACK = {
   'assets/img/team/prathit-kamdar.jpg': 'https://images.pexels.com/photos/7580937/pexels-photo-7580937.jpeg?auto=compress&cs=tinysrgb&w=400',
 };
 
+const VIDEO_CDN_FALLBACK = {
+  'assets/video/hero-automotive-interior.mp4': 'https://videos.pexels.com/video-files/6872084/6872084-uhd_2560_1440_25fps.mp4',
+};
+
 // Capture-phase error listener: intercepts failed image loads before inline onerror handlers
 document.addEventListener('error', function(e) {
   if (e.target.tagName === 'IMG') {
@@ -38,6 +42,28 @@ document.addEventListener('error', function(e) {
       e.target.dataset.cdnAttempted = 'true';
       e.target.onerror = null;
       e.target.src = cdnUrl;
+    }
+  }
+}, true);
+
+document.addEventListener('error', function(e) {
+  if (e.target.tagName !== 'VIDEO' && e.target.tagName !== 'SOURCE') return;
+
+  const video = e.target.tagName === 'VIDEO' ? e.target : e.target.parentElement;
+  const source = video?.querySelector('source');
+  if (!video || !source) return;
+
+  const src = source.getAttribute('src');
+  const cdnUrl = VIDEO_CDN_FALLBACK[src];
+
+  if (cdnUrl && !video.dataset.cdnAttempted) {
+    video.dataset.cdnAttempted = 'true';
+    source.src = cdnUrl;
+    video.load();
+
+    const playPromise = video.play();
+    if (playPromise && typeof playPromise.catch === 'function') {
+      playPromise.catch(() => {});
     }
   }
 }, true);
@@ -355,7 +381,7 @@ function initHeroBAnimations() {
   const tl = gsap.timeline({ delay: 0.3 });
 
   // Parallax on background
-  gsap.to('.hero-b-bg img', {
+  gsap.to('.hero-b-bg img, .hero-b-bg video', {
     y: '20%',
     ease: 'none',
     scrollTrigger: {
@@ -594,18 +620,27 @@ async function initPage(pageKey) {
 
 // --- Hero Variant Toggle (dev preview) ---
 function initHeroVariantToggle() {
+  const toggle = document.querySelector('.hero-variant-toggle');
   const toggleBtns = document.querySelectorAll('.hero-variant-btn');
   const heroA = document.querySelector('.hero-a');
   const heroB = document.querySelector('.hero-b');
 
-  if (!toggleBtns.length || !heroA || !heroB) return;
+  if (!toggle || !toggleBtns.length || !heroA || !heroB) return;
+
+  if (toggle.parentElement !== document.body) {
+    document.body.appendChild(toggle);
+  }
 
   toggleBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const variant = btn.dataset.variant;
 
-      toggleBtns.forEach(b => b.classList.remove('active'));
+      toggleBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
 
       if (variant === 'a') {
         heroA.style.display = '';
@@ -620,6 +655,13 @@ function initHeroVariantToggle() {
         const hdr = document.querySelector('.site-header');
         if (hdr) hdr.classList.add('hero-overlay-mode');
         initHeroBAnimations();
+        const video = heroB.querySelector('video');
+        if (video) {
+          const playPromise = video.play();
+          if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(() => {});
+          }
+        }
       }
 
       // Refresh ScrollTrigger
@@ -633,10 +675,16 @@ function initHeroVariantToggle() {
 // --- Render Page Functions ---
 function renderHomePage(data) {
   const hero = data.home.hero;
+  const heroVariantB = data.home.heroVariantB || hero;
   const journey = data.home.journey;
 
   return `
     ${typeof renderHeroA === 'function' ? renderHeroA(hero) : ''}
+    ${typeof renderHeroB === 'function' ? renderHeroB(heroVariantB) : ''}
+    <div class="hero-variant-toggle" aria-label="Hero layout variants">
+      <button type="button" class="hero-variant-btn active" data-variant="a" aria-pressed="true">Split Hero</button>
+      <button type="button" class="hero-variant-btn" data-variant="b" aria-pressed="false">Video Hero</button>
+    </div>
     ${typeof renderTimeline === 'function' ? renderTimeline(journey) : ''}
     ${typeof renderHomePremiumSections === 'function' ? renderHomePremiumSections(data) : ''}
   `;
