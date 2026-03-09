@@ -29,15 +29,19 @@ function renderHomeIndustries(section) {
   if (!section) return '';
 
   return `
-    <section class="home-industries section">
+    <section class="home-industries section" data-parallax-section>
+      <div class="home-industries-bg" aria-hidden="true">
+        <div class="home-industries-shape home-industries-shape--1"></div>
+        <div class="home-industries-shape home-industries-shape--2"></div>
+      </div>
       <div class="container">
         <div class="home-industries-header">
           <p class="home-section-eyebrow">${section.subtitle || ''}</p>
           <h2 class="home-section-title">${section.title || ''}</h2>
         </div>
         <div class="home-industries-grid">
-          ${(section.items || []).map(item => `
-            <div class="home-industry-card" data-aos="fade-up">
+          ${(section.items || []).map((item, i) => `
+            <div class="home-industry-card" data-parallax-card data-delay="${i * 0.08}">
               <div class="home-industry-icon">${getIndustryIcon(item.icon)}</div>
               <div class="home-industry-name">${item.name}</div>
             </div>
@@ -52,12 +56,16 @@ function renderHomeStatsBand(stats) {
   if (!stats || !stats.length) return '';
 
   return `
-    <section class="home-stats-band">
+    <section class="home-stats-band" data-parallax-section>
+      <div class="home-stats-band-bg" aria-hidden="true">
+        <div class="home-stats-band-glow home-stats-band-glow--1"></div>
+        <div class="home-stats-band-glow home-stats-band-glow--2"></div>
+      </div>
       <div class="container">
         <div class="home-stats-band-grid">
-          ${stats.map(stat => `
-            <div class="home-stats-band-item" data-aos="fade-up">
-              <div class="home-stats-band-value">${stat.value}</div>
+          ${stats.map((stat, i) => `
+            <div class="home-stats-band-item" data-parallax-card data-delay="${i * 0.1}">
+              <div class="home-stats-band-value stat-value">${stat.value}</div>
               <div class="home-stats-band-label">${stat.label}</div>
             </div>
           `).join('')}
@@ -75,11 +83,11 @@ function renderHomeTrustStrip(section) {
     .join('');
 
   return `
-    <section class="home-trust-strip">
+    <section class="home-trust-strip" data-parallax-section>
       <div class="container home-trust-shell">
         <p class="home-trust-label">${section.label || ''}</p>
       </div>
-      <div class="home-trust-marquee">
+      <div class="home-trust-marquee" data-scroll-marquee>
         <div class="home-trust-track">${marquee}</div>
       </div>
     </section>
@@ -90,7 +98,10 @@ function renderHomeShowcase(section) {
   if (!section) return '';
 
   return `
-    <section class="home-showcase section">
+    <section class="home-showcase section" data-parallax-section>
+      <div class="home-showcase-bg" aria-hidden="true">
+        <div class="home-showcase-gradient"></div>
+      </div>
       <div class="container">
         <div class="home-section-intro reveal-up">
           <p class="home-section-eyebrow">${section.eyebrow || ''}</p>
@@ -100,18 +111,18 @@ function renderHomeShowcase(section) {
 
         <div class="home-showcase-grid">
           ${(section.cards || []).map((card, index) => `
-            <article class="home-showcase-card reveal-up" data-tilt-card data-depth="${0.06 + index * 0.01}">
+            <article class="home-showcase-card" data-tilt-card data-parallax-card data-depth="${0.06 + index * 0.01}" data-delay="${index * 0.12}">
               <div class="home-showcase-media">
-                <img src="${card.image}" alt="${card.title}" width="1200" height="800" onerror="this.style.display='none'">
+                <img src="${card.image}" alt="${card.title}" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
               </div>
               <div class="home-showcase-overlay"></div>
               <div class="home-showcase-content">
                 <div class="home-showcase-category">${card.category || ''}</div>
                 <h3 class="home-showcase-title">${card.title || ''}</h3>
                 <p class="home-showcase-desc">${card.description || ''}</p>
-                <a href="${card.href}" class="home-inline-link">
+                <a href="${card.href}" class="home-inline-link magnetic-btn">
                   ${card.cta || 'Explore'}
-                  <span aria-hidden="true">→</span>
+                  <span aria-hidden="true">&rarr;</span>
                 </a>
               </div>
             </article>
@@ -126,7 +137,11 @@ function renderHomeProcess(section) {
   if (!section) return '';
 
   return `
-    <section class="home-process section">
+    <section class="home-process section" data-parallax-section>
+      <div class="home-process-bg" aria-hidden="true">
+        <div class="home-process-glow home-process-glow--1"></div>
+        <div class="home-process-glow home-process-glow--2"></div>
+      </div>
       <div class="container home-process-grid">
         <div class="home-process-sticky reveal-left">
           <p class="home-section-eyebrow">${section.eyebrow || ''}</p>
@@ -135,7 +150,7 @@ function renderHomeProcess(section) {
           <div class="home-process-stats">
             ${(section.stats || []).map(stat => `
               <div class="home-process-stat">
-                <div class="home-process-stat-value">${stat.value}</div>
+                <div class="home-process-stat-value stat-value">${stat.value}</div>
                 <div class="home-process-stat-label">${stat.label}</div>
               </div>
             `).join('')}
@@ -143,8 +158,11 @@ function renderHomeProcess(section) {
         </div>
 
         <div class="home-process-steps">
+          <div class="home-process-progress" aria-hidden="true">
+            <div class="home-process-progress-fill"></div>
+          </div>
           ${(section.steps || []).map((step, index) => `
-            <article class="home-process-step reveal-right" data-process-step>
+            <article class="home-process-step" data-process-step data-parallax-card data-delay="${index * 0.15}">
               <div class="home-process-step-index">0${index + 1}</div>
               <div>
                 <h3 class="home-process-step-title">${step.title}</h3>
@@ -162,18 +180,20 @@ function renderHomeSpotlight(section) {
   if (!section) return '';
 
   return `
-    <section class="home-spotlight section">
+    <section class="home-spotlight section" data-parallax-section>
       <div class="container">
-        <div class="home-spotlight-shell reveal-scale">
-          <div class="home-spotlight-copy">
+        <div class="home-spotlight-shell">
+          <div class="home-spotlight-glow home-spotlight-glow--1" aria-hidden="true"></div>
+          <div class="home-spotlight-glow home-spotlight-glow--2" aria-hidden="true"></div>
+          <div class="home-spotlight-copy reveal-up">
             <p class="home-section-eyebrow">${section.eyebrow || ''}</p>
             <h2 class="home-section-title">${section.title || ''}</h2>
             <p class="home-section-desc">${section.description || ''}</p>
           </div>
 
           <div class="home-spotlight-panels">
-            ${(section.panels || []).map(panel => `
-              <article class="home-spotlight-panel" data-tilt-card>
+            ${(section.panels || []).map((panel, i) => `
+              <article class="home-spotlight-panel" data-tilt-card data-parallax-card data-delay="${i * 0.12}">
                 <div class="home-spotlight-badge">${panel.badge || ''}</div>
                 <h3 class="home-spotlight-title">${panel.title || ''}</h3>
                 <p class="home-spotlight-desc">${panel.description || ''}</p>
@@ -190,9 +210,12 @@ function renderHomeFinalCta(section) {
   if (!section) return '';
 
   return `
-    <section class="home-final-cta section">
+    <section class="home-final-cta section" data-parallax-section>
+      <div class="home-final-cta-bg" aria-hidden="true">
+        <div class="home-final-cta-glow"></div>
+      </div>
       <div class="container">
-        <div class="home-final-cta-card reveal-up">
+        <div class="home-final-cta-card">
           <div>
             <p class="home-section-eyebrow">Let’s build together</p>
             <h2 class="home-section-title">${section.title || ''}</h2>

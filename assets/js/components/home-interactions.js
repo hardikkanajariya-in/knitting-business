@@ -7,6 +7,8 @@ function initHomeInteractiveFX() {
   initHomeFloatingScroll();
   initInteractiveCards();
   initHomeSectionScrollFX();
+  initParallaxCards();
+  initParallaxBackgrounds();
 }
 
 function prefersReducedMotion() {
@@ -146,10 +148,152 @@ function initHomeFloatingScroll() {
   });
 }
 
+/* --- Parallax Card Reveal System --- */
+function initParallaxCards() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  if (prefersReducedMotion()) {
+    document.querySelectorAll('[data-parallax-card]').forEach(el => el.classList.add('is-revealed'));
+    return;
+  }
+
+  gsap.utils.toArray('[data-parallax-card]').forEach((card) => {
+    if (card.dataset.parallaxRevealInit === 'true') return;
+    card.dataset.parallaxRevealInit = 'true';
+
+    const delay = parseFloat(card.dataset.delay || 0);
+
+    ScrollTrigger.create({
+      trigger: card,
+      start: 'top 88%',
+      once: true,
+      onEnter: () => {
+        gsap.delayedCall(delay, () => {
+          card.classList.add('is-revealed');
+        });
+      }
+    });
+  });
+}
+
+/* --- Parallax Background Effects --- */
+function initParallaxBackgrounds() {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+  if (prefersReducedMotion()) return;
+
+  // Stats band glows
+  gsap.utils.toArray('.home-stats-band-glow').forEach((glow, i) => {
+    if (glow.dataset.parallaxBgInit === 'true') return;
+    glow.dataset.parallaxBgInit = 'true';
+
+    gsap.to(glow, {
+      y: i % 2 === 0 ? -40 : 40,
+      x: i % 2 === 0 ? 20 : -20,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.home-stats-band',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 2,
+      }
+    });
+  });
+
+  // Industries background shapes
+  gsap.utils.toArray('.home-industries-shape').forEach((shape, i) => {
+    if (shape.dataset.parallaxBgInit === 'true') return;
+    shape.dataset.parallaxBgInit = 'true';
+
+    gsap.to(shape, {
+      y: i % 2 === 0 ? -50 : 50,
+      x: i % 2 === 0 ? 30 : -30,
+      scale: 1.1,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.home-industries',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 2,
+      }
+    });
+  });
+
+  // Showcase background gradient
+  const showcaseGradient = document.querySelector('.home-showcase-gradient');
+  if (showcaseGradient && showcaseGradient.dataset.parallaxBgInit !== 'true') {
+    showcaseGradient.dataset.parallaxBgInit = 'true';
+    gsap.to(showcaseGradient, {
+      y: -60,
+      scale: 1.2,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.home-showcase',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 2,
+      }
+    });
+  }
+
+  // Process section glows
+  gsap.utils.toArray('.home-process-glow').forEach((glow, i) => {
+    if (glow.dataset.parallaxBgInit === 'true') return;
+    glow.dataset.parallaxBgInit = 'true';
+
+    gsap.to(glow, {
+      y: i % 2 === 0 ? -35 : 35,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.home-process',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 2,
+      }
+    });
+  });
+
+  // Spotlight glows
+  gsap.utils.toArray('.home-spotlight-glow').forEach((glow, i) => {
+    if (glow.dataset.parallaxBgInit === 'true') return;
+    glow.dataset.parallaxBgInit = 'true';
+
+    gsap.to(glow, {
+      y: i % 2 === 0 ? -30 : 30,
+      x: i % 2 === 0 ? 15 : -15,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.home-spotlight',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 2,
+      }
+    });
+  });
+
+  // Final CTA glow
+  const ctaGlow = document.querySelector('.home-final-cta-glow');
+  if (ctaGlow && ctaGlow.dataset.parallaxBgInit !== 'true') {
+    ctaGlow.dataset.parallaxBgInit = 'true';
+    gsap.to(ctaGlow, {
+      scale: 1.3,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.home-final-cta',
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 2,
+      }
+    });
+  }
+}
+
 function initHomeSectionScrollFX() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
-  gsap.utils.toArray('.home-process-step').forEach((step) => {
+  // --- Process steps: activation + progress line ---
+  const processSteps = gsap.utils.toArray('.home-process-step');
+  const progressFill = document.querySelector('.home-process-progress-fill');
+
+  processSteps.forEach((step, i) => {
     if (step.dataset.stepTrigger === 'true') return;
     step.dataset.stepTrigger = 'true';
 
@@ -157,16 +301,27 @@ function initHomeSectionScrollFX() {
       trigger: step,
       start: 'top 70%',
       end: 'bottom 40%',
-      toggleClass: { targets: step, className: 'is-active' }
+      toggleClass: { targets: step, className: 'is-active' },
+      onUpdate: () => {
+        if (progressFill && processSteps.length > 0) {
+          let activeCount = 0;
+          processSteps.forEach(s => {
+            if (s.classList.contains('is-active')) activeCount++;
+          });
+          const pct = ((activeCount) / processSteps.length) * 100;
+          progressFill.style.height = Math.min(pct, 100) + '%';
+        }
+      }
     });
   });
 
+  // --- Showcase card image parallax ---
   gsap.utils.toArray('.home-showcase-card img').forEach((img) => {
     if (img.dataset.parallaxInit === 'true') return;
     img.dataset.parallaxInit = 'true';
 
     gsap.to(img, {
-      yPercent: 10,
+      yPercent: 12,
       ease: 'none',
       scrollTrigger: {
         trigger: img.closest('.home-showcase-card'),
@@ -177,16 +332,71 @@ function initHomeSectionScrollFX() {
     });
   });
 
+  // --- Spotlight panel float ---
   const spotlight = document.querySelector('.home-spotlight-shell');
   if (spotlight && spotlight.dataset.floatInit !== 'true') {
     spotlight.dataset.floatInit = 'true';
-    gsap.to('.home-spotlight-panel', {
-      y: (index) => index % 2 === 0 ? -10 : 10,
-      duration: 3.6,
-      repeat: -1,
-      yoyo: true,
-      ease: 'sine.inOut',
-      stagger: 0.15,
+
+    gsap.utils.toArray('.home-spotlight-panel').forEach((panel, index) => {
+      gsap.to(panel, {
+        y: index % 2 === 0 ? -8 : 8,
+        duration: 3.6 + index * 0.3,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut',
+      });
+    });
+  }
+
+  // --- Showcase shell parallax reveal ---
+  const showcaseShell = document.querySelector('.home-spotlight-shell');
+  if (showcaseShell && showcaseShell.dataset.scaleInit !== 'true') {
+    showcaseShell.dataset.scaleInit = 'true';
+
+    gsap.from(showcaseShell, {
+      scale: 0.92,
+      opacity: 0.6,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: showcaseShell,
+        start: 'top 85%',
+        end: 'top 50%',
+        scrub: 1,
+      }
+    });
+  }
+
+  // --- Final CTA card scale-up ---
+  const ctaCard = document.querySelector('.home-final-cta-card');
+  if (ctaCard && ctaCard.dataset.scaleInit !== 'true') {
+    ctaCard.dataset.scaleInit = 'true';
+
+    gsap.from(ctaCard, {
+      scale: 0.88,
+      opacity: 0,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: ctaCard,
+        start: 'top 92%',
+        end: 'top 55%',
+        scrub: 1,
+      }
+    });
+  }
+
+  // --- Marquee scroll-speed variation ---
+  const marqueeTrack = document.querySelector('.home-trust-track');
+  if (marqueeTrack && marqueeTrack.dataset.scrollSpeedInit !== 'true') {
+    marqueeTrack.dataset.scrollSpeedInit = 'true';
+
+    ScrollTrigger.create({
+      trigger: '.home-trust-strip',
+      start: 'top bottom',
+      end: 'bottom top',
+      onUpdate: (self) => {
+        const speed = 1 + self.progress * 1.5;
+        marqueeTrack.style.animationDuration = (24 / speed) + 's';
+      }
     });
   }
 }
@@ -204,7 +414,7 @@ function initInteractiveCards() {
       const py = (event.clientY - rect.top) / rect.height;
       const rotateY = (px - 0.5) * 12;
       const rotateX = (0.5 - py) * 10;
-      card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
     });
 
     card.addEventListener('mouseleave', () => {

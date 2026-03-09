@@ -564,6 +564,7 @@ async function initPage(pageKey) {
       if (activeVariant) initHeroAAnimations();
       else initHeroBAnimations();
       initTimelineAnimations();
+      initStatCounters();
       if (typeof initHomeInteractiveFX === 'function') {
         initHomeInteractiveFX();
       }
