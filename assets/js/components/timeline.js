@@ -40,7 +40,12 @@ function renderTimeline(data) {
     <section class="jrny-section section" id="home-journey">
       <!-- Background effects -->
       <div class="jrny-bg" aria-hidden="true">
+        <div class="jrny-bg-grid"></div>
         <div class="jrny-bg-grain"></div>
+        <div class="jrny-bg-orb jrny-bg-orb--1"></div>
+        <div class="jrny-bg-orb jrny-bg-orb--2"></div>
+        <div class="jrny-bg-sweep jrny-bg-sweep--1"></div>
+        <div class="jrny-bg-sweep jrny-bg-sweep--2"></div>
         <div class="jrny-bg-glow jrny-bg-glow--1"></div>
         <div class="jrny-bg-glow jrny-bg-glow--2"></div>
       </div>

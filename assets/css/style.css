@@ -1134,21 +1134,17 @@ ul, ol {
 }
 
 /* --- Custom scrollbar --- */
-::-webkit-scrollbar {
-  width: 8px;
+html,
+body,
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-::-webkit-scrollbar-track {
-  background: var(--bg-primary);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-tertiary);
+*::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
 }
 
 /* --- Utility: hidden --- */

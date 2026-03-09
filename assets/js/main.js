@@ -459,6 +459,9 @@ function initTimelineAnimations() {
   const slides = section.querySelectorAll('.jrny-slide');
   const dots = section.querySelectorAll('.jrny-dot');
   const progressFill = section.querySelector('.jrny-progress-fill');
+  const bgGrid = section.querySelector('.jrny-bg-grid');
+  const bgOrbs = section.querySelectorAll('.jrny-bg-orb');
+  const bgSweeps = section.querySelectorAll('.jrny-bg-sweep');
   const count = slides.length;
   if (!count) return;
 
@@ -515,6 +518,49 @@ function initTimelineAnimations() {
         start: 'top bottom',
         end: 'bottom top',
         scrub: 2,
+      }
+    });
+  });
+
+  if (bgGrid) {
+    gsap.to(bgGrid, {
+      backgroundPosition: '140px 90px',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 2,
+      }
+    });
+  }
+
+  bgOrbs.forEach((orb, i) => {
+    gsap.to(orb, {
+      y: i % 2 === 0 ? -80 : 70,
+      x: i % 2 === 0 ? 45 : -35,
+      scale: i % 2 === 0 ? 1.16 : 1.08,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 2.4,
+      }
+    });
+  });
+
+  bgSweeps.forEach((sweep, i) => {
+    gsap.to(sweep, {
+      x: i % 2 === 0 ? 120 : -120,
+      y: i % 2 === 0 ? -24 : 24,
+      opacity: i % 2 === 0 ? 0.85 : 0.72,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: section,
+        start: 'top bottom',
+        end: 'bottom top',
+        scrub: 1.8,
       }
     });
   });
