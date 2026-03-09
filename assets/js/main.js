@@ -289,27 +289,12 @@ function initHeroAAnimations() {
       stagger: 0.1,
       ease: 'power3.out',
     }, '-=0.3')
-    .from('.hero-a-metric-pill', {
-      y: 22,
+    .from('.hero-a-stats-bar', {
+      y: 30,
       opacity: 0,
-      duration: 0.5,
-      stagger: 0.08,
+      duration: 0.6,
       ease: 'power3.out',
     }, '-=0.2')
-    .from('.hero-a-visual-core, .hero-a-asset', {
-      y: 28,
-      opacity: 0,
-      scale: 0.96,
-      duration: 0.7,
-      stagger: 0.1,
-      ease: 'power3.out',
-    }, '-=0.55')
-    .from('.hero-a-spec-strip', {
-      y: 18,
-      opacity: 0,
-      duration: 0.45,
-      ease: 'power3.out',
-    }, '-=0.35')
     .from('.hero-a-scroll-thread', {
       y: 18,
       opacity: 0,
@@ -336,17 +321,6 @@ function initHeroAAnimations() {
     gsap.to('.hero-a-copy', {
       yPercent: -10,
       opacity: 0.72,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: heroA,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      }
-    });
-
-    gsap.to('.hero-a-visual-stage', {
-      yPercent: 8,
       ease: 'none',
       scrollTrigger: {
         trigger: heroA,

@@ -3,11 +3,67 @@ function renderHomePremiumSections(data) {
   if (!premium) return '';
 
   return `
+    ${renderHomeStatsBand(premium.statsBand)}
     ${renderHomeTrustStrip(premium.trustStrip)}
+    ${renderHomeIndustries(premium.industries)}
     ${renderHomeShowcase(premium.showcase)}
     ${renderHomeProcess(premium.process)}
     ${renderHomeSpotlight(premium.spotlight)}
     ${renderHomeFinalCta(premium.finalCta)}
+  `;
+}
+
+function getIndustryIcon(icon) {
+  const icons = {
+    car: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8 17h.01M16 17h.01M3 11l1.5-5A2 2 0 016.4 4.5h11.2a2 2 0 011.9 1.5L21 11M3 11v6a1 1 0 001 1h1a1 1 0 001-1v-1h12v1a1 1 0 001 1h1a1 1 0 001-1v-6M3 11h18"/></svg>',
+    train: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4 15V5a3 3 0 013-3h10a3 3 0 013 3v10M4 15l-2 5h20l-2-5M4 15h16M9 19l-1 3M15 19l1 3M8 9h8M8 5h8"/><circle cx="8" cy="12" r="1"/><circle cx="16" cy="12" r="1"/></svg>',
+    plane: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 2L2 8l10 2 10-2-10-6zM12 22V10M2 8v6l10 8 10-8V8"/></svg>',
+    sofa: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M5 11V7a3 3 0 016 0v4M13 11V7a3 3 0 016 0v4M4 11a2 2 0 00-2 2v2a2 2 0 002 2h16a2 2 0 002-2v-2a2 2 0 00-2-2M6 17v2M18 17v2"/></svg>',
+    shoe: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 18h18v-2c0-2-1.5-3-3-3h-1l-2-4c-.5-1-1.5-2-3-2s-2 .5-3 2L4 13c-1 0-1 1-1 2v3z"/></svg>',
+    anchor: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="5" r="3"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13M5 12H2a10 10 0 0020 0h-3"/></svg>'
+  };
+  return icons[icon] || icons.car;
+}
+
+function renderHomeIndustries(section) {
+  if (!section) return '';
+
+  return `
+    <section class="home-industries section">
+      <div class="container">
+        <div class="home-industries-header">
+          <p class="home-section-eyebrow">${section.subtitle || ''}</p>
+          <h2 class="home-section-title">${section.title || ''}</h2>
+        </div>
+        <div class="home-industries-grid">
+          ${(section.items || []).map(item => `
+            <div class="home-industry-card" data-aos="fade-up">
+              <div class="home-industry-icon">${getIndustryIcon(item.icon)}</div>
+              <div class="home-industry-name">${item.name}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderHomeStatsBand(stats) {
+  if (!stats || !stats.length) return '';
+
+  return `
+    <section class="home-stats-band">
+      <div class="container">
+        <div class="home-stats-band-grid">
+          ${stats.map(stat => `
+            <div class="home-stats-band-item" data-aos="fade-up">
+              <div class="home-stats-band-value">${stat.value}</div>
+              <div class="home-stats-band-label">${stat.label}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
   `;
 }
 

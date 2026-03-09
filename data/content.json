@@ -93,6 +93,24 @@
       ]
     },
     "premium": {
+      "industries": {
+        "title": "Industries We Serve",
+        "subtitle": "Trusted across sectors",
+        "items": [
+          { "name": "Automotive", "icon": "car" },
+          { "name": "Railways", "icon": "train" },
+          { "name": "Aerospace", "icon": "plane" },
+          { "name": "Furnishing", "icon": "sofa" },
+          { "name": "Footwear", "icon": "shoe" },
+          { "name": "Marine", "icon": "anchor" }
+        ]
+      },
+      "statsBand": [
+        { "value": "25+", "label": "Years of Excellence" },
+        { "value": "5M+", "label": "Meters / Month Capacity" },
+        { "value": "50+", "label": "Global OEM Partners" },
+        { "value": "50,000", "label": "sq. ft Manufacturing" }
+      ],
       "trustStrip": {
         "label": "Built for automotive interiors",
         "items": [
