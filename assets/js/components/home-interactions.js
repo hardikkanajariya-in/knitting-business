@@ -19,17 +19,17 @@ function initHeroPointerParallax() {
 
   hero.dataset.pointerInit = 'true';
 
-  const scene = hero.querySelector('.hero-a-scene');
+  const scene = hero.querySelector('.hero-a-visual-stage');
   const layeredItems = hero.querySelectorAll('[data-depth]');
 
   const onMove = (event) => {
     const rect = hero.getBoundingClientRect();
     const px = (event.clientX - rect.left) / rect.width;
     const py = (event.clientY - rect.top) / rect.height;
-    const rx = (0.5 - py) * 8;
-    const ry = (px - 0.5) * 10;
-    const shiftX = (px - 0.5) * 30;
-    const shiftY = (py - 0.5) * 24;
+    const rx = (0.5 - py) * 6;
+    const ry = (px - 0.5) * 8;
+    const shiftX = (px - 0.5) * 24;
+    const shiftY = (py - 0.5) * 18;
 
     hero.style.setProperty('--mouse-x', `${px * 100}%`);
     hero.style.setProperty('--mouse-y', `${py * 100}%`);
@@ -39,13 +39,13 @@ function initHeroPointerParallax() {
     hero.style.setProperty('--float-shift-y', `${shiftY}px`);
 
     if (scene) {
-      scene.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg)`;
+      scene.style.transform = `translate3d(${shiftX * 0.12}px, ${shiftY * 0.12}px, 0) rotateX(${rx}deg) rotateY(${ry}deg)`;
     }
 
     layeredItems.forEach((item) => {
       const depth = parseFloat(item.dataset.depth || '0');
-      const x = (px - 0.5) * depth * 120;
-      const y = (py - 0.5) * depth * 90;
+      const x = (px - 0.5) * depth * 110;
+      const y = (py - 0.5) * depth * 86;
       item.style.transform = `translate3d(${x}px, ${y}px, ${depth * 180}px)`;
     });
   };
@@ -92,10 +92,20 @@ function initHomeFloatingScroll() {
   if (hero && hero.dataset.scrollFxInit !== 'true') {
     hero.dataset.scrollFxInit = 'true';
 
-    gsap.utils.toArray('.hero-a-floating').forEach((card, index) => {
+    gsap.to('.hero-a-visual-core-float', {
+      y: -12,
+      rotation: 3,
+      duration: 4.8,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut'
+    });
+
+    gsap.utils.toArray('.hero-a-asset-float').forEach((card, index) => {
       gsap.to(card, {
-        y: index % 2 === 0 ? -14 : 14,
-        duration: 3.4 + index * 0.4,
+        y: index % 2 === 0 ? -16 : 16,
+        x: index === 1 ? -8 : 8,
+        duration: 3.8 + index * 0.45,
         repeat: -1,
         yoyo: true,
         ease: 'sine.inOut'

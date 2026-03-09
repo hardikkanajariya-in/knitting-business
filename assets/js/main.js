@@ -253,63 +253,117 @@ function initHeroAAnimations() {
   const heroA = document.querySelector('.hero-a');
   if (!heroA) return;
 
-  const tl = gsap.timeline({ delay: 0.2 });
+  if (heroA.dataset.introInit !== 'true') {
+    heroA.dataset.introInit = 'true';
 
-  // Background image/video reveal
-  tl.from('.hero-a-bg', {
-    scale: 1.15,
-    opacity: 0,
-    duration: 1.4,
-    ease: 'power2.out',
-  })
+    const tl = gsap.timeline({ delay: 0.2 });
 
-  // Corner elements slide in from their respective corners
-  .to('.hero-a-corner--tl', {
-    x: 0,
-    duration: 1,
-    ease: 'power3.out',
-  }, '-=0.7')
-  .to('.hero-a-corner--br', {
-    x: 0,
-    duration: 1,
-    ease: 'power3.out',
-  }, '-=0.8')
+    tl.from('.hero-a-bg', {
+      scale: 1.12,
+      opacity: 0,
+      duration: 1.3,
+      ease: 'power2.out',
+    })
+    .from('.hero-a-kicker', {
+      y: 24,
+      opacity: 0,
+      duration: 0.55,
+      ease: 'power3.out',
+    }, '-=0.7')
+    .from('.hero-a-title', {
+      y: 34,
+      opacity: 0,
+      duration: 0.9,
+      ease: 'power3.out',
+    }, '-=0.35')
+    .from('.hero-a-desc', {
+      y: 24,
+      opacity: 0,
+      duration: 0.65,
+      ease: 'power3.out',
+    }, '-=0.45')
+    .from('.hero-a-cta-row > *', {
+      y: 20,
+      opacity: 0,
+      duration: 0.45,
+      stagger: 0.1,
+      ease: 'power3.out',
+    }, '-=0.3')
+    .from('.hero-a-metric-pill', {
+      y: 22,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.08,
+      ease: 'power3.out',
+    }, '-=0.2')
+    .from('.hero-a-visual-core, .hero-a-asset', {
+      y: 28,
+      opacity: 0,
+      scale: 0.96,
+      duration: 0.7,
+      stagger: 0.1,
+      ease: 'power3.out',
+    }, '-=0.55')
+    .from('.hero-a-spec-strip', {
+      y: 18,
+      opacity: 0,
+      duration: 0.45,
+      ease: 'power3.out',
+    }, '-=0.35')
+    .from('.hero-a-scroll-thread', {
+      y: 18,
+      opacity: 0,
+      duration: 0.5,
+      ease: 'power3.out',
+    }, '-=0.3');
+  }
 
-  // Text content stagger
-  .from('.hero-a-subtitle', {
-    y: 30,
-    opacity: 0,
-    duration: 0.6,
-    ease: 'power3.out',
-  }, '-=0.5')
-  .from('.hero-a-title', {
-    y: 40,
-    opacity: 0,
-    duration: 0.8,
-    ease: 'power3.out',
-  }, '-=0.3')
-  .from('.hero-a-desc', {
-    y: 30,
-    opacity: 0,
-    duration: 0.6,
-    ease: 'power3.out',
-  }, '-=0.3')
-  .from('.hero-a .btn-primary', {
-    y: 20,
-    opacity: 0,
-    duration: 0.5,
-    ease: 'power3.out',
-  }, '-=0.2');
+  if (typeof ScrollTrigger !== 'undefined' && heroA.dataset.scrollIntroInit !== 'true') {
+    heroA.dataset.scrollIntroInit = 'true';
 
-  // Parallax on background
-  if (typeof ScrollTrigger !== 'undefined') {
     gsap.to('.hero-a-bg', {
-      y: '15%',
+      yPercent: 12,
+      scale: 1.08,
       ease: 'none',
       scrollTrigger: {
-        trigger: '.hero-a',
+        trigger: heroA,
         start: 'top top',
         end: 'bottom top',
+        scrub: true,
+      }
+    });
+
+    gsap.to('.hero-a-copy', {
+      yPercent: -10,
+      opacity: 0.72,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: heroA,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      }
+    });
+
+    gsap.to('.hero-a-visual-stage', {
+      yPercent: 8,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: heroA,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      }
+    });
+
+    gsap.to('.hero-a-scroll-thread', {
+      y: 24,
+      opacity: 0,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: heroA,
+        start: 'top top',
+        end: '60% top',
         scrub: true,
       }
     });
@@ -480,11 +534,12 @@ async function initPage(pageKey) {
     contentEl.innerHTML = html;
   }
 
-  // Add hero-overlay-mode to header if page has full-bleed dark hero (hero-b visible)
+  // Add hero-overlay-mode to header if page has a full-bleed dark hero
   const header = document.querySelector('.site-header');
+  const visibleHeroA = document.querySelector('.hero-a:not([style*="display: none"])');
   const visibleHeroB = document.querySelector('.hero-b:not([style*="display: none"])');
-  if (header && visibleHeroB) {
-    header.classList.add('hero-overlay-mode');
+  if (header) {
+    header.classList.toggle('hero-overlay-mode', Boolean(visibleHeroA || visibleHeroB));
   }
 
   // Initialize all interactions
@@ -548,7 +603,7 @@ function initHeroVariantToggle() {
         heroA.style.display = '';
         heroB.style.display = 'none';
         const hdr = document.querySelector('.site-header');
-        if (hdr) hdr.classList.remove('hero-overlay-mode');
+        if (hdr) hdr.classList.add('hero-overlay-mode');
         initHeroAAnimations();
         if (typeof initHomeInteractiveFX === 'function') initHomeInteractiveFX();
       } else {
@@ -574,8 +629,8 @@ function renderHomePage(data) {
 
   return `
     ${typeof renderHeroA === 'function' ? renderHeroA(hero) : ''}
-    ${typeof renderHomePremiumSections === 'function' ? renderHomePremiumSections(data) : ''}
     ${typeof renderTimeline === 'function' ? renderTimeline(journey) : ''}
+    ${typeof renderHomePremiumSections === 'function' ? renderHomePremiumSections(data) : ''}
   `;
 }
 

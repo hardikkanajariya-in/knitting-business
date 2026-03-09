@@ -13,6 +13,19 @@
 4. The website will automatically pick up the local image instead of the CDN fallback
 
 > **Recommended output:** JPEG format, quality 85-90%
+> **Preferred style:** Photorealistic, premium, OEM-grade automotive material imagery
+
+---
+
+## Automotive Direction for Every Prompt
+
+Use this visual language across all generations:
+
+- Focus on **automotive interiors**: seats, headliners, door panels, armrests, pillars, dashboard inserts, parcel shelves, or trim substrates
+- Show **OEM / Tier-1 supplier quality**: controlled manufacturing, inspection, sampling, coating, finishing, and clean industrial environments
+- Keep materials looking **production-ready**, durable, tactile, and premium — not fashion, home decor, or furniture focused
+- Avoid generic garment factories, apparel fabrics, sofas, curtains, runway styling, or retail textile photography
+- Avoid visible logos, badges, trademarks, text overlays, watermarks, and unrealistic concept-car styling
 
 ---
 
@@ -27,7 +40,7 @@ These are full-width banner backgrounds. Generate at **1920×1080** or higher.
 **File Path:** `assets/img/hero/hero-bg.jpg`
 
 ```
-Photorealistic close-up of an industrial warp knitting machine in action inside a modern textile factory. Steel needles and yarns moving at high speed, creating intricate knitted fabric patterns. Warm industrial lighting with subtle orange and blue tones. Shallow depth of field focusing on the needle bar with yarn guides. Clean, modern machinery. Professional industrial photography style. No text, no watermarks. 1920x1080, landscape orientation.
+Photorealistic close-up of a high-speed warp knitting machine producing technical automotive interior fabric in a modern Tier-1 textile facility. Sharp detail on needles, guide bars, yarn feeders, and the fabric formation zone. The textile should feel engineered for premium vehicle seat inserts or headliner substrates, not fashion apparel. Cool metallic machinery tones with subtle warm highlights, shallow depth of field, ultra-clean production environment, professional industrial photography. No text, no watermarks, no logos. 1920x1080, landscape orientation.
 ```
 
 ---
@@ -37,7 +50,7 @@ Photorealistic close-up of an industrial warp knitting machine in action inside 
 **File Path:** `assets/img/hero/hero-split.jpg`
 
 ```
-Photorealistic image of a textile manufacturing plant floor. An Indian male engineer in a light blue safety uniform and hard hat inspecting knitted fabric rolls on a modern production line. Large industrial knitting machines (Karl Mayer or LIBA type warp knitting machines) visible in the background. Clean, well-lit factory with organized workspace. Shot from a slight low angle showing the scale of the factory. Professional corporate photography. No text, no watermarks. 1920x1080, landscape orientation.
+Photorealistic image of an Indian automotive-textile engineer in safety uniform inspecting rolls of OEM-grade knitted upholstery material on a clean production floor. In the background, advanced warp knitting and lamination lines are visible along with automotive interior material samples for seat covers, door trims, and headliners. Shot from a slight low angle to emphasize scale, precision, and premium manufacturing capability. Bright controlled factory lighting, organized workspace, corporate industrial photography. No text, no watermarks, no logos. 1920x1080, landscape orientation.
 ```
 
 ---
@@ -47,7 +60,7 @@ Photorealistic image of a textile manufacturing plant floor. An Indian male engi
 **File Path:** `assets/img/hero/about-bg.jpg`
 
 ```
-Photorealistic wide-angle shot looking down a long corridor inside a modern textile factory. Rows of industrial warp knitting machines on both sides stretching into the distance. A single factory worker in uniform walking down the aisle inspecting the machinery. Bright fluorescent overhead lighting. Clean concrete floor, organized factory setting. Slight haze from textile fibers in the air catching the light. Professional architectural/industrial photography style. No text, no watermarks. 1920x1080, landscape orientation.
+Photorealistic wide-angle view down a long aisle inside an advanced automotive textile manufacturing facility. Parallel rows of high-speed knitting, coating, and inspection equipment extend into the distance. A technician in uniform walks through the aisle checking production for vehicle interior materials. Clean floors, bright overhead lighting, subtle atmospheric haze catching the light, premium architectural-industrial photography. The scene should communicate OEM discipline, scale, and precision. No text, no watermarks, no logos. 1920x1080, landscape orientation.
 ```
 
 ---
@@ -57,7 +70,7 @@ Photorealistic wide-angle shot looking down a long corridor inside a modern text
 **File Path:** `assets/img/hero/nk-bg.jpg`
 
 ```
-Photorealistic image of a high-speed industrial textile spinning and knitting machine producing automotive fabric. Multiple colorful yarn spools (red, blue, white, black) feeding into a computerized warp knitting machine. Sharp focus on the yarn tension system and guide bars with fabric being formed. Modern Indian textile manufacturing facility. Bright clean factory lighting. Professional industrial photography. No text, no watermarks. 1920x1080, landscape orientation.
+Photorealistic image of a computerized warp knitting machine manufacturing automotive seat and headliner fabric. Multiple yarn spools in restrained industrial colors feeding into the machine, with strong focus on yarn tension systems, guide bars, and the technical knitted structure being formed. The resulting textile should look suitable for premium car interiors, with a clean engineered surface and OEM-grade consistency. Modern Indian production facility, crisp factory lighting, professional industrial photography. No text, no watermarks, no logos. 1920x1080, landscape orientation.
 ```
 
 ---
@@ -67,7 +80,7 @@ Photorealistic image of a high-speed industrial textile spinning and knitting ma
 **File Path:** `assets/img/hero/nc-bg.jpg`
 
 ```
-Photorealistic interior of a luxury car showing quilted diamond-stitched leather seats in rich tan/cognac color. Modern automotive interior with leather-wrapped steering wheel, dashboard, and center console visible. Soft ambient lighting highlighting the leather grain texture and stitch details. Premium sedan interior (similar to BMW, Mercedes, or Audi style). Shallow depth of field on the driver seat. Professional automotive photography. No text, no watermarks. 1920x1080, landscape orientation.
+Photorealistic premium automotive interior showing expertly finished upholstery materials across seats, door panels, center armrest, and dashboard inserts. Rich tan or cognac leather-like surfaces with precise stitching, refined grain, and soft ambient cabin lighting. The composition should feel like a high-end OEM vehicle interior with no visible brand identity, highlighting the surface quality, comfort, and craftsmanship of automotive coating and leather solutions. Professional automotive photography. No text, no watermarks, no logos. 1920x1080, landscape orientation.
 ```
 
 ---
@@ -77,7 +90,7 @@ Photorealistic interior of a luxury car showing quilted diamond-stitched leather
 **File Path:** `assets/img/hero/sustainability-bg.jpg`
 
 ```
-Photorealistic close-up of two cupped hands gently holding a small green seedling with fresh soil. Soft natural sunlight from behind creating a warm backlit glow. Blurred green garden or forest background with bokeh. Represents environmental sustainability and growth. Earthy warm tones. Professional nature photography. No text, no watermarks. 1920x1080, landscape orientation.
+Photorealistic sustainability-themed materials shot for the automotive industry: recycled PET flakes, a spool of recycled yarn, and a small green seedling placed beside a premium automotive textile swatch in a clean materials development lab. Soft natural backlight, shallow depth of field, earthy green and neutral tones, elegant composition that represents sustainable mobility materials and responsible manufacturing. Professional product photography. No text, no watermarks, no logos. 1920x1080, landscape orientation.
 ```
 
 ---
@@ -93,7 +106,7 @@ These appear as product cards. Generate at **800×600** or higher.
 **File Path:** `assets/img/products/raised.jpg`
 
 ```
-Photorealistic close-up macro shot of premium raised-surface automotive upholstery fabric. Textured knitted fabric with a softly brushed, velvety nap surface in deep navy blue or charcoal color. Fabric draped naturally showing its plush texture and pile depth. Soft studio lighting creating shadows that emphasize the raised fiber texture. Professional textile product photography on a neutral background. No text, no watermarks. 800x600, landscape orientation.
+Photorealistic macro shot of premium raised-surface automotive upholstery fabric mounted on a contoured sample panel for a car seat insert or door insert. The knitted surface should show a soft brushed nap, tactile depth, and luxurious finish in deep charcoal, navy, or graphite. Soft studio lighting should emphasize the raised texture, pile direction, and premium hand-feel expected in vehicle interiors. Clean neutral background, professional automotive material photography. No text, no watermarks, no logos. 800x600, landscape orientation.
 ```
 
 ---
@@ -103,7 +116,7 @@ Photorealistic close-up macro shot of premium raised-surface automotive upholste
 **File Path:** `assets/img/products/3d.jpg`
 
 ```
-Photorealistic close-up cross-section view of 3D spacer knitted fabric showing its three-layer structure — two outer mesh layers connected by vertical monofilament spacer yarns in between. The fabric is shown slightly bent to reveal the air gap and breathable honeycomb-like interior structure. Modern blue or gray color. Clean studio lighting on white background. Technical yet visually appealing product photography. No text, no watermarks. 800x600, landscape orientation.
+Photorealistic close-up cross-section of 3D spacer knitted fabric engineered for ventilated automotive seating. Show the two outer mesh faces connected by vertical spacer yarns, with the material slightly bent to reveal the breathable internal air gap and structural depth. The sample should look technical, premium, and production-ready for seat comfort systems. Clean studio lighting on a white or light gray background, highly detailed material photography. No text, no watermarks, no logos. 800x600, landscape orientation.
 ```
 
 ---
@@ -113,7 +126,7 @@ Photorealistic close-up cross-section view of 3D spacer knitted fabric showing i
 **File Path:** `assets/img/products/fr.jpg`
 
 ```
-Photorealistic image of industrial flame-retardant fabric material on a production spool or roll in a textile factory setting. The fabric has a tight, dense weave in dark gray or black color. Rows of colored thread spools (fire-resistant yarns) visible in the background on an industrial creel rack. Clean modern manufacturing environment. Professional industrial product photography. No text, no watermarks. 800x600, landscape orientation.
+Photorealistic image of dark technical automotive fabric rolls and sample swatches engineered for flame-retardant interior applications. The material should appear dense, robust, and OEM-grade, suitable for headliners, seat back panels, or parcel shelves. Place the fabric in a clean automotive materials lab or production area with subtle test equipment blurred in the background, emphasizing safety and compliance without showing readable labels. Professional industrial product photography. No text, no watermarks, no logos. 800x600, landscape orientation.
 ```
 
 ---
@@ -123,7 +136,7 @@ Photorealistic image of industrial flame-retardant fabric material on a producti
 **File Path:** `assets/img/products/coated.jpg`
 
 ```
-Photorealistic image of several rolls of coated technical textile fabrics neatly stacked in a factory warehouse. Rolls in various colors (black, gray, beige, dark blue) showing the smooth coated surface finish. The coating gives the fabric a slight sheen. Industrial shelving or pallets in the background. Clean warehouse lighting. Professional industrial/product photography. No text, no watermarks. 800x600, landscape orientation.
+Photorealistic image of several rolls of coated technical automotive textile neatly arranged beside cut trim substrates for door panels, seat backs, or armrest applications. Surfaces should show a refined protective coating with slight sheen, consistent finish, and production-ready quality in black, gray, beige, or deep blue. Clean warehouse or sampling area, controlled lighting, professional automotive material photography. No text, no watermarks, no logos. 800x600, landscape orientation.
 ```
 
 ---
@@ -133,7 +146,7 @@ Photorealistic image of several rolls of coated technical textile fabrics neatly
 **File Path:** `assets/img/products/synthetic-leather.jpg`
 
 ```
-Photorealistic interior of a modern car showing white/ivory synthetic PU leather seats with clean stitching lines. Pristine, smooth synthetic leather surface with subtle grain texture. Well-lit modern car cabin (sedan or SUV). Shows the driver and passenger seats from the rear angle. The leather looks premium, consistent, and wrinkle-free — showcasing the quality of synthetic leather for automotive use. Professional automotive interior photography. No text, no watermarks. 800x600, landscape orientation.
+Photorealistic premium vehicle interior featuring high-quality synthetic PU leather on front seats, armrests, and door trims. The synthetic leather should look smooth, consistent, durable, and luxurious, with clean stitching and subtle grain texture. Use a modern SUV or sedan cabin with elegant lighting and no visible brand identity. The image should communicate easy-maintenance premium automotive upholstery. Professional automotive interior photography. No text, no watermarks, no logos. 800x600, landscape orientation.
 ```
 
 ---
@@ -143,7 +156,7 @@ Photorealistic interior of a modern car showing white/ivory synthetic PU leather
 **File Path:** `assets/img/products/genuine-leather.jpg`
 
 ```
-Photorealistic image of luxury genuine brown leather car seats in a high-end vehicle. Rich cognac/saddle brown semi-aniline leather with visible natural grain and character marks. Diamond quilted or channel-stitched pattern on the seat cushions. Polished wood or brushed aluminum trim visible on the door panel. Warm ambient interior lighting. Rolls-Royce or Bentley level luxury feel. Professional automotive photography. No text, no watermarks. 800x600, landscape orientation.
+Photorealistic luxury automotive interior featuring rich cognac or saddle-brown genuine leather on seats, headrests, and door panels. Visible natural grain, refined stitching, and soft ambient lighting should highlight authentic premium leather craftsmanship for executive-class vehicle interiors. The image should feel upscale, elegant, and OEM-ready, with no visible brand identity. Professional automotive photography. No text, no watermarks, no logos. 800x600, landscape orientation.
 ```
 
 ---
@@ -153,7 +166,7 @@ Photorealistic image of luxury genuine brown leather car seats in a high-end veh
 **File Path:** `assets/img/products/direct-coating.jpg`
 
 ```
-Photorealistic close-up of a modern car seat showing two-tone upholstery — red and black leather/coated fabric combination. Clean geometric design with precise stitching where the two colors meet. Shows the smooth, water-resistant coated surface texture. Sport car interior feel. Focused on the seat bolster area where direct coating technology is highlighted. Professional automotive detail photography. No text, no watermarks. 800x600, landscape orientation.
+Photorealistic close-up of an automotive seat bolster or door insert showing two-tone directly coated upholstery material. Emphasize the crisp junction between colors, uniform coated surface, precise stitching, and durable premium finish. The material should look engineered for abrasion resistance, easy cleaning, and long-term cabin use. Sporty but realistic automotive interior styling, professional detail photography. No text, no watermarks, no logos. 800x600, landscape orientation.
 ```
 
 ---
@@ -163,7 +176,7 @@ Photorealistic close-up of a modern car seat showing two-tone upholstery — red
 **File Path:** `assets/img/products/others.jpg`
 
 ```
-Photorealistic close-up of premium embossed automotive upholstery material with a geometric hexagonal or diamond pattern pressed into blue Alcantara/suede-like fabric. The embossing creates a modern 3D texture pattern catching light at different angles. Shows the precision of specialty surface finishing techniques. Clean studio lighting highlighting the texture depth. Professional textile/material photography. No text, no watermarks. 800x600, landscape orientation.
+Photorealistic close-up of automotive interior trim material with specialty finishing such as embossing, perforation, or geometric surface texture. Show a premium sample board or trim insert with precise pattern definition, elegant shadows, and strong tactile appeal suitable for dashboard inserts, door panels, or seat accents. Clean studio lighting should reveal depth, finish quality, and surface engineering. Professional automotive material photography. No text, no watermarks, no logos. 800x600, landscape orientation.
 ```
 
 ---
@@ -179,7 +192,7 @@ These appear as content block images alongside text. Generate at **1200×800** o
 **File Path:** `assets/img/factory/nk-factory.jpg`
 
 ```
-Photorealistic wide shot of the interior of a modern Indian textile knitting factory production floor. Multiple high-speed warp knitting machines (Karl Mayer / LIBA type) running in parallel rows. Large spools of colored yarn on creels feeding into the machines. Some Indian factory workers in blue uniforms monitoring the machines. Bright overhead LED lighting, clean concrete floors, organized production line. Professional industrial photography showing scale and modernity. No text, no watermarks. 1200x800, landscape orientation.
+Photorealistic wide shot of a modern Indian automotive textile production floor. Multiple high-speed warp knitting machines run in parallel, feeding technical yarns into OEM-grade fabrics for seat systems, headliners, and interior trim. Operators in uniform monitor quality and machine performance. Bright LED lighting, clean concrete floors, organized workflow, premium industrial photography that communicates scale, precision, and manufacturing confidence. No text, no watermarks, no logos. 1200x800, landscape orientation.
 ```
 
 ---
@@ -189,7 +202,7 @@ Photorealistic wide shot of the interior of a modern Indian textile knitting fac
 **File Path:** `assets/img/factory/nc-factory.jpg`
 
 ```
-Photorealistic image of a worker in a white lab coat and safety gloves inspecting a sheet of coated textile material in an industrial chemical coating facility. Coating machinery and mixing tanks visible in the background. The worker is holding up the finished coated fabric to check the surface quality under strong inspection lighting. Clean, well-organized R&D / production laboratory environment. Professional industrial photography. No text, no watermarks. 1200x800, landscape orientation.
+Photorealistic image of a technician in protective lab attire inspecting coated automotive upholstery material in a specialty coating facility. Coating machinery, embossing rollers, mixing vessels, and inspection lighting are visible in the background. The technician holds and checks a finished surface used for vehicle seats, door trims, or dashboard coverings. The environment should feel clean, controlled, and R&D-driven, with professional industrial photography. No text, no watermarks, no logos. 1200x800, landscape orientation.
 ```
 
 ---
@@ -199,7 +212,7 @@ Photorealistic image of a worker in a white lab coat and safety gloves inspectin
 **File Path:** `assets/img/factory/team-factory.jpg`
 
 ```
-Photorealistic group of 4-5 Indian textile factory workers in matching blue uniforms standing together and smiling on the factory production floor. Industrial knitting machines and fabric rolls visible behind them. Warm, natural lighting mixed with factory fluorescents. Diverse team of men — some young, some experienced. Teamwork and pride visible in their expressions. Professional corporate/industrial photography. No text, no watermarks. 1200x800, landscape orientation.
+Photorealistic group of 4-5 Indian manufacturing professionals in matching uniforms standing together on an automotive interior materials production floor. Behind them are rolls of upholstery textile, coated trim materials, and advanced production machinery. Their expressions should convey teamwork, pride, reliability, and experience in OEM supply manufacturing. Warm yet professional lighting, polished corporate-industrial photography. No text, no watermarks, no logos. 1200x800, landscape orientation.
 ```
 
 ---
@@ -215,7 +228,7 @@ These appear as circular portrait photos. Generate at **400×400** square.
 **File Path:** `assets/img/team/rajeev-kumar.jpg`
 
 ```
-Professional corporate headshot portrait of an Indian man in his mid-50s. Distinguished, confident expression with a warm slight smile. Wearing a formal dark navy blue blazer over a crisp white dress shirt, no tie. Salt-and-pepper hair neatly styled, clean-shaven or light stubble. Neutral gray studio background with soft professional lighting. Looks like the experienced chairman/founder of a manufacturing company. Square crop, shoulders and head framing. Professional portrait photography. No text, no watermarks. 400x400, square.
+Professional corporate headshot portrait of an Indian man in his mid-50s, looking like the founder and chairman of a respected automotive interior materials manufacturing group. Distinguished, confident expression with a warm slight smile. Wearing a dark navy blazer over a crisp white shirt, no tie. Salt-and-pepper hair, neat grooming, soft studio lighting, neutral gray background, premium executive portrait style. Square crop with shoulders and head. No text, no watermarks, no logos. 400x400, square.
 ```
 
 ---
@@ -225,7 +238,7 @@ Professional corporate headshot portrait of an Indian man in his mid-50s. Distin
 **File Path:** `assets/img/team/prathit-kamdar.jpg`
 
 ```
-Professional corporate headshot portrait of an Indian man in his mid-30s. Modern, approachable look with a confident genuine smile. Wearing a charcoal gray formal vest/waistcoat over a light blue dress shirt. Clean-shaven with short modern hairstyle. Neutral gray or soft gradient studio background. Looks like a young, dynamic CEO of a growing manufacturing company. Square crop, shoulders and head framing. Professional portrait photography. No text, no watermarks. 400x400, square.
+Professional corporate headshot portrait of an Indian man in his mid-30s, looking like the dynamic CEO of a modern automotive textile and surface solutions company. Approachable and confident expression with a genuine smile. Wearing a charcoal vest or blazer over a light blue dress shirt. Clean-shaven, modern hairstyle, soft studio lighting, neutral gray or subtle gradient background, polished contemporary executive portrait style. Square crop with shoulders and head. No text, no watermarks, no logos. 400x400, square.
 ```
 
 ---
@@ -241,7 +254,7 @@ Professional corporate headshot portrait of an Indian man in his mid-30s. Modern
 **File Path:** `assets/img/logo/logo.svg`
 
 ```
-Minimalist modern logo for "Nirbhai Group" — a textile and chemical manufacturing company for automotive interiors. The logo should feature clean, geometric letterforms spelling "NG" as a monogram with subtle references to woven fabric or thread patterns. Dark charcoal (#1a1a1a) on transparent background. Corporate, premium, industrial feel. Simple enough to work at small sizes. Vector/SVG style, flat design. No gradients, no 3D effects.
+Minimalist modern logo for "Nirbhai Group" — an automotive textile and specialty materials company. Create a clean geometric "NG" monogram with subtle cues inspired by woven thread structure, precision engineering, and flowing interior trim lines. Dark charcoal (#1a1a1a) on transparent background. Corporate, premium, industrial, and contemporary. Flat vector look, simple enough for small sizes. No gradients, no 3D effects, no mockup background.
 ```
 
 ---
@@ -251,7 +264,7 @@ Minimalist modern logo for "Nirbhai Group" — a textile and chemical manufactur
 **File Path:** `assets/img/logo/logo-dark.svg`
 
 ```
-Same design as the light version but in white (#ffffff) on transparent background, for use on dark headers and footers. Minimalist "NG" monogram for Nirbhai Group. Clean, geometric, corporate.
+Same design as the light version but in white (#ffffff) on transparent background for dark headers and footers. Minimalist "NG" monogram for an automotive textile and specialty materials company. Clean, geometric, premium, and highly legible.
 ```
 
 ---
@@ -260,32 +273,34 @@ Same design as the light version but in white (#ffffff) on transparent backgroun
 
 | # | File Path | Size | Subject |
 |---|-----------|------|---------|
-| 1 | `assets/img/hero/hero-bg.jpg` | 1920×1080 | Warp knitting machine close-up |
-| 2 | `assets/img/hero/hero-split.jpg` | 1920×1080 | Engineer inspecting factory line |
-| 3 | `assets/img/hero/about-bg.jpg` | 1920×1080 | Factory corridor with machines |
-| 4 | `assets/img/hero/nk-bg.jpg` | 1920×1080 | Spinning/knitting machine with yarn |
-| 5 | `assets/img/hero/nc-bg.jpg` | 1920×1080 | Luxury quilted leather car interior |
-| 6 | `assets/img/hero/sustainability-bg.jpg` | 1920×1080 | Hands holding green seedling |
-| 7 | `assets/img/products/raised.jpg` | 800×600 | Navy raised-surface fabric texture |
-| 8 | `assets/img/products/3d.jpg` | 800×600 | 3D spacer fabric cross-section |
-| 9 | `assets/img/products/fr.jpg` | 800×600 | FR fabric spool + yarn rack |
-| 10 | `assets/img/products/coated.jpg` | 800×600 | Coated textile rolls in warehouse |
-| 11 | `assets/img/products/synthetic-leather.jpg` | 800×600 | White synthetic leather car seats |
-| 12 | `assets/img/products/genuine-leather.jpg` | 800×600 | Brown leather luxury car interior |
-| 13 | `assets/img/products/direct-coating.jpg` | 800×600 | Red/black two-tone coated car seat |
-| 14 | `assets/img/products/others.jpg` | 800×600 | Embossed geometric suede fabric |
-| 15 | `assets/img/factory/nk-factory.jpg` | 1200×800 | Knitting factory production floor |
-| 16 | `assets/img/factory/nc-factory.jpg` | 1200×800 | Chemical coating lab worker |
-| 17 | `assets/img/factory/team-factory.jpg` | 1200×800 | Factory workers group photo |
-| 18 | `assets/img/team/rajeev-kumar.jpg` | 400×400 | Chairman headshot (50s Indian man) |
-| 19 | `assets/img/team/prathit-kamdar.jpg` | 400×400 | CEO headshot (30s Indian man) |
+| 1 | `assets/img/hero/hero-bg.jpg` | 1920×1080 | Warp knitting machine making automotive interior fabric |
+| 2 | `assets/img/hero/hero-split.jpg` | 1920×1080 | Engineer inspecting OEM-grade interior materials |
+| 3 | `assets/img/hero/about-bg.jpg` | 1920×1080 | Automotive materials production corridor |
+| 4 | `assets/img/hero/nk-bg.jpg` | 1920×1080 | Warp knitting for seat/headliner textiles |
+| 5 | `assets/img/hero/nc-bg.jpg` | 1920×1080 | Premium vehicle interior material surfaces |
+| 6 | `assets/img/hero/sustainability-bg.jpg` | 1920×1080 | Recycled automotive material sustainability shot |
+| 7 | `assets/img/products/raised.jpg` | 800×600 | Raised upholstery fabric for seat or door insert |
+| 8 | `assets/img/products/3d.jpg` | 800×600 | 3D spacer fabric for ventilated seating |
+| 9 | `assets/img/products/fr.jpg` | 800×600 | Flame-retardant interior fabric samples |
+| 10 | `assets/img/products/coated.jpg` | 800×600 | Coated trim textiles for interior components |
+| 11 | `assets/img/products/synthetic-leather.jpg` | 800×600 | Synthetic leather vehicle interior |
+| 12 | `assets/img/products/genuine-leather.jpg` | 800×600 | Genuine leather luxury automotive interior |
+| 13 | `assets/img/products/direct-coating.jpg` | 800×600 | Two-tone directly coated seat or trim detail |
+| 14 | `assets/img/products/others.jpg` | 800×600 | Specialty-finished interior trim material |
+| 15 | `assets/img/factory/nk-factory.jpg` | 1200×800 | Automotive textile production floor |
+| 16 | `assets/img/factory/nc-factory.jpg` | 1200×800 | Coating lab for automotive surfaces |
+| 17 | `assets/img/factory/team-factory.jpg` | 1200×800 | Factory team in automotive materials facility |
+| 18 | `assets/img/team/rajeev-kumar.jpg` | 400×400 | Chairman headshot |
+| 19 | `assets/img/team/prathit-kamdar.jpg` | 400×400 | CEO headshot |
 
 ---
 
 ## Tips for Best Results
 
-- **Gemini Imagen / Imagen 3:** Paste the prompt directly. Works best with photorealistic prompts.
-- **DALL-E 3:** Prefix with "I NEED:" if the prompt is being rewritten. These prompts are already detailed.
-- **Midjourney:** Append `--ar 16:9` for landscapes, `--ar 1:1` for headshots, `--style raw` for photorealism.
-- **Stable Diffusion:** Use a photorealistic checkpoint (e.g., Juggernaut XL). Add negative prompt: `cartoon, illustration, anime, drawing, painting, watermark, text, logo, low quality, blurry`
+- Add keywords like **automotive interior**, **OEM-grade**, **Tier-1 supplier**, **seat insert**, **headliner**, **door panel**, **trim substrate**, and **premium cabin materials**
+- Avoid keywords like **fashion textile**, **garment factory**, **home decor**, **furniture fabric**, **concept car**, or **visible brand logos**
+- **Gemini Imagen / Imagen 3:** Paste the prompt directly; these prompts are already tuned for photorealistic automotive material scenes
+- **DALL-E 3:** If needed, prefix with `I NEED:` to reduce prompt rewriting
+- **Midjourney:** Append `--ar 16:9` for landscapes, `--ar 1:1` for headshots, `--style raw` for photorealism
+- **Stable Diffusion:** Use a photorealistic checkpoint and add a negative prompt such as `fashion, apparel, sofa, curtain, illustration, anime, painting, watermark, text, logo, badge, blurry, low quality`
 - **After generating:** Save as JPEG (85% quality) to the file paths listed above. The website will automatically use local images instead of CDN fallbacks.
