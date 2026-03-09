@@ -378,26 +378,55 @@ function initHeroBAnimations() {
   const heroB = document.querySelector('.hero-b');
   if (!heroB) return;
 
+  const heroBgMedia = heroB.querySelector('.hero-b-bg img, .hero-b-bg video');
+  const heroCopy = heroB.querySelector('.hero-b-copy');
+
   const tl = gsap.timeline({ delay: 0.3 });
 
   // Parallax on background
-  gsap.to('.hero-b-bg img, .hero-b-bg video', {
-    y: '20%',
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.hero-b',
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true,
-    }
-  });
+  if (typeof ScrollTrigger !== 'undefined' && heroB.dataset.scrollFxInit !== 'true') {
+    heroB.dataset.scrollFxInit = 'true';
 
-  tl.from('.hero-b-title', {
+    if (heroBgMedia) {
+      gsap.to(heroBgMedia, {
+        y: '20%',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroB,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        }
+      });
+    }
+
+    if (heroCopy) {
+      gsap.to(heroCopy, {
+        yPercent: -10,
+        opacity: 0.78,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroB,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        }
+      });
+    }
+  }
+
+  tl.from('.hero-b-eyebrow', {
+    y: 24,
+    opacity: 0,
+    duration: 0.55,
+    ease: 'power3.out',
+  })
+  .from('.hero-b-title', {
     y: 60,
     opacity: 0,
     duration: 1,
     ease: 'power3.out',
-  })
+  }, '-=0.28')
   .from('.hero-b-subtitle', {
     y: 40,
     opacity: 0,
@@ -410,10 +439,11 @@ function initHeroBAnimations() {
     duration: 0.6,
     ease: 'power3.out',
   }, '-=0.3')
-  .from('.hero-b .btn-primary-light', {
+  .from('.hero-b-cta-row > *', {
     y: 20,
     opacity: 0,
     duration: 0.5,
+    stagger: 0.1,
     ease: 'power3.out',
   }, '-=0.2');
 }

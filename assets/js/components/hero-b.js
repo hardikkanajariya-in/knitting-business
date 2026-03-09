@@ -23,12 +23,12 @@ function renderHeroB(data) {
       </div>
       <div class="hero-b-overlay"></div>
       <div class="container hero-b-content py-24 md:py-32">
-        <div class="max-w-3xl">
+        <div class="hero-b-copy max-w-3xl">
           ${data.eyebrow ? `<p class="hero-b-eyebrow">${data.eyebrow}</p>` : ''}
           <h1 class="hero-b-title">${data.title}</h1>
           <p class="hero-b-subtitle">${data.subtitle}</p>
           <p class="hero-b-desc">${data.description}</p>
-          <div class="mt-8 flex flex-wrap gap-4">
+          <div class="hero-b-cta-row mt-8 flex flex-wrap gap-4">
             <a href="${data.cta.href}" class="btn-primary btn-primary-light">
               ${data.cta.label}
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
