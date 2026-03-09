@@ -1,9 +1,9 @@
 const ABOUT_JOURNEY_POSITIONS = [
-  { side: 'left', top: '19%', left: '7.5%' },
-  { side: 'right', top: '33%', left: '67.5%' },
-  { side: 'left', top: '50.5%', left: '6%' },
-  { side: 'right', top: '59.5%', left: '68.5%' },
-  { side: 'left', top: '81.5%', left: '10%' },
+  { side: 'left', top: '16%', left: '2.5%' },
+  { side: 'right', top: '30.5%', left: '66.5%' },
+  { side: 'left', top: '47%', left: '7.5%' },
+  { side: 'right', top: '58%', left: '64.5%' },
+  { side: 'left', top: '79%', left: '0.5%' },
 ];
 
 function renderAboutJourney(section) {
@@ -74,37 +74,38 @@ function renderAboutJourney(section) {
 
 function renderAboutJourneyArtwork() {
   return `
-    <svg class="journey-road-svg" viewBox="0 0 620 760" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <svg class="journey-road-svg" viewBox="0 0 720 840" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <defs>
-        <linearGradient id="journeyRoadSurface" x1="210" y1="40" x2="415" y2="720" gradientUnits="userSpaceOnUse">
-          <stop stop-color="#4B5563"/>
-          <stop offset="1" stop-color="#1F2937"/>
+        <linearGradient id="journeyRoadSurface" x1="386" y1="94" x2="522" y2="808" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#465166"/>
+          <stop offset="0.55" stop-color="#2D3748"/>
+          <stop offset="1" stop-color="#1B2433"/>
         </linearGradient>
-        <linearGradient id="journeyRoadEdge" x1="180" y1="0" x2="440" y2="760" gradientUnits="userSpaceOnUse">
+        <linearGradient id="journeyRoadEdge" x1="352" y1="66" x2="568" y2="836" gradientUnits="userSpaceOnUse">
           <stop stop-color="#F8FAFC"/>
           <stop offset="1" stop-color="#CBD5E1"/>
         </linearGradient>
       </defs>
 
-      <path class="journey-road-draw" d="M295 78C277 117 210 137 220 198C230 259 365 268 355 337C344 406 205 419 221 493C237 567 376 571 358 651C348 696 319 722 304 739" stroke="rgba(15,23,42,0.16)" stroke-width="148" stroke-linecap="round"/>
-      <path class="journey-road-surface journey-road-outline journey-road-draw" d="M295 78C277 117 210 137 220 198C230 259 365 268 355 337C344 406 205 419 221 493C237 567 376 571 358 651C348 696 319 722 304 739" stroke="url(#journeyRoadEdge)" stroke-width="132" stroke-linecap="round"/>
-      <path class="journey-road-surface journey-road-outline journey-road-draw" d="M295 78C277 117 210 137 220 198C230 259 365 268 355 337C344 406 205 419 221 493C237 567 376 571 358 651C348 696 319 722 304 739" stroke="url(#journeyRoadSurface)" stroke-width="118" stroke-linecap="round"/>
-      <path class="journey-road-lane journey-road-draw" d="M295 78C277 117 210 137 220 198C230 259 365 268 355 337C344 406 205 419 221 493C237 567 376 571 358 651C348 696 319 722 304 739" stroke="#F8FAFC" stroke-width="5"/>
+      <path class="journey-road-draw" d="M486 108C481 164 390 187 402 276C415 368 577 380 548 478C521 570 386 580 398 669C409 750 510 765 503 822" stroke="rgba(15,23,42,0.14)" stroke-width="156" stroke-linecap="round"/>
+      <path class="journey-road-surface journey-road-outline journey-road-draw" d="M486 108C481 164 390 187 402 276C415 368 577 380 548 478C521 570 386 580 398 669C409 750 510 765 503 822" stroke="url(#journeyRoadEdge)" stroke-width="138" stroke-linecap="round"/>
+      <path class="journey-road-surface journey-road-outline journey-road-draw" d="M486 108C481 164 390 187 402 276C415 368 577 380 548 478C521 570 386 580 398 669C409 750 510 765 503 822" stroke="url(#journeyRoadSurface)" stroke-width="122" stroke-linecap="round"/>
+      <path class="journey-road-lane journey-road-draw" d="M486 108C481 164 390 187 402 276C415 368 577 380 548 478C521 570 386 580 398 669C409 750 510 765 503 822" stroke="#F8FAFC" stroke-width="5"/>
 
-      <path class="journey-road-draw" d="M280 145H183" stroke="#1F2937" stroke-width="2.5" stroke-linecap="round"/>
-      <circle class="journey-road-draw" cx="281" cy="145" r="6.5" fill="#fff" stroke="#1F2937" stroke-width="2"/>
+      <path class="journey-road-draw" d="M402 196H270" stroke="#1F2937" stroke-width="2.5" stroke-linecap="round"/>
+      <circle class="journey-road-draw" cx="402" cy="196" r="6.5" fill="#fff" stroke="#1F2937" stroke-width="2"/>
 
-      <path class="journey-road-draw" d="M382 262H473" stroke="#1F2937" stroke-width="2.5" stroke-linecap="round"/>
-      <circle class="journey-road-draw" cx="382" cy="262" r="6.5" fill="#fff" stroke="#1F2937" stroke-width="2"/>
+      <path class="journey-road-draw" d="M552 322H648" stroke="#1F2937" stroke-width="2.5" stroke-linecap="round"/>
+      <circle class="journey-road-draw" cx="552" cy="322" r="6.5" fill="#fff" stroke="#1F2937" stroke-width="2"/>
 
-      <path class="journey-road-draw" d="M250 396H147" stroke="#1F2937" stroke-width="2.5" stroke-linecap="round"/>
-      <circle class="journey-road-draw" cx="250" cy="396" r="6.5" fill="#fff" stroke="#1F2937" stroke-width="2"/>
+      <path class="journey-road-draw" d="M439 456H286" stroke="#1F2937" stroke-width="2.5" stroke-linecap="round"/>
+      <circle class="journey-road-draw" cx="439" cy="456" r="6.5" fill="#fff" stroke="#1F2937" stroke-width="2"/>
 
-      <path class="journey-road-draw" d="M372 505H465" stroke="#1F2937" stroke-width="2.5" stroke-linecap="round"/>
-      <circle class="journey-road-draw" cx="372" cy="505" r="6.5" fill="#fff" stroke="#1F2937" stroke-width="2"/>
+      <path class="journey-road-draw" d="M529 566H646" stroke="#1F2937" stroke-width="2.5" stroke-linecap="round"/>
+      <circle class="journey-road-draw" cx="529" cy="566" r="6.5" fill="#fff" stroke="#1F2937" stroke-width="2"/>
 
-      <path class="journey-road-draw" d="M286 654H196" stroke="#1F2937" stroke-width="2.5" stroke-linecap="round"/>
-      <circle class="journey-road-draw" cx="286" cy="654" r="6.5" fill="#fff" stroke="#1F2937" stroke-width="2"/>
+      <path class="journey-road-draw" d="M430 710H254" stroke="#1F2937" stroke-width="2.5" stroke-linecap="round"/>
+      <circle class="journey-road-draw" cx="430" cy="710" r="6.5" fill="#fff" stroke="#1F2937" stroke-width="2"/>
     </svg>
   `;
 }

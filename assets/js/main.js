@@ -773,8 +773,8 @@ function renderAboutPage(data) {
     <section class="section" style="background: var(--bg-secondary); padding-top: 2rem;">
       <div class="container">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          ${about.stats.map((stat, i) =>
-            `<div class="stat-card" data-aos="fade-up" data-aos-delay="${i * 100}">
+          ${about.stats.map((stat) =>
+            `<div class="stat-card">
               <div class="stat-value">${stat.value}</div>
               <div class="stat-label">${stat.label}</div>
             </div>`
