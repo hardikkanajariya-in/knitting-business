@@ -97,12 +97,12 @@
         "title": "Industries We Serve",
         "subtitle": "Trusted across sectors",
         "items": [
-          { "name": "Automotive", "icon": "car" },
-          { "name": "Railways", "icon": "train" },
-          { "name": "Aerospace", "icon": "plane" },
-          { "name": "Furnishing", "icon": "sofa" },
-          { "name": "Footwear", "icon": "shoe" },
-          { "name": "Marine", "icon": "anchor" }
+          { "name": "Automotive", "icon": "car", "image": "assets/img/industries/automotive.jpg", "tag": "OEM Interiors" },
+          { "name": "Railways", "icon": "train", "image": "assets/img/industries/railways.jpg", "tag": "Coach Fabrics" },
+          { "name": "Aerospace", "icon": "plane", "image": "assets/img/industries/aerospace.jpg", "tag": "Cabin Textiles" },
+          { "name": "Furnishing", "icon": "sofa", "image": "assets/img/industries/furnishing.jpg", "tag": "Upholstery" },
+          { "name": "Footwear", "icon": "shoe", "image": "assets/img/industries/footwear.jpg", "tag": "Technical Mesh" },
+          { "name": "Marine", "icon": "anchor", "image": "assets/img/industries/marine.jpg", "tag": "Marine Grade" }
         ]
       },
       "statsBand": [

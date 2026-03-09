@@ -5,7 +5,7 @@ $baseDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 $imgDir = Join-Path $baseDir "assets\img"
 
 # Create directories
-@("hero", "products", "factory", "team") | ForEach-Object {
+@("hero", "products", "factory", "team", "industries") | ForEach-Object {
     $dir = Join-Path $imgDir $_
     if (!(Test-Path $dir)) { New-Item -ItemType Directory -Path $dir -Force | Out-Null }
 }
@@ -57,7 +57,21 @@ $images = @(
     # Rajeev Kumar (MD, Chairman): Indian businessman in white shirt holding suit jacket
     @{ url = "https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=400"; path = "team\rajeev-kumar.jpg" },
     # Prathit Kamdar (CEO): Cheerful Indian businessman in gray shirt
-    @{ url = "https://images.pexels.com/photos/7580937/pexels-photo-7580937.jpeg?auto=compress&cs=tinysrgb&w=400"; path = "team\prathit-kamdar.jpg" }
+    @{ url = "https://images.pexels.com/photos/7580937/pexels-photo-7580937.jpeg?auto=compress&cs=tinysrgb&w=400"; path = "team\prathit-kamdar.jpg" },
+
+    # ── INDUSTRIES SECTION IMAGES ──
+    # Automotive: Sleek black Mercedes interior with leather seats and modern dashboard
+    @{ url = "https://images.pexels.com/photos/1104768/pexels-photo-1104768.jpeg?auto=compress&cs=tinysrgb&w=800"; path = "industries\automotive.jpg" },
+    # Railways: Spacious modern train interior with empty, well-lit upholstered seats
+    @{ url = "https://images.pexels.com/photos/4382643/pexels-photo-4382643.jpeg?auto=compress&cs=tinysrgb&w=800"; path = "industries\railways.jpg" },
+    # Aerospace: Empty airplane cabin with leather seats and soft ambient lighting
+    @{ url = "https://images.pexels.com/photos/4061487/pexels-photo-4061487.jpeg?auto=compress&cs=tinysrgb&w=800"; path = "industries\aerospace.jpg" },
+    # Furnishing: Close-up of luxurious blue leather upholstery with intricate texture
+    @{ url = "https://images.pexels.com/photos/6045353/pexels-photo-6045353.jpeg?auto=compress&cs=tinysrgb&w=800"; path = "industries\furnishing.jpg" },
+    # Footwear: Close-up of pair of white sneakers showcasing textile mesh upper
+    @{ url = "https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=800"; path = "industries\footwear.jpg" },
+    # Marine: Luxury yacht cruising on calm blue water
+    @{ url = "https://images.pexels.com/photos/163236/luxury-yacht-boat-speed-water-163236.jpeg?auto=compress&cs=tinysrgb&w=800"; path = "industries\marine.jpg" }
 )
 
 Write-Host "`n=== Nirbhai Group — Downloading $($images.Count) images ===" -ForegroundColor Cyan

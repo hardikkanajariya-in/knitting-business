@@ -217,6 +217,46 @@ function initParallaxBackgrounds() {
     });
   });
 
+  // Industries gallery scroll-speed variation
+  document.querySelectorAll('[data-scroll-gallery]').forEach((row) => {
+    if (row.dataset.galleryInit === 'true') return;
+    row.dataset.galleryInit = 'true';
+
+    const track = row.querySelector('.home-ind-track');
+    if (!track) return;
+    const dir = row.dataset.scrollGallery; // 'left' or 'right'
+
+    // GSAP takes over from CSS animation
+    track.style.animation = 'none';
+
+    const totalW = track.scrollWidth / 3; // items are tripled
+    const duration = dir === 'left' ? 35 : 40;
+
+    // Set starting position
+    if (dir === 'right') gsap.set(track, { x: -totalW });
+
+    // Infinite loop tween
+    const loop = gsap.to(track, {
+      x: dir === 'left' ? -totalW : 0,
+      duration,
+      ease: 'none',
+      repeat: -1,
+    });
+
+    // Modulate speed based on scroll velocity
+    ScrollTrigger.create({
+      trigger: '.home-industries',
+      start: 'top bottom',
+      end: 'bottom top',
+      onUpdate: (self) => {
+        const v = Math.abs(self.getVelocity()) / 800;
+        gsap.to(loop, { timeScale: 1 + Math.min(v, 3), duration: 0.3, overwrite: true });
+      },
+      onLeave: () => gsap.to(loop, { timeScale: 1, duration: 0.5 }),
+      onLeaveBack: () => gsap.to(loop, { timeScale: 1, duration: 0.5 }),
+    });
+  });
+
   // Showcase background gradient
   const showcaseGradient = document.querySelector('.home-showcase-gradient');
   if (showcaseGradient && showcaseGradient.dataset.parallaxBgInit !== 'true') {

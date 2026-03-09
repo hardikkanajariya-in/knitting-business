@@ -28,24 +28,44 @@ function getIndustryIcon(icon) {
 function renderHomeIndustries(section) {
   if (!section) return '';
 
+  const items = section.items || [];
+  // Build two rows of cards — row 1 scrolls left, row 2 scrolls right
+  const buildTrack = (arr) => [...arr, ...arr, ...arr].map(item => `
+    <div class="home-ind-card">
+      <div class="home-ind-img">
+        <img src="${item.image}" alt="${item.name}" width="600" height="400" loading="lazy"
+             onerror="this.parentElement.classList.add('home-ind-img--fallback')">
+      </div>
+      <div class="home-ind-overlay"></div>
+      <div class="home-ind-content">
+        <span class="home-ind-tag">${item.tag || ''}</span>
+        <span class="home-ind-icon">${getIndustryIcon(item.icon)}</span>
+        <h3 class="home-ind-name">${item.name}</h3>
+      </div>
+    </div>
+  `).join('');
+
+  const row1 = items.slice(0, 3);
+  const row2 = items.slice(3);
+
   return `
-    <section class="home-industries section" data-parallax-section>
+    <section class="home-industries" data-parallax-section>
       <div class="home-industries-bg" aria-hidden="true">
         <div class="home-industries-shape home-industries-shape--1"></div>
         <div class="home-industries-shape home-industries-shape--2"></div>
       </div>
       <div class="container">
-        <div class="home-industries-header">
+        <div class="home-industries-header reveal-up">
           <p class="home-section-eyebrow">${section.subtitle || ''}</p>
           <h2 class="home-section-title">${section.title || ''}</h2>
         </div>
-        <div class="home-industries-grid">
-          ${(section.items || []).map((item, i) => `
-            <div class="home-industry-card" data-parallax-card data-delay="${i * 0.08}">
-              <div class="home-industry-icon">${getIndustryIcon(item.icon)}</div>
-              <div class="home-industry-name">${item.name}</div>
-            </div>
-          `).join('')}
+      </div>
+      <div class="home-ind-gallery">
+        <div class="home-ind-row" data-scroll-gallery="left">
+          <div class="home-ind-track">${buildTrack(row1)}</div>
+        </div>
+        <div class="home-ind-row" data-scroll-gallery="right">
+          <div class="home-ind-track">${buildTrack(row2)}</div>
         </div>
       </div>
     </section>
