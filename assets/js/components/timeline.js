@@ -1,9 +1,8 @@
 /* Timeline Component — Journey / Milestones */
 function renderTimeline(data) {
   const items = data.milestones.map((m, i) => {
-    const delay = i * 100;
     return `
-      <div class="timeline-item" data-aos="fade-up" data-aos-delay="${delay}">
+      <div class="timeline-item">
         <div class="timeline-dot"></div>
         <div class="timeline-content">
           <div class="timeline-year">${m.year}</div>

@@ -3,6 +3,44 @@
    Content loader, theme, menu, scroll, animations
    ============================================ */
 
+// --- Image CDN Fallback ---
+// Maps local paths to Pexels CDN URLs. If local images aren't downloaded,
+// images automatically load from CDN. Run download-images.ps1 to go fully local.
+const IMAGE_CDN_FALLBACK = {
+  'assets/img/hero/hero-bg.jpg': 'https://images.pexels.com/photos/36327501/pexels-photo-36327501.jpeg?auto=compress&cs=tinysrgb&w=1920',
+  'assets/img/hero/hero-split.jpg': 'https://images.pexels.com/photos/6525848/pexels-photo-6525848.jpeg?auto=compress&cs=tinysrgb&w=1920',
+  'assets/img/hero/about-bg.jpg': 'https://images.pexels.com/photos/8246487/pexels-photo-8246487.jpeg?auto=compress&cs=tinysrgb&w=1920',
+  'assets/img/hero/nk-bg.jpg': 'https://images.pexels.com/photos/36327502/pexels-photo-36327502.jpeg?auto=compress&cs=tinysrgb&w=1920',
+  'assets/img/hero/nc-bg.jpg': 'https://images.pexels.com/photos/4149333/pexels-photo-4149333.jpeg?auto=compress&cs=tinysrgb&w=1920',
+  'assets/img/hero/sustainability-bg.jpg': 'https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg?auto=compress&cs=tinysrgb&w=1920',
+  'assets/img/products/raised.jpg': 'https://images.pexels.com/photos/925706/pexels-photo-925706.jpeg?auto=compress&cs=tinysrgb&w=800',
+  'assets/img/products/3d.jpg': 'https://images.pexels.com/photos/4863009/pexels-photo-4863009.jpeg?auto=compress&cs=tinysrgb&w=800',
+  'assets/img/products/fr.jpg': 'https://images.pexels.com/photos/6717035/pexels-photo-6717035.jpeg?auto=compress&cs=tinysrgb&w=800',
+  'assets/img/products/coated.jpg': 'https://images.pexels.com/photos/236748/pexels-photo-236748.jpeg?auto=compress&cs=tinysrgb&w=800',
+  'assets/img/products/synthetic-leather.jpg': 'https://images.pexels.com/photos/3778766/pexels-photo-3778766.jpeg?auto=compress&cs=tinysrgb&w=800',
+  'assets/img/products/genuine-leather.jpg': 'https://images.pexels.com/photos/3894048/pexels-photo-3894048.jpeg?auto=compress&cs=tinysrgb&w=800',
+  'assets/img/products/direct-coating.jpg': 'https://images.pexels.com/photos/32613926/pexels-photo-32613926.jpeg?auto=compress&cs=tinysrgb&w=800',
+  'assets/img/products/others.jpg': 'https://images.pexels.com/photos/14786437/pexels-photo-14786437.jpeg?auto=compress&cs=tinysrgb&w=800',
+  'assets/img/factory/nk-factory.jpg': 'https://images.pexels.com/photos/8246480/pexels-photo-8246480.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'assets/img/factory/nc-factory.jpg': 'https://images.pexels.com/photos/3544567/pexels-photo-3544567.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'assets/img/factory/team-factory.jpg': 'https://images.pexels.com/photos/31090804/pexels-photo-31090804.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'assets/img/team/rajeev-kumar.jpg': 'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=400',
+  'assets/img/team/prathit-kamdar.jpg': 'https://images.pexels.com/photos/7580937/pexels-photo-7580937.jpeg?auto=compress&cs=tinysrgb&w=400',
+};
+
+// Capture-phase error listener: intercepts failed image loads before inline onerror handlers
+document.addEventListener('error', function(e) {
+  if (e.target.tagName === 'IMG') {
+    const src = e.target.getAttribute('src');
+    const cdnUrl = IMAGE_CDN_FALLBACK[src];
+    if (cdnUrl && !e.target.dataset.cdnAttempted) {
+      e.target.dataset.cdnAttempted = 'true';
+      e.target.onerror = null;
+      e.target.src = cdnUrl;
+    }
+  }
+}, true);
+
 // --- Content Cache ---
 let _contentCache = null;
 
@@ -215,14 +253,56 @@ function initHeroAAnimations() {
   const heroA = document.querySelector('.hero-a');
   if (!heroA) return;
 
-  const tl = gsap.timeline({ delay: 0.3 });
+  const tl = gsap.timeline({ delay: 0.2 });
 
-  tl.from('.hero-a-subtitle', {
+  // Background image/video reveal
+  tl.from('.hero-a-bg', {
+    scale: 1.15,
+    opacity: 0,
+    duration: 1.4,
+    ease: 'power2.out',
+  })
+
+  // Corner elements slide in from their respective corners
+  .to('.hero-a-corner--tl', {
+    x: 0,
+    y: 0,
+    duration: 0.8,
+    ease: 'power3.out',
+  }, '-=0.7')
+  .to('.hero-a-corner--br', {
+    x: 0,
+    y: 0,
+    duration: 0.9,
+    ease: 'power3.out',
+  }, '-=0.7')
+  .to('.hero-a-corner--tr', {
+    x: 0,
+    y: 0,
+    duration: 0.7,
+    ease: 'power3.out',
+  }, '-=0.5')
+  .to('.hero-a-corner--bl', {
+    x: 0,
+    y: 0,
+    duration: 0.7,
+    ease: 'power3.out',
+  }, '-=0.5')
+
+  // Diagonal accent line
+  .to('.hero-a-diagonal', {
+    opacity: 1,
+    duration: 0.8,
+    ease: 'power2.out',
+  }, '-=0.4')
+
+  // Text content stagger
+  .from('.hero-a-subtitle', {
     y: 30,
     opacity: 0,
     duration: 0.6,
     ease: 'power3.out',
-  })
+  }, '-=0.5')
   .from('.hero-a-title', {
     y: 40,
     opacity: 0,
@@ -240,13 +320,21 @@ function initHeroAAnimations() {
     opacity: 0,
     duration: 0.5,
     ease: 'power3.out',
-  }, '-=0.2')
-  .from('.hero-a-image-wrap', {
-    clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)',
-    opacity: 0,
-    duration: 1,
-    ease: 'power3.inOut',
-  }, '-=0.8');
+  }, '-=0.2');
+
+  // Parallax on background
+  if (typeof ScrollTrigger !== 'undefined') {
+    gsap.to('.hero-a-bg', {
+      y: '15%',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.hero-a',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true,
+      }
+    });
+  }
 }
 
 // --- Hero B Animations ---
@@ -298,20 +386,24 @@ function initHeroBAnimations() {
 
 // --- Timeline Animations ---
 function initTimelineAnimations() {
-  if (typeof gsap === 'undefined') return;
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
   gsap.utils.toArray('.timeline-item').forEach((item, i) => {
-    gsap.from(item, {
-      opacity: 0,
-      y: 40,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: item,
-        start: 'top 85%',
-        toggleActions: 'play none none none',
+    gsap.fromTo(item,
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: i * 0.15,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        }
       }
-    });
+    );
   });
 
   // Animate timeline line growth
@@ -407,6 +499,12 @@ async function initPage(pageKey) {
     }
 
     contentEl.innerHTML = html;
+  }
+
+  // Add hero-overlay-mode to header if page has full-bleed hero
+  const header = document.querySelector('.site-header');
+  if (header && (document.querySelector('.hero-a') || document.querySelector('.hero-b'))) {
+    header.classList.add('hero-overlay-mode');
   }
 
   // Initialize all interactions

@@ -28,8 +28,9 @@
       "subtitle": "Innovative Manufacturing for Automotive & Industrial Partners",
       "description": "From advanced knitted fabrics to specialty chemical coatings — we deliver materials that define the future of automotive interiors.",
       "cta": { "label": "Contact Us", "href": "contact.html" },
-      "backgroundImage": "assets/img/hero/hero-bg.jpg",
-      "splitImage": "assets/img/hero/hero-split.jpg"
+      "backgroundImage": "assets/img/hero/hero-split.jpg",
+      "splitImage": "assets/img/hero/hero-bg.jpg",
+      "heroVideo": ""
     },
     "journey": {
       "title": "Our Journey",
@@ -39,31 +40,31 @@
         {
           "year": "1995",
           "title": "Founded",
-          "description": "Began as a textile workshop specializing in automotive knitted fabrics.",
+          "description": "Nirbhai Group was established as a small textile workshop in Ludhiana, Punjab — specializing in automotive knitted fabrics for local OEM suppliers.",
           "icon": "factory"
         },
         {
           "year": "2003",
-          "title": "Innovation",
-          "description": "Developed durable, high-performance textiles for car interiors with proprietary techniques.",
+          "title": "Innovation Leap",
+          "description": "Invested in state-of-the-art Karl Mayer and LIBA warp knitting machines. Developed proprietary high-performance textiles for car interiors adopted by Maruti Suzuki and Tata Motors.",
           "icon": "lightbulb"
         },
         {
           "year": "2011",
-          "title": "Advanced Materials",
-          "description": "Introduced recycled fibers and eco-friendly materials into our manufacturing process.",
+          "title": "NirChem Launched",
+          "description": "Founded the NirChem division to bring specialty chemical coatings in-house. Introduced recycled fibers and eco-friendly materials into the manufacturing pipeline.",
           "icon": "leaf"
         },
         {
           "year": "2019",
-          "title": "Global Reach",
-          "description": "Expanded manufacturing capabilities to meet demand from major automakers worldwide.",
+          "title": "Global Expansion",
+          "description": "Expanded manufacturing capacity to 5 million meters per month. Secured partnerships with Hyundai, Kia, and major European automotive groups for interior textile supply.",
           "icon": "globe"
         },
         {
           "year": "2024",
           "title": "Future Driven",
-          "description": "Leading with sustainable, smart, and durable textiles for the vehicles of tomorrow.",
+          "description": "Achieved ISO 14001 environmental certification. Leading the industry with sustainable, smart, and durable textiles for next-generation electric and autonomous vehicles.",
           "icon": "rocket"
         }
       ]
@@ -78,9 +79,9 @@
     "story": {
       "title": "From Thread to the Road Ahead",
       "paragraphs": [
-        "Our legacy spans decades in the automotive textile industry. What began as a small weaving workshop has evolved into a multi-division manufacturing powerhouse serving global automotive OEMs.",
-        "At the Nirbhai Group, our companies — Nirbhai Knitting (NK) and NirChem (NC) — represent our dual expertise in advanced knitted fabrics and specialty chemical coatings. Together, they deliver complete material solutions for modern vehicle interiors.",
-        "We are driven by precision craftsmanship, continuous innovation, and an unwavering commitment to quality and sustainability that our partners trust."
+        "Our legacy spans over 25 years in the automotive textile industry. What began as a small weaving workshop in Ludhiana's industrial belt has evolved into a multi-division manufacturing powerhouse serving global automotive OEMs across Asia and Europe.",
+        "At the Nirbhai Group, our companies — Nirbhai Knitting (NK) and NirChem (NC) — represent our dual expertise in advanced knitted fabrics and specialty chemical coatings. Together, they deliver complete material solutions for modern vehicle interiors, from headliners and seat upholstery to door panels and dashboard coverings.",
+        "We are driven by precision craftsmanship, continuous innovation, and an unwavering commitment to quality and sustainability that our partners trust. Our 50,000 sq. ft. integrated facility houses cutting-edge warp knitting, coating, and finishing lines — all under one roof."
       ]
     },
     "stats": [
@@ -99,29 +100,29 @@
     },
     "features": [
       {
-        "name": "Raised",
-        "description": "Premium raised-surface fabrics offering enhanced tactile comfort and visual depth for luxury automotive seating.",
+        "name": "Raised Fabrics",
+        "description": "Premium raised-surface fabrics offering enhanced tactile comfort and visual depth for luxury automotive seating. Ideal for seat covers, armrests, and headliners.",
         "image": "assets/img/products/raised.jpg"
       },
       {
-        "name": "3D",
-        "description": "Three-dimensional knitted structures providing superior breathability, cushioning, and modern aesthetics.",
+        "name": "3D Spacer Fabrics",
+        "description": "Three-dimensional knitted structures providing superior breathability, cushioning, and modern aesthetics. Used in ventilated seating and ergonomic support systems.",
         "image": "assets/img/products/3d.jpg"
       },
       {
-        "name": "FR",
-        "description": "Flame-retardant fabrics engineered to meet stringent automotive safety standards without compromising comfort.",
+        "name": "FR (Flame Retardant)",
+        "description": "Flame-retardant fabrics engineered to meet stringent automotive safety standards (FMVSS 302) without compromising comfort or aesthetics.",
         "image": "assets/img/products/fr.jpg"
       },
       {
-        "name": "Coated",
-        "description": "Specialty coated textiles offering water resistance, UV protection, and enhanced durability for demanding applications.",
+        "name": "Coated Textiles",
+        "description": "Specialty coated textiles offering water resistance, UV protection, and enhanced durability for demanding automotive and industrial applications.",
         "image": "assets/img/products/coated.jpg"
       }
     ],
     "contentBlock": {
       "title": "Engineering Fabrics for the Future",
-      "description": "Our state-of-the-art manufacturing facility combines traditional craftsmanship with cutting-edge technology to produce fabrics that exceed industry standards.",
+      "description": "Our state-of-the-art manufacturing facility houses Karl Mayer and LIBA warp knitting machines, producing over 5 million meters of precision-engineered fabric per month. Every roll undergoes rigorous quality testing to exceed OEM specifications.",
       "image": "assets/img/factory/nk-factory.jpg"
     }
   },
@@ -135,28 +136,28 @@
     "products": [
       {
         "name": "Synthetic Leather",
-        "description": "High-quality synthetic leather solutions that replicate the look and feel of genuine leather with superior consistency and sustainability.",
+        "description": "High-quality PU and PVC synthetic leather solutions that replicate the look and feel of genuine leather with superior consistency, easy maintenance, and cruelty-free sustainability.",
         "image": "assets/img/products/synthetic-leather.jpg"
       },
       {
         "name": "Genuine Leather",
-        "description": "Premium genuine leather processing and finishing for luxury automotive applications with exquisite texture and durability.",
+        "description": "Premium genuine leather processing and finishing for luxury automotive applications — chrome-tanned, semi-aniline, and full-grain options with exquisite hand-feel and durability.",
         "image": "assets/img/products/genuine-leather.jpg"
       },
       {
         "name": "Direct Coating",
-        "description": "Advanced direct coating technologies applied to textiles for enhanced performance characteristics and surface protection.",
+        "description": "Advanced direct coating technologies applied to woven and knitted substrates, providing waterproofing, UV resistance, and anti-microbial properties for automotive and marine use.",
         "image": "assets/img/products/direct-coating.jpg"
       },
       {
-        "name": "Others",
-        "description": "Specialized chemical solutions including adhesives, finishes, and treatments tailored to specific automotive interior requirements.",
+        "name": "Specialty Finishes",
+        "description": "Custom adhesives, surface treatments, embossing, and specialty finishes tailored to specific OEM requirements — including hydrophobic, anti-static, and flame-retardant coatings.",
         "image": "assets/img/products/others.jpg"
       }
     ],
     "contentBlock": {
       "title": "Chemistry Meets Craftsmanship",
-      "description": "Our chemical division leverages decades of formulation expertise to deliver coatings and treatments that enhance the performance and aesthetics of every surface.",
+      "description": "NirChem's dedicated R&D lab and coating lines leverage decades of formulation expertise. From solvent-based to water-based systems, we deliver coatings and treatments that enhance the durability, aesthetics, and performance of every interior surface.",
       "image": "assets/img/factory/nc-factory.jpg"
     }
   },
@@ -170,29 +171,29 @@
     "intro": {
       "title": "Our Commitment to the Environment",
       "paragraphs": [
-        "Sustainability isn't just a goal — it's woven into every thread of our manufacturing process. From sourcing eco-friendly raw materials to reducing waste in our production lines, we are committed to minimizing our environmental footprint.",
-        "Our facilities are designed with energy efficiency in mind, and we continuously invest in cleaner technologies and renewable energy sources to power our operations."
+        "Sustainability isn't just a goal — it's woven into every thread of our manufacturing process. From sourcing eco-friendly raw materials to reducing waste in our production lines, we are committed to minimizing our environmental footprint while delivering world-class automotive textiles.",
+        "Our facilities are designed with energy efficiency in mind. We have invested in solar panels, LED lighting, and heat recovery systems. Our water treatment plant recycles 95% of process water, and we continuously invest in cleaner technologies and renewable energy sources to power our operations."
       ]
     },
     "pillars": [
       {
         "title": "Eco-Friendly Materials",
-        "description": "We prioritize recycled and sustainably sourced fibers in our textile manufacturing, reducing dependence on virgin materials.",
+        "description": "We prioritize recycled PET fibers, organic cotton, and sustainably sourced raw materials in our textile manufacturing, reducing dependence on virgin polymers by 40%.",
         "icon": "leaf"
       },
       {
         "title": "Energy Efficiency",
-        "description": "Our manufacturing processes are optimized for minimal energy consumption, with ongoing investments in renewable energy sources.",
+        "description": "Our manufacturing processes are optimized for minimal energy consumption. 200kW rooftop solar installation and heat recovery systems reduce grid dependency by 30%.",
         "icon": "bolt"
       },
       {
         "title": "Waste Reduction",
-        "description": "Advanced recycling programs and lean manufacturing techniques help us minimize waste across all production stages.",
+        "description": "Advanced recycling programs and lean manufacturing techniques help us minimize waste. Fabric offcuts are repurposed into insulation materials and industrial padding.",
         "icon": "recycle"
       },
       {
         "title": "Community Impact",
-        "description": "We actively support local communities through education, employment, and environmental conservation programs.",
+        "description": "We actively support local communities through skill development programs, employing 500+ workers from surrounding villages, and annual tree plantation drives.",
         "icon": "people"
       }
     ],
@@ -205,9 +206,9 @@
   },
   "team": {
     "hero": {
-      "title": "Our Team",
+      "title": "Our Leadership",
       "subtitle": "The People Behind the Precision",
-      "description": "A dedicated team of industry veterans and innovators driving excellence in every thread and formulation.",
+      "description": "A dedicated team of industry veterans and innovators driving excellence in every thread and formulation. Together, they bring over 50 years of combined experience in textile manufacturing and chemical engineering.",
       "factoryImage": "assets/img/factory/team-factory.jpg"
     },
     "leadership": [
@@ -215,20 +216,20 @@
         "name": "Rajeev Kumar",
         "designation": "MD, Chairman",
         "photo": "assets/img/team/rajeev-kumar.jpg",
-        "bio": "With over 30 years of industry experience, Rajeev has been the visionary force behind the Nirbhai Group's growth and innovation."
+        "bio": "With over 30 years of industry experience, Rajeev founded Nirbhai Group in 1995 and has been the visionary force behind its growth from a small workshop to a multi-division manufacturing powerhouse. Under his leadership, the group has secured partnerships with major automotive OEMs across India and Europe."
       },
       {
         "name": "Prathit Kamdar",
         "designation": "CEO",
         "photo": "assets/img/team/prathit-kamdar.jpg",
-        "bio": "Prathit brings strategic leadership and a passion for sustainable manufacturing to drive the company's future direction."
+        "bio": "Prathit joined Nirbhai Group in 2015, bringing an MBA from IIM Ahmedabad and 10 years of experience at Reliance Industries. He drives strategic growth, operational efficiency, and the company's ambitious sustainability roadmap — including the target of 100% recycled material usage by 2030."
       }
     ]
   },
   "contact": {
     "title": "Contact Us",
     "subtitle": "Let's Build Something Together",
-    "description": "Have a question or want to discuss a project? Reach out to us and our team will get back to you promptly.",
+    "description": "Have a question about our textile solutions or want to discuss a partnership? Reach out to us and our team will get back to you within 24 hours.",
     "address": "Industrial Area, Phase II, Sector 5, Ludhiana, Punjab, India — 141003",
     "email": "info@nirbhaigroup.com",
     "phone": "+91 98765 43210",
