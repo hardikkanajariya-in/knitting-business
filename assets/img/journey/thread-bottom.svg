@@ -1,0 +1,21 @@
+<svg width="220" height="170" viewBox="0 0 220 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="spoolWood" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#E8D4B4"/>
+      <stop offset="1" stop-color="#B78A59"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(10 60) rotate(-18 36 36)">
+    <ellipse cx="36" cy="16" rx="18" ry="12" fill="url(#spoolWood)" stroke="#9A6B42" stroke-width="2"/>
+    <rect x="20" y="16" width="32" height="42" rx="8" fill="#E7EDF3" stroke="#AAB7C3" stroke-width="2"/>
+    <ellipse cx="36" cy="58" rx="18" ry="12" fill="url(#spoolWood)" stroke="#9A6B42" stroke-width="2"/>
+    <path d="M23 28C30 22 41 22 48 28" stroke="#D4505D" stroke-width="4" stroke-linecap="round"/>
+    <path d="M23 36C30 30 41 30 48 36" stroke="#D4505D" stroke-width="4" stroke-linecap="round"/>
+    <path d="M23 44C30 38 41 38 48 44" stroke="#D4505D" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <path d="M46 79C82 74 107 98 123 122C138 146 164 153 200 145" stroke="#2E6AA3" stroke-width="3" stroke-linecap="round"/>
+  <path d="M41 88C78 82 105 106 120 132" stroke="#D4505D" stroke-width="3" stroke-linecap="round"/>
+  <path d="M49 101C84 96 109 118 142 154" stroke="#F0EEE8" stroke-width="5" stroke-linecap="round"/>
+  <path d="M83 72C102 84 111 102 124 110" stroke="#7A90B4" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M114 95C138 106 152 128 162 156" stroke="#2E6AA3" stroke-width="2" stroke-linecap="round"/>
+</svg>

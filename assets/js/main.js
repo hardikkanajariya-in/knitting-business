@@ -266,35 +266,14 @@ function initHeroAAnimations() {
   // Corner elements slide in from their respective corners
   .to('.hero-a-corner--tl', {
     x: 0,
-    y: 0,
-    duration: 0.8,
+    duration: 1,
     ease: 'power3.out',
   }, '-=0.7')
   .to('.hero-a-corner--br', {
     x: 0,
-    y: 0,
-    duration: 0.9,
+    duration: 1,
     ease: 'power3.out',
-  }, '-=0.7')
-  .to('.hero-a-corner--tr', {
-    x: 0,
-    y: 0,
-    duration: 0.7,
-    ease: 'power3.out',
-  }, '-=0.5')
-  .to('.hero-a-corner--bl', {
-    x: 0,
-    y: 0,
-    duration: 0.7,
-    ease: 'power3.out',
-  }, '-=0.5')
-
-  // Diagonal accent line
-  .to('.hero-a-diagonal', {
-    opacity: 1,
-    duration: 0.8,
-    ease: 'power2.out',
-  }, '-=0.4')
+  }, '-=0.8')
 
   // Text content stagger
   .from('.hero-a-subtitle', {
@@ -501,9 +480,10 @@ async function initPage(pageKey) {
     contentEl.innerHTML = html;
   }
 
-  // Add hero-overlay-mode to header if page has full-bleed hero
+  // Add hero-overlay-mode to header if page has full-bleed dark hero (hero-b visible)
   const header = document.querySelector('.site-header');
-  if (header && (document.querySelector('.hero-a') || document.querySelector('.hero-b'))) {
+  const visibleHeroB = document.querySelector('.hero-b:not([style*="display: none"])');
+  if (header && visibleHeroB) {
     header.classList.add('hero-overlay-mode');
   }
 
@@ -523,9 +503,14 @@ async function initPage(pageKey) {
       if (activeVariant) initHeroAAnimations();
       else initHeroBAnimations();
       initTimelineAnimations();
+      if (typeof initHomeInteractiveFX === 'function') {
+        initHomeInteractiveFX();
+      }
       break;
     case 'about':
-      initTimelineAnimations();
+      if (typeof initAboutJourneyAnimations === 'function') {
+        initAboutJourneyAnimations();
+      }
       initStatCounters();
       break;
     case 'nk':
@@ -562,10 +547,15 @@ function initHeroVariantToggle() {
       if (variant === 'a') {
         heroA.style.display = '';
         heroB.style.display = 'none';
+        const hdr = document.querySelector('.site-header');
+        if (hdr) hdr.classList.remove('hero-overlay-mode');
         initHeroAAnimations();
+        if (typeof initHomeInteractiveFX === 'function') initHomeInteractiveFX();
       } else {
         heroA.style.display = 'none';
         heroB.style.display = '';
+        const hdr = document.querySelector('.site-header');
+        if (hdr) hdr.classList.add('hero-overlay-mode');
         initHeroBAnimations();
       }
 
@@ -596,18 +586,8 @@ function renderHomePage(data) {
 function renderAboutPage(data) {
   const about = data.about;
   return `
-    ${typeof renderPageBanner === 'function' ? renderPageBanner(about.banner) : ''}
-    <section class="section">
-      <div class="container">
-        <div class="max-w-3xl mx-auto">
-          <h2 class="section-title mb-6" data-aos="fade-up">${about.story.title}</h2>
-          ${about.story.paragraphs.map((p, i) =>
-            `<p class="text-base md:text-lg leading-relaxed mb-4" style="color: var(--text-secondary);" data-aos="fade-up" data-aos-delay="${(i + 1) * 100}">${p}</p>`
-          ).join('')}
-        </div>
-      </div>
-    </section>
-    <section class="section" style="background: var(--bg-secondary);">
+    ${typeof renderAboutJourney === 'function' ? renderAboutJourney(about.journeySection) : ''}
+    <section class="section" style="background: var(--bg-secondary); padding-top: 2rem;">
       <div class="container">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
           ${about.stats.map((stat, i) =>
@@ -619,7 +599,6 @@ function renderAboutPage(data) {
         </div>
       </div>
     </section>
-    ${typeof renderTimeline === 'function' ? renderTimeline(data.home.journey) : ''}
   `;
 }
 

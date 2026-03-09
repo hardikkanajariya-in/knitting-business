@@ -28,6 +28,29 @@
       "subtitle": "Innovative Manufacturing for Automotive & Industrial Partners",
       "description": "From advanced knitted fabrics to specialty chemical coatings — we deliver materials that define the future of automotive interiors.",
       "cta": { "label": "Contact Us", "href": "contact.html" },
+      "secondaryCta": { "label": "Explore NK", "href": "nk.html" },
+      "metrics": [
+        { "value": "25+", "label": "Years of textile innovation" },
+        { "value": "5M", "label": "Meters / month production scale" },
+        { "value": "OEM", "label": "Interior-grade material systems" }
+      ],
+      "floatingCards": [
+        {
+          "eyebrow": "OEM Ready",
+          "title": "Warp-knit precision with premium surface finishing",
+          "description": "Built for headliners, seating systems, pillars, and next-gen cabin trims."
+        },
+        {
+          "eyebrow": "Material Stack",
+          "title": "Smart layering for modern interiors",
+          "tags": ["Headliners", "Seat Systems", "Door Panels"]
+        },
+        {
+          "eyebrow": "Future Focus",
+          "title": "Sustainable textiles with tactile depth",
+          "tags": ["Recycled fibers", "Durability", "Low-VOC coatings"]
+        }
+      ],
       "backgroundImage": "assets/img/hero/hero-split.jpg",
       "splitImage": "assets/img/hero/hero-bg.jpg",
       "heroVideo": ""
@@ -75,6 +98,55 @@
       "title": "About Us",
       "subtitle": "Crafting the Future of Automotive Textiles",
       "backgroundImage": "assets/img/hero/about-bg.jpg"
+    },
+    "journeySection": {
+      "eyebrow": "About Us",
+      "title": "Our Journey: Thread to Road",
+      "storyTitle": "From Thread to the Road Ahead",
+      "paragraphs": [
+        "Our legacy began in Ludhiana with a focused ambition: engineer textiles that could meet the exacting standards of modern mobility. Over the years, that small weaving operation grew into an integrated manufacturing group built on precision, craftsmanship, and relentless refinement.",
+        "Today, Nirbhai Group blends advanced knitting, coating, and material innovation to serve automotive partners across markets. Every milestone on our path reflects a stronger commitment to durable performance, responsible manufacturing, and future-ready interior solutions."
+      ],
+      "decor": {
+        "topThreads": "assets/img/journey/thread-cluster.svg",
+        "bottomThreads": "assets/img/journey/thread-bottom.svg",
+        "leftLines": "assets/img/journey/line-art-left.svg",
+        "rightLines": "assets/img/journey/line-art-right.svg",
+        "carPrimary": "assets/img/journey/car-blue.svg",
+        "carSecondary": "assets/img/journey/car-silver.svg"
+      },
+      "milestones": [
+        {
+          "year": "1995",
+          "title": "Founded",
+          "description": "Began as a textile weaving workshop specializing in automotive fabrics.",
+          "icon": "assets/img/journey/milestone-founded.svg"
+        },
+        {
+          "year": "2003",
+          "title": "Innovation",
+          "description": "Developed durable high-performance textiles for car interiors.",
+          "icon": "assets/img/journey/milestone-innovation.svg"
+        },
+        {
+          "year": "2011",
+          "title": "Advanced Materials",
+          "description": "Introduced recycled fibers and eco-friendly materials.",
+          "icon": "assets/img/journey/milestone-materials.svg"
+        },
+        {
+          "year": "2019",
+          "title": "Global Reach",
+          "description": "Expanded manufacturing to meet demand from major automakers worldwide.",
+          "icon": "assets/img/journey/milestone-global.svg"
+        },
+        {
+          "year": "2024",
+          "title": "Future Driven",
+          "description": "Leading with sustainable, smart, and durable textiles for future vehicles.",
+          "icon": "assets/img/journey/milestone-future.svg"
+        }
+      ]
     },
     "story": {
       "title": "From Thread to the Road Ahead",

@@ -1,0 +1,386 @@
+.journey-road {
+  position: relative;
+  overflow: hidden;
+  padding: calc(var(--header-height) + 2.75rem) 0 4.5rem;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(30, 64, 175, 0.05), transparent 24%),
+    radial-gradient(circle at 85% 12%, rgba(220, 38, 38, 0.05), transparent 20%),
+    linear-gradient(180deg, #fcfcfc 0%, #f7f7f7 100%);
+}
+
+.dark .journey-road {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.07), transparent 24%),
+    radial-gradient(circle at 85% 12%, rgba(248, 113, 113, 0.07), transparent 20%),
+    linear-gradient(180deg, #121212 0%, #181818 100%);
+}
+
+.journey-road-shell {
+  position: relative;
+}
+
+.journey-road-heading {
+  max-width: 56rem;
+  margin-bottom: 2.5rem;
+}
+
+.journey-road-eyebrow {
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+}
+
+.journey-road-title {
+  margin-top: 0.25rem;
+  font-size: clamp(2.1rem, 5vw, 4rem);
+  line-height: 0.98;
+  font-weight: 300;
+  letter-spacing: -0.045em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.journey-road-grid {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.72fr) minmax(320px, 1.28fr);
+  align-items: start;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.journey-road-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 24rem;
+  padding-top: clamp(1rem, 5vw, 5.5rem);
+}
+
+.journey-road-copy-title {
+  font-size: clamp(1.9rem, 3.1vw, 3rem);
+  line-height: 0.98;
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.journey-road-copy-body {
+  margin-top: 1.5rem;
+}
+
+.journey-road-copy-body p {
+  font-size: clamp(0.96rem, 1.15vw, 1.05rem);
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.journey-road-copy-body p + p {
+  margin-top: 1rem;
+}
+
+.journey-road-visual {
+  position: relative;
+  min-height: 760px;
+}
+
+.journey-road-stage {
+  position: relative;
+  margin-left: auto;
+  width: min(100%, 760px);
+  aspect-ratio: 0.96;
+}
+
+.journey-road-stage::before {
+  content: "";
+  position: absolute;
+  inset: 8% 16% 5% 12%;
+  border-radius: 48px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.74));
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.04);
+}
+
+.dark .journey-road-stage::before {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+  box-shadow: none;
+}
+
+.journey-road-artwork,
+.journey-road-milestones,
+.journey-road-vehicles,
+.journey-road-decor,
+.journey-road-lineart {
+  position: absolute;
+}
+
+.journey-road-artwork,
+.journey-road-milestones,
+.journey-road-vehicles {
+  inset: 0;
+  z-index: 2;
+}
+
+.journey-road-lineart {
+  pointer-events: none;
+  opacity: 0.34;
+  z-index: 1;
+}
+
+.journey-road-lineart--left {
+  left: -1.25rem;
+  bottom: 2rem;
+  width: min(40%, 260px);
+}
+
+.journey-road-lineart--right {
+  right: -1.5rem;
+  top: 1.75rem;
+  width: min(34%, 220px);
+}
+
+.journey-road-decor {
+  pointer-events: none;
+  z-index: 4;
+}
+
+.journey-road-decor--top {
+  top: -0.75rem;
+  right: 2.5rem;
+  width: min(42%, 300px);
+}
+
+.journey-road-decor--bottom {
+  left: -0.5rem;
+  bottom: 0.75rem;
+  width: min(34%, 220px);
+}
+
+.journey-road-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.journey-road-surface {
+  filter: drop-shadow(0 18px 22px rgba(15, 23, 42, 0.18));
+}
+
+.journey-road-outline {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.journey-road-lane {
+  stroke-linecap: round;
+  stroke-dasharray: 18 18;
+}
+
+.journey-road-draw {
+  will-change: stroke-dashoffset;
+}
+
+.journey-road-milestone {
+  position: absolute;
+  top: var(--card-top);
+  left: var(--card-left);
+  width: min(34%, 220px);
+  z-index: 5;
+}
+
+.journey-road-milestone--right {
+  text-align: left;
+}
+
+.journey-road-milestone-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+}
+
+.journey-road-milestone--left .journey-road-milestone-card {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.journey-road-milestone-icon {
+  width: 2.9rem;
+  height: 2.9rem;
+  flex: 0 0 2.9rem;
+}
+
+.journey-road-milestone-copy {
+  max-width: 10rem;
+}
+
+.journey-road-year {
+  font-size: clamp(2rem, 2.4vw, 2.5rem);
+  line-height: 0.95;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: var(--text-primary);
+}
+
+.journey-road-milestone-title {
+  margin-top: 0.2rem;
+  font-size: 0.96rem;
+  line-height: 1.05;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.journey-road-milestone-desc {
+  margin-top: 0.3rem;
+  font-size: 0.84rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.journey-road-car {
+  position: absolute;
+  width: 4rem;
+  height: auto;
+  z-index: 6;
+  filter: drop-shadow(0 12px 12px rgba(15, 23, 42, 0.2));
+}
+
+.journey-road-car--1 {
+  top: 27.5%;
+  left: 42%;
+  transform: rotate(7deg);
+}
+
+.journey-road-car--2 {
+  top: 57%;
+  left: 52%;
+  width: 3.6rem;
+  transform: rotate(-28deg);
+}
+
+.journey-road-car--3 {
+  top: 84.5%;
+  left: 47%;
+  width: 4.75rem;
+  transform: rotate(18deg);
+}
+
+@media (max-width: 980px) {
+  .journey-road-grid {
+    gap: 1.5rem;
+  }
+
+  .journey-road-copy {
+    max-width: 21rem;
+    padding-top: 1.5rem;
+  }
+
+  .journey-road-visual {
+    min-height: 620px;
+  }
+}
+
+@media (max-width: 680px) {
+  .journey-road-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-road-copy {
+    max-width: 100%;
+    padding-top: 0;
+  }
+
+  .journey-road-visual {
+    min-height: 680px;
+  }
+}
+
+@media (max-width: 760px) {
+  .journey-road {
+    padding-top: calc(var(--header-height) + 2rem);
+  }
+
+  .journey-road-heading {
+    margin-bottom: 1.5rem;
+  }
+
+  .journey-road-visual {
+    min-height: 560px;
+  }
+
+  .journey-road-stage::before {
+    inset: 4% 0 0;
+  }
+
+  .journey-road-decor--top {
+    right: 0.75rem;
+    width: min(44%, 190px);
+  }
+
+  .journey-road-decor--bottom {
+    width: min(36%, 150px);
+  }
+
+  .journey-road-lineart {
+    opacity: 0.2;
+  }
+
+  .journey-road-milestone {
+    width: min(43%, 175px);
+  }
+
+  .journey-road-milestone-icon {
+    width: 2.35rem;
+    height: 2.35rem;
+    flex-basis: 2.35rem;
+  }
+
+  .journey-road-milestone-copy {
+    max-width: 8rem;
+  }
+
+  .journey-road-year {
+    font-size: 1.5rem;
+  }
+
+  .journey-road-milestone-title {
+    font-size: 0.82rem;
+  }
+
+  .journey-road-milestone-desc {
+    font-size: 0.72rem;
+  }
+
+  .journey-road-car {
+    width: 3rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .journey-road-title {
+    max-width: 18rem;
+  }
+
+  .journey-road-copy-title {
+    max-width: 13rem;
+  }
+
+  .journey-road-visual {
+    min-height: 500px;
+  }
+
+  .journey-road-milestone {
+    width: min(48%, 150px);
+  }
+
+  .journey-road-milestone-copy {
+    max-width: 6.75rem;
+  }
+
+  .journey-road-lineart--right {
+    width: 28%;
+  }
+
+  .journey-road-lineart--left {
+    width: 32%;
+  }
+}

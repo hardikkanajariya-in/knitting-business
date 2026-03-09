@@ -37,12 +37,13 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/home-interactive.css">
 </head>
 <body>
-  <div class="page-transition">
-    <!-- Header -->
-    <div id="site-header"></div>
+  <!-- Header (outside page-transition to avoid transform containing block) -->
+  <div id="site-header"></div>
 
+  <div class="page-transition">
     <!-- Page Content -->
     <main id="page-content"></main>
 
@@ -66,6 +67,7 @@
   <script src="assets/js/components/hero-a.js" defer></script>
   <script src="assets/js/components/hero-b.js" defer></script>
   <script src="assets/js/components/timeline.js" defer></script>
+  <script src="assets/js/components/home-interactions.js" defer></script>
   <script src="assets/js/components/product-grid.js" defer></script>
   <script src="assets/js/components/page-banner.js" defer></script>
   <script src="assets/js/components/content-block.js" defer></script>
