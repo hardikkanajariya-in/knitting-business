@@ -94,16 +94,23 @@ function initHomeFloatingScroll() {
   if (hero && hero.dataset.scrollFxInit !== 'true') {
     hero.dataset.scrollFxInit = 'true';
 
-    gsap.to('.hero-a-visual-core-float', {
-      y: -12,
-      rotation: 3,
-      duration: 4.8,
-      repeat: -1,
-      yoyo: true,
-      ease: 'sine.inOut'
-    });
+    const coreFloat = hero.querySelector('.hero-a-visual-core-float');
+    const assetFloats = hero.querySelectorAll('.hero-a-asset-float');
+    const blueGlow = hero.querySelector('.hero-a-glow--blue');
+    const redGlow = hero.querySelector('.hero-a-glow--red');
 
-    gsap.utils.toArray('.hero-a-asset-float').forEach((card, index) => {
+    if (coreFloat) {
+      gsap.to(coreFloat, {
+        y: -12,
+        rotation: 3,
+        duration: 4.8,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      });
+    }
+
+    assetFloats.forEach((card, index) => {
       gsap.to(card, {
         y: index % 2 === 0 ? -16 : 16,
         x: index === 1 ? -8 : 8,
@@ -114,25 +121,29 @@ function initHomeFloatingScroll() {
       });
     });
 
-    gsap.to('.hero-a-glow--blue', {
-      yPercent: -18,
-      scrollTrigger: {
-        trigger: hero,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1,
-      }
-    });
+    if (blueGlow) {
+      gsap.to(blueGlow, {
+        yPercent: -18,
+        scrollTrigger: {
+          trigger: hero,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        }
+      });
+    }
 
-    gsap.to('.hero-a-glow--red', {
-      yPercent: 16,
-      scrollTrigger: {
-        trigger: hero,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1,
-      }
-    });
+    if (redGlow) {
+      gsap.to(redGlow, {
+        yPercent: 16,
+        scrollTrigger: {
+          trigger: hero,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+        }
+      });
+    }
   }
 
   gsap.utils.toArray('.timeline-item').forEach((item) => {

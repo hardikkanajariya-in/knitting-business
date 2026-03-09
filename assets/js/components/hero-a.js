@@ -1,8 +1,10 @@
 /* Hero A Component — Cinematic Full-Bleed Centered Hero */
 function renderHeroA(data) {
-  const hasVideo = data.heroVideo;
+  const hasVideo = Boolean(data.heroVideo);
   const metrics = Array.isArray(data.metrics) ? data.metrics : [];
   const secondaryCta = data.secondaryCta;
+  const heroImage = data.heroImage || data.splitImage || data.backgroundImage;
+  const heroAlt = data.imageAlt || 'Premium automotive interior showcase';
 
   const metricsMarkup = metrics.length ? `
     <div class="hero-a-stats-bar">
@@ -23,11 +25,11 @@ function renderHeroA(data) {
       <div class="hero-a-pin-wrap">
         <div class="hero-a-bg">
           ${hasVideo ? `
-            <video class="hero-a-bg-video" autoplay muted loop playsinline poster="${data.splitImage}">
+            <video class="hero-a-bg-video" autoplay muted loop playsinline poster="${heroImage}">
               <source src="${data.heroVideo}" type="video/mp4">
             </video>
           ` : `
-            <img class="hero-a-bg-img" src="${data.splitImage}" alt="" width="1920" height="1080"
+            <img class="hero-a-bg-img" src="${heroImage}" alt="" width="1920" height="1080"
                  onerror="this.style.display='none'">
           `}
           <div class="hero-a-bg-overlay"></div>
@@ -41,22 +43,30 @@ function renderHeroA(data) {
 
         <div class="container hero-a-shell">
           <div class="hero-a-layout">
-            <div class="hero-a-copy">
-              <p class="hero-a-kicker">${data.subtitle}</p>
-              <h1 class="hero-a-title">${data.title}</h1>
-              <p class="hero-a-desc">${data.description}</p>
-              <div class="hero-a-cta-row">
-                <a href="${data.cta.href}" class="btn-primary magnetic-btn">
-                  ${data.cta.label}
-                  <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                  </svg>
-                </a>
-                ${secondaryCta ? `
-                  <a href="${secondaryCta.href}" class="btn-outline magnetic-btn hero-a-btn-secondary">
-                    ${secondaryCta.label}
+            <div class="hero-a-copy-panel">
+              <div class="hero-a-copy">
+                <p class="hero-a-kicker">${data.subtitle}</p>
+                <h1 class="hero-a-title">${data.title}</h1>
+                <p class="hero-a-desc">${data.description}</p>
+                <div class="hero-a-cta-row">
+                  <a href="${data.cta.href}" class="btn-primary magnetic-btn">
+                    ${data.cta.label}
+                    <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
                   </a>
-                ` : ''}
+                  ${secondaryCta ? `
+                    <a href="${secondaryCta.href}" class="btn-outline magnetic-btn hero-a-btn-secondary">
+                      ${secondaryCta.label}
+                    </a>
+                  ` : ''}
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-a-media-panel" aria-hidden="true">
+              <div class="hero-a-media-frame">
+                <img class="hero-a-media-img" src="${heroImage}" alt="${heroAlt}" width="1600" height="1067">
               </div>
             </div>
           </div>

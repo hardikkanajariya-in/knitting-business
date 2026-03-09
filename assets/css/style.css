@@ -178,7 +178,33 @@ ul, ol {
   box-shadow: var(--shadow-sm);
 }
 
+.site-header.hero-overlay-mode:not(.scrolled) {
+  background: linear-gradient(180deg, rgba(10, 15, 26, 0.88), rgba(10, 15, 26, 0.64));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
 /* Header over hero overlay — white text in dark mode when transparent */
+.site-header.hero-overlay-mode:not(.scrolled) .logo-text,
+.site-header.hero-overlay-mode:not(.scrolled) .nav-link,
+.site-header.hero-overlay-mode:not(.scrolled) .theme-toggle,
+.site-header.hero-overlay-mode:not(.scrolled) .hamburger-line {
+  color: #fff;
+}
+
+.site-header.hero-overlay-mode:not(.scrolled) .nav-link::after {
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.site-header.hero-overlay-mode:not(.scrolled) .hamburger-line {
+  background: #fff;
+}
+
+.site-header.hero-overlay-mode:not(.scrolled) .theme-toggle svg {
+  stroke: #fff;
+}
+
 .dark .site-header.hero-overlay-mode:not(.scrolled) .logo-text,
 .dark .site-header.hero-overlay-mode:not(.scrolled) .nav-link,
 .dark .site-header.hero-overlay-mode:not(.scrolled) .theme-toggle,

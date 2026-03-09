@@ -9,6 +9,7 @@
 const IMAGE_CDN_FALLBACK = {
   'assets/img/hero/hero-bg.jpg': 'https://images.pexels.com/photos/36327501/pexels-photo-36327501.jpeg?auto=compress&cs=tinysrgb&w=1920',
   'assets/img/hero/hero-split.jpg': 'https://images.pexels.com/photos/6525848/pexels-photo-6525848.jpeg?auto=compress&cs=tinysrgb&w=1920',
+  'assets/img/hero/hero-automotive-interior.jpg': 'https://images.pexels.com/photos/1104768/pexels-photo-1104768.jpeg?auto=compress&cs=tinysrgb&w=1920',
   'assets/img/hero/about-bg.jpg': 'https://images.pexels.com/photos/8246487/pexels-photo-8246487.jpeg?auto=compress&cs=tinysrgb&w=1920',
   'assets/img/hero/nk-bg.jpg': 'https://images.pexels.com/photos/36327502/pexels-photo-36327502.jpeg?auto=compress&cs=tinysrgb&w=1920',
   'assets/img/hero/nc-bg.jpg': 'https://images.pexels.com/photos/4149333/pexels-photo-4149333.jpeg?auto=compress&cs=tinysrgb&w=1920',

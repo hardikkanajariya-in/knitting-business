@@ -24,9 +24,9 @@
   ],
   "home": {
     "hero": {
-      "title": "Precision-Engineered Textile Solutions",
-      "subtitle": "Innovative Manufacturing for Automotive & Industrial Partners",
-      "description": "From advanced knitted fabrics to specialty chemical coatings — we deliver materials that define the future of automotive interiors.",
+      "title": "Precision-Engineered Materials for Automotive Interiors",
+      "subtitle": "Innovative Manufacturing Solutions for OEM & Tier-1 Partners",
+      "description": "Advanced knitted fabrics, coated surfaces, and specialty chemistry crafted for premium seating, headliners, door trims, and next-generation cabin systems.",
       "cta": { "label": "Contact Us", "href": "contact.html" },
       "secondaryCta": { "label": "Explore NK", "href": "nk.html" },
       "metrics": [
@@ -51,8 +51,9 @@
           "tags": ["Recycled fibers", "Durability", "Low-VOC coatings"]
         }
       ],
-      "backgroundImage": "assets/img/hero/hero-split.jpg",
-      "splitImage": "assets/img/hero/hero-bg.jpg",
+      "backgroundImage": "assets/img/hero/hero-automotive-interior.jpg",
+      "splitImage": "assets/img/hero/hero-automotive-interior.jpg",
+      "imageAlt": "Premium automotive interior with performance seating and modern trim",
       "heroVideo": ""
     },
     "journey": {
