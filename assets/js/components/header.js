@@ -18,7 +18,18 @@ function renderHeader(data) {
     <header class="site-header" role="banner">
       <div class="container header-inner">
         <a href="index.html" class="header-logo" aria-label="${site.name} — Home">
-          <span class="logo-text">${site.name}</span>
+          <span class="header-logo-mark">
+            <img
+              src="${site.logo}"
+              alt="${site.name}"
+              class="header-logo-image"
+              width="720"
+              height="180"
+              loading="eager"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex'"
+            >
+            <span class="header-logo-fallback" style="display:none;">${site.name}</span>
+          </span>
         </a>
 
         <nav class="nav-desktop" role="navigation" aria-label="Main navigation">

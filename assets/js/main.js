@@ -759,7 +759,7 @@ function renderHomePage(data) {
     ${typeof renderHeroB === 'function' ? renderHeroB(heroVariantB) : ''}
     <div class="hero-variant-toggle" aria-label="Hero layout variants">
       <button type="button" class="hero-variant-btn active" data-variant="a" aria-pressed="true">Split Hero</button>
-      <button type="button" class="hero-variant-btn" data-variant="b" aria-pressed="false">Video Hero</button>
+      <button type="button" class="hero-variant-btn" data-variant="b" aria-pressed="false">Alternate Hero</button>
     </div>
     ${typeof renderTimeline === 'function' ? renderTimeline(journey) : ''}
     ${typeof renderHomePremiumSections === 'function' ? renderHomePremiumSections(data) : ''}
@@ -793,7 +793,7 @@ function renderNKPage(data) {
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <h2 class="section-title">Our Capabilities</h2>
-          <p class="section-subtitle">Advanced fabric technologies for every application</p>
+          <p class="section-subtitle">Knitted and engineered textile solutions for industrial applications</p>
         </div>
         ${typeof renderProductGrid === 'function' ? renderProductGrid(nk.features) : ''}
       </div>
@@ -811,11 +811,12 @@ function renderNCPage(data) {
   const nc = data.nc;
   return `
     ${typeof renderPageBanner === 'function' ? renderPageBanner(nc.banner) : ''}
+    ${renderDivisionBrandCard(nc)}
     <section class="section">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <h2 class="section-title">Our Products</h2>
-          <p class="section-subtitle">Chemical solutions for premium surfaces</p>
+          <p class="section-subtitle">Coating, laminating, and chemistry-backed solutions for industrial surfaces</p>
         </div>
         ${typeof renderProductGrid === 'function' ? renderProductGrid(nc.products) : ''}
       </div>
@@ -826,6 +827,31 @@ function renderNCPage(data) {
       </div>
     </section>
     ${typeof renderCTAStrip === 'function' ? renderCTAStrip(data) : ''}
+  `;
+}
+
+function renderDivisionBrandCard(section) {
+  if (!section?.divisionLogo) return '';
+
+  return `
+    <section class="division-brand-section">
+      <div class="container">
+        <div class="division-brand-card" data-aos="fade-up">
+          <div class="division-brand-logo">
+            <img
+              src="${section.divisionLogo}"
+              alt="${section.divisionLogoAlt || section.banner?.title || 'Division logo'}"
+              width="720"
+              height="220"
+              loading="lazy"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex'"
+            >
+            <span class="division-brand-fallback" style="display:none;">${section.banner?.title || 'NirChem'}</span>
+          </div>
+          <p class="division-brand-copy">${section.divisionStatement || ''}</p>
+        </div>
+      </div>
+    </section>
   `;
 }
 
@@ -881,8 +907,8 @@ function renderTeamPage(data) {
     <section class="section">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
-          <h2 class="section-title">Leadership</h2>
-          <p class="section-subtitle">Meet the minds driving our vision forward</p>
+          <h2 class="section-title">People and Capability</h2>
+          <p class="section-subtitle">The teams supporting leadership, development, operations, and customer needs</p>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${Math.min(team.leadership.length, 4)} gap-8 max-w-4xl mx-auto">
           ${typeof renderTeamCards === 'function' ? renderTeamCards(team.leadership) : ''}

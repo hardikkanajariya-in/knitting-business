@@ -1,22 +1,17 @@
 {
   "site": {
-    "name": "Nirbhai Group",
-    "tagline": "Crafting Excellence in Textiles & Chemicals",
-    "logo": "assets/img/logo/logo.svg",
-    "logoDark": "assets/img/logo/logo-dark.svg",
-    "metaDescription": "Nirbhai Group — Leading manufacturer of knitted fabrics and specialty chemicals for automotive interiors. Precision engineering meets textile innovation.",
-    "themeColor": "#0a0a0a",
-    "socialLinks": [
-      { "name": "LinkedIn", "url": "#", "icon": "linkedin" },
-      { "name": "Instagram", "url": "#", "icon": "instagram" },
-      { "name": "Facebook", "url": "#", "icon": "facebook" },
-      { "name": "Twitter", "url": "#", "icon": "twitter" }
-    ]
+    "name": "Nirbhay Knitting Industries Pvt. Ltd.",
+    "tagline": "Integrated knitted fabrics, coating solutions, and material innovation",
+    "logo": "assets/img/logo/image4.png",
+    "logoDark": "assets/img/logo/image4.png",
+    "metaDescription": "Nirbhay Knitting Industries Pvt. Ltd. manufactures knitted fabrics, vinyl coated textiles, PU coating and laminating solutions for industrial applications.",
+    "themeColor": "#2b4ea2",
+    "socialLinks": []
   },
   "navigation": [
     { "label": "Home", "href": "index.html" },
-    { "label": "NK", "href": "nk.html", "title": "Nirbhai Knitting" },
-    { "label": "NC", "href": "nc.html", "title": "NirChem" },
+    { "label": "Knitting", "href": "nk.html", "title": "Nirbhay Knitting" },
+    { "label": "NirChem", "href": "nc.html", "title": "NirChem" },
     { "label": "About Us", "href": "about.html" },
     { "label": "Sustainability", "href": "sustainability.html" },
     { "label": "Our Team", "href": "team.html" },
@@ -24,82 +19,82 @@
   ],
   "home": {
     "hero": {
-      "title": "Precision-Engineered Materials for Automotive Interiors",
-      "subtitle": "Innovative Manufacturing Solutions for OEM & Tier-1 Partners",
-      "description": "Advanced knitted fabrics, coated surfaces, and specialty chemistry crafted for premium seating, headliners, door trims, and next-generation cabin systems.",
+      "title": "Knitted Fabrics and Coating Solutions for Industrial Applications",
+      "subtitle": "From engineered fabric bases to advanced coated material systems",
+      "description": "Nirbhay Knitting Industries Pvt. Ltd. combines knitting, coating support, in-house testing, and process innovation to serve automotive, leather goods, footwear, apparel, and home furnishing customers from Halol, Gujarat.",
       "cta": { "label": "Contact Us", "href": "contact.html" },
-      "secondaryCta": { "label": "Explore NK", "href": "nk.html" },
+      "secondaryCta": { "label": "Explore Knitting", "href": "nk.html" },
       "metrics": [
-        { "value": "25+", "label": "Years of textile innovation" },
-        { "value": "5M", "label": "Meters / month production scale" },
-        { "value": "OEM", "label": "Interior-grade material systems" }
+        { "value": "125 MT", "label": "Monthly production capacity" },
+        { "value": "35,000+", "label": "sq. ft. built-up facility" },
+        { "value": "Zero", "label": "Discharge manufacturing focus" }
       ],
       "floatingCards": [
         {
-          "eyebrow": "OEM Ready",
-          "title": "Warp-knit precision with premium surface finishing",
-          "description": "Built for headliners, seating systems, pillars, and next-gen cabin trims."
+          "eyebrow": "Expanded Portfolio",
+          "title": "3D spacer, raised, recycled yarn, and coated textile developments",
+          "description": "A wider material platform built for industrial performance and customization."
         },
         {
-          "eyebrow": "Material Stack",
-          "title": "Smart layering for modern interiors",
-          "tags": ["Headliners", "Seat Systems", "Door Panels"]
+          "eyebrow": "Integrated Capability",
+          "title": "Knitting, PU coating, laminating, and in-house testing under one roof",
+          "tags": ["Knitting", "Laminating", "PU Coating"]
         },
         {
-          "eyebrow": "Future Focus",
-          "title": "Sustainable textiles with tactile depth",
-          "tags": ["Recycled fibers", "Durability", "Low-VOC coatings"]
+          "eyebrow": "Innovation Roadmap",
+          "title": "FR fabrics, coated 3D constructions, and breathable water-based coatings",
+          "tags": ["FR R&D", "Coated 3D", "Breathable systems"]
         }
       ],
-      "backgroundImage": "assets/img/hero/hero-automotive-interior.jpg",
-      "splitImage": "assets/img/hero/hero-automotive-interior.jpg",
-      "imageAlt": "Premium automotive interior with performance seating and modern trim",
+      "backgroundImage": "assets/img/industries/automotive.jpg",
+      "splitImage": "assets/img/industries/automotive.jpg",
+      "imageAlt": "Industrial material solutions developed through knitting and coating expertise",
       "heroVideo": ""
     },
     "heroVariantB": {
-      "eyebrow": "Dynamic Video Variant",
-      "title": "Automotive Interiors in Motion",
-      "subtitle": "Video-led storytelling for premium cabin materials",
-      "description": "A cinematic alternate hero using automotive interior motion footage to spotlight the refined surfaces, seating ergonomics, and premium trim environment our materials help create.",
-      "cta": { "label": "Contact Us", "href": "contact.html" },
-      "secondaryCta": { "label": "Explore NC", "href": "nc.html" },
-      "backgroundImage": "assets/img/hero/hero-automotive-interior.jpg",
-      "posterImage": "assets/img/hero/hero-automotive-interior.jpg",
-      "heroVideo": "assets/video/hero-automotive-interior.mp4"
+      "eyebrow": "Integrated Materials Partner",
+      "title": "From Fabric Base to Finished Coated Solution",
+      "subtitle": "Knitting, chemistry, and process innovation working together",
+      "description": "With water-free finishing, zero discharge operations, and new laminating and PU coating capabilities, Nirbhay is evolving into a stronger innovation-led materials partner for industrial markets.",
+      "cta": { "label": "Start a Project", "href": "contact.html" },
+      "secondaryCta": { "label": "Explore NirChem", "href": "nc.html" },
+      "backgroundImage": "assets/img/industries/automotive.jpg",
+      "posterImage": "assets/img/industries/automotive.jpg",
+      "heroVideo": ""
     },
     "journey": {
       "title": "Our Journey",
-      "subtitle": "From Thread to Road",
-      "description": "A legacy built on precision craftsmanship, innovative materials, and an unwavering commitment to quality and sustainability.",
+      "subtitle": "From knitted substrate specialist to integrated materials partner",
+      "description": "A business shaped by manufacturing depth, customer-specific development, and a clear push toward higher-value coating and technical textile innovation.",
       "milestones": [
         {
-          "year": "1995",
-          "title": "Founded",
-          "description": "Nirbhai Group was established as a small textile workshop in Ludhiana, Punjab — specializing in automotive knitted fabrics for local OEM suppliers.",
+          "year": "Early Years",
+          "title": "Built on knitting and coated textile know-how",
+          "description": "Nirbhay established its manufacturing base in Halol, Gujarat with a focus on knitted fabrics and vinyl coated textile applications for industrial markets.",
           "icon": "factory"
         },
         {
-          "year": "2003",
-          "title": "Innovation Leap",
-          "description": "Invested in state-of-the-art Karl Mayer and LIBA warp knitting machines. Developed proprietary high-performance textiles for car interiors adopted by Maruti Suzuki and Tata Motors.",
+          "year": "Scale-Up",
+          "title": "In-house testing and customer-specific development",
+          "description": "Process control, quality validation, and customization became core strengths, helping the company deliver faster and support customer-specific coating requirements.",
           "icon": "lightbulb"
         },
         {
-          "year": "2011",
-          "title": "NirChem Launched",
-          "description": "Founded the NirChem division to bring specialty chemical coatings in-house. Introduced recycled fibers and eco-friendly materials into the manufacturing pipeline.",
-          "icon": "leaf"
-        },
-        {
-          "year": "2019",
-          "title": "Global Expansion",
-          "description": "Expanded manufacturing capacity to 5 million meters per month. Secured partnerships with Hyundai, Kia, and major European automotive groups for interior textile supply.",
+          "year": "2022",
+          "title": "Interplast Kimya representation added",
+          "description": "The partnership with Interplast Kimya of Turkey expanded access to PU resins and lacquers, creating strong cross-selling potential with the same customer base.",
           "icon": "globe"
         },
         {
-          "year": "2024",
-          "title": "Future Driven",
-          "description": "Achieved ISO 14001 environmental certification. Leading the industry with sustainable, smart, and durable textiles for next-generation electric and autonomous vehicles.",
+          "year": "2023",
+          "title": "New textile lines introduced",
+          "description": "Raised fabrics, 3D spacer fabrics, and recycled-yarn options expanded the portfolio and strengthened Nirbhay's position in technical and sustainable materials.",
+          "icon": "leaf"
+        },
+        {
+          "year": "2024+",
+          "title": "Laminating, PU coating, and R&D pipeline",
+          "description": "The next chapter includes contract manufacturing, coated 3D fabrics, breathable water-based coatings, and FR fabric development for high-performance applications.",
           "icon": "rocket"
         }
       ]
@@ -107,67 +102,68 @@
     "premium": {
       "industries": {
         "title": "Industries We Serve",
-        "subtitle": "Trusted across sectors",
+        "subtitle": "Trusted across industrial applications",
         "items": [
-          { "name": "Automotive", "icon": "car", "image": "assets/img/industries/automotive.jpg", "tag": "OEM Interiors" },
-          { "name": "Railways", "icon": "train", "image": "assets/img/industries/railways.jpg", "tag": "Coach Fabrics" },
-          { "name": "Aerospace", "icon": "plane", "image": "assets/img/industries/aerospace.jpg", "tag": "Cabin Textiles" },
-          { "name": "Furnishing", "icon": "sofa", "image": "assets/img/industries/furnishing.jpg", "tag": "Upholstery" },
-          { "name": "Footwear", "icon": "shoe", "image": "assets/img/industries/footwear.jpg", "tag": "Technical Mesh" },
-          { "name": "Marine", "icon": "anchor", "image": "assets/img/industries/marine.jpg", "tag": "Marine Grade" }
+          { "name": "Automotive", "icon": "car", "image": "assets/img/industries/automotive.jpg", "tag": "Interior and technical uses" },
+          { "name": "Leather Goods", "icon": "layers", "image": "assets/img/industries/furnishing.jpg", "tag": "Base fabrics and coated surfaces" },
+          { "name": "Footwear", "icon": "shoe", "image": "assets/img/industries/footwear.jpg", "tag": "Comfort and structure" },
+          { "name": "Apparel", "icon": "shirt", "image": "assets/img/industries/aerospace.jpg", "tag": "Performance textiles" },
+          { "name": "Home Furnishings", "icon": "sofa", "image": "assets/img/industries/furnishing.jpg", "tag": "Durable fabric systems" },
+          { "name": "Contract Manufacturing", "icon": "flask", "image": "assets/img/factory/nc-factory.jpg", "tag": "PU coating and laminating" }
         ]
       },
       "statsBand": [
-        { "value": "25+", "label": "Years of Excellence" },
-        { "value": "5M+", "label": "Meters / Month Capacity" },
-        { "value": "50+", "label": "Global OEM Partners" },
-        { "value": "50,000", "label": "sq. ft Manufacturing" }
+        { "value": "125 MT", "label": "Monthly capacity" },
+        { "value": "35,000+", "label": "sq. ft. infrastructure" },
+        { "value": "Zero", "label": "Discharge production positioning" },
+        { "value": "Water-free", "label": "Finishing processes" }
       ],
       "trustStrip": {
-        "label": "Built for automotive interiors",
+        "label": "Built for industrial applications",
         "items": [
-          "Warp Knitting",
-          "3D Spacer Fabrics",
-          "Flame Retardant Textiles",
-          "Direct Coating",
-          "Synthetic Leather",
-          "Sustainable Fibers",
-          "OEM Surface Systems"
+          "Knitted base fabrics",
+          "Vinyl coated textiles",
+          "3D spacer fabrics",
+          "Raised fabrics",
+          "Recycled yarn fabrics",
+          "PU coating",
+          "Laminating",
+          "In-house testing"
         ]
       },
       "showcase": {
         "eyebrow": "Capabilities",
-        "title": "A premium material partner for every interior touchpoint",
-        "description": "From warp-knitted technical fabrics to coated surfaces and leather systems, we build layered material solutions that perform beautifully in modern vehicles.",
+        "title": "A material and coatings partner with practical manufacturing depth",
+        "description": "Nirbhay connects substrate development, specialty coating support, quality validation, and responsive manufacturing into one streamlined industrial offering.",
         "cards": [
           {
-            "category": "Nirbhai Knitting",
-            "title": "Technical knits engineered for comfort, breathability, and structure",
-            "description": "Performance fabrics for headliners, seats, pillars, and supportive spacer constructions.",
+            "category": "Nirbhay Knitting",
+            "title": "Knitted fabrics designed for structure, flexibility, and end-use performance",
+            "description": "Base fabrics, raised fabrics, 3D spacer constructions, recycled yarn options, and FR developments tailored to customer need.",
             "image": "assets/img/products/3d.jpg",
             "href": "nk.html",
             "cta": "Explore knitting"
           },
           {
             "category": "NirChem",
-            "title": "Coating and leather systems with premium tactile finish",
-            "description": "Surface technologies that add durability, cleanability, visual richness, and OEM consistency.",
+            "title": "Coating and laminating services that move beyond basic conversion",
+            "description": "Vinyl coated textiles, PU coating, laminating, specialty finishes, and chemical support backed by the Interplast Kimya relationship.",
             "image": "assets/img/products/direct-coating.jpg",
             "href": "nc.html",
             "cta": "Explore coatings"
           },
           {
-            "category": "Manufacturing",
-            "title": "Integrated production from yarn to finished material stack",
-            "description": "Knitting, coating, finishing, inspection, and QA delivered through a tightly controlled process.",
+            "category": "Testing and Manufacturing",
+            "title": "Process control and in-house testing for customer-specific requirements",
+            "description": "The Halol facility combines production, validation, and responsive development to reduce risk and shorten the path from sample to supply.",
             "image": "assets/img/factory/nk-factory.jpg",
             "href": "about.html",
             "cta": "See our story"
           },
           {
             "category": "Sustainability",
-            "title": "Future-ready materials with responsible manufacturing at the core",
-            "description": "Eco-conscious raw materials, cleaner coating systems, and a roadmap built for next-generation mobility.",
+            "title": "Cleaner process choices supporting future-ready material development",
+            "description": "Zero discharge operations, water-free finishing, recycled yarn options, and lower-footprint product development shape the company's next phase.",
             "image": "assets/img/hero/sustainability-bg.jpg",
             "href": "sustainability.html",
             "cta": "View commitments"
@@ -176,71 +172,71 @@
       },
       "process": {
         "eyebrow": "How we work",
-        "title": "A design-to-production workflow made for OEM confidence",
-        "description": "We collaborate like a strategic material studio: fast sampling, precise engineering, scalable manufacturing, and repeatable quality.",
+        "title": "A development workflow built around technical clarity and manufacturing follow-through",
+        "description": "Each project starts with application needs and ends with a tested, scalable solution - whether the requirement is a knitted base fabric, a coated surface, or a new laminated construction.",
         "stats": [
-          { "value": "4", "label": "Material disciplines under one umbrella" },
-          { "value": "24h", "label": "Response cadence for active client discussions" },
-          { "value": "ISO", "label": "Quality and environmental discipline" }
+          { "value": "4", "label": "Core growth engines: knitting, coating, laminating, chemicals" },
+          { "value": "2022", "label": "Interplast partnership began" },
+          { "value": "2024+", "label": "Current innovation window" }
         ],
         "steps": [
           {
-            "title": "Material strategy",
-            "description": "We understand end-use, touch targets, climate exposure, and OEM requirements before recommending the material stack."
+            "title": "Understand the application",
+            "description": "We begin with end-use conditions, performance expectations, coating compatibility, and customization needs before recommending a fabric or material route."
           },
           {
-            "title": "Sampling & refinement",
-            "description": "Our team iterates on texture, weight, finish, and performance until the sample speaks the same design language as the vehicle program."
+            "title": "Develop the right substrate and finish",
+            "description": "Our teams match knit structure, surface treatment, lamination, or PU systems to the requirement, building practical samples for evaluation."
           },
           {
-            "title": "Scale-up with control",
-            "description": "Production moves with disciplined QA, process consistency, and visual finish control — not just volume for volume’s sake."
+            "title": "Validate, scale, and support",
+            "description": "In-house testing, disciplined production control, and responsive commercial support help move successful developments toward repeatable supply."
           }
         ]
       },
       "spotlight": {
-        "eyebrow": "Why clients choose us",
-        "title": "Textile craft, chemical expertise, and manufacturing depth — in one partner",
-        "description": "Nirbhai Group combines advanced knitting, coating know-how, and interior-grade finishing into a single premium supply partner for automotive brands.",
+        "eyebrow": "Why customers choose us",
+        "title": "Manufacturing capability, coating insight, and sustainability discipline - in one partner",
+        "description": "Nirbhay's strength comes from connecting fabric expertise with coating chemistry, process control, and faster customization for industrial buyers.",
         "panels": [
           {
-            "title": "Knitting intelligence",
-            "description": "Raised, spacer, FR, and coated textiles tuned for feel, strength, and assembly requirements.",
+            "title": "Knitted material platform",
+            "description": "Base fabrics, 3D spacer constructions, raised fabrics, recycled yarn developments, and FR samples designed around end-use performance.",
             "badge": "NK"
           },
           {
-            "title": "Surface chemistry",
-            "description": "Direct coating, leather finishing, and specialty treatments designed to last under real-world use.",
+            "title": "Chemical and coating support",
+            "description": "PU coating, vinyl coated textiles, laminating, and Interplast-linked chemical knowledge create a stronger value-added proposition.",
             "badge": "NC"
           },
           {
-            "title": "Sustainable future",
-            "description": "A roadmap centered on recycled fibers, cleaner systems, and lower-impact innovation for future vehicles.",
+            "title": "Responsible process direction",
+            "description": "Zero discharge, water-free finishing, efficient utilities, and lower-footprint product development support future-facing customer expectations.",
             "badge": "ESG"
           }
         ]
       },
       "finalCta": {
-        "title": "Ready to develop a premium textile program with us?",
-        "description": "Let’s shape materials that elevate cabin comfort, durability, and brand perception — from sample stage to production scale.",
-        "primary": { "label": "Start a conversation", "href": "contact.html" },
-        "secondary": { "label": "Meet our team", "href": "team.html" }
+        "title": "Need a material partner for your next fabric or coating brief?",
+        "description": "Talk to our team about knitted substrates, coated textiles, PU coating, laminating, recycled yarn options, or upcoming innovation programs.",
+        "primary": { "label": "Contact our team", "href": "contact.html" },
+        "secondary": { "label": "Explore capabilities", "href": "about.html" }
       }
     }
   },
   "about": {
     "banner": {
       "title": "About Us",
-      "subtitle": "Crafting the Future of Automotive Textiles",
+      "subtitle": "Manufacturing depth with an innovation-led next chapter",
       "backgroundImage": "assets/img/hero/about-bg.jpg"
     },
     "journeySection": {
       "eyebrow": "About Us",
-      "title": "Our Journey: Thread to Road",
-      "storyTitle": "From Thread to the Road Ahead",
+      "title": "How Nirbhay Is Evolving",
+      "storyTitle": "From knitted substrate specialist to integrated materials partner",
       "paragraphs": [
-        "Our legacy began in Ludhiana with a focused ambition: engineer textiles that could meet the exacting standards of modern mobility. Over the years, that small weaving operation grew into an integrated manufacturing group built on precision, craftsmanship, and relentless refinement.",
-        "Today, Nirbhai Group blends advanced knitting, coating, and material innovation to serve automotive partners across markets. Every milestone on our path reflects a stronger commitment to durable performance, responsible manufacturing, and future-ready interior solutions."
+        "Nirbhay Knitting Industries Pvt. Ltd. operates from Halol near Vadodara in Gujarat, India. The company has built a reputation on complete in-house manufacturing and testing for knitted fabrics, vinyl coating applications, and customer-specific industrial requirements.",
+        "Today, Nirbhay's next growth phase is driven by broader product development, sustainable processing, and vertical integration through coating, laminating, and the representation of Interplast Kimya. That shift is expanding the company from a textile manufacturer into a more complete materials and coatings partner."
       ],
       "decor": {
         "topThreads": "assets/img/journey/thread-cluster.svg",
@@ -252,194 +248,206 @@
       },
       "milestones": [
         {
-          "year": "1995",
-          "title": "Founded",
-          "description": "Began as a textile weaving workshop specializing in automotive fabrics.",
+          "year": "Base",
+          "title": "Knitted fabrics and coated textile support",
+          "description": "Core manufacturing centered on knitted fabrics, vinyl coating support, and industrial application know-how.",
           "icon": "assets/img/journey/milestone-founded.svg"
         },
         {
-          "year": "2003",
-          "title": "Innovation",
-          "description": "Developed durable high-performance textiles for car interiors.",
+          "year": "Control",
+          "title": "In-house testing capability",
+          "description": "Quality control and customer-specific validation became central to the company's operating model.",
           "icon": "assets/img/journey/milestone-innovation.svg"
         },
         {
-          "year": "2011",
-          "title": "Advanced Materials",
-          "description": "Introduced recycled fibers and eco-friendly materials.",
+          "year": "2022",
+          "title": "Interplast Kimya represented",
+          "description": "PU resins and lacquers strengthened vertical integration and cross-selling potential.",
           "icon": "assets/img/journey/milestone-materials.svg"
         },
         {
-          "year": "2019",
-          "title": "Global Reach",
-          "description": "Expanded manufacturing to meet demand from major automakers worldwide.",
+          "year": "2023",
+          "title": "New fabric categories launched",
+          "description": "3D spacer fabrics, raised fabrics, and recycled-yarn developments broadened the offer.",
           "icon": "assets/img/journey/milestone-global.svg"
         },
         {
-          "year": "2024",
-          "title": "Future Driven",
-          "description": "Leading with sustainable, smart, and durable textiles for future vehicles.",
+          "year": "2024+",
+          "title": "Coating and innovation pipeline expands",
+          "description": "Laminating, PU coating, coated 3D materials, FR trials, and breathable coatings define the current direction.",
           "icon": "assets/img/journey/milestone-future.svg"
         }
       ]
     },
     "story": {
-      "title": "From Thread to the Road Ahead",
+      "title": "Built for industrial performance",
       "paragraphs": [
-        "Our legacy spans over 25 years in the automotive textile industry. What began as a small weaving workshop in Ludhiana's industrial belt has evolved into a multi-division manufacturing powerhouse serving global automotive OEMs across Asia and Europe.",
-        "At the Nirbhai Group, our companies — Nirbhai Knitting (NK) and NirChem (NC) — represent our dual expertise in advanced knitted fabrics and specialty chemical coatings. Together, they deliver complete material solutions for modern vehicle interiors, from headliners and seat upholstery to door panels and dashboard coverings.",
-        "We are driven by precision craftsmanship, continuous innovation, and an unwavering commitment to quality and sustainability that our partners trust. Our 50,000 sq. ft. integrated facility houses cutting-edge warp knitting, coating, and finishing lines — all under one roof."
+        "Nirbhay combines manufacturing capability, coating support, and testing discipline for applications where consistency and customization matter. Its current portfolio spans knitted fabrics, vinyl coated textiles, advanced fabric developments, and value-added coating services.",
+        "The company is now pushing into higher-value material systems through laminating, PU coating, Interplast-linked chemistry support, and a focused innovation pipeline that includes coated 3D constructions, FR fabrics, and water-based breathable coatings."
       ]
     },
     "stats": [
-      { "value": "25+", "label": "Years of Excellence" },
-      { "value": "500+", "label": "Products Delivered" },
-      { "value": "50+", "label": "Global Partners" },
-      { "value": "100%", "label": "Quality Commitment" }
+      { "value": "125 MT", "label": "Monthly production capacity" },
+      { "value": "35,000+", "label": "sq. ft. built-up space" },
+      { "value": "Zero", "label": "Discharge operations focus" },
+      { "value": "2022", "label": "Interplast partnership since" }
     ]
   },
   "nk": {
     "banner": {
-      "title": "Nirbhai Knitting",
-      "subtitle": "Advanced Knitted Fabrics for Automotive Interiors",
-      "description": "Precision-engineered textiles built for performance, comfort, and durability. Our fabrics are trusted by leading automotive manufacturers worldwide.",
+      "title": "Nirbhay Knitting",
+      "subtitle": "Knitted fabrics engineered for industrial performance",
+      "description": "From base fabrics for coated applications to advanced spacer, raised, recycled, and FR developments, the knitting division is built around customization, fast response, and dependable process control.",
       "backgroundImage": "assets/img/hero/nk-bg.jpg"
     },
     "features": [
       {
-        "name": "Raised Fabrics",
-        "description": "Premium raised-surface fabrics offering enhanced tactile comfort and visual depth for luxury automotive seating. Ideal for seat covers, armrests, and headliners.",
-        "image": "assets/img/products/raised.jpg"
+        "name": "Knitted Base Fabrics",
+        "description": "Customized knitted fabrics designed to deliver comfort, flexibility, strength, and reliable support for vinyl coating and other industrial end uses.",
+        "image": "assets/img/products/coated.jpg"
       },
       {
         "name": "3D Spacer Fabrics",
-        "description": "Three-dimensional knitted structures providing superior breathability, cushioning, and modern aesthetics. Used in ventilated seating and ergonomic support systems.",
+        "description": "Three-dimensional fabric structures developed for cushioning, breathability, spacing, and higher-value technical applications across multiple sectors.",
         "image": "assets/img/products/3d.jpg"
       },
       {
-        "name": "FR (Flame Retardant)",
-        "description": "Flame-retardant fabrics engineered to meet stringent automotive safety standards (FMVSS 302) without compromising comfort or aesthetics.",
+        "name": "Raised Fabrics",
+        "description": "Raised surface constructions introduced to add tactile comfort, visual texture, and premium feel where a richer material surface is required.",
+        "image": "assets/img/products/raised.jpg"
+      },
+      {
+        "name": "Recycled Yarn Fabrics",
+        "description": "Lower-impact fabric options developed with recycled yarn inputs for customers seeking more sustainable material choices, even at early-stage volume levels.",
         "image": "assets/img/products/fr.jpg"
       },
       {
-        "name": "Coated Textiles",
-        "description": "Specialty coated textiles offering water resistance, UV protection, and enhanced durability for demanding automotive and industrial applications.",
+        "name": "FR Fabrics in Development",
+        "description": "Ongoing R&D and customer trials for high-end flame-retardant fabrics aimed at safety clothing, safety footwear, and performance-driven industrial uses.",
         "image": "assets/img/products/coated.jpg"
       }
     ],
     "contentBlock": {
-      "title": "Engineering Fabrics for the Future",
-      "description": "Our state-of-the-art manufacturing facility houses Karl Mayer and LIBA warp knitting machines, producing over 5 million meters of precision-engineered fabric per month. Every roll undergoes rigorous quality testing to exceed OEM specifications.",
+      "title": "Knitting capability backed by testing and customization",
+      "description": "Nirbhay's knitting operations are supported by in-house testing facilities, responsive product development, and disciplined production control - helping customers move from requirement to supply with more confidence.",
       "image": "assets/img/factory/nk-factory.jpg"
     }
   },
   "nc": {
     "banner": {
       "title": "NirChem",
-      "subtitle": "Specialty Chemical Coatings & Leather Solutions",
-      "description": "Advanced chemical formulations and coating technologies that transform raw materials into high-performance automotive interior surfaces.",
+      "subtitle": "Coating, laminating, and chemical solutions for advanced material systems",
+      "description": "NirChem extends Nirbhay's offering through PU coating, laminating, vinyl coated textile support, specialty finishes, and the added strength of Interplast Kimya representation.",
       "backgroundImage": "assets/img/hero/nc-bg.jpg"
     },
+    "divisionLogo": "assets/img/logo/image2.png",
+    "divisionLogoAlt": "NirChem - a division of Nirbhay Knitting Industries",
+    "divisionStatement": "A division focused on value-added coating, laminating, and chemistry-backed material development.",
     "products": [
       {
-        "name": "Synthetic Leather",
-        "description": "High-quality PU and PVC synthetic leather solutions that replicate the look and feel of genuine leather with superior consistency, easy maintenance, and cruelty-free sustainability.",
+        "name": "Vinyl Coated Textiles",
+        "description": "Durable coated textile systems developed for industrial applications where surface protection, consistency, and reliable substrate performance are essential.",
         "image": "assets/img/products/synthetic-leather.jpg"
       },
       {
-        "name": "Genuine Leather",
-        "description": "Premium genuine leather processing and finishing for luxury automotive applications — chrome-tanned, semi-aniline, and full-grain options with exquisite hand-feel and durability.",
-        "image": "assets/img/products/genuine-leather.jpg"
-      },
-      {
-        "name": "Direct Coating",
-        "description": "Advanced direct coating technologies applied to woven and knitted substrates, providing waterproofing, UV resistance, and anti-microbial properties for automotive and marine use.",
+        "name": "PU Coating and Laminating",
+        "description": "New laminating and PU coating capabilities open the door to higher-value coated constructions, contract manufacturing, and customer-specific surface solutions.",
         "image": "assets/img/products/direct-coating.jpg"
       },
       {
-        "name": "Specialty Finishes",
-        "description": "Custom adhesives, surface treatments, embossing, and specialty finishes tailored to specific OEM requirements — including hydrophobic, anti-static, and flame-retardant coatings.",
+        "name": "Contract Manufacturing / Job Work",
+        "description": "NirChem can support partners as a processing specialist, combining textile understanding with coating know-how for outsourced development and production needs.",
         "image": "assets/img/products/others.jpg"
+      },
+      {
+        "name": "Interplast Resins and Lacquers",
+        "description": "Through the Interplast Kimya relationship, customers gain access to PU resins and lacquers that complement Nirbhay's coating and textile development capabilities.",
+        "image": "assets/img/products/genuine-leather.jpg"
+      },
+      {
+        "name": "Breathable Coating Systems in Development",
+        "description": "Current innovation work includes water-based breathable coatings and coated 3D constructions designed to move the portfolio into more advanced technical territory.",
+        "image": "assets/img/products/direct-coating.jpg"
       }
     ],
     "contentBlock": {
-      "title": "Chemistry Meets Craftsmanship",
-      "description": "NirChem's dedicated R&D lab and coating lines leverage decades of formulation expertise. From solvent-based to water-based systems, we deliver coatings and treatments that enhance the durability, aesthetics, and performance of every interior surface.",
+      "title": "Where chemistry and textile know-how come together",
+      "description": "NirChem connects coating capability, laminating, and chemical support to Nirbhay's textile base. The result is a more integrated platform for customers seeking performance-driven coated materials and future-ready developments.",
       "image": "assets/img/factory/nc-factory.jpg"
     }
   },
   "sustainability": {
     "banner": {
       "title": "Sustainability",
-      "subtitle": "Committed to a Greener Future",
-      "description": "We believe in manufacturing that respects the planet. Our sustainability initiatives span across materials, processes, and community impact.",
+      "subtitle": "Responsible process choices built into manufacturing",
+      "description": "Nirbhay's sustainability direction is grounded in water-free finishing, zero discharge operations, efficient utilities, and lower-impact product development.",
       "backgroundImage": "assets/img/hero/sustainability-bg.jpg"
     },
     "intro": {
-      "title": "Our Commitment to the Environment",
+      "title": "How we approach responsible manufacturing",
       "paragraphs": [
-        "Sustainability isn't just a goal — it's woven into every thread of our manufacturing process. From sourcing eco-friendly raw materials to reducing waste in our production lines, we are committed to minimizing our environmental footprint while delivering world-class automotive textiles.",
-        "Our facilities are designed with energy efficiency in mind. We have invested in solar panels, LED lighting, and heat recovery systems. Our water treatment plant recycles 95% of process water, and we continuously invest in cleaner technologies and renewable energy sources to power our operations."
+        "Nirbhay's sustainability profile comes from practical operating choices: all finishing processes are water free, the facility follows a zero discharge model, and core energy inputs are limited to electricity and gas. These decisions reduce process complexity while supporting cleaner production discipline.",
+        "The product roadmap also reflects this direction. Recycled yarn fabric options are already part of the portfolio, while new development work focuses on lower-footprint coating systems, coated 3D materials, and water-based breathable solutions for the future."
       ]
     },
     "pillars": [
       {
-        "title": "Eco-Friendly Materials",
-        "description": "We prioritize recycled PET fibers, organic cotton, and sustainably sourced raw materials in our textile manufacturing, reducing dependence on virgin polymers by 40%.",
+        "title": "Zero Discharge Facility",
+        "description": "Manufacturing is positioned around zero discharge operations, giving customers a stronger sustainability story and better alignment with international expectations.",
         "icon": "leaf"
       },
       {
-        "title": "Energy Efficiency",
-        "description": "Our manufacturing processes are optimized for minimal energy consumption. 200kW rooftop solar installation and heat recovery systems reduce grid dependency by 30%.",
-        "icon": "bolt"
-      },
-      {
-        "title": "Waste Reduction",
-        "description": "Advanced recycling programs and lean manufacturing techniques help us minimize waste. Fabric offcuts are repurposed into insulation materials and industrial padding.",
+        "title": "Water-Free Finishing",
+        "description": "All finishing processes are water free, reducing water dependency and helping simplify environmental process management.",
         "icon": "recycle"
       },
       {
-        "title": "Community Impact",
-        "description": "We actively support local communities through skill development programs, employing 500+ workers from surrounding villages, and annual tree plantation drives.",
+        "title": "Efficient Utility Profile",
+        "description": "The facility runs on electricity and gas only, supporting a more controlled and efficient production setup.",
+        "icon": "bolt"
+      },
+      {
+        "title": "Lower-Impact Product Development",
+        "description": "Recycled yarn fabrics, future water-based coatings, and cleaner finishing choices are part of a broader move toward more responsible material innovation.",
         "icon": "people"
       }
     ],
     "stats": [
-      { "value": "40%", "label": "Recycled Materials Used" },
-      { "value": "30%", "label": "Energy Reduction Achieved" },
-      { "value": "Zero", "label": "Landfill Waste Target" },
-      { "value": "1000+", "label": "Trees Planted Annually" }
+      { "value": "Zero", "label": "Discharge facility positioning" },
+      { "value": "Water-free", "label": "Finishing processes" },
+      { "value": "2", "label": "Primary energy inputs: electricity and gas" },
+      { "value": "Recycled", "label": "Yarn-based options in portfolio" }
     ]
   },
   "team": {
     "hero": {
-      "title": "Our Leadership",
-      "subtitle": "The People Behind the Precision",
-      "description": "A dedicated team of industry veterans and innovators driving excellence in every thread and formulation. Together, they bring over 50 years of combined experience in textile manufacturing and chemical engineering.",
+      "title": "Our Team",
+      "subtitle": "People across leadership, development, and operations",
+      "description": "Nirbhay's strength comes from coordinated work across management, technical development, manufacturing, quality control, and customer-facing support - all focused on delivering dependable solutions for industrial buyers.",
       "factoryImage": "assets/img/factory/team-factory.jpg"
     },
     "leadership": [
       {
-        "name": "Rajeev Kumar",
-        "designation": "MD, Chairman",
+        "name": "Leadership and Strategy",
+        "designation": "Management Team",
         "photo": "assets/img/team/rajeev-kumar.jpg",
-        "bio": "With over 30 years of industry experience, Rajeev founded Nirbhai Group in 1995 and has been the visionary force behind its growth from a small workshop to a multi-division manufacturing powerhouse. Under his leadership, the group has secured partnerships with major automotive OEMs across India and Europe."
+        "bio": "The management team guides Nirbhay's transition from a regional textile manufacturer to an integrated materials and coatings partner, with emphasis on innovation, customization, and long-term market development."
       },
       {
-        "name": "Prathit Kamdar",
-        "designation": "CEO",
+        "name": "Technical and Commercial Team",
+        "designation": "Operations, Development, and Customer Support",
         "photo": "assets/img/team/prathit-kamdar.jpg",
-        "bio": "Prathit joined Nirbhai Group in 2015, bringing an MBA from IIM Ahmedabad and 10 years of experience at Reliance Industries. He drives strategic growth, operational efficiency, and the company's ambitious sustainability roadmap — including the target of 100% recycled material usage by 2030."
+        "bio": "From substrate development and coating trials to production follow-through and customer coordination, the broader team helps translate industrial requirements into practical, tested manufacturing outcomes."
       }
     ]
   },
   "contact": {
     "title": "Contact Us",
-    "subtitle": "Let's Build Something Together",
-    "description": "Have a question about our textile solutions or want to discuss a partnership? Reach out to us and our team will get back to you within 24 hours.",
-    "address": "Industrial Area, Phase II, Sector 5, Ludhiana, Punjab, India — 141003",
-    "email": "info@nirbhaigroup.com",
-    "phone": "+91 98765 43210",
+    "subtitle": "Let us discuss your fabric, coating, or development requirement",
+    "description": "Reach out for knitted fabrics, coated textiles, PU coating, laminating support, sampling discussions, or broader partnership opportunities. We would be glad to understand your requirement and guide the next step.",
+    "address": "81, Noorpura, P.O. Baska, Tal. Halol - 389 350, Dist. Panchmahals, Gujarat, India.",
+    "email": "info@nirbhayknits.com",
+    "phone": "+91 93743 62436",
     "mapEmbedUrl": "",
     "formFields": {
       "name": "Full Name",
@@ -450,21 +458,21 @@
     }
   },
   "footer": {
-    "tagline": "Crafting precision textiles and chemical solutions for the automotive industry since 1995.",
+    "tagline": "Knitted fabrics, coated textiles, laminating, and specialty material development for industrial applications.",
     "quickLinks": [
       { "label": "Home", "href": "index.html" },
       { "label": "About Us", "href": "about.html" },
-      { "label": "Nirbhai Knitting", "href": "nk.html" },
+      { "label": "Knitting", "href": "nk.html" },
       { "label": "NirChem", "href": "nc.html" },
       { "label": "Sustainability", "href": "sustainability.html" },
       { "label": "Our Team", "href": "team.html" },
       { "label": "Contact", "href": "contact.html" }
     ],
     "contactInfo": {
-      "address": "Industrial Area, Phase II, Sector 5, Ludhiana, Punjab, India — 141003",
-      "email": "info@nirbhaigroup.com",
-      "phone": "+91 98765 43210"
+      "address": "81, Noorpura, P.O. Baska, Tal. Halol - 389 350, Dist. Panchmahals, Gujarat, India.",
+      "email": "info@nirbhayknits.com",
+      "phone": "+91 93743 62436"
     },
-    "copyright": "© 2026 Nirbhai Group. All rights reserved."
+    "copyright": "© 2026 Nirbhay Knitting Industries Pvt. Ltd. All rights reserved."
   }
 }
