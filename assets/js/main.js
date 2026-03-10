@@ -879,38 +879,51 @@ function renderTeamPage(data) {
 function renderContactPage(data) {
   const contact = data.contact;
   return `
-    <section class="section" style="padding-top: calc(var(--header-height) + 3rem);">
+    ${typeof renderPageBanner === 'function' ? renderPageBanner({ title: contact.title, subtitle: contact.subtitle, backgroundImage: 'assets/img/factory/nc-factory.jpg' }) : ''}
+
+    <section class="contact-section section">
       <div class="container">
-        <div class="section-header" data-aos="fade-up">
-          <h2 class="section-title">${contact.title}</h2>
-          <p class="section-subtitle">${contact.subtitle}</p>
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          <div data-aos="fade-up" data-aos-delay="100">
-            <p class="text-base mb-8" style="color: var(--text-secondary);">${contact.description}</p>
-            <div class="space-y-4">
-              <div class="flex items-start gap-3">
-                <svg class="w-5 h-5 mt-0.5 flex-shrink-0" style="color: var(--text-tertiary);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                </svg>
-                <span style="color: var(--text-secondary); font-size: 0.9375rem;">${contact.address}</span>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3 class="contact-info-title">Get In Touch</h3>
+            <p class="contact-info-desc">${contact.description}</p>
+
+            <div class="contact-cards">
+              <div class="contact-card">
+                <div class="contact-card-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <h4 class="contact-card-label">Office Address</h4>
+                  <p class="contact-card-value">${contact.address}</p>
+                </div>
               </div>
-              <div class="flex items-center gap-3">
-                <svg class="w-5 h-5 flex-shrink-0" style="color: var(--text-tertiary);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                </svg>
-                <a href="mailto:${contact.email}" class="hover:underline" style="color: var(--text-secondary); font-size: 0.9375rem;">${contact.email}</a>
+
+              <div class="contact-card">
+                <div class="contact-card-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <div>
+                  <h4 class="contact-card-label">Email</h4>
+                  <a href="mailto:${contact.email}" class="contact-card-link">${contact.email}</a>
+                </div>
               </div>
-              <div class="flex items-center gap-3">
-                <svg class="w-5 h-5 flex-shrink-0" style="color: var(--text-tertiary);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
-                </svg>
-                <a href="tel:${contact.phone.replace(/\s/g, '')}" class="hover:underline" style="color: var(--text-secondary); font-size: 0.9375rem;">${contact.phone}</a>
+
+              <div class="contact-card">
+                <div class="contact-card-icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div>
+                  <h4 class="contact-card-label">Phone</h4>
+                  <a href="tel:${contact.phone.replace(/\s/g, '')}" class="contact-card-link">${contact.phone}</a>
+                </div>
               </div>
             </div>
           </div>
-          <div data-aos="fade-up" data-aos-delay="200">
+
+          <div class="contact-form-panel">
+            <h3 class="contact-form-heading">Send Us a Message</h3>
+            <p class="contact-form-subtext">Fill the form below and we will get back to you shortly.</p>
             ${typeof renderContactForm === 'function' ? renderContactForm(contact.formFields) : ''}
           </div>
         </div>
