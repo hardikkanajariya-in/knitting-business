@@ -262,31 +262,36 @@
           "year": "Base",
           "title": "Knitted fabrics and coated textile support",
           "description": "Core manufacturing centered on knitted fabrics, vinyl coating support, and industrial application know-how.",
-          "icon": "assets/img/journey/milestone-founded.svg"
+          "icon": "assets/img/journey/milestone-founded.svg",
+          "lottie": "assets/lottie/factory.lottie"
         },
         {
           "year": "Control",
           "title": "In-house testing capability",
           "description": "Quality control and customer-specific validation became central to the company's operating model.",
-          "icon": "assets/img/journey/milestone-innovation.svg"
+          "icon": "assets/img/journey/milestone-innovation.svg",
+          "lottie": "assets/lottie/gears.lottie"
         },
         {
           "year": "2022",
           "title": "Interplast Kimya represented",
           "description": "PU resins and lacquers strengthened vertical integration and cross-selling potential.",
-          "icon": "assets/img/journey/milestone-materials.svg"
+          "icon": "assets/img/journey/milestone-materials.svg",
+          "lottie": "assets/lottie/globe.lottie"
         },
         {
           "year": "2023",
           "title": "New fabric categories launched",
           "description": "3D spacer fabrics, raised fabrics, and recycled-yarn developments broadened the offer.",
-          "icon": "assets/img/journey/milestone-global.svg"
+          "icon": "assets/img/journey/milestone-global.svg",
+          "lottie": "assets/lottie/fiber-weave.lottie"
         },
         {
           "year": "2024+",
           "title": "Coating and innovation pipeline expands",
           "description": "Laminating, PU coating, coated 3D materials, FR trials, and breathable coatings define the current direction.",
-          "icon": "assets/img/journey/milestone-future.svg"
+          "icon": "assets/img/journey/milestone-future.svg",
+          "lottie": "assets/lottie/automation.lottie"
         }
       ]
     },
@@ -302,6 +307,43 @@
       { "value": "35,000+", "label": "sq. ft. built-up space" },
       { "value": "Zero", "label": "Discharge certified facility" },
       { "value": "2022", "label": "Interplast Kimya partnership since" }
+    ],
+    "strengths": [
+      {
+        "title": "Full In-House Production & Testing",
+        "description": "Complete quality control, flexibility, and customer-specific validation under one roof.",
+        "icon": "factory"
+      },
+      {
+        "title": "125 MT Monthly Capacity",
+        "description": "Reliable production scale with economies that support both development and volume supply.",
+        "icon": "gauge"
+      },
+      {
+        "title": "Broad Product Portfolio",
+        "description": "Knits, coated fabrics, 3D spacer, raised, FR developments — covering diverse industrial needs.",
+        "icon": "layers"
+      },
+      {
+        "title": "Zero Discharge & Waterless Finishing",
+        "description": "A strong sustainability profile aligned with European and North American market expectations.",
+        "icon": "leaf"
+      },
+      {
+        "title": "Interplast Kimya Partnership",
+        "description": "Access to PU resins and lacquers for vertical integration and higher-value coated solutions.",
+        "icon": "handshake"
+      },
+      {
+        "title": "Innovation in Coated 3D Fabrics",
+        "description": "Early market validation with coated 3D constructions and breathable coating R&D.",
+        "icon": "lightbulb"
+      },
+      {
+        "title": "Fast Delivery & Customization",
+        "description": "Responsive manufacturing and custom development as key competitive advantages.",
+        "icon": "bolt"
+      }
     ]
   },
   "nk": {

@@ -1,385 +1,620 @@
-.journey-road {
+/* ============================================
+   ABOUT-JOURNEY.CSS — Winding Road Scroll Timeline
+   Road SVG + Lottie milestone cards + Strengths + Story
+   ============================================ */
+
+/* ── SECTION ─────────────────────────────────── */
+.jrny-tl-section {
   position: relative;
   overflow: hidden;
-  padding: calc(var(--header-height) + 2.4rem) 0 2.5rem;
   background:
     radial-gradient(circle at 12% 22%, rgba(30, 64, 175, 0.035), transparent 28%),
-    radial-gradient(circle at 82% 14%, rgba(220, 38, 38, 0.04), transparent 24%),
-    linear-gradient(180deg, #fafafa 0%, #f5f5f5 100%);
+    radial-gradient(circle at 82% 14%, rgba(220, 38, 38, 0.03), transparent 24%),
+    linear-gradient(180deg, #fafafa 0%, #f2f2f2 100%);
 }
 
-.dark .journey-road {
+.dark .jrny-tl-section {
   background:
-    radial-gradient(circle at 12% 22%, rgba(96, 165, 250, 0.07), transparent 28%),
-    radial-gradient(circle at 82% 14%, rgba(248, 113, 113, 0.07), transparent 24%),
-    linear-gradient(180deg, #121212 0%, #181818 100%);
+    radial-gradient(circle at 12% 22%, rgba(96, 165, 250, 0.06), transparent 28%),
+    radial-gradient(circle at 82% 14%, rgba(248, 113, 113, 0.05), transparent 24%),
+    linear-gradient(180deg, #0f0f0f 0%, #151515 100%);
 }
 
-.journey-road-shell {
+/* 100vh pinned viewport */
+.jrny-road-viewport {
   position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.journey-road-intro {
-  position: relative;
-  z-index: 3;
-  max-width: 25.5rem;
+/* Background orbs */
+.jrny-tl-bg-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
 }
 
-.journey-road-heading {
-  max-width: 44rem;
-  margin-bottom: 1.75rem;
+.jrny-tl-bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
 }
 
-.journey-road-eyebrow {
-  font-size: 0.9rem;
-  font-weight: 500;
+.jrny-tl-bg-orb--1 {
+  width: 340px; height: 340px;
+  top: 10%; left: -5%;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.14), transparent 70%);
+}
+
+.jrny-tl-bg-orb--2 {
+  width: 280px; height: 280px;
+  top: 45%; right: -3%;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.10), transparent 70%);
+}
+
+.jrny-tl-bg-orb--3 {
+  width: 220px; height: 220px;
+  top: 75%; left: 15%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08), transparent 70%);
+}
+
+.dark .jrny-tl-bg-orb--1 { background: radial-gradient(circle, rgba(96, 165, 250, 0.08), transparent 70%); }
+.dark .jrny-tl-bg-orb--2 { background: radial-gradient(circle, rgba(248, 113, 113, 0.06), transparent 70%); }
+.dark .jrny-tl-bg-orb--3 { background: radial-gradient(circle, rgba(167, 139, 250, 0.06), transparent 70%); }
+
+/* Header */
+.jrny-tl-header {
+  position: absolute;
+  top: calc(var(--header-height, 4rem) + 1.5rem);
+  left: clamp(1rem, 4vw, 3rem);
+  z-index: 10;
+  max-width: 30rem;
+}
+
+.jrny-tl-eyebrow {
+  font-size: 0.85rem;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.16em;
-  color: var(--text-secondary);
+  letter-spacing: 0.18em;
+  color: var(--accent-primary, #3b82f6);
+  margin-bottom: 0.5rem;
 }
 
-.journey-road-title {
-  margin-top: 0.25rem;
-  font-size: clamp(2.2rem, 4.6vw, 4.1rem);
+.jrny-tl-heading {
+  font-size: clamp(2.2rem, 4.5vw, 4rem);
   line-height: 0.95;
-  font-weight: 300;
-  letter-spacing: -0.05em;
-  text-transform: uppercase;
-  color: var(--text-primary);
-  max-width: 44rem;
-  text-wrap: balance;
-}
-
-.journey-road-grid {
-  display: grid;
-  grid-template-columns: minmax(300px, 0.82fr) minmax(480px, 1.18fr);
-  align-items: start;
-  gap: clamp(2rem, 3vw, 3.5rem);
-}
-
-.journey-road-copy {
-  position: relative;
-  max-width: 23rem;
-}
-
-.journey-road-copy-title {
-  font-size: clamp(1.95rem, 3.1vw, 3.15rem);
-  line-height: 0.96;
   font-weight: 300;
   letter-spacing: -0.04em;
   text-transform: uppercase;
   color: var(--text-primary);
-  max-width: 18rem;
+  text-wrap: balance;
 }
 
-.journey-road-copy-body {
-  margin-top: 1.35rem;
+.jrny-tl-subheading {
+  margin-top: 0.6rem;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  line-height: 1.1;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  opacity: 0.7;
 }
 
-.journey-road-copy-body p {
-  font-size: clamp(0.98rem, 1.08vw, 1.04rem);
-  line-height: 1.72;
-  color: var(--text-secondary);
-}
-
-.journey-road-copy-body p + p {
-  margin-top: 1.05rem;
-}
-
-.journey-road-visual {
-  position: relative;
-  min-height: 760px;
-}
-
-.journey-road-stage {
-  position: relative;
-  margin-left: auto;
-  width: min(100%, 790px);
-  aspect-ratio: 0.92;
-}
-
-.journey-road-stage::before {
-  content: "";
+/* ── ROAD TRACK ──────────────────────────────── */
+.jrny-road-track {
   position: absolute;
-  inset: 2% 8% 8% 12%;
-  border-radius: 50%;
-  background: radial-gradient(circle at 46% 42%, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.58) 42%, rgba(255, 255, 255, 0) 72%);
-  filter: blur(10px);
-}
-
-.dark .journey-road-stage::before {
-  background: radial-gradient(circle at 46% 42%, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02) 46%, rgba(255, 255, 255, 0) 74%);
-}
-
-.journey-road-artwork,
-.journey-road-milestones,
-.journey-road-vehicles,
-.journey-road-decor,
-.journey-road-lineart {
-  position: absolute;
-}
-
-.journey-road-artwork,
-.journey-road-milestones,
-.journey-road-vehicles {
   inset: 0;
   z-index: 2;
 }
 
-.journey-road-lineart {
+/* Road SVG overlay */
+.jrny-road-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
   pointer-events: none;
-  opacity: 0.22;
-  z-index: 1;
 }
 
-.journey-road-lineart--left {
-  left: -5rem;
-  bottom: 1rem;
-  width: min(32%, 240px);
+/* Road path layers — all use non-scaling-stroke for consistent width */
+.jrny-road-shadow,
+.jrny-road-edge,
+.jrny-road-surface,
+.jrny-road-dashes,
+.jrny-road-glow {
+  fill: none;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
 }
 
-.journey-road-lineart--right {
-  right: -3rem;
-  top: 3rem;
-  width: min(39%, 300px);
+.jrny-road-shadow {
+  stroke: rgba(0, 0, 0, 0.08);
+  stroke-width: 58;
 }
 
-.journey-road-decor {
-  pointer-events: none;
+.jrny-road-edge {
+  stroke: rgba(255, 255, 255, 0.5);
+  stroke-width: 50;
+}
+
+.jrny-road-surface {
+  stroke: #374151;
+  stroke-width: 44;
+}
+
+.dark .jrny-road-surface {
+  stroke: #4b5563;
+}
+
+.jrny-road-dashes {
+  stroke: rgba(251, 191, 36, 0.5);
+  stroke-width: 2;
+  stroke-dasharray: 14 10;
+}
+
+.jrny-road-glow {
+  stroke: var(--accent-primary, #3b82f6);
+  stroke-width: 6;
+  opacity: 0.9;
+  filter: url(#roadGlow);
+}
+
+/* Traveler beacon */
+.jrny-road-traveler {
+  position: absolute;
   z-index: 4;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-.journey-road-decor--top {
-  top: -1.6rem;
-  right: 0.5rem;
-  width: min(46%, 380px);
+.jrny-road-traveler-beacon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent-primary, #3b82f6);
+  box-shadow:
+    0 0 12px 4px rgba(59, 130, 246, 0.5),
+    0 0 30px 8px rgba(59, 130, 246, 0.2);
+  animation: travelerPulse 1.5s ease-in-out infinite;
 }
 
-.journey-road-decor--bottom {
-  left: -2.5rem;
-  bottom: -0.75rem;
-  width: min(28%, 210px);
+@keyframes travelerPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.7; }
 }
 
-.journey-road-svg {
+/* ── CARDS OVERLAY LAYER ─────────────────────── */
+.jrny-road-cards-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.jrny-road-node {
+  position: absolute;
+  z-index: 3;
+  width: 38%;
+  max-width: 340px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: auto;
+}
+
+.jrny-road-node--left {
+  left: clamp(1rem, 3vw, 3rem);
+}
+
+.jrny-road-node--right {
+  right: clamp(1rem, 3vw, 3rem);
+}
+
+/* Road marker dot — positioned on road track */
+.jrny-road-marker {
+  position: absolute;
+  z-index: 5;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+}
+
+.jrny-road-marker-dot {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--accent-primary, #3b82f6);
+  border: 3px solid #fff;
+  box-shadow:
+    0 0 0 3px var(--accent-primary, #3b82f6),
+    0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dark .jrny-road-marker-dot {
+  border-color: #1a1a1a;
+}
+
+.jrny-road-marker-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-primary, #3b82f6);
+  opacity: 0;
+  animation: markerRing 2.5s ease-out infinite;
+}
+
+@keyframes markerRing {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+/* ── ROAD CARD ───────────────────────────────── */
+.jrny-road-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  max-width: 100%;
+}
+
+.jrny-road-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.dark .jrny-road-card {
+  background: rgba(30, 30, 30, 0.85);
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.dark .jrny-road-card:hover {
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Lottie wrap */
+.jrny-road-lottie-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background:
+    linear-gradient(135deg, rgba(59, 130, 246, 0.06), rgba(139, 92, 246, 0.04));
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.dark .jrny-road-lottie-wrap {
+  background:
+    linear-gradient(135deg, rgba(96, 165, 250, 0.08), rgba(167, 139, 250, 0.05));
+  border-bottom-color: rgba(255, 255, 255, 0.04);
+}
+
+.jrny-road-lottie {
+  width: 100px;
+  height: 100px;
+}
+
+/* Card text */
+.jrny-road-card-body {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.jrny-road-year {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-primary, #3b82f6);
+  background: rgba(59, 130, 246, 0.08);
+  padding: 0.2rem 0.65rem;
+  border-radius: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.dark .jrny-road-year {
+  background: rgba(96, 165, 250, 0.12);
+}
+
+.jrny-road-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.jrny-road-card-desc {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+/* ── STRENGTHS SECTION ───────────────────────── */
+.jrny-strengths-section {
+  position: relative;
+  padding: 5rem 0;
+  background: linear-gradient(180deg, #f2f2f2 0%, #fafafa 100%);
+}
+
+.dark .jrny-strengths-section {
+  background: linear-gradient(180deg, #151515 0%, #0f0f0f 100%);
+}
+
+.jrny-strengths-header {
+  text-align: center;
+  max-width: 38rem;
+  margin: 0 auto 3.5rem;
+}
+
+.jrny-strengths-heading {
+  font-size: clamp(1.8rem, 3.5vw, 3rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-top: 0.5rem;
+}
+
+.jrny-strengths-sub {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.jrny-strengths-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+}
+
+.jrny-strength-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+  padding: 2rem 1.75rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.jrny-strength-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+}
+
+.dark .jrny-strength-card {
+  background: rgba(30, 30, 30, 0.6);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.dark .jrny-strength-card:hover {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+}
+
+.jrny-strength-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--accent-primary, #3b82f6);
+  margin-bottom: 1rem;
+}
+
+.jrny-strength-icon svg {
   width: 100%;
   height: 100%;
 }
 
-.journey-road-surface {
-  filter: drop-shadow(0 20px 30px rgba(15, 23, 42, 0.18));
-}
-
-.journey-road-outline {
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.journey-road-lane {
-  stroke-linecap: round;
-  stroke-dasharray: 18 18;
-}
-
-.journey-road-draw {
-  will-change: stroke-dashoffset;
-}
-
-.journey-road-milestone {
-  position: absolute;
-  top: var(--card-top);
-  left: var(--card-left);
-  width: min(35%, 224px);
-  z-index: 5;
-}
-
-.journey-road-milestone--right {
-  text-align: left;
-}
-
-.journey-road-milestone-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.75rem;
-}
-
-.journey-road-milestone--left .journey-road-milestone-card {
-  justify-content: flex-end;
-  text-align: right;
-}
-
-.journey-road-milestone-icon {
-  width: 2.8rem;
-  height: 2.8rem;
-  flex: 0 0 2.8rem;
-}
-
-.journey-road-milestone-copy {
-  max-width: 10.4rem;
-}
-
-.journey-road-year {
-  font-size: clamp(2.05rem, 2.45vw, 2.7rem);
-  line-height: 0.95;
-  font-weight: 900;
-  letter-spacing: -0.05em;
+.jrny-strength-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
+  margin-bottom: 0.4rem;
 }
 
-.journey-road-milestone-title {
-  margin-top: 0.2rem;
-  font-size: 0.98rem;
-  line-height: 1.05;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
-}
-
-.journey-road-milestone-desc {
-  margin-top: 0.3rem;
-  font-size: 0.82rem;
-  line-height: 1.34;
+.jrny-strength-desc {
+  font-size: 0.88rem;
+  line-height: 1.55;
   color: var(--text-secondary);
 }
 
-.journey-road-car {
-  position: absolute;
-  width: 4rem;
+/* ── STORY SECTION ───────────────────────────── */
+.jrny-story-section {
+  padding: 5rem 0;
+}
+
+.jrny-story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.jrny-story-image-wrap {
+  position: relative;
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+.jrny-story-image {
+  width: 100%;
   height: auto;
-  z-index: 6;
-  filter: drop-shadow(0 12px 12px rgba(15, 23, 42, 0.2));
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4/3;
 }
 
-.journey-road-car--1 {
-  top: 24.25%;
-  left: 54%;
-  transform: rotate(10deg);
+.jrny-story-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(0, 0, 0, 0.2));
+  pointer-events: none;
 }
 
-.journey-road-car--2 {
-  top: 54.5%;
-  left: 50.5%;
-  width: 3.6rem;
-  transform: rotate(-24deg);
+.jrny-story-title {
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
 }
 
-.journey-road-car--3 {
-  top: 84.5%;
-  left: 58%;
-  width: 4.75rem;
-  transform: rotate(22deg);
+.jrny-story-copy p {
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  line-height: 1.75;
+  color: var(--text-secondary);
 }
 
-@media (max-width: 920px) {
-  .journey-road-grid {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
+.jrny-story-copy p + p {
+  margin-top: 1rem;
+}
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media (max-width: 768px) {
+  .jrny-road-viewport {
+    height: auto;
+    min-height: 100vh;
   }
 
-  .journey-road-copy,
-  .journey-road-heading {
-    max-width: 100%;
+  .jrny-road-track {
+    position: relative;
+    padding: calc(var(--header-height, 4rem) + 6rem) 0 3rem;
   }
 
-  .journey-road-visual {
-    min-height: 720px;
-  }
-}
-
-@media (max-width: 760px) {
-  .journey-road {
-    padding-top: calc(var(--header-height) + 1.75rem);
+  .jrny-tl-header {
+    position: absolute;
+    top: calc(var(--header-height, 4rem) + 1rem);
+    left: 1rem;
+    right: 1rem;
   }
 
-  .journey-road-heading {
+  /* Road: hide SVG, show simple vertical line on mobile */
+  .jrny-road-svg,
+  .jrny-road-traveler {
+    display: none;
+  }
+
+  .jrny-road-track::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: calc(var(--header-height, 4rem) + 6rem);
+    bottom: 3rem;
+    width: 3px;
+    background: linear-gradient(180deg,
+      transparent 0%,
+      var(--accent-primary, #3b82f6) 5%,
+      var(--accent-primary, #3b82f6) 95%,
+      transparent 100%);
+    border-radius: 2px;
+  }
+
+  .jrny-road-cards-layer {
+    position: relative;
+    padding: calc(var(--header-height, 4rem) + 6rem) 1rem 3rem;
+  }
+
+  .jrny-road-node {
+    position: relative;
+    width: auto;
+    max-width: none;
+    transform: none;
+    top: auto;
+    left: auto !important;
+    right: auto !important;
+    margin-left: 2.5rem;
     margin-bottom: 1.5rem;
   }
 
-  .journey-road-visual {
-    min-height: 620px;
+  .jrny-road-node:last-child {
+    margin-bottom: 0;
   }
 
-  .journey-road-stage::before {
-    inset: 4% 2% 7% 4%;
+  .jrny-road-marker {
+    position: absolute;
+    width: 16px;
+    height: 16px;
   }
 
-  .journey-road-decor--top {
-    right: -0.5rem;
-    top: -0.5rem;
-    width: min(42%, 230px);
+  .jrny-road-lottie {
+    width: 72px;
+    height: 72px;
   }
 
-  .journey-road-decor--bottom {
-    left: -1.75rem;
-    width: min(32%, 150px);
-  }
-
-  .journey-road-lineart {
-    opacity: 0.18;
-  }
-
-  .journey-road-milestone {
-    width: min(42%, 175px);
-  }
-
-  .journey-road-milestone-icon {
-    width: 2.35rem;
-    height: 2.35rem;
-    flex-basis: 2.35rem;
-  }
-
-  .journey-road-milestone-copy {
-    max-width: 8rem;
-  }
-
-  .journey-road-year {
-    font-size: 1.5rem;
-  }
-
-  .journey-road-milestone-title {
-    font-size: 0.82rem;
-  }
-
-  .journey-road-milestone-desc {
-    font-size: 0.72rem;
-  }
-
-  .journey-road-car {
-    width: 3rem;
+  /* Story */
+  .jrny-story-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
 
-@media (max-width: 560px) {
-  .journey-road-title,
-  .journey-road-copy-title {
-    max-width: 14rem;
+@media (max-width: 480px) {
+  .jrny-tl-heading {
+    font-size: 2rem;
   }
 
-  .journey-road-visual {
-    min-height: 560px;
+  .jrny-road-node {
+    margin-left: 2rem;
   }
 
-  .journey-road-milestone {
-    width: min(46%, 150px);
+  .jrny-road-track::before {
+    left: 0.6rem;
   }
 
-  .journey-road-milestone-copy {
-    max-width: 6.75rem;
+  .jrny-road-marker {
+    left: -1.4rem !important;
+    width: 14px;
+    height: 14px;
   }
 
-  .journey-road-lineart--right {
-    width: 26%;
+  .jrny-road-card {
+    border-radius: 1rem;
   }
 
-  .journey-road-lineart--left {
-    width: 30%;
+  .jrny-road-lottie {
+    width: 60px;
+    height: 60px;
   }
 
-  .journey-road-decor--top {
-    width: min(40%, 180px);
+  .jrny-road-lottie-wrap {
+    padding: 1rem;
   }
 
-  .journey-road-decor--bottom {
-    width: min(28%, 110px);
+  .jrny-road-card-body {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+
+  .jrny-strengths-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .jrny-strength-card {
+    padding: 1.5rem 1.25rem;
   }
 }

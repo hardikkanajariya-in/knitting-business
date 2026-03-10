@@ -728,6 +728,8 @@ function renderAboutPage(data) {
   const about = data.about;
   return `
     ${typeof renderAboutJourney === 'function' ? renderAboutJourney(about.journeySection) : ''}
+    ${typeof renderAboutStory === 'function' && about.story ? renderAboutStory(about.story) : ''}
+    ${typeof renderAboutStrengths === 'function' && about.strengths ? renderAboutStrengths(about.strengths) : ''}
     <section class="section" style="background: var(--bg-secondary); padding-top: 2rem;">
       <div class="container">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
