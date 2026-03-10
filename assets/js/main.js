@@ -861,14 +861,24 @@ function renderSustainabilityPage(data) {
 function renderTeamPage(data) {
   const team = data.team;
   return `
-    ${typeof renderTeamHero === 'function' ? renderTeamHero(team.hero) : ''}
-    <section class="section">
+    ${typeof renderPageBanner === 'function' ? renderPageBanner({ title: team.hero.title, subtitle: team.hero.subtitle, backgroundImage: team.hero.factoryImage }) : ''}
+
+    <section class="team-intro section">
+      <div class="container">
+        <div class="team-intro-inner" data-aos="fade-up">
+          <p class="team-intro-label">Who We Are</p>
+          <p class="team-intro-text">${team.hero.description}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="team-section section">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <h2 class="section-title">People and Capability</h2>
           <p class="section-subtitle">The teams supporting leadership, development, operations, and customer needs</p>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-${Math.min(team.leadership.length, 4)} gap-8 max-w-4xl mx-auto">
+        <div class="team-grid">
           ${typeof renderTeamCards === 'function' ? renderTeamCards(team.leadership) : ''}
         </div>
       </div>
