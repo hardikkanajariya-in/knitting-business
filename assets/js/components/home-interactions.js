@@ -8,7 +8,10 @@ function initHomeInteractiveFX() {
   initInteractiveCards();
   initHomeSectionScrollFX();
   initParallaxCards();
-  initParallaxBackgrounds();
+  // Skip heavy background parallax layers on touch / mobile
+  if (!('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
+    initParallaxBackgrounds();
+  }
 }
 
 function prefersReducedMotion() {

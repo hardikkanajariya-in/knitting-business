@@ -155,14 +155,26 @@ function initMobileMenu() {
 }
 
 // --- Lenis Smooth Scroll ---
+function isTouchDevice() {
+  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+}
+
 function initLenis() {
   if (typeof Lenis === 'undefined') return;
 
+  // Skip Lenis on touch devices — native inertial scroll is smoother
+  if (isTouchDevice()) {
+    window._lenis = null;
+    return;
+  }
+
   const lenis = new Lenis({
-    duration: 1.2,
+    lerp: 0.1,
+    duration: 0.8,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     orientation: 'vertical',
     smoothWheel: true,
+    wheelMultiplier: 1,
   });
 
   // Sync with GSAP ScrollTrigger
@@ -171,7 +183,6 @@ function initLenis() {
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });
-    gsap.ticker.lagSmoothing(0);
   } else {
     function raf(time) {
       lenis.raf(time);
