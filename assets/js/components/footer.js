@@ -66,7 +66,6 @@ function renderFooter(data) {
 
         <div class="footer-bottom">
           <p class="footer-copyright">${footer.copyright}</p>
-          <p class="footer-credit">Made by <a href="https://hardikkanajariya.in" target="_blank" rel="noopener noreferrer">hardikkanajariya.in</a></p>
         </div>
       </div>
     </footer>
