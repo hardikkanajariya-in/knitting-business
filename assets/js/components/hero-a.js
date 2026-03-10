@@ -3,7 +3,8 @@ function renderHeroA(data) {
   const hasVideo = Boolean(data.heroVideo);
   const metrics = Array.isArray(data.metrics) ? data.metrics : [];
   const secondaryCta = data.secondaryCta;
-  const heroImage = data.heroImage || data.splitImage || data.backgroundImage;
+  const heroImage = data.splitImage || data.heroImage || data.backgroundImage;
+  const heroBgImage = data.backgroundImage || heroImage;
   const heroAlt = data.imageAlt || 'Premium automotive interior showcase';
 
   const metricsMarkup = metrics.length ? `
@@ -25,11 +26,11 @@ function renderHeroA(data) {
       <div class="hero-a-pin-wrap">
         <div class="hero-a-bg">
           ${hasVideo ? `
-            <video class="hero-a-bg-video" autoplay muted loop playsinline poster="${heroImage}">
+            <video class="hero-a-bg-video" autoplay muted loop playsinline poster="${heroBgImage}">
               <source src="${data.heroVideo}" type="video/mp4">
             </video>
           ` : `
-            <img class="hero-a-bg-img" src="${heroImage}" alt="" width="1920" height="1080"
+            <img class="hero-a-bg-img" src="${heroBgImage}" alt="" width="1920" height="1080"
                  onerror="this.style.display='none'">
           `}
           <div class="hero-a-bg-overlay"></div>

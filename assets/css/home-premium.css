@@ -2,6 +2,29 @@
    HOME PREMIUM — Immersive Parallax System
    ============================================= */
 
+/* GPU-promote key scroll-animated layers */
+.hero-a-bg,
+.hero-a-media-frame,
+.hero-a-copy-panel,
+.hero-b-bg,
+.jrny-slide,
+.home-ind-track,
+.home-trust-track {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Contain layout recalculation in independent sections */
+.home-industries,
+.home-stats-band,
+.home-trust-strip,
+.home-showcase,
+.home-process,
+.home-spotlight,
+.home-final-cta {
+  contain: layout style;
+}
+
 .hero-a-webgl {
   position: absolute;
   inset: 0;

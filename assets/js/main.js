@@ -31,6 +31,7 @@ const IMAGE_CDN_FALLBACK = {
 
 const VIDEO_CDN_FALLBACK = {
   'assets/video/hero-automotive-interior.mp4': 'https://videos.pexels.com/video-files/6872084/6872084-uhd_2560_1440_25fps.mp4',
+  'assets/video/textile-factory.mp4': 'https://videos.pexels.com/video-files/5304551/5304551-hd_1920_1080_30fps.mp4',
 };
 
 // Capture-phase error listener: intercepts failed image loads before inline onerror handlers
@@ -169,12 +170,13 @@ function initLenis() {
   }
 
   const lenis = new Lenis({
-    lerp: 0.1,
-    duration: 0.8,
+    lerp: 0.12,
+    duration: 0.6,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     orientation: 'vertical',
     smoothWheel: true,
-    wheelMultiplier: 1,
+    wheelMultiplier: 1.2,
+    touchMultiplier: 1.5,
   });
 
   // Sync with GSAP ScrollTrigger
@@ -183,6 +185,7 @@ function initLenis() {
     gsap.ticker.add((time) => {
       lenis.raf(time * 1000);
     });
+    gsap.ticker.lagSmoothing(0);
   } else {
     function raf(time) {
       lenis.raf(time);
@@ -197,11 +200,15 @@ function initLenis() {
 // --- AOS Init ---
 function initAOS() {
   if (typeof AOS === 'undefined') return;
+  // Skip AOS on home page — GSAP handles all scroll animations there
+  const page = document.body.dataset.page;
+  if (page === 'home') return;
   AOS.init({
-    duration: 800,
+    duration: 600,
     once: true,
-    offset: 80,
+    offset: 60,
     easing: 'ease-out-cubic',
+    throttleDelay: 50,
   });
 }
 
@@ -211,18 +218,13 @@ function initGSAP() {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Header scroll effect
+  // Header scroll effect — use efficient onToggle instead of per-frame onUpdate
   const header = document.querySelector('.site-header');
   if (header) {
     ScrollTrigger.create({
       start: 'top -80',
-      onUpdate: (self) => {
-        if (self.scroll() > 80) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
-      }
+      onEnter: () => header.classList.add('scrolled'),
+      onLeaveBack: () => header.classList.remove('scrolled'),
     });
   }
 
@@ -517,64 +519,7 @@ function initTimelineAnimations() {
 
   // No GSAP tweens on slide content — all handled by CSS transitions
 
-  // Background glows parallax
-  const glows = section.querySelectorAll('.jrny-bg-glow');
-  glows.forEach((glow, i) => {
-    gsap.to(glow, {
-      y: i % 2 === 0 ? -30 : 30,
-      x: i % 2 === 0 ? 15 : -15,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 2,
-      }
-    });
-  });
-
-  if (bgGrid) {
-    gsap.to(bgGrid, {
-      backgroundPosition: '140px 90px',
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 2,
-      }
-    });
-  }
-
-  bgOrbs.forEach((orb, i) => {
-    gsap.to(orb, {
-      y: i % 2 === 0 ? -80 : 70,
-      x: i % 2 === 0 ? 45 : -35,
-      scale: i % 2 === 0 ? 1.16 : 1.08,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 2.4,
-      }
-    });
-  });
-
-  bgSweeps.forEach((sweep, i) => {
-    gsap.to(sweep, {
-      x: i % 2 === 0 ? 120 : -120,
-      y: i % 2 === 0 ? -24 : 24,
-      opacity: i % 2 === 0 ? 0.85 : 0.72,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 1.8,
-      }
-    });
-  });
+  // Background glows parallax — removed for scroll performance
 }
 
 // --- Stat Counter Animation ---
@@ -608,6 +553,7 @@ function initStatCounters() {
 
 // --- Page Initialization ---
 async function initPage(pageKey) {
+  document.body.dataset.page = pageKey;
   const data = await loadContent();
 
   // Render global components
@@ -654,12 +600,13 @@ async function initPage(pageKey) {
     contentEl.innerHTML = html;
   }
 
-  // Add hero-overlay-mode to header if page has a full-bleed dark hero
+  // Add hero-overlay-mode to header if page has a full-bleed dark hero or page banner
   const header = document.querySelector('.site-header');
   const visibleHeroA = document.querySelector('.hero-a:not([style*="display: none"])');
   const visibleHeroB = document.querySelector('.hero-b:not([style*="display: none"])');
+  const pageBanner = document.querySelector('.page-banner:not(.no-bg)');
   if (header) {
-    header.classList.toggle('hero-overlay-mode', Boolean(visibleHeroA || visibleHeroB));
+    header.classList.toggle('hero-overlay-mode', Boolean(visibleHeroA || visibleHeroB || pageBanner));
   }
 
   // Initialize all interactions

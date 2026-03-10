@@ -247,9 +247,14 @@ ul, ol {
 .header-logo-image {
   display: block;
   width: auto;
-  height: clamp(2.25rem, 4vw, 3rem);
+  height: clamp(3rem, 5vw, 4rem);
   max-width: min(54vw, 22rem);
   object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.dark .header-logo-image {
+  mix-blend-mode: screen;
 }
 
 .header-logo-fallback {
@@ -274,10 +279,14 @@ ul, ol {
   color: var(--accent);
 }
 
+.site-header.hero-overlay-mode:not(.scrolled) .header-logo-image {
+  mix-blend-mode: screen;
+}
+
 @media (max-width: 767px) {
   .header-logo-image {
     max-width: min(58vw, 14rem);
-    height: 2rem;
+    height: 2.5rem;
   }
 
   .site-header.scrolled .header-logo-mark,

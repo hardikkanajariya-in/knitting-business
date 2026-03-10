@@ -194,44 +194,7 @@ function initParallaxBackgrounds() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   if (prefersReducedMotion()) return;
 
-  // Stats band glows
-  gsap.utils.toArray('.home-stats-band-glow').forEach((glow, i) => {
-    if (glow.dataset.parallaxBgInit === 'true') return;
-    glow.dataset.parallaxBgInit = 'true';
-
-    gsap.to(glow, {
-      y: i % 2 === 0 ? -40 : 40,
-      x: i % 2 === 0 ? 20 : -20,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.home-stats-band',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 2,
-      }
-    });
-  });
-
-  // Industries background shapes
-  gsap.utils.toArray('.home-industries-shape').forEach((shape, i) => {
-    if (shape.dataset.parallaxBgInit === 'true') return;
-    shape.dataset.parallaxBgInit = 'true';
-
-    gsap.to(shape, {
-      y: i % 2 === 0 ? -50 : 50,
-      x: i % 2 === 0 ? 30 : -30,
-      scale: 1.1,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.home-industries',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 2,
-      }
-    });
-  });
-
-  // Industries gallery scroll-speed variation
+  // Industries gallery scroll-speed variation (functional, keep)
   document.querySelectorAll('[data-scroll-gallery]').forEach((row) => {
     if (row.dataset.galleryInit === 'true') return;
     row.dataset.galleryInit = 'true';
@@ -250,94 +213,16 @@ function initParallaxBackgrounds() {
     if (dir === 'right') gsap.set(track, { x: -totalW });
 
     // Infinite loop tween
-    const loop = gsap.to(track, {
+    gsap.to(track, {
       x: dir === 'left' ? -totalW : 0,
       duration,
       ease: 'none',
       repeat: -1,
     });
-
-    // Modulate speed based on scroll velocity
-    ScrollTrigger.create({
-      trigger: '.home-industries',
-      start: 'top bottom',
-      end: 'bottom top',
-      onUpdate: (self) => {
-        const v = Math.abs(self.getVelocity()) / 800;
-        gsap.to(loop, { timeScale: 1 + Math.min(v, 3), duration: 0.3, overwrite: true });
-      },
-      onLeave: () => gsap.to(loop, { timeScale: 1, duration: 0.5 }),
-      onLeaveBack: () => gsap.to(loop, { timeScale: 1, duration: 0.5 }),
-    });
   });
 
-  // Showcase background gradient
-  const showcaseGradient = document.querySelector('.home-showcase-gradient');
-  if (showcaseGradient && showcaseGradient.dataset.parallaxBgInit !== 'true') {
-    showcaseGradient.dataset.parallaxBgInit = 'true';
-    gsap.to(showcaseGradient, {
-      y: -60,
-      scale: 1.2,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.home-showcase',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 2,
-      }
-    });
-  }
-
-  // Process section glows
-  gsap.utils.toArray('.home-process-glow').forEach((glow, i) => {
-    if (glow.dataset.parallaxBgInit === 'true') return;
-    glow.dataset.parallaxBgInit = 'true';
-
-    gsap.to(glow, {
-      y: i % 2 === 0 ? -35 : 35,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.home-process',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 2,
-      }
-    });
-  });
-
-  // Spotlight glows
-  gsap.utils.toArray('.home-spotlight-glow').forEach((glow, i) => {
-    if (glow.dataset.parallaxBgInit === 'true') return;
-    glow.dataset.parallaxBgInit = 'true';
-
-    gsap.to(glow, {
-      y: i % 2 === 0 ? -30 : 30,
-      x: i % 2 === 0 ? 15 : -15,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.home-spotlight',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 2,
-      }
-    });
-  });
-
-  // Final CTA glow
-  const ctaGlow = document.querySelector('.home-final-cta-glow');
-  if (ctaGlow && ctaGlow.dataset.parallaxBgInit !== 'true') {
-    ctaGlow.dataset.parallaxBgInit = 'true';
-    gsap.to(ctaGlow, {
-      scale: 1.3,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.home-final-cta',
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 2,
-      }
-    });
-  }
+  // Decorative glow/shape parallax removed for scroll performance
+  // Static CSS positioning provides sufficient visual quality
 }
 
 function initHomeSectionScrollFX() {
@@ -369,22 +254,7 @@ function initHomeSectionScrollFX() {
     });
   });
 
-  // --- Showcase card image parallax ---
-  gsap.utils.toArray('.home-showcase-card img').forEach((img) => {
-    if (img.dataset.parallaxInit === 'true') return;
-    img.dataset.parallaxInit = 'true';
-
-    gsap.to(img, {
-      yPercent: 12,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: img.closest('.home-showcase-card'),
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 1,
-      }
-    });
-  });
+  // --- Showcase card image parallax removed for scroll performance ---
 
   // --- Spotlight panel float ---
   const spotlight = document.querySelector('.home-spotlight-shell');
@@ -402,57 +272,47 @@ function initHomeSectionScrollFX() {
     });
   }
 
-  // --- Showcase shell parallax reveal ---
+  // --- Showcase shell entrance (one-shot, no scrub) ---
   const showcaseShell = document.querySelector('.home-spotlight-shell');
   if (showcaseShell && showcaseShell.dataset.scaleInit !== 'true') {
     showcaseShell.dataset.scaleInit = 'true';
 
-    gsap.from(showcaseShell, {
-      scale: 0.92,
-      opacity: 0.6,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: showcaseShell,
-        start: 'top 85%',
-        end: 'top 50%',
-        scrub: 1,
+    ScrollTrigger.create({
+      trigger: showcaseShell,
+      start: 'top 85%',
+      once: true,
+      onEnter: () => {
+        gsap.from(showcaseShell, {
+          scale: 0.92,
+          opacity: 0.6,
+          duration: 0.8,
+          ease: 'power2.out',
+        });
       }
     });
   }
 
-  // --- Final CTA card scale-up ---
+  // --- Final CTA card entrance (one-shot, no scrub) ---
   const ctaCard = document.querySelector('.home-final-cta-card');
   if (ctaCard && ctaCard.dataset.scaleInit !== 'true') {
     ctaCard.dataset.scaleInit = 'true';
 
-    gsap.from(ctaCard, {
-      scale: 0.88,
-      opacity: 0,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: ctaCard,
-        start: 'top 92%',
-        end: 'top 55%',
-        scrub: 1,
-      }
-    });
-  }
-
-  // --- Marquee scroll-speed variation ---
-  const marqueeTrack = document.querySelector('.home-trust-track');
-  if (marqueeTrack && marqueeTrack.dataset.scrollSpeedInit !== 'true') {
-    marqueeTrack.dataset.scrollSpeedInit = 'true';
-
     ScrollTrigger.create({
-      trigger: '.home-trust-strip',
-      start: 'top bottom',
-      end: 'bottom top',
-      onUpdate: (self) => {
-        const speed = 1 + self.progress * 1.5;
-        marqueeTrack.style.animationDuration = (24 / speed) + 's';
+      trigger: ctaCard,
+      start: 'top 90%',
+      once: true,
+      onEnter: () => {
+        gsap.from(ctaCard, {
+          scale: 0.88,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+        });
       }
     });
   }
+
+  // --- Marquee runs at constant speed for performance ---
 }
 
 function initInteractiveCards() {

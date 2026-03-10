@@ -124,10 +124,30 @@ function initHomeWebGL() {
     pointerY = 0;
   });
   window.addEventListener('resize', resize);
-  rafId = requestAnimationFrame(render);
+
+  // Only animate when hero is visible (IntersectionObserver)
+  let isVisible = true;
+  const observer = new IntersectionObserver((entries) => {
+    isVisible = entries[0].isIntersecting;
+    if (isVisible && !rafId) rafId = requestAnimationFrame(renderLoop);
+  }, { threshold: 0 });
+  observer.observe(hero);
+
+  const renderLoop = (time) => {
+    if (!isVisible) { rafId = 0; return; }
+    rafId = requestAnimationFrame(renderLoop);
+    ctx.clearRect(0, 0, width, height);
+    for (let i = 0; i < threads.length; i++) {
+      drawThread(threads[i], time);
+    }
+    drawParticles(time);
+  };
+
+  rafId = requestAnimationFrame(renderLoop);
 
   _homeWebGLCleanup = () => {
     cancelAnimationFrame(rafId);
+    observer.disconnect();
     hero.removeEventListener('mousemove', onMove);
     window.removeEventListener('resize', resize);
     ctx.clearRect(0, 0, width, height);

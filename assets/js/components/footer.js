@@ -18,7 +18,7 @@ function renderFooter(data) {
     <footer class="site-footer" role="contentinfo">
       <div class="container">
         <div class="footer-grid">
-          <div data-aos="fade-up">
+          <div>
             <a href="index.html" class="footer-brand" aria-label="${site.name} — Home">
               <span class="footer-brand-logo">
                 <img
@@ -36,12 +36,12 @@ function renderFooter(data) {
             <p class="footer-text">${footer.tagline}</p>
           </div>
 
-          <div data-aos="fade-up" data-aos-delay="100">
+          <div>
             <h4 class="footer-heading">Quick Links</h4>
             ${quickLinks}
           </div>
 
-          <div data-aos="fade-up" data-aos-delay="200">
+          <div>
             <h4 class="footer-heading">Contact</h4>
             <p class="footer-text mb-2">${footer.contactInfo.address}</p>
             <a href="mailto:${footer.contactInfo.email}" class="footer-link">${footer.contactInfo.email}</a>
@@ -49,7 +49,7 @@ function renderFooter(data) {
           </div>
 
           ${socialIcons ? `
-          <div data-aos="fade-up" data-aos-delay="300">
+          <div>
             <h4 class="footer-heading">Follow Us</h4>
             <div class="footer-social">
               ${socialIcons}

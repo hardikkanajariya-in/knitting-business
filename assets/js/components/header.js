@@ -3,6 +3,8 @@ function renderHeader(data) {
   const nav = data.navigation;
   const site = data.site;
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const pageLogos = site.pageLogos || {};
+  const headerLogo = pageLogos[currentPage] || site.logo;
 
   const navLinks = nav.map(item => {
     const isActive = currentPage === item.href || (currentPage === '' && item.href === 'index.html');
@@ -20,7 +22,7 @@ function renderHeader(data) {
         <a href="index.html" class="header-logo" aria-label="${site.name} — Home">
           <span class="header-logo-mark">
             <img
-              src="${site.logo}"
+              src="${headerLogo}"
               alt="${site.name}"
               class="header-logo-image"
               width="720"
