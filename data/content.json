@@ -10,8 +10,8 @@
   },
   "navigation": [
     { "label": "Home", "href": "index.html" },
-    { "label": "Knitting", "href": "nk.html", "title": "Nirbhay Knitting" },
-    { "label": "NirChem", "href": "nc.html", "title": "NirChem" },
+    { "label": "NK", "href": "nk.html", "title": "Nirbhay Knitting" },
+    { "label": "NC", "href": "nc.html", "title": "NirChem" },
     { "label": "About Us", "href": "about.html" },
     { "label": "Sustainability", "href": "sustainability.html" },
     { "label": "Our Team", "href": "team.html" },
@@ -462,8 +462,8 @@
     "quickLinks": [
       { "label": "Home", "href": "index.html" },
       { "label": "About Us", "href": "about.html" },
-      { "label": "Knitting", "href": "nk.html" },
-      { "label": "NirChem", "href": "nc.html" },
+      { "label": "NK", "href": "nk.html" },
+      { "label": "NC", "href": "nc.html" },
       { "label": "Sustainability", "href": "sustainability.html" },
       { "label": "Our Team", "href": "team.html" },
       { "label": "Contact", "href": "contact.html" }
