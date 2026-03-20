@@ -178,18 +178,24 @@ function initAboutJourneyAnimations() {
     y: 30, opacity: 0, duration: 0.8, ease: 'power2.out', delay: 0.2
   });
 
-  /* ── Hide road / cards / markers initially ── */
-  gsap.set(roadSvg, { clipPath: 'inset(0% 0% 100% 0%)' });
-  gsap.set(markers, { scale: 0, opacity: 0 });
-  nodes.forEach(n => {
-    gsap.set(n, { opacity: 0, y: 30 });
+  /* ── Set initial states: first milestone visible, rest hidden ── */
+  const firstClipEnd = count > 0 ? (100 - (1 / count) * 100) : 100;
+  gsap.set(roadSvg, { clipPath: `inset(0% 0% ${firstClipEnd}% 0%)` });
+
+  markers.forEach((m, i) => {
+    gsap.set(m, { scale: i === 0 ? 1 : 0, opacity: i === 0 ? 1 : 0 });
+  });
+
+  nodes.forEach((n, i) => {
+    gsap.set(n, { opacity: i === 0 ? 1 : 0, y: i === 0 ? 0 : 30 });
   });
 
   // Glow path setup
   let glowLen = 0;
   if (glowPath && typeof glowPath.getTotalLength === 'function') {
     glowLen = glowPath.getTotalLength();
-    gsap.set(glowPath, { strokeDasharray: glowLen, strokeDashoffset: glowLen });
+    const firstGlowOffset = glowLen - (glowLen * 1 / count);
+    gsap.set(glowPath, { strokeDasharray: glowLen, strokeDashoffset: firstGlowOffset });
   }
 
   /* ── MASTER TIMELINE (scrubbed during pin) ── */
