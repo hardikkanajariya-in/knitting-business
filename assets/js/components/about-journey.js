@@ -311,24 +311,23 @@ function initAboutJourneyAnimations() {
     gsap.set(roadSvg, { clipPath: `inset(0% 0% ${initClipBottom}% 0%)` });
   }
 
-  /* ── MASTER TIMELINE — no dead scroll at start ── */
+  /* ── MASTER TIMELINE — card 0 already visible on load, animate from card 1 onward ── */
   const master = gsap.timeline();
-  const sliceDur = 1 / count; // full timeline divided equally, no wasted start
+  const transitions = count - 1; // only animate transitions between milestones
+  const sliceDur = transitions > 0 ? 1 / transitions : 1;
 
-  nodes.forEach((node, i) => {
+  for (let i = 1; i < count; i++) {
     const marker = markers[i];
-    const t = sliceDur * i;
+    const t = sliceDur * (i - 1);
 
     // Fade out previous card + connector
-    if (i > 0) {
-      master.to(nodes[i - 1], {
-        opacity: 0, y: -20, duration: sliceDur * 0.15, ease: 'power2.in',
+    master.to(nodes[i - 1], {
+      opacity: 0, y: -20, duration: sliceDur * 0.15, ease: 'power2.in',
+    }, t);
+    if (connPaths[i - 1]) {
+      master.to(connPaths[i - 1], {
+        opacity: 0, duration: sliceDur * 0.15, ease: 'power2.in',
       }, t);
-      if (connPaths[i - 1]) {
-        master.to(connPaths[i - 1], {
-          opacity: 0, duration: sliceDur * 0.15, ease: 'power2.in',
-        }, t);
-      }
     }
 
     // Glow draws to this milestone
@@ -349,7 +348,7 @@ function initAboutJourneyAnimations() {
     }
 
     // Card + connector fade in
-    master.to(node, {
+    master.to(nodes[i], {
       opacity: 1, y: 0, duration: sliceDur * 0.35, ease: 'power3.out',
     }, t + sliceDur * 0.25);
 
@@ -358,7 +357,7 @@ function initAboutJourneyAnimations() {
         opacity: 0.5, duration: sliceDur * 0.35, ease: 'power3.out',
       }, t + sliceDur * 0.25);
     }
-  });
+  }
 
   /* ── PIN & SCRUB — starts immediately on first scroll ── */
   ScrollTrigger.create({
@@ -381,7 +380,7 @@ function initAboutJourneyAnimations() {
         roadSvg.style.clipPath = `inset(0% 0% ${clipBottom}% 0%)`;
       }
       nodes.forEach((node, i) => {
-        const threshold = sliceDur * (i + 0.5);
+        const threshold = i === 0 ? 0 : sliceDur * (i - 1 + 0.5);
         if (self.progress >= threshold && !node.dataset.lottieStarted) {
           node.dataset.lottieStarted = 'true';
           const player = node.querySelector('dotlottie-player');
