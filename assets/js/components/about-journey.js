@@ -174,14 +174,25 @@ function initAboutJourneyAnimations() {
 
   const markers = gsap.utils.toArray('.jrny-road-marker');
 
+  /* ── Position markers dynamically on the actual SVG road path ── */
+  const surfacePath = roadSvg.querySelector('.jrny-road-surface') || glowPath;
+  if (surfacePath && typeof surfacePath.getTotalLength === 'function') {
+    const pathTotalLen = surfacePath.getTotalLength();
+    markers.forEach((m, i) => {
+      const segMid = ((i + 0.5) / count) * pathTotalLen;
+      const pt = surfacePath.getPointAtLength(segMid);
+      m.style.left = (pt.x / 10) + '%';
+      m.style.top  = (pt.y / 10) + '%';
+    });
+  }
+
   /* ── Header animates on load (not scroll-driven) ── */
   gsap.from('.jrny-tl-header', {
     y: 30, opacity: 0, duration: 0.8, ease: 'power2.out', delay: 0.2
   });
 
   /* ── Set initial states: first milestone visible, rest hidden ── */
-  const firstClipEnd = count > 0 ? (100 - (1 / count) * 100) : 100;
-  gsap.set(roadSvg, { clipPath: `inset(0% 0% ${firstClipEnd}% 0%)` });
+  // Clip-path is driven by glow path extent (synced in onUpdate)
 
   markers.forEach((m, i) => {
     gsap.set(m, { scale: i === 0 ? 1 : 0, opacity: i === 0 ? 1 : 0 });
@@ -197,6 +208,16 @@ function initAboutJourneyAnimations() {
     glowLen = glowPath.getTotalLength();
     const firstGlowOffset = glowLen - (glowLen * 1 / count);
     gsap.set(glowPath, { strokeDasharray: glowLen, strokeDashoffset: firstGlowOffset });
+  }
+
+  /* ── Set initial traveler & clip position at the tip of revealed glow ── */
+  if (traveler && glowPath && glowLen) {
+    const initialDrawn = glowLen * (1 / count);
+    const initPt = glowPath.getPointAtLength(initialDrawn);
+    gsap.set(traveler, { left: (initPt.x / 10) + '%', top: (initPt.y / 10) + '%', opacity: 1 });
+    // Sync initial clip to glow extent
+    const initClipBottom = Math.max(0, 100 - (initPt.y / 10) - 2);
+    gsap.set(roadSvg, { clipPath: `inset(0% 0% ${initClipBottom}% 0%)` });
   }
 
   /* ── MASTER TIMELINE (scrubbed during pin) ── */
@@ -219,15 +240,7 @@ function initAboutJourneyAnimations() {
       }, t);
     }
 
-    // Road clip reveals up to this milestone's position
-    const clipEnd = 100 - ((i + 1) / count) * 100;
-    master.to(roadSvg, {
-      clipPath: `inset(0% 0% ${clipEnd}% 0%)`,
-      duration: sliceDur * 0.5,
-      ease: 'power1.inOut',
-    }, t);
-
-    // Glow path draws to match
+    // Glow path draws to this milestone (clip-path synced in onUpdate)
     if (glowLen) {
       const glowTarget = glowLen - (glowLen * (i + 1) / count);
       master.to(glowPath, {
@@ -264,12 +277,17 @@ function initAboutJourneyAnimations() {
     scrub: 1,
     animation: master,
     onUpdate: (self) => {
-      // Move traveler along road path
+      // Move traveler to the tip of the drawn glow path & sync clip
       if (traveler && glowPath && glowLen) {
-        const pt = glowPath.getPointAtLength(glowLen * Math.min(self.progress * 1.1, 1));
+        const currentOffset = parseFloat(gsap.getProperty(glowPath, 'strokeDashoffset'));
+        const drawnLen = Math.max(0, glowLen - currentOffset);
+        const pt = glowPath.getPointAtLength(drawnLen);
         traveler.style.left = (pt.x / 10) + '%';
         traveler.style.top  = (pt.y / 10) + '%';
-        traveler.style.opacity = self.progress > 0.05 ? '1' : '0';
+        traveler.style.opacity = drawnLen > 10 ? '1' : '0';
+        // Keep clip-path synced to glow tip
+        const clipBottom = Math.max(0, 100 - (pt.y / 10) - 2);
+        roadSvg.style.clipPath = `inset(0% 0% ${clipBottom}% 0%)`;
       }
       // Auto-play Lottie when milestone is revealed
       nodes.forEach((node, i) => {
