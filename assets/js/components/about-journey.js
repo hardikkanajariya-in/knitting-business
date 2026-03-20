@@ -28,9 +28,10 @@ const ROAD_MARKERS = [
 function renderAboutJourney(section) {
   if (!section) return '';
 
-  const introParagraphs = (section.paragraphs || []).slice(0, 1).map((paragraph) => `
-    <p>${paragraph}</p>
-  `).join('');
+  const leadParagraph = (section.paragraphs || [])[0] || '';
+  const leadExcerpt = leadParagraph
+    ? `${leadParagraph.split(' ').slice(0, 24).join(' ')}${leadParagraph.split(' ').length > 24 ? '…' : ''}`
+    : '';
 
   const markerDots = ROAD_MARKERS.map((m, i) => `
     <div class="jrny-road-marker" data-index="${i}" style="top:${m.y}%;left:${m.x}%;">
@@ -77,7 +78,7 @@ function renderAboutJourney(section) {
           <p class="jrny-tl-eyebrow">${section.eyebrow || ''}</p>
           <h1 class="jrny-tl-heading">${section.title || ''}</h1>
           ${section.storyTitle ? `<p class="jrny-tl-subheading">${section.storyTitle}</p>` : ''}
-          ${introParagraphs ? `<div class="jrny-tl-copy">${introParagraphs}</div>` : ''}
+          ${leadExcerpt ? `<div class="jrny-tl-copy"><p>${leadExcerpt}</p></div>` : ''}
         </header>
 
         <div class="jrny-road-track">
