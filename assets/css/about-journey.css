@@ -107,17 +107,6 @@
   max-width: 18ch;
 }
 
-.jrny-tl-copy {
-  margin-top: 1.1rem;
-  max-width: 27rem;
-}
-
-.jrny-tl-copy p {
-  font-size: 0.95rem;
-  line-height: 1.65;
-  color: var(--text-secondary);
-}
-
 /* ── ROAD TRACK ──────────────────────────────── */
 .jrny-road-track {
   position: absolute;
@@ -235,6 +224,10 @@
 
 .jrny-road-node--right {
   right: clamp(1.25rem, 4vw, 4rem);
+}
+
+.jrny-road-node--initial {
+  top: 84%;
 }
 
 /* Road marker dot — positioned on road track */
@@ -532,8 +525,7 @@
   }
 
   .jrny-tl-heading,
-  .jrny-tl-subheading,
-  .jrny-tl-copy {
+  .jrny-tl-subheading {
     max-width: none;
   }
 

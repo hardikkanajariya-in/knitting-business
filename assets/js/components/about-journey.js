@@ -28,11 +28,6 @@ const ROAD_MARKERS = [
 function renderAboutJourney(section) {
   if (!section) return '';
 
-  const leadParagraph = (section.paragraphs || [])[0] || '';
-  const leadExcerpt = leadParagraph
-    ? `${leadParagraph.split(' ').slice(0, 24).join(' ')}${leadParagraph.split(' ').length > 24 ? '…' : ''}`
-    : '';
-
   const markerDots = ROAD_MARKERS.map((m, i) => `
     <div class="jrny-road-marker" data-index="${i}" style="top:${m.y}%;left:${m.x}%;">
       <div class="jrny-road-marker-dot"></div>
@@ -43,8 +38,9 @@ function renderAboutJourney(section) {
   const cards = (section.milestones || []).map((milestone, index) => {
     const side = index % 2 === 0 ? 'left' : 'right';
     const lottieSrc = milestone.lottie || ''; 
+    const initialClass = index === 0 ? ' jrny-road-node--initial' : '';
     return `
-      <div class="jrny-road-node jrny-road-node--${side}" data-index="${index}">
+      <div class="jrny-road-node jrny-road-node--${side}${initialClass}" data-index="${index}">
         <div class="jrny-road-card">
           <div class="jrny-road-lottie-wrap">
             ${lottieSrc ? `<dotlottie-player
@@ -78,7 +74,6 @@ function renderAboutJourney(section) {
           <p class="jrny-tl-eyebrow">${section.eyebrow || ''}</p>
           <h1 class="jrny-tl-heading">${section.title || ''}</h1>
           ${section.storyTitle ? `<p class="jrny-tl-subheading">${section.storyTitle}</p>` : ''}
-          ${leadExcerpt ? `<div class="jrny-tl-copy"><p>${leadExcerpt}</p></div>` : ''}
         </header>
 
         <div class="jrny-road-track">
@@ -207,13 +202,8 @@ function initAboutJourneyAnimations() {
   /* ── MASTER TIMELINE (scrubbed during pin) ── */
   const master = gsap.timeline();
 
-  // Phase 0: Fade out header as road starts (0 → 0.06)
-  master.to('.jrny-tl-header', {
-    y: -30, opacity: 0, duration: 0.06, ease: 'power2.in'
-  }, 0);
-
-  // Milestones take 0.06 → 1.0
-  const roadStart = 0.06;
+  // Leave a little static breathing room before milestone progression begins.
+  const roadStart = 0.12;
   const sliceDur = (1 - roadStart) / count;
 
   nodes.forEach((node, i) => {
