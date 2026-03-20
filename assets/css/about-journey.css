@@ -25,6 +25,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
+  min-height: 46rem;
   overflow: hidden;
 }
 
@@ -69,10 +70,10 @@
 /* Header */
 .jrny-tl-header {
   position: absolute;
-  top: calc(var(--header-height, 4rem) + 1.5rem);
-  left: clamp(1rem, 4vw, 3rem);
+  top: calc(var(--header-height, 4rem) + 3rem);
+  left: clamp(1.25rem, 4vw, 4rem);
   z-index: 10;
-  max-width: 30rem;
+  max-width: clamp(18rem, 34vw, 34rem);
 }
 
 .jrny-tl-eyebrow {
@@ -92,22 +93,38 @@
   text-transform: uppercase;
   color: var(--text-primary);
   text-wrap: balance;
+  max-width: 8ch;
 }
 
 .jrny-tl-subheading {
-  margin-top: 0.6rem;
+  margin-top: 0.85rem;
   font-size: clamp(1.1rem, 2vw, 1.5rem);
-  line-height: 1.1;
+  line-height: 1.2;
   font-weight: 300;
   letter-spacing: -0.03em;
   color: var(--text-primary);
-  opacity: 0.7;
+  opacity: 0.78;
+  max-width: 24ch;
+}
+
+.jrny-tl-copy {
+  margin-top: 1.1rem;
+  max-width: 34rem;
+}
+
+.jrny-tl-copy p {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
 }
 
 /* ── ROAD TRACK ──────────────────────────────── */
 .jrny-road-track {
   position: absolute;
-  inset: 0;
+  top: calc(var(--header-height, 4rem) + 1rem);
+  right: clamp(1rem, 3vw, 2.5rem);
+  bottom: 2rem;
+  width: min(54vw, 760px);
   z-index: 2;
 }
 
@@ -134,17 +151,17 @@
 
 .jrny-road-shadow {
   stroke: rgba(0, 0, 0, 0.08);
-  stroke-width: 58;
+  stroke-width: 50;
 }
 
 .jrny-road-edge {
   stroke: rgba(255, 255, 255, 0.5);
-  stroke-width: 50;
+  stroke-width: 42;
 }
 
 .jrny-road-surface {
   stroke: #374151;
-  stroke-width: 44;
+  stroke-width: 36;
 }
 
 .dark .jrny-road-surface {
@@ -205,19 +222,19 @@
 .jrny-road-node {
   position: absolute;
   z-index: 3;
-  width: 38%;
-  max-width: 340px;
-  top: 50%;
+  width: min(30vw, 360px);
+  max-width: 360px;
+  top: 60%;
   transform: translateY(-50%);
   pointer-events: auto;
 }
 
 .jrny-road-node--left {
-  left: clamp(1rem, 3vw, 3rem);
+  left: clamp(1.25rem, 4vw, 4rem);
 }
 
 .jrny-road-node--right {
-  right: clamp(1rem, 3vw, 3rem);
+  right: clamp(1.25rem, 4vw, 4rem);
 }
 
 /* Road marker dot — positioned on road track */
@@ -261,7 +278,7 @@
 /* ── ROAD CARD ───────────────────────────────── */
 .jrny-road-card {
   position: relative;
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(0, 0, 0, 0.06);
@@ -511,6 +528,13 @@
     top: calc(var(--header-height, 4rem) + 1rem);
     left: 1rem;
     right: 1rem;
+    max-width: none;
+  }
+
+  .jrny-tl-heading,
+  .jrny-tl-subheading,
+  .jrny-tl-copy {
+    max-width: none;
   }
 
   /* Road: hide SVG, show simple vertical line on mobile */

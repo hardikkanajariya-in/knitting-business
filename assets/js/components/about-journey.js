@@ -13,21 +13,24 @@ const JOURNEY_STRENGTH_ICONS = {
   bolt: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
 };
 
-/* Road path: S-curves left→right, viewBox 0 0 1000 1000
-   Curve peaks at y= 100(left), 300(right), 500(left), 700(right), 900(center)
-   Card sides:  0→left, 1→right, 2→left, 3→right, 4→left              */
-const ROAD_PATH_D = 'M 500 0 Q 280 100, 500 200 Q 720 300, 500 400 Q 280 500, 500 600 Q 720 700, 500 800 Q 500 900, 500 1000';
+/* Road path: S-curves left→right, slightly lowered to avoid clashing
+   with the navbar and create a more balanced first-frame composition. */
+const ROAD_PATH_D = 'M 500 70 Q 280 170, 500 270 Q 720 370, 500 470 Q 280 570, 500 670 Q 720 770, 500 870 Q 500 935, 500 990';
 
 const ROAD_MARKERS = [
-  { x: 28, y: 10 },
-  { x: 72, y: 30 },
-  { x: 28, y: 50 },
-  { x: 72, y: 70 },
-  { x: 50, y: 90 },
+  { x: 28, y: 17 },
+  { x: 72, y: 37 },
+  { x: 28, y: 57 },
+  { x: 72, y: 77 },
+  { x: 50, y: 94 },
 ];
 
 function renderAboutJourney(section) {
   if (!section) return '';
+
+  const introParagraphs = (section.paragraphs || []).slice(0, 1).map((paragraph) => `
+    <p>${paragraph}</p>
+  `).join('');
 
   const markerDots = ROAD_MARKERS.map((m, i) => `
     <div class="jrny-road-marker" data-index="${i}" style="top:${m.y}%;left:${m.x}%;">
@@ -38,7 +41,7 @@ function renderAboutJourney(section) {
 
   const cards = (section.milestones || []).map((milestone, index) => {
     const side = index % 2 === 0 ? 'left' : 'right';
-    const lottieSrc = milestone.lottie || '';
+    const lottieSrc = milestone.lottie || ''; 
     return `
       <div class="jrny-road-node jrny-road-node--${side}" data-index="${index}">
         <div class="jrny-road-card">
@@ -73,6 +76,8 @@ function renderAboutJourney(section) {
         <header class="jrny-tl-header">
           <p class="jrny-tl-eyebrow">${section.eyebrow || ''}</p>
           <h1 class="jrny-tl-heading">${section.title || ''}</h1>
+          ${section.storyTitle ? `<p class="jrny-tl-subheading">${section.storyTitle}</p>` : ''}
+          ${introParagraphs ? `<div class="jrny-tl-copy">${introParagraphs}</div>` : ''}
         </header>
 
         <div class="jrny-road-track">
