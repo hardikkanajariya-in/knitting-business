@@ -1633,3 +1633,200 @@ body,
     min-height: 44px;
   }
 }
+
+/* ============================================
+   GLOBAL INTERACTIVE BACKGROUND ELEMENTS
+   Colorful floating shapes across the entire site
+   ============================================ */
+.global-bg-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* All page content sits above the background */
+#site-header,
+.page-transition {
+  position: relative;
+  z-index: 1;
+}
+
+/* Individual floating element */
+.gbg-el {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+  filter: blur(0px);
+  transition: opacity 0.6s ease;
+}
+
+/* ── Shape variations ── */
+.gbg-el--circle { border-radius: 50%; }
+.gbg-el--square { border-radius: 18%; }
+.gbg-el--diamond { border-radius: 4px; transform: rotate(45deg); }
+.gbg-el--ring {
+  border-radius: 50%;
+  background: transparent !important;
+  border-width: 3px;
+  border-style: solid;
+}
+.gbg-el--cross {
+  background: transparent !important;
+  border-radius: 0;
+}
+.gbg-el--cross::before,
+.gbg-el--cross::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: inherit;
+  border-radius: 2px;
+}
+.gbg-el--cross::before {
+  width: 100%;
+  height: 25%;
+  transform: translate(-50%, -50%);
+  background: var(--cross-color);
+}
+.gbg-el--cross::after {
+  width: 25%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  background: var(--cross-color);
+}
+.gbg-el--triangle {
+  background: transparent !important;
+  border-radius: 0;
+  width: 0 !important;
+  height: 0 !important;
+}
+.gbg-el--dots {
+  background: transparent !important;
+  border-radius: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+.gbg-el--dots span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+.gbg-el--hexagon {
+  background: transparent !important;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+/* ── Color palette — vivid & visible ── */
+.gbg-blue { background: rgba(59, 130, 246, 0.45); }
+.gbg-blue.gbg-el--ring { border-color: rgba(59, 130, 246, 0.5); }
+.gbg-blue.gbg-el--cross { --cross-color: rgba(59, 130, 246, 0.45); }
+.gbg-blue.gbg-el--hexagon { background: rgba(59, 130, 246, 0.3) !important; }
+
+.gbg-purple { background: rgba(139, 92, 246, 0.4); }
+.gbg-purple.gbg-el--ring { border-color: rgba(139, 92, 246, 0.45); }
+.gbg-purple.gbg-el--cross { --cross-color: rgba(139, 92, 246, 0.4); }
+.gbg-purple.gbg-el--hexagon { background: rgba(139, 92, 246, 0.28) !important; }
+
+.gbg-teal { background: rgba(20, 184, 166, 0.4); }
+.gbg-teal.gbg-el--ring { border-color: rgba(20, 184, 166, 0.45); }
+.gbg-teal.gbg-el--cross { --cross-color: rgba(20, 184, 166, 0.4); }
+.gbg-teal.gbg-el--hexagon { background: rgba(20, 184, 166, 0.28) !important; }
+
+.gbg-pink { background: rgba(236, 72, 153, 0.35); }
+.gbg-pink.gbg-el--ring { border-color: rgba(236, 72, 153, 0.4); }
+.gbg-pink.gbg-el--cross { --cross-color: rgba(236, 72, 153, 0.35); }
+.gbg-pink.gbg-el--hexagon { background: rgba(236, 72, 153, 0.25) !important; }
+
+.gbg-amber { background: rgba(245, 158, 11, 0.4); }
+.gbg-amber.gbg-el--ring { border-color: rgba(245, 158, 11, 0.45); }
+.gbg-amber.gbg-el--cross { --cross-color: rgba(245, 158, 11, 0.4); }
+.gbg-amber.gbg-el--hexagon { background: rgba(245, 158, 11, 0.28) !important; }
+
+.gbg-green { background: rgba(34, 197, 94, 0.4); }
+.gbg-green.gbg-el--ring { border-color: rgba(34, 197, 94, 0.45); }
+.gbg-green.gbg-el--cross { --cross-color: rgba(34, 197, 94, 0.4); }
+.gbg-green.gbg-el--hexagon { background: rgba(34, 197, 94, 0.28) !important; }
+
+.gbg-red { background: rgba(239, 68, 68, 0.35); }
+.gbg-red.gbg-el--ring { border-color: rgba(239, 68, 68, 0.4); }
+.gbg-red.gbg-el--cross { --cross-color: rgba(239, 68, 68, 0.35); }
+
+/* ── Dark mode — boost brightness ── */
+.dark .gbg-blue { background: rgba(96, 165, 250, 0.35); }
+.dark .gbg-blue.gbg-el--ring { border-color: rgba(96, 165, 250, 0.4); }
+.dark .gbg-blue.gbg-el--cross { --cross-color: rgba(96, 165, 250, 0.35); }
+.dark .gbg-blue.gbg-el--hexagon { background: rgba(96, 165, 250, 0.25) !important; }
+
+.dark .gbg-purple { background: rgba(167, 139, 250, 0.35); }
+.dark .gbg-purple.gbg-el--ring { border-color: rgba(167, 139, 250, 0.4); }
+.dark .gbg-purple.gbg-el--cross { --cross-color: rgba(167, 139, 250, 0.35); }
+
+.dark .gbg-teal { background: rgba(45, 212, 191, 0.35); }
+.dark .gbg-teal.gbg-el--ring { border-color: rgba(45, 212, 191, 0.4); }
+.dark .gbg-teal.gbg-el--cross { --cross-color: rgba(45, 212, 191, 0.35); }
+
+.dark .gbg-pink { background: rgba(244, 114, 182, 0.3); }
+.dark .gbg-pink.gbg-el--ring { border-color: rgba(244, 114, 182, 0.35); }
+
+.dark .gbg-amber { background: rgba(251, 191, 36, 0.3); }
+.dark .gbg-amber.gbg-el--ring { border-color: rgba(251, 191, 36, 0.35); }
+
+.dark .gbg-green { background: rgba(74, 222, 128, 0.3); }
+.dark .gbg-green.gbg-el--ring { border-color: rgba(74, 222, 128, 0.35); }
+
+.dark .gbg-red { background: rgba(248, 113, 113, 0.3); }
+.dark .gbg-red.gbg-el--ring { border-color: rgba(248, 113, 113, 0.35); }
+
+/* ── Float animations ── */
+@keyframes gbgFloat1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(30px, -40px) rotate(5deg); }
+  50% { transform: translate(-20px, -70px) rotate(-3deg); }
+  75% { transform: translate(40px, -30px) rotate(7deg); }
+}
+
+@keyframes gbgFloat2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-40px, -25px) rotate(-6deg); }
+  50% { transform: translate(25px, -55px) rotate(4deg); }
+  75% { transform: translate(-15px, -40px) rotate(-8deg); }
+}
+
+@keyframes gbgFloat3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  33% { transform: translate(20px, -50px) rotate(8deg) scale(1.05); }
+  66% { transform: translate(-30px, -20px) rotate(-5deg) scale(0.95); }
+}
+
+@keyframes gbgFloat4 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-25px, -60px) scale(1.08); }
+}
+
+@keyframes gbgPulse {
+  0%, 100% { opacity: var(--gbg-opacity, 0.7); transform: scale(1); }
+  50% { opacity: calc(var(--gbg-opacity, 0.7) * 1.3); transform: scale(1.15); }
+}
+
+@keyframes gbgSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ── Mouse-reactive glow (JS adds .gbg-near class) ── */
+.gbg-el.gbg-near {
+  filter: blur(0px) brightness(1.3);
+  transform: scale(1.25);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .gbg-el { transform: scale(0.7); }
+  .global-bg-canvas { opacity: 0.7; }
+}

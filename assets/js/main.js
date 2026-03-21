@@ -447,6 +447,11 @@ async function initPage(pageKey) {
   initAOS();
   initGSAP();
 
+  // Global interactive background
+  if (typeof initGlobalBackground === 'function') {
+    initGlobalBackground();
+  }
+
   // Page-specific animations
   switch (pageKey) {
     case 'home':
@@ -505,8 +510,8 @@ function renderAboutPage(data) {
   const about = data.about;
   const team = data.team;
   return `
-    ${typeof renderAboutJourney === 'function' ? renderAboutJourney(about.journeySection) : ''}
     ${typeof renderAboutStory === 'function' && about.story ? renderAboutStory(about.story) : ''}
+    ${typeof renderAboutJourney === 'function' ? renderAboutJourney(about.journeySection) : ''}
     ${typeof renderFactoryGallery === 'function' && about.factoryGallery ? renderFactoryGallery(about.factoryGallery) : ''}
     ${typeof renderAboutStrengths === 'function' && about.strengths ? renderAboutStrengths(about.strengths) : ''}
     <section class="section" style="background: var(--bg-secondary); padding-top: 2rem;">
