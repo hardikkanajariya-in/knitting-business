@@ -150,7 +150,7 @@ function renderAboutStory(story) {
         <div class="jrny-story-grid">
           <div class="jrny-story-visual" data-aos="fade-right">
             <div class="jrny-story-image-wrap">
-              <img src="assets/img/factory/nk-factory.jpg" alt="Nirbhay manufacturing facility" class="jrny-story-image" loading="lazy">
+              <img src="assets/img/factory/Main Entry.JPG" alt="Nirbhay manufacturing facility" class="jrny-story-image" loading="lazy">
               <div class="jrny-story-image-overlay"></div>
             </div>
           </div>

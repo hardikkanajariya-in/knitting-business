@@ -2,10 +2,10 @@
   "site": {
     "name": "Nirbhay Knitting Industries Pvt. Ltd.",
     "tagline": "Consistent substrates. Predictable performance.",
-    "logo": "assets/img/logo/home.png",
-    "logoDark": "assets/img/logo/home.png",
+    "logo": "assets/img/logo/nk-logo.jpg",
+    "logoDark": "assets/img/logo/nk-logo.jpg",
     "pageLogos": {
-      "nc.html": "assets/img/logo/nc-logo.png"
+      "nc.html": "assets/img/logo/nc-logo.PNG"
     },
     "metaDescription": "Nirbhay Knitting Industries — Engineered technical textiles for coating, lamination & performance applications. 40 years of precision, consistency, and sustainable innovation.",
     "themeColor": "#0A2A43",
@@ -40,7 +40,7 @@
           { "name": "Footwear", "icon": "shoe", "image": "assets/img/industries/footwear.jpg", "tag": "Comfort and structure" },
           { "name": "Apparel", "icon": "shirt", "image": "assets/img/industries/aerospace.jpg", "tag": "Performance textiles" },
           { "name": "Home Furnishings", "icon": "sofa", "image": "assets/img/industries/furnishing.jpg", "tag": "Durable fabric systems" },
-          { "name": "Contract Manufacturing", "icon": "flask", "image": "assets/img/factory/nc-factory.jpg", "tag": "PU coating and laminating" },
+          { "name": "Contract Manufacturing", "icon": "flask", "image": "assets/img/factory/stenter.jpg", "tag": "PU coating and laminating" },
           { "name": "Safety & PPE", "icon": "shield", "image": "assets/img/industries/automotive.jpg", "tag": "FR fabrics for protective equipment" },
           { "name": "Medical Textiles", "icon": "heart", "image": "assets/img/products/3d-spacer-white.png", "tag": "Technical cushioning and substrates" },
           { "name": "Outdoor & Technical", "icon": "mountain", "image": "assets/img/products/raised-fabric-rolls.png", "tag": "Performance and durability" }
@@ -93,7 +93,7 @@
             "category": "Testing and Manufacturing",
             "title": "Process control and in-house testing for customer-specific requirements",
             "description": "The Halol facility combines production, validation, and responsive development to reduce risk and shorten the path from sample to supply.",
-            "image": "assets/img/factory/knitting-machine-1.png",
+            "image": "assets/img/factory/Pailung 1.jpg",
             "href": "about.html",
             "cta": "See our story"
           },
@@ -280,7 +280,7 @@
       "description": "NirChem extends Nirbhay's offering through PU coating, laminating, vinyl coated textile support, specialty finishes, and the added strength of Interplast Kimya representation.",
       "backgroundImage": "assets/img/hero/nc-bg.jpg"
     },
-    "divisionLogo": "assets/img/logo/nc-logo.png",
+    "divisionLogo": "assets/img/logo/nc-logo.PNG",
     "divisionLogoAlt": "NirChem - a division of Nirbhay Knitting Industries",
     "divisionStatement": "A division focused on value-added coating, laminating, and chemistry-backed material development.",
     "products": [
@@ -313,7 +313,7 @@
     "contentBlock": {
       "title": "Where chemistry and textile know-how come together",
       "description": "NirChem connects coating capability, laminating, and chemical support to Nirbhay's textile base. The result is a more integrated platform for customers seeking performance-driven coated materials and future-ready developments.",
-      "image": "assets/img/factory/nc-factory.jpg"
+      "image": "assets/img/factory/stenter.jpg"
     }
   },
   "sustainability": {

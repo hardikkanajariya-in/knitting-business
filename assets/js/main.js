@@ -19,9 +19,9 @@ const IMAGE_CDN_FALLBACK = {
   'assets/img/products/genuine-leather.jpg': 'https://images.pexels.com/photos/3894048/pexels-photo-3894048.jpeg?auto=compress&cs=tinysrgb&w=800',
   'assets/img/products/direct-coating.jpg': 'https://images.pexels.com/photos/32613926/pexels-photo-32613926.jpeg?auto=compress&cs=tinysrgb&w=800',
   'assets/img/products/others.jpg': 'https://images.pexels.com/photos/14786437/pexels-photo-14786437.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'assets/img/factory/nk-factory.jpg': 'https://images.pexels.com/photos/8246480/pexels-photo-8246480.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'assets/img/factory/nc-factory.jpg': 'https://images.pexels.com/photos/3544567/pexels-photo-3544567.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'assets/img/factory/team-factory.jpg': 'https://images.pexels.com/photos/31090804/pexels-photo-31090804.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'assets/img/factory/Pailung 1.jpg': 'https://images.pexels.com/photos/8246480/pexels-photo-8246480.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'assets/img/factory/stenter.jpg': 'https://images.pexels.com/photos/3544567/pexels-photo-3544567.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'assets/img/factory/Main Entry.JPG': 'https://images.pexels.com/photos/31090804/pexels-photo-31090804.jpeg?auto=compress&cs=tinysrgb&w=1200',
   'assets/img/team/rajeev-kumar.jpg': 'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=400',
   'assets/img/team/prathit-kamdar.jpg': 'https://images.pexels.com/photos/7580937/pexels-photo-7580937.jpeg?auto=compress&cs=tinysrgb&w=400',
 };
@@ -623,7 +623,7 @@ function renderSustainabilityPage(data) {
 function renderContactPage(data) {
   const contact = data.contact;
   return `
-    ${typeof renderPageBanner === 'function' ? renderPageBanner({ title: contact.title, subtitle: contact.subtitle, backgroundImage: 'assets/img/factory/nc-factory.jpg' }) : ''}
+    ${typeof renderPageBanner === 'function' ? renderPageBanner({ title: contact.title, subtitle: contact.subtitle, backgroundImage: 'assets/img/factory/stenter.jpg' }) : ''}
 
     <section class="contact-section section">
       <div class="container">
