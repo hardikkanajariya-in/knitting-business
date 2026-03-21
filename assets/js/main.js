@@ -458,6 +458,9 @@ async function initPage(pageKey) {
       if (typeof initHomeInteractiveFX === 'function') {
         initHomeInteractiveFX();
       }
+      if (typeof initJourneyAutoScroll === 'function') {
+        initJourneyAutoScroll({ delay: 0.3 });
+      }
       break;
     case 'about':
       if (typeof initAboutJourneyAnimations === 'function') {
@@ -467,6 +470,9 @@ async function initPage(pageKey) {
         initFactoryGallery();
       }
       initStatCounters();
+      if (typeof initJourneyAutoScroll === 'function') {
+        initJourneyAutoScroll({ delay: 0.6 });
+      }
       break;
     case 'nc':
       break;
