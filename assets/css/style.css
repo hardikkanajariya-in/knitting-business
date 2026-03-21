@@ -5,7 +5,7 @@
 
 /* --- CSS Custom Properties (Theme) --- */
 :root {
-  /* Light theme (default) */
+  /* Light theme (default) — Brand Identity Guide */
   --bg-primary: #ffffff;
   --bg-secondary: #f3f6fd;
   --bg-tertiary: #e2eafb;
@@ -13,22 +13,28 @@
   --bg-overlay: rgba(255, 255, 255, 0.88);
   --bg-header: rgba(255, 255, 255, 0.92);
 
-  --text-primary: #122345;
+  --text-primary: #0A2A43;
   --text-secondary: #41557e;
-  --text-tertiary: #7183aa;
+  --text-tertiary: #6E7A86;
   --text-inverse: #ffffff;
 
-  --accent: #2b4ea2;
-  --accent-hover: #1d397d;
+  --accent: #0A2A43;
+  --accent-hover: #071d2f;
   --accent-light: #e8eefb;
+
+  /* Brand secondary & accent colors */
+  --steel-grey: #6E7A86;
+  --eco-green: #4BAF4F;
+  --bright-blue: #1C6DD0;
+  --warm-grey: #D9D9D9;
 
   --border: #d7e0f0;
   --border-light: #edf2fb;
 
-  --shadow-sm: 0 1px 3px rgba(18, 35, 69, 0.08);
-  --shadow-md: 0 8px 22px rgba(18, 35, 69, 0.1);
-  --shadow-lg: 0 16px 40px rgba(24, 44, 86, 0.14);
-  --shadow-xl: 0 24px 70px rgba(24, 44, 86, 0.18);
+  --shadow-sm: 0 1px 3px rgba(10, 42, 67, 0.08);
+  --shadow-md: 0 8px 22px rgba(10, 42, 67, 0.1);
+  --shadow-lg: 0 16px 40px rgba(10, 42, 67, 0.14);
+  --shadow-xl: 0 24px 70px rgba(10, 42, 67, 0.18);
 
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
@@ -45,23 +51,28 @@
   --container-max: 1280px;
 }
 
-/* Dark theme */
+/* Dark theme — Brand Identity Guide */
 .dark {
-  --bg-primary: #071126;
-  --bg-secondary: #0c1834;
-  --bg-tertiary: #15264a;
-  --bg-card: #10203f;
-  --bg-overlay: rgba(7, 17, 38, 0.92);
-  --bg-header: rgba(7, 17, 38, 0.94);
+  --bg-primary: #061520;
+  --bg-secondary: #0a1f30;
+  --bg-tertiary: #0f2d44;
+  --bg-card: #0c2438;
+  --bg-overlay: rgba(6, 21, 32, 0.92);
+  --bg-header: rgba(6, 21, 32, 0.94);
 
   --text-primary: #eef4ff;
   --text-secondary: #c2d2f3;
   --text-tertiary: #8fa3cf;
-  --text-inverse: #071126;
+  --text-inverse: #0A2A43;
 
-  --accent: #88aaff;
-  --accent-hover: #b4c8ff;
-  --accent-light: rgba(136, 170, 255, 0.16);
+  --accent: #4da3ff;
+  --accent-hover: #7dbfff;
+  --accent-light: rgba(28, 109, 208, 0.16);
+
+  --steel-grey: #8a96a3;
+  --eco-green: #5ec462;
+  --bright-blue: #4da3ff;
+  --warm-grey: #3a4550;
 
   --border: rgba(143, 163, 207, 0.24);
   --border-light: rgba(143, 163, 207, 0.12);

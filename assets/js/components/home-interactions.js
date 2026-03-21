@@ -1,10 +1,5 @@
 function initHomeInteractiveFX() {
-  if (typeof initHomeWebGL === 'function') {
-    initHomeWebGL();
-  }
-  initHeroPointerParallax();
   initMagneticButtons();
-  initHomeFloatingScroll();
   initInteractiveCards();
   initHomeSectionScrollFX();
   initParallaxCards();
@@ -16,58 +11,6 @@ function initHomeInteractiveFX() {
 
 function prefersReducedMotion() {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-}
-
-function initHeroPointerParallax() {
-  const hero = document.querySelector('.hero-a-immersive');
-  if (!hero || hero.dataset.pointerInit === 'true' || prefersReducedMotion()) return;
-
-  hero.dataset.pointerInit = 'true';
-
-  const scene = hero.querySelector('.hero-a-visual-stage');
-  const layeredItems = hero.querySelectorAll('[data-depth]');
-
-  const onMove = (event) => {
-    const rect = hero.getBoundingClientRect();
-    const px = (event.clientX - rect.left) / rect.width;
-    const py = (event.clientY - rect.top) / rect.height;
-    const rx = (0.5 - py) * 6;
-    const ry = (px - 0.5) * 8;
-    const shiftX = (px - 0.5) * 24;
-    const shiftY = (py - 0.5) * 18;
-
-    hero.style.setProperty('--mouse-x', `${px * 100}%`);
-    hero.style.setProperty('--mouse-y', `${py * 100}%`);
-    hero.style.setProperty('--rotate-x', `${rx}deg`);
-    hero.style.setProperty('--rotate-y', `${ry}deg`);
-    hero.style.setProperty('--float-shift-x', `${shiftX}px`);
-    hero.style.setProperty('--float-shift-y', `${shiftY}px`);
-
-    if (scene) {
-      scene.style.transform = `translate3d(${shiftX * 0.12}px, ${shiftY * 0.12}px, 0) rotateX(${rx}deg) rotateY(${ry}deg)`;
-    }
-
-    layeredItems.forEach((item) => {
-      const depth = parseFloat(item.dataset.depth || '0');
-      const x = (px - 0.5) * depth * 110;
-      const y = (py - 0.5) * depth * 86;
-      item.style.transform = `translate3d(${x}px, ${y}px, ${depth * 180}px)`;
-    });
-  };
-
-  const reset = () => {
-    hero.style.setProperty('--mouse-x', '50%');
-    hero.style.setProperty('--mouse-y', '50%');
-    hero.style.setProperty('--float-shift-x', '0px');
-    hero.style.setProperty('--float-shift-y', '0px');
-    if (scene) scene.style.transform = '';
-    layeredItems.forEach((item) => {
-      item.style.transform = '';
-    });
-  };
-
-  hero.addEventListener('mousemove', onMove);
-  hero.addEventListener('mouseleave', reset);
 }
 
 function initMagneticButtons() {
@@ -86,78 +29,6 @@ function initMagneticButtons() {
 
     button.addEventListener('mouseleave', () => {
       button.style.transform = '';
-    });
-  });
-}
-
-function initHomeFloatingScroll() {
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-
-  const hero = document.querySelector('.hero-a-immersive');
-  if (hero && hero.dataset.scrollFxInit !== 'true') {
-    hero.dataset.scrollFxInit = 'true';
-
-    const coreFloat = hero.querySelector('.hero-a-visual-core-float');
-    const assetFloats = hero.querySelectorAll('.hero-a-asset-float');
-    const blueGlow = hero.querySelector('.hero-a-glow--blue');
-    const redGlow = hero.querySelector('.hero-a-glow--red');
-
-    if (coreFloat) {
-      gsap.to(coreFloat, {
-        y: -12,
-        rotation: 3,
-        duration: 4.8,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut'
-      });
-    }
-
-    assetFloats.forEach((card, index) => {
-      gsap.to(card, {
-        y: index % 2 === 0 ? -16 : 16,
-        x: index === 1 ? -8 : 8,
-        duration: 3.8 + index * 0.45,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut'
-      });
-    });
-
-    if (blueGlow) {
-      gsap.to(blueGlow, {
-        yPercent: -18,
-        scrollTrigger: {
-          trigger: hero,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1,
-        }
-      });
-    }
-
-    if (redGlow) {
-      gsap.to(redGlow, {
-        yPercent: 16,
-        scrollTrigger: {
-          trigger: hero,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: 1,
-        }
-      });
-    }
-  }
-
-  gsap.utils.toArray('.timeline-item').forEach((item) => {
-    if (item.dataset.activeTrigger === 'true') return;
-    item.dataset.activeTrigger = 'true';
-
-    ScrollTrigger.create({
-      trigger: item,
-      start: 'top 65%',
-      end: 'bottom 35%',
-      toggleClass: { targets: item, className: 'is-active' }
     });
   });
 }

@@ -5,7 +5,7 @@ function renderHeroB(data) {
   const posterImage = data.posterImage || data.backgroundImage || '';
 
   return `
-    <section class="hero-b" style="display: none;">
+    <section class="hero-b">
       <div class="hero-b-bg">
         ${hasVideo ? `
           <video class="hero-b-bg-video" autoplay muted loop playsinline poster="${posterImage}" data-video-src="${data.heroVideo}">

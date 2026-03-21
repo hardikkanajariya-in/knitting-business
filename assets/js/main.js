@@ -8,10 +8,7 @@
 // images automatically load from CDN. Run download-images.ps1 to go fully local.
 const IMAGE_CDN_FALLBACK = {
   'assets/img/hero/hero-bg.jpg': 'https://images.pexels.com/photos/36327501/pexels-photo-36327501.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  'assets/img/hero/hero-split.jpg': 'https://images.pexels.com/photos/6525848/pexels-photo-6525848.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  'assets/img/hero/hero-automotive-interior.jpg': 'https://images.pexels.com/photos/1104768/pexels-photo-1104768.jpeg?auto=compress&cs=tinysrgb&w=1920',
   'assets/img/hero/about-bg.jpg': 'https://images.pexels.com/photos/8246487/pexels-photo-8246487.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  'assets/img/hero/nk-bg.jpg': 'https://images.pexels.com/photos/36327502/pexels-photo-36327502.jpeg?auto=compress&cs=tinysrgb&w=1920',
   'assets/img/hero/nc-bg.jpg': 'https://images.pexels.com/photos/4149333/pexels-photo-4149333.jpeg?auto=compress&cs=tinysrgb&w=1920',
   'assets/img/hero/sustainability-bg.jpg': 'https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg?auto=compress&cs=tinysrgb&w=1920',
   'assets/img/products/raised.jpg': 'https://images.pexels.com/photos/925706/pexels-photo-925706.jpeg?auto=compress&cs=tinysrgb&w=800',
@@ -286,104 +283,6 @@ function initGSAP() {
   });
 }
 
-// --- Hero A Animations ---
-function initHeroAAnimations() {
-  if (typeof gsap === 'undefined') return;
-
-  const heroA = document.querySelector('.hero-a');
-  if (!heroA) return;
-
-  if (heroA.dataset.introInit !== 'true') {
-    heroA.dataset.introInit = 'true';
-
-    const tl = gsap.timeline({ delay: 0.2 });
-
-    tl.from('.hero-a-bg', {
-      scale: 1.12,
-      opacity: 0,
-      duration: 1.3,
-      ease: 'power2.out',
-    })
-    .from('.hero-a-kicker', {
-      y: 24,
-      opacity: 0,
-      duration: 0.55,
-      ease: 'power3.out',
-    }, '-=0.7')
-    .from('.hero-a-title', {
-      y: 34,
-      opacity: 0,
-      duration: 0.9,
-      ease: 'power3.out',
-    }, '-=0.35')
-    .from('.hero-a-desc', {
-      y: 24,
-      opacity: 0,
-      duration: 0.65,
-      ease: 'power3.out',
-    }, '-=0.45')
-    .from('.hero-a-cta-row > *', {
-      y: 20,
-      opacity: 0,
-      duration: 0.45,
-      stagger: 0.1,
-      ease: 'power3.out',
-    }, '-=0.3')
-    .from('.hero-a-stats-bar', {
-      y: 30,
-      opacity: 0,
-      duration: 0.6,
-      ease: 'power3.out',
-    }, '-=0.2')
-    .from('.hero-a-scroll-thread', {
-      y: 18,
-      opacity: 0,
-      duration: 0.5,
-      ease: 'power3.out',
-    }, '-=0.3');
-  }
-
-  if (typeof ScrollTrigger !== 'undefined' && heroA.dataset.scrollIntroInit !== 'true') {
-    heroA.dataset.scrollIntroInit = 'true';
-
-    gsap.to('.hero-a-bg', {
-      yPercent: 12,
-      scale: 1.08,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: heroA,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      }
-    });
-
-    gsap.to('.hero-a-copy', {
-      yPercent: -10,
-      opacity: 0.72,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: heroA,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      }
-    });
-
-    gsap.to('.hero-a-scroll-thread', {
-      y: 24,
-      opacity: 0,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: heroA,
-        start: 'top top',
-        end: '60% top',
-        scrub: true,
-      }
-    });
-  }
-}
-
 // --- Hero B Animations ---
 function initHeroBAnimations() {
   if (typeof gsap === 'undefined') return;
@@ -461,67 +360,6 @@ function initHeroBAnimations() {
   }, '-=0.2');
 }
 
-// --- Journey / Timeline Animations (Pinned Stack) ---
-function initTimelineAnimations() {
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-
-  const section = document.querySelector('.jrny-section');
-  if (!section) return;
-
-  const pin = section.querySelector('.jrny-pin');
-  const slides = section.querySelectorAll('.jrny-slide');
-  const dots = section.querySelectorAll('.jrny-dot');
-  const progressFill = section.querySelector('.jrny-progress-fill');
-  const bgGrid = section.querySelector('.jrny-bg-grid');
-  const bgOrbs = section.querySelectorAll('.jrny-bg-orb');
-  const bgSweeps = section.querySelectorAll('.jrny-bg-sweep');
-  const count = slides.length;
-  if (!count) return;
-
-  // Show first slide immediately
-  slides[0].classList.add('is-active');
-  if (dots[0]) dots[0].classList.add('is-active');
-
-  // Create ScrollTrigger for pinning and slide control
-  ScrollTrigger.create({
-    trigger: section,
-    start: 'top top',
-    end: () => '+=' + (count * 100) + '%',
-    pin: pin,
-    pinType: 'transform',
-    scrub: true,
-    snap: {
-      snapTo: 1 / (count - 1),
-      duration: { min: 0.2, max: 0.5 },
-      ease: 'power1.inOut',
-    },
-    onUpdate: (self) => {
-      const progress = self.progress;
-      const rawIndex = progress * (count - 1);
-      const activeIndex = Math.round(rawIndex);
-
-      // Update slides with CSS transition-driven visibility
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('is-active', i === activeIndex);
-      });
-
-      // Update dots
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('is-active', i <= activeIndex);
-      });
-
-      // Update progress fill
-      if (progressFill) {
-        progressFill.style.height = (progress * 100) + '%';
-      }
-    }
-  });
-
-  // No GSAP tweens on slide content — all handled by CSS transitions
-
-  // Background glows parallax — removed for scroll performance
-}
-
 // --- Stat Counter Animation ---
 function initStatCounters() {
   if (typeof gsap === 'undefined') return;
@@ -580,17 +418,11 @@ async function initPage(pageKey) {
       case 'about':
         html = renderAboutPage(data);
         break;
-      case 'nk':
-        html = renderNKPage(data);
-        break;
       case 'nc':
         html = renderNCPage(data);
         break;
       case 'sustainability':
         html = renderSustainabilityPage(data);
-        break;
-      case 'team':
-        html = renderTeamPage(data);
         break;
       case 'contact':
         html = renderContactPage(data);
@@ -602,11 +434,10 @@ async function initPage(pageKey) {
 
   // Add hero-overlay-mode to header if page has a full-bleed dark hero or page banner
   const header = document.querySelector('.site-header');
-  const visibleHeroA = document.querySelector('.hero-a:not([style*="display: none"])');
-  const visibleHeroB = document.querySelector('.hero-b:not([style*="display: none"])');
+  const visibleHeroB = document.querySelector('.hero-b');
   const pageBanner = document.querySelector('.page-banner:not(.no-bg)');
   if (header) {
-    header.classList.toggle('hero-overlay-mode', Boolean(visibleHeroA || visibleHeroB || pageBanner));
+    header.classList.toggle('hero-overlay-mode', Boolean(visibleHeroB || pageBanner));
   }
 
   // Initialize all interactions
@@ -619,12 +450,10 @@ async function initPage(pageKey) {
   // Page-specific animations
   switch (pageKey) {
     case 'home':
-      initHeroVariantToggle();
-      const activeVariant = document.querySelector('.hero-a[style=""]') ||
-                           document.querySelector('.hero-a:not([style*="display: none"])');
-      if (activeVariant) initHeroAAnimations();
-      else initHeroBAnimations();
-      initTimelineAnimations();
+      initHeroBAnimations();
+      if (typeof initAboutJourneyAnimations === 'function') {
+        initAboutJourneyAnimations();
+      }
       initStatCounters();
       if (typeof initHomeInteractiveFX === 'function') {
         initHomeInteractiveFX();
@@ -636,7 +465,6 @@ async function initPage(pageKey) {
       }
       initStatCounters();
       break;
-    case 'nk':
     case 'nc':
       break;
     case 'sustainability':
@@ -652,80 +480,21 @@ async function initPage(pageKey) {
   }
 }
 
-// --- Hero Variant Toggle (dev preview) ---
-function initHeroVariantToggle() {
-  const toggle = document.querySelector('.hero-variant-toggle');
-  const toggleBtns = document.querySelectorAll('.hero-variant-btn');
-  const heroA = document.querySelector('.hero-a');
-  const heroB = document.querySelector('.hero-b');
-
-  if (!toggle || !toggleBtns.length || !heroA || !heroB) return;
-
-  if (toggle.parentElement !== document.body) {
-    document.body.appendChild(toggle);
-  }
-
-  toggleBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const variant = btn.dataset.variant;
-
-      toggleBtns.forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-pressed', 'false');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
-
-      if (variant === 'a') {
-        heroA.style.display = '';
-        heroB.style.display = 'none';
-        const hdr = document.querySelector('.site-header');
-        if (hdr) hdr.classList.add('hero-overlay-mode');
-        initHeroAAnimations();
-        if (typeof initHomeInteractiveFX === 'function') initHomeInteractiveFX();
-      } else {
-        heroA.style.display = 'none';
-        heroB.style.display = '';
-        const hdr = document.querySelector('.site-header');
-        if (hdr) hdr.classList.add('hero-overlay-mode');
-        initHeroBAnimations();
-        const video = heroB.querySelector('video');
-        if (video) {
-          const playPromise = video.play();
-          if (playPromise && typeof playPromise.catch === 'function') {
-            playPromise.catch(() => {});
-          }
-        }
-      }
-
-      // Refresh ScrollTrigger
-      if (typeof ScrollTrigger !== 'undefined') {
-        ScrollTrigger.refresh();
-      }
-    });
-  });
-}
-
 // --- Render Page Functions ---
 function renderHomePage(data) {
-  const hero = data.home.hero;
-  const heroVariantB = data.home.heroVariantB || hero;
-  const journey = data.home.journey;
+  const heroVariantB = data.home.heroVariantB;
+  const journey = data.about?.journeySection;
 
   return `
-    ${typeof renderHeroA === 'function' ? renderHeroA(hero) : ''}
     ${typeof renderHeroB === 'function' ? renderHeroB(heroVariantB) : ''}
-    <div class="hero-variant-toggle" aria-label="Hero layout variants">
-      <button type="button" class="hero-variant-btn active" data-variant="a" aria-pressed="true">Split Hero</button>
-      <button type="button" class="hero-variant-btn" data-variant="b" aria-pressed="false">Alternate Hero</button>
-    </div>
-    ${typeof renderTimeline === 'function' ? renderTimeline(journey) : ''}
+    ${typeof renderAboutJourney === 'function' && journey ? renderAboutJourney(journey) : ''}
     ${typeof renderHomePremiumSections === 'function' ? renderHomePremiumSections(data) : ''}
   `;
 }
 
 function renderAboutPage(data) {
   const about = data.about;
+  const team = data.team;
   return `
     ${typeof renderAboutJourney === 'function' ? renderAboutJourney(about.journeySection) : ''}
     ${typeof renderAboutStory === 'function' && about.story ? renderAboutStory(about.story) : ''}
@@ -742,28 +511,19 @@ function renderAboutPage(data) {
         </div>
       </div>
     </section>
-  `;
-}
-
-function renderNKPage(data) {
-  const nk = data.nk;
-  return `
-    ${typeof renderPageBanner === 'function' ? renderPageBanner(nk.banner) : ''}
-    <section class="section">
+    ${team ? `
+    <section class="team-section section">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
-          <h2 class="section-title">Our Capabilities</h2>
-          <p class="section-subtitle">Knitted and engineered textile solutions for industrial applications</p>
+          <h2 class="section-title">${team.sectionTitle || 'People and Capability'}</h2>
+          <p class="section-subtitle">${team.sectionSubtitle || 'The teams supporting leadership, development, operations, and customer needs'}</p>
         </div>
-        ${typeof renderProductGrid === 'function' ? renderProductGrid(nk.features) : ''}
+        <div class="team-grid">
+          ${typeof renderTeamCards === 'function' ? renderTeamCards(team.leadership) : ''}
+        </div>
       </div>
     </section>
-    <section class="section" style="background: var(--bg-secondary);">
-      <div class="container">
-        ${typeof renderContentBlock === 'function' ? renderContentBlock(nk.contentBlock) : ''}
-      </div>
-    </section>
-    ${typeof renderCTAStrip === 'function' ? renderCTAStrip(data) : ''}
+    ` : ''}
   `;
 }
 
@@ -854,34 +614,6 @@ function renderSustainabilityPage(data) {
               <div class="stat-label">${stat.label}</div>
             </div>`
           ).join('')}
-        </div>
-      </div>
-    </section>
-  `;
-}
-
-function renderTeamPage(data) {
-  const team = data.team;
-  return `
-    ${typeof renderPageBanner === 'function' ? renderPageBanner({ title: team.hero.title, subtitle: team.hero.subtitle, backgroundImage: team.hero.factoryImage }) : ''}
-
-    <section class="team-intro section">
-      <div class="container">
-        <div class="team-intro-inner" data-aos="fade-up">
-          <p class="team-intro-label">Who We Are</p>
-          <p class="team-intro-text">${team.hero.description}</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="team-section section">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up">
-          <h2 class="section-title">People and Capability</h2>
-          <p class="section-subtitle">The teams supporting leadership, development, operations, and customer needs</p>
-        </div>
-        <div class="team-grid">
-          ${typeof renderTeamCards === 'function' ? renderTeamCards(team.leadership) : ''}
         </div>
       </div>
     </section>
