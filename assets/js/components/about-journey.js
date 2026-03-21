@@ -164,6 +164,78 @@ function renderAboutStory(story) {
   `;
 }
 
+function renderFactoryGallery(gallery) {
+  if (!gallery || !gallery.images || !gallery.images.length) return '';
+  return `
+    <section class="factory-gallery-section" data-parallax-section>
+      <div class="container">
+        <div class="factory-gallery-header" data-aos="fade-up">
+          ${gallery.eyebrow ? `<p class="home-section-eyebrow">${gallery.eyebrow}</p>` : ''}
+          <h2 class="factory-gallery-title">${gallery.title}</h2>
+          ${gallery.subtitle ? `<p class="factory-gallery-subtitle">${gallery.subtitle}</p>` : ''}
+        </div>
+      </div>
+      <div class="factory-gallery-grid">
+        ${gallery.images.map((img, i) => `
+          <figure class="factory-gallery-item" data-aos="fade-up" data-aos-delay="${i * 100}">
+            <div class="factory-gallery-img-wrap">
+              <img src="${img.src}" alt="${img.alt}" class="factory-gallery-img" loading="lazy">
+            </div>
+            ${img.caption ? `<figcaption class="factory-gallery-caption">${img.caption}</figcaption>` : ''}
+          </figure>
+        `).join('')}
+      </div>
+      <div class="factory-gallery-lightbox" id="factory-lightbox" aria-hidden="true">
+        <button class="factory-lightbox-close" aria-label="Close gallery">&times;</button>
+        <button class="factory-lightbox-prev" aria-label="Previous image">&#8249;</button>
+        <img class="factory-lightbox-img" src="" alt="">
+        <button class="factory-lightbox-next" aria-label="Next image">&#8250;</button>
+      </div>
+    </section>
+  `;
+}
+
+function initFactoryGallery() {
+  const items = document.querySelectorAll('.factory-gallery-item');
+  const lightbox = document.getElementById('factory-lightbox');
+  if (!items.length || !lightbox) return;
+
+  const lbImg = lightbox.querySelector('.factory-lightbox-img');
+  const imgs = Array.from(items).map(item => {
+    const img = item.querySelector('img');
+    return { src: img.src, alt: img.alt };
+  });
+  let current = 0;
+
+  function open(index) {
+    current = index;
+    lbImg.src = imgs[current].src;
+    lbImg.alt = imgs[current].alt;
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function next() { open((current + 1) % imgs.length); }
+  function prev() { open((current - 1 + imgs.length) % imgs.length); }
+
+  items.forEach((item, i) => item.addEventListener('click', () => open(i)));
+  lightbox.querySelector('.factory-lightbox-close').addEventListener('click', close);
+  lightbox.querySelector('.factory-lightbox-next').addEventListener('click', next);
+  lightbox.querySelector('.factory-lightbox-prev').addEventListener('click', prev);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.getAttribute('aria-hidden') !== 'false') return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft') prev();
+  });
+}
+
 function initAboutJourneyAnimations() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 

@@ -229,6 +229,17 @@
         "The company is now pushing into higher-value material systems through laminating, PU coating, Interplast Kimya-linked chemistry, and a focused innovation pipeline. International expansion is underway — with Europe as the first target market for sustainability-aligned technical textiles, followed by North America for innovation-driven coated materials, and Japan/Korea for high-tech niche applications."
       ]
     },
+    "factoryGallery": {
+      "eyebrow": "Our Facility",
+      "title": "Inside the Halol Manufacturing Unit",
+      "subtitle": "35,000+ sq. ft. of integrated knitting, coating, and testing infrastructure",
+      "images": [
+        { "src": "assets/img/factory/Main Entry.JPG", "alt": "Nirbhay Knitting factory main entrance", "caption": "Factory Entrance" },
+        { "src": "assets/img/factory/Pailung 1.jpg", "alt": "Pailung circular knitting machine", "caption": "Pailung Knitting Machine" },
+        { "src": "assets/img/factory/Pinlung 2.jpg", "alt": "Pailung knitting machine production line", "caption": "Production Line" },
+        { "src": "assets/img/factory/stenter.jpg", "alt": "Stenter finishing machine", "caption": "Stenter Machine" }
+      ]
+    },
     "stats": [
       { "value": "125 MT", "label": "Monthly production capacity" },
       { "value": "35,000+", "label": "sq. ft. built-up space" },

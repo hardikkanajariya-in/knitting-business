@@ -463,6 +463,9 @@ async function initPage(pageKey) {
       if (typeof initAboutJourneyAnimations === 'function') {
         initAboutJourneyAnimations();
       }
+      if (typeof initFactoryGallery === 'function') {
+        initFactoryGallery();
+      }
       initStatCounters();
       break;
     case 'nc':
@@ -498,6 +501,7 @@ function renderAboutPage(data) {
   return `
     ${typeof renderAboutJourney === 'function' ? renderAboutJourney(about.journeySection) : ''}
     ${typeof renderAboutStory === 'function' && about.story ? renderAboutStory(about.story) : ''}
+    ${typeof renderFactoryGallery === 'function' && about.factoryGallery ? renderFactoryGallery(about.factoryGallery) : ''}
     ${typeof renderAboutStrengths === 'function' && about.strengths ? renderAboutStrengths(about.strengths) : ''}
     <section class="section" style="background: var(--bg-secondary); padding-top: 2rem;">
       <div class="container">
