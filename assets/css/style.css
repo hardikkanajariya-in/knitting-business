@@ -11,7 +11,7 @@
   --bg-tertiary: #e2eafb;
   --bg-card: #ffffff;
   --bg-overlay: rgba(255, 255, 255, 0.88);
-  --bg-header: rgba(255, 255, 255, 0.92);
+  --bg-header: #ffffff;
 
   --text-primary: #0A2A43;
   --text-secondary: #41557e;
@@ -48,7 +48,15 @@
   --radius-full: 9999px;
 
   --header-height: 72px;
-  --container-max: 1280px;
+  --container-max: 100%;
+}
+
+/* Desktop containers get comfortable side padding for readability */
+@media (min-width: 1400px) {
+  :root { --container-pad: 4rem; }
+}
+@media (min-width: 1800px) {
+  :root { --container-pad: 6rem; }
 }
 
 /* Dark theme — Brand Identity Guide */
@@ -58,7 +66,7 @@
   --bg-tertiary: #0f2d44;
   --bg-card: #0c2438;
   --bg-overlay: rgba(6, 21, 32, 0.92);
-  --bg-header: rgba(6, 21, 32, 0.94);
+  --bg-header: #061520;
 
   --text-primary: #eef4ff;
   --text-secondary: #c2d2f3;
@@ -171,7 +179,15 @@ ul, ol {
 }
 
 @media (min-width: 1024px) {
-  .container { padding: 0 2rem; }
+  .container { padding: 0 2.5rem; }
+}
+
+@media (min-width: 1400px) {
+  .container { padding: 0 var(--container-pad, 4rem); }
+}
+
+@media (min-width: 1800px) {
+  .container { padding: 0 var(--container-pad, 6rem); }
 }
 
 /* --- Header --- */
@@ -194,10 +210,10 @@ ul, ol {
 }
 
 .site-header.hero-overlay-mode:not(.scrolled) {
-  background: linear-gradient(180deg, rgba(7, 17, 38, 0.9), rgba(17, 35, 74, 0.68));
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  box-shadow: 0 12px 30px rgba(7, 17, 38, 0.18);
+  background: linear-gradient(180deg, rgba(7, 17, 38, 0.45) 0%, transparent 100%);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
 }
 
 /* Header over hero overlay — white text in dark mode when transparent */
@@ -252,20 +268,26 @@ ul, ol {
   align-items: center;
   justify-content: center;
   padding: 0;
-  transition: transform var(--transition-fast);
+  background: none;
+  border-radius: 0.375rem;
+  transition: transform var(--transition-fast), background var(--transition-fast), padding var(--transition-fast);
 }
 
 .header-logo-image {
   display: block;
   width: auto;
-  height: clamp(3rem, 5vw, 4rem);
+  height: clamp(2.5rem, 4.5vw, 3.5rem);
   max-width: min(54vw, 22rem);
   object-fit: contain;
+  border-radius: 0.25rem;
   mix-blend-mode: multiply;
 }
 
-.dark .header-logo-image {
-  mix-blend-mode: screen;
+/* Dark contexts: wrap logo in a compact white badge so multiply can remove white bg */
+.site-header.hero-overlay-mode:not(.scrolled) .header-logo-mark,
+.dark .site-header.scrolled .header-logo-mark {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.2rem 0.4rem;
 }
 
 .header-logo-fallback {
@@ -278,30 +300,17 @@ ul, ol {
   color: var(--text-primary);
 }
 
-.site-header.scrolled .header-logo-mark,
-.dark .site-header.scrolled .header-logo-mark,
-.site-header.hero-overlay-mode:not(.scrolled) .header-logo-mark {
-  padding: 0;
-  background: none;
-  box-shadow: none;
-}
-
 .site-header.hero-overlay-mode:not(.scrolled) .header-logo-fallback {
   color: var(--accent);
-}
-
-.site-header.hero-overlay-mode:not(.scrolled) .header-logo-image {
-  mix-blend-mode: screen;
 }
 
 @media (max-width: 767px) {
   .header-logo-image {
     max-width: min(58vw, 14rem);
-    height: 2.5rem;
+    height: 2rem;
   }
 
-  .site-header.scrolled .header-logo-mark,
-  .site-header.hero-overlay-mode:not(.scrolled) .header-logo-mark {
+  .header-logo-mark {
     padding: 0;
   }
 }
