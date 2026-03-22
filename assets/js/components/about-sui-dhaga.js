@@ -26,10 +26,7 @@ function renderAboutJourneyV4(section) {
           <div class="sd-hoop">
             <div class="sd-hoop-ring"></div>
             <div class="sd-hoop-fabric">
-              ${m.lottie ? `<dotlottie-player
-                src="${m.lottie}" background="transparent"
-                speed="0.6" loop class="sd-hoop-lottie"
-              ></dotlottie-player>` : '<div class="sd-hoop-lottie" style="width:130px;height:130px;"></div>'}
+              ${m.icon ? `<img src="${m.icon}" alt="${m.title}" class="sd-hoop-img" loading="lazy">` : ''}
             </div>
             <div class="sd-cross-stitches">${crosses}</div>
           </div>
@@ -346,10 +343,6 @@ function initAboutJourneyV4Animations() {
         start: 'top 65%',
         onEnter: () => {
           m.classList.add('is-revealed');
-          const player = m.querySelector('dotlottie-player');
-          if (player && typeof player.play === 'function') {
-            try { player.play(); } catch (_) {}
-          }
         },
       });
     });
