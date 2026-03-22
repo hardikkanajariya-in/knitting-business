@@ -233,9 +233,3 @@
     transform: translateY(0) scale(1);
   }
 }
-
-@media (max-width: 768px) {
-  [data-page="about-v5"] .version-switcher {
-    bottom: 4.5rem;
-  }
-}

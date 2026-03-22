@@ -415,9 +415,6 @@ async function initPage(pageKey) {
       case 'home':
         html = renderHomePage(data);
         break;
-      case 'about':
-        html = renderAboutPage(data);
-        break;
       case 'nc':
         html = renderNCPage(data);
         break;
@@ -456,27 +453,9 @@ async function initPage(pageKey) {
   switch (pageKey) {
     case 'home':
       initHeroBAnimations();
-      if (typeof initAboutJourneyAnimations === 'function') {
-        initAboutJourneyAnimations();
-      }
       initStatCounters();
       if (typeof initHomeInteractiveFX === 'function') {
         initHomeInteractiveFX();
-      }
-      if (typeof initJourneyAutoScroll === 'function') {
-        initJourneyAutoScroll({ delay: 0.3 });
-      }
-      break;
-    case 'about':
-      if (typeof initAboutJourneyAnimations === 'function') {
-        initAboutJourneyAnimations();
-      }
-      if (typeof initFactoryGallery === 'function') {
-        initFactoryGallery();
-      }
-      initStatCounters();
-      if (typeof initJourneyAutoScroll === 'function') {
-        initJourneyAutoScroll({ delay: 0.6 });
       }
       break;
     case 'nc':
@@ -497,48 +476,10 @@ async function initPage(pageKey) {
 // --- Render Page Functions ---
 function renderHomePage(data) {
   const heroVariantB = data.home.heroVariantB;
-  const journey = data.about?.journeySection;
 
   return `
     ${typeof renderHeroB === 'function' ? renderHeroB(heroVariantB) : ''}
-    ${typeof renderAboutJourney === 'function' && journey ? renderAboutJourney(journey) : ''}
     ${typeof renderHomePremiumSections === 'function' ? renderHomePremiumSections(data) : ''}
-  `;
-}
-
-function renderAboutPage(data) {
-  const about = data.about;
-  const team = data.team;
-  return `
-    ${typeof renderAboutStory === 'function' && about.story ? renderAboutStory(about.story) : ''}
-    ${typeof renderAboutJourney === 'function' ? renderAboutJourney(about.journeySection) : ''}
-    ${typeof renderFactoryGallery === 'function' && about.factoryGallery ? renderFactoryGallery(about.factoryGallery) : ''}
-    ${typeof renderAboutStrengths === 'function' && about.strengths ? renderAboutStrengths(about.strengths) : ''}
-    <section class="section" style="background: var(--bg-secondary); padding-top: 2rem;">
-      <div class="container">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-          ${about.stats.map((stat) =>
-            `<div class="stat-card">
-              <div class="stat-value">${stat.value}</div>
-              <div class="stat-label">${stat.label}</div>
-            </div>`
-          ).join('')}
-        </div>
-      </div>
-    </section>
-    ${team ? `
-    <section class="team-section section">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up">
-          <h2 class="section-title">${team.sectionTitle || 'People and Capability'}</h2>
-          <p class="section-subtitle">${team.sectionSubtitle || 'The teams supporting leadership, development, operations, and customer needs'}</p>
-        </div>
-        <div class="team-grid">
-          ${typeof renderTeamCards === 'function' ? renderTeamCards(team.leadership) : ''}
-        </div>
-      </div>
-    </section>
-    ` : ''}
   `;
 }
 
