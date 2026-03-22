@@ -229,14 +229,73 @@ function renderAboutJourneyV4(section) {
         </div>
 
         <div class="sd-hero-content">
-          <div class="sd-hero-eyebrow">${section.eyebrow || 'NK'}</div>
-          <h2 class="sd-hero-title">
-            ${(section.title || 'Our Journey').replace(/(\S+)$/,
-              '<span class="sd-embroidered">$1</span>')}
-          </h2>
-          <p class="sd-hero-subtitle">${section.storyTitle || ''}</p>
-          <p class="sd-hero-paragraph">${(section.paragraphs && section.paragraphs[0]) || 'From a single knitting unit in Halol to an integrated textile powerhouse — our journey is stitched with dedication, innovation, and relentless quality.'}</p>
+          <!-- Left column: text -->
+          <div class="sd-hero-left">
+            <div class="sd-hero-eyebrow">${section.eyebrow || 'NK'}</div>
+            <h2 class="sd-hero-title">
+              ${(section.title || 'Our Journey').replace(/(\S+)$/,
+                '<span class="sd-embroidered">$1</span>')}
+            </h2>
+            <p class="sd-hero-paragraph">${(section.paragraphs && section.paragraphs[0]) || 'From a single knitting unit in Halol to an integrated textile powerhouse — our journey is stitched with dedication, innovation, and relentless quality.'}</p>
+            <div class="sd-hero-cta-row">
+              <a href="#sd-milestones" class="sd-hero-btn sd-hero-btn--primary">
+                <span>Explore Our Journey</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="contact.html" class="sd-hero-btn sd-hero-btn--ghost">
+                <span>Get in Touch</span>
+              </a>
+            </div>
+          </div>
 
+          <!-- Right column: visual feature card -->
+          <div class="sd-hero-right">
+            <div class="sd-hero-feature-card">
+              <div class="sd-feature-visual">
+                <svg class="sd-feature-loom-icon" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Outer ring -->
+                  <circle cx="60" cy="60" r="54" stroke="var(--sd-thread)" stroke-width="1" stroke-dasharray="6 4" opacity="0.3"/>
+                  <circle cx="60" cy="60" r="46" stroke="var(--sd-thread)" stroke-width="0.5" opacity="0.15"/>
+                  <!-- Fabric weave grid -->
+                  <g opacity="0.25" stroke="var(--sd-thread)" stroke-width="0.8">
+                    <line x1="35" y1="38" x2="85" y2="38"/><line x1="35" y1="48" x2="85" y2="48"/>
+                    <line x1="35" y1="58" x2="85" y2="58"/><line x1="35" y1="68" x2="85" y2="68"/>
+                    <line x1="35" y1="78" x2="85" y2="78"/>
+                    <line x1="40" y1="33" x2="40" y2="83"/><line x1="50" y1="33" x2="50" y2="83"/>
+                    <line x1="60" y1="33" x2="60" y2="83"/><line x1="70" y1="33" x2="70" y2="83"/>
+                    <line x1="80" y1="33" x2="80" y2="83"/>
+                  </g>
+                  <!-- Center highlight knot -->
+                  <circle cx="60" cy="58" r="8" fill="rgba(28,109,208,0.08)" stroke="var(--sd-thread)" stroke-width="1.2"/>
+                  <path d="M56 54l8 8M64 54l-8 8" stroke="var(--sd-thread)" stroke-width="1.5" stroke-linecap="round"/>
+                  <!-- Accent dots at weave intersections -->
+                  <circle cx="40" cy="48" r="2" fill="var(--sd-thread)" opacity="0.2"/>
+                  <circle cx="50" cy="58" r="2" fill="var(--sd-thread-gold)" opacity="0.25"/>
+                  <circle cx="70" cy="48" r="2" fill="var(--sd-thread)" opacity="0.2"/>
+                  <circle cx="80" cy="68" r="2" fill="var(--sd-thread-gold)" opacity="0.2"/>
+                  <circle cx="50" cy="78" r="2" fill="var(--sd-thread)" opacity="0.15"/>
+                  <circle cx="70" cy="68" r="2" fill="var(--sd-thread-gold)" opacity="0.2"/>
+                </svg>
+              </div>
+              <div class="sd-feature-subtitle">${section.storyTitle || 'Engineering precision with sustainable innovation for over 40 years'}</div>
+              <div class="sd-feature-stats-row">
+                <div class="sd-feature-stat">
+                  <span class="sd-feature-stat-val">40+</span>
+                  <span class="sd-feature-stat-label">Years</span>
+                </div>
+                <div class="sd-feature-stat-divider"></div>
+                <div class="sd-feature-stat">
+                  <span class="sd-feature-stat-val">125 MT</span>
+                  <span class="sd-feature-stat-label">Monthly</span>
+                </div>
+                <div class="sd-feature-stat-divider"></div>
+                <div class="sd-feature-stat">
+                  <span class="sd-feature-stat-val">Zero</span>
+                  <span class="sd-feature-stat-label">Discharge</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -254,6 +313,37 @@ function initAboutJourneyV4Animations() {
   const canvas = document.querySelector('.sd-canvas');
   if (!canvas || canvas.dataset.v4animated === 'true') return;
   canvas.dataset.v4animated = 'true';
+
+  /* ── Hero entrance timeline ── */
+  const heroLeft = document.querySelector('.sd-hero-left');
+  const heroCard = document.querySelector('.sd-hero-feature-card');
+  if (heroLeft && heroCard) {
+    const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+    heroTl
+      .fromTo('.sd-hero-eyebrow', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 })
+      .fromTo('.sd-hero-title', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.3')
+      .fromTo('.sd-hero-paragraph', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, '-=0.4')
+      .fromTo('.sd-hero-cta-row', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.2')
+      .fromTo(heroCard, { y: 60, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1, duration: 0.9, ease: 'back.out(1.4)' }, '-=0.7')
+      .fromTo('.sd-feature-loom-icon', { rotate: -15, scale: 0.6, opacity: 0 }, { rotate: 0, scale: 1, opacity: 1, duration: 0.7, ease: 'back.out(2)' }, '-=0.4')
+      .fromTo('.sd-feature-stat', { y: 15, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.1, duration: 0.4 }, '-=0.3');
+
+    /* Gentle floating for the loom icon */
+    gsap.to('.sd-feature-loom-icon', {
+      y: -6, rotate: 2,
+      duration: 3, ease: 'sine.inOut',
+      yoyo: true, repeat: -1
+    });
+
+    /* Continuous outer ring rotation */
+    const outerRing = document.querySelector('.sd-feature-loom-icon circle:first-child');
+    if (outerRing) {
+      gsap.to(outerRing, {
+        attr: { 'stroke-dashoffset': -40 },
+        duration: 8, ease: 'none', repeat: -1
+      });
+    }
+  }
 
   const milestones = gsap.utils.toArray('.sd-milestone');
   const threadPath = document.getElementById('sd-thread-path');
