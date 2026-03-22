@@ -370,8 +370,30 @@ function initAboutJourneyV4Animations() {
         onUpdate: (self) => {
           const progress = self.progress;
 
+          // Find revealProgress: what fraction of the path is currently
+          // at or above the viewport bottom. This prevents thread from
+          // drawing into areas the user hasn't scrolled to yet.
+          const canvasRect = canvas.getBoundingClientRect();
+          const viewportBottomY = window.innerHeight - canvasRect.top;
+
+          // Binary search for the path t-value where point.y = viewportBottomY
+          let lo = 0, hi = 1;
+          for (let i = 0; i < 12; i++) {
+            const mid = (lo + hi) / 2;
+            const pt = threadPath.getPointAtLength(mid * pathLength);
+            if (pt.y < viewportBottomY) {
+              lo = mid;
+            } else {
+              hi = mid;
+            }
+          }
+          const viewportT = lo;
+
+          // Clamp reveal to whichever is smaller: scroll progress or viewport limit
+          const revealProgress = Math.min(progress, viewportT);
+
           
-          const offset = pathLength * (1 - progress);
+          const offset = pathLength * (1 - revealProgress);
           gsap.set(threadPath, { strokeDashoffset: offset });
           gsap.set(threadGlow, { strokeDashoffset: offset });
           if (threadHighlight) gsap.set(threadHighlight, { strokeDashoffset: offset });
@@ -379,8 +401,8 @@ function initAboutJourneyV4Animations() {
           if (threadTwist) gsap.set(threadTwist, { strokeDashoffset: offset });
 
           
-          const pt = threadPath.getPointAtLength(progress * pathLength);
-          const pt2 = threadPath.getPointAtLength(Math.min(pathLength, progress * pathLength + 1));
+          const pt = threadPath.getPointAtLength(revealProgress * pathLength);
+          const pt2 = threadPath.getPointAtLength(Math.min(pathLength, revealProgress * pathLength + 1));
           const angle = Math.atan2(pt2.y - pt.y, pt2.x - pt.x) * (180 / Math.PI) + 90;
           gsap.set(needleGroup, {
             x: pt.x,
@@ -392,8 +414,10 @@ function initAboutJourneyV4Animations() {
           const stitches = stitchMarks.children;
           for (let i = 0; i < stitches.length; i++) {
             const dist = parseFloat(stitches[i].dataset.dist);
-            if (dist <= progress) {
+            if (dist <= revealProgress) {
               stitches[i].classList.add('is-visible');
+            } else {
+              stitches[i].classList.remove('is-visible');
             }
           }
 
@@ -418,6 +442,29 @@ function initAboutJourneyV4Animations() {
         start: 'top 65%',
         onEnter: () => {
           m.classList.add('is-revealed');
+
+          // Animate each cross-stitch knot individually with a sewing stagger
+          const crosses = m.querySelectorAll('.sd-cross');
+          if (crosses.length) {
+            gsap.fromTo(crosses,
+              {
+                opacity: 0,
+                scale: 0,
+                rotation: 90,
+              },
+              {
+                opacity: 1,
+                scale: 1,
+                rotation: 0,
+                duration: 0.4,
+                ease: 'back.out(2)',
+                stagger: {
+                  each: 0.06,
+                  from: 'start',
+                },
+              }
+            );
+          }
         },
       });
     });

@@ -737,13 +737,8 @@
   width: 16px;
   height: 16px;
   opacity: 0;
-  transform: scale(0) rotate(45deg);
-  transition: opacity 0.5s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.sd-milestone.is-revealed .sd-cross {
-  opacity: 1;
-  transform: scale(1) rotate(0deg);
+  transform: scale(0) rotate(90deg);
+  will-change: transform, opacity;
 }
 
 /* First stroke of X */
