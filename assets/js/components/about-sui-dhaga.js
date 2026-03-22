@@ -58,26 +58,76 @@ function renderAboutJourneyV4(section) {
       <div class="sd-needle-layer" id="sd-needle-layer">
         <svg class="sd-needle-svg" id="sd-needle-svg" preserveAspectRatio="none">
           <defs>
-            <linearGradient id="needleGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#d4d4d4"/>
-              <stop offset="30%" stop-color="#a8a8a8"/>
-              <stop offset="50%" stop-color="#c0c0c0"/>
-              <stop offset="70%" stop-color="#909090"/>
-              <stop offset="100%" stop-color="#787878"/>
+            <!-- Needle metal gradient -->
+            <linearGradient id="needleGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#b8b8b8"/>
+              <stop offset="18%" stop-color="#d8d8d8"/>
+              <stop offset="35%" stop-color="#f0f0f0"/>
+              <stop offset="50%" stop-color="#e0e0e0"/>
+              <stop offset="65%" stop-color="#a0a0a0"/>
+              <stop offset="85%" stop-color="#c0c0c0"/>
+              <stop offset="100%" stop-color="#909090"/>
             </linearGradient>
             <linearGradient id="needleTipGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#c0c0c0"/>
-              <stop offset="100%" stop-color="#e0e0e0"/>
+              <stop offset="0%" stop-color="#d0d0d0"/>
+              <stop offset="60%" stop-color="#f0f0f0"/>
+              <stop offset="100%" stop-color="#ffffff"/>
             </linearGradient>
+            <!-- Needle center groove -->
+            <linearGradient id="needleGrooveGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="transparent"/>
+              <stop offset="40%" stop-color="rgba(0,0,0,0.08)"/>
+              <stop offset="50%" stop-color="rgba(0,0,0,0.15)"/>
+              <stop offset="60%" stop-color="rgba(0,0,0,0.08)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </linearGradient>
+            <!-- Thread fiber texture -->
+            <filter id="threadFiber" x="-5%" y="-50%" width="110%" height="200%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.04 0.8" numOctaves="4" seed="3" result="noise"/>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+            <!-- Thread twist pattern -->
+            <pattern id="threadTwist" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(25)">
+              <line x1="0" y1="0" x2="0" y2="8" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+            </pattern>
+            <!-- Thread shadow for depth -->
+            <filter id="threadDepth">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" result="blur"/>
+              <feOffset dx="1" dy="2" result="offset"/>
+              <feFlood flood-color="rgba(0,0,0,0.3)" result="color"/>
+              <feComposite in="color" in2="offset" operator="in" result="shadow"/>
+              <feMerge>
+                <feMergeNode in="shadow"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
           </defs>
+          <!-- Thread shadow (bottom layer) -->
+          <path class="sd-thread-shadow" id="sd-thread-shadow" d="" />
+          <!-- Thread glow -->
           <path class="sd-thread-glow" id="sd-thread-glow" d="" />
-          <path class="sd-thread-path" id="sd-thread-path" d="" />
+          <!-- Main thread body -->
+          <path class="sd-thread-path" id="sd-thread-path" d="" filter="url(#threadFiber)" />
+          <!-- Thread twist overlay -->
+          <path class="sd-thread-twist" id="sd-thread-twist" d="" />
+          <!-- Thread specular highlight -->
           <path class="sd-thread-highlight" id="sd-thread-highlight" d="" />
-          <g class="sd-needle-group" id="sd-needle-group">
-            <path class="sd-needle-body" d="M -2.5,-20 L -0.8,-30 L 0,-32 L 0.8,-30 L 2.5,-20 L 2.5,10 Q 2.5,11 2,11 L -2,11 Q -2.5,11 -2.5,10 Z"/>
-            <line class="sd-needle-thread-link" x1="0" y1="-28" x2="0" y2="-36" stroke-dasharray="2 2"/>
-            <ellipse class="sd-needle-eye" cx="0" cy="-16" rx="1" ry="3"/>
-            <polygon class="sd-needle-tip" points="-2,11 2,11 0,18"/>
+          <!-- Needle group -->
+          <g class="sd-needle-group" id="sd-needle-group" filter="url(#threadDepth)">
+            <!-- Needle body -->
+            <path class="sd-needle-body" d="M -2.8,-22 C -1.5,-30 -0.5,-34 0,-36 C 0.5,-34 1.5,-30 2.8,-22 L 2.8,12 Q 2.8,13 2.2,13 L -2.2,13 Q -2.8,13 -2.8,12 Z"/>
+            <!-- Center groove line -->
+            <rect class="sd-needle-groove" x="-0.4" y="-22" width="0.8" height="34" rx="0.4" fill="url(#needleGrooveGrad)"/>
+            <!-- Eye hole -->
+            <ellipse class="sd-needle-eye" cx="0" cy="-18" rx="1.2" ry="3.5"/>
+            <!-- Eye inner shine -->
+            <ellipse cx="0.3" cy="-18.5" rx="0.4" ry="1" fill="rgba(255,255,255,0.25)"/>
+            <!-- Thread through eye -->
+            <path class="sd-needle-thread-link" d="M 0,-14.5 Q -4,-10 -2,-4 Q 0,2 -3,8" stroke-width="1.8" fill="none" stroke="var(--sd-thread)" opacity="0.5" stroke-dasharray="3 2"/>
+            <!-- Needle tip -->
+            <polygon class="sd-needle-tip" points="-2.2,13 2.2,13 0,20"/>
+            <!-- Tip glint -->
+            <line x1="0" y1="15" x2="0" y2="19" stroke="rgba(255,255,255,0.5)" stroke-width="0.5"/>
           </g>
         </svg>
       </div>
@@ -167,6 +217,8 @@ function initAboutJourneyV4Animations() {
   const threadPath = document.getElementById('sd-thread-path');
   const threadGlow = document.getElementById('sd-thread-glow');
   const threadHighlight = document.getElementById('sd-thread-highlight');
+  const threadShadow = document.getElementById('sd-thread-shadow');
+  const threadTwist = document.getElementById('sd-thread-twist');
   const needleGroup = document.getElementById('sd-needle-group');
   const progressFill = document.getElementById('sd-progress-fill');
   const stitchMarks = document.getElementById('sd-stitch-marks');
@@ -224,12 +276,20 @@ function initAboutJourneyV4Animations() {
     threadPath.setAttribute('d', d);
     threadGlow.setAttribute('d', d);
     if (threadHighlight) threadHighlight.setAttribute('d', d);
+    if (threadShadow) threadShadow.setAttribute('d', d);
+    if (threadTwist) threadTwist.setAttribute('d', d);
 
     const pathLen = threadPath.getTotalLength();
     gsap.set(threadPath, { strokeDasharray: pathLen, strokeDashoffset: pathLen });
     gsap.set(threadGlow, { strokeDasharray: pathLen, strokeDashoffset: pathLen });
     if (threadHighlight) {
       gsap.set(threadHighlight, { strokeDasharray: pathLen, strokeDashoffset: pathLen });
+    }
+    if (threadShadow) {
+      gsap.set(threadShadow, { strokeDasharray: pathLen, strokeDashoffset: pathLen });
+    }
+    if (threadTwist) {
+      gsap.set(threadTwist, { strokeDasharray: pathLen, strokeDashoffset: pathLen });
     }
 
     
@@ -315,6 +375,8 @@ function initAboutJourneyV4Animations() {
           gsap.set(threadPath, { strokeDashoffset: offset });
           gsap.set(threadGlow, { strokeDashoffset: offset });
           if (threadHighlight) gsap.set(threadHighlight, { strokeDashoffset: offset });
+          if (threadShadow) gsap.set(threadShadow, { strokeDashoffset: offset });
+          if (threadTwist) gsap.set(threadTwist, { strokeDashoffset: offset });
 
           
           const pt = threadPath.getPointAtLength(progress * pathLength);
