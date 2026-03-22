@@ -251,23 +251,66 @@ function renderNCPartnership(nc) {
   const p = nc.partnership;
   if (!p) return '';
 
-  const capsHTML = (p.capabilities || []).map(c =>
-    `<li>${c}</li>`
+  const capIcons = [
+    `<svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    `<svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    `<svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    `<svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+  ];
+
+  const capsHTML = (p.capabilities || []).map((c, i) =>
+    `<li>
+      <span class="nc-cap-check">${capIcons[i] || capIcons[0]}</span>
+      <span>${c}</span>
+    </li>`
   ).join('');
 
   return `
     <section class="nc-partnership" id="nc-partnership">
       <div class="nc-partnership-inner" data-aos="fade-up">
-        <div class="nc-partner-logos">
-          <div class="nc-partner-logo">
-            <img src="${nc.divisionLogo}" alt="NirChem" width="140" height="42" loading="lazy"
-                 onerror="this.parentElement.innerHTML='<span class=nc-partner-interplast>NirChem</span>'">
+        <div class="nc-partner-accent-bar"></div>
+
+        <div class="nc-partner-header">
+          <div class="nc-partner-logos">
+            <div class="nc-partner-logo nc-partner-logo--nirchem">
+              <img src="${nc.divisionLogo}" alt="NirChem" width="140" height="42" loading="lazy"
+                   onerror="this.parentElement.innerHTML='<span class=nc-partner-fallback>NirChem</span>'">
+            </div>
+            <span class="nc-partner-bridge">
+              <span class="nc-partner-bridge-line"></span>
+              <span class="nc-partner-bridge-icon">
+                <svg viewBox="0 0 24 24" fill="none" width="20" height="20">
+                  <path d="M17 11H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M21 11H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M14 7l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="nc-partner-bridge-line"></span>
+            </span>
+            <div class="nc-partner-logo nc-partner-logo--interplast">
+              <div class="nc-partner-flag">
+                <svg viewBox="0 0 32 22" width="28" height="18">
+                  <rect width="32" height="22" rx="2" fill="#E30A17"/>
+                  <circle cx="14" cy="11" r="5.5" fill="#fff"/>
+                  <circle cx="15.5" cy="11" r="4.5" fill="#E30A17"/>
+                  <polygon points="16.5,8.5 17.2,10.4 19.2,10.4 17.5,11.6 18.1,13.5 16.5,12.3 14.9,13.5 15.5,11.6 13.8,10.4 15.8,10.4" fill="#fff"/>
+                </svg>
+              </div>
+              <span class="nc-partner-name">Interplast Kimya</span>
+              <span class="nc-partner-country">Turkey</span>
+            </div>
           </div>
-          <span class="nc-partner-plus">+</span>
-          <div class="nc-partner-logo">
-            <span class="nc-partner-interplast">Interplast Kimya</span>
+
+          <div class="nc-partner-badge">
+            <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
+              <path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.5 4.3 12.3l.7-4.1-3-2.9 4.2-.7L8 1z" fill="var(--nc-accent)" opacity="0.2" stroke="var(--nc-accent)" stroke-width="1"/>
+            </svg>
+            Strategic Partnership · Since 2022
           </div>
         </div>
+
+        <div class="nc-partner-divider"></div>
+
         <div class="nc-partnership-content">
           <h2>${p.title}</h2>
           <p>${p.description}</p>

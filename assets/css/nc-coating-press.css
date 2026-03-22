@@ -1002,28 +1002,45 @@
 
 .nc-partnership {
   padding: var(--nc-section-pad);
-  background: var(--nc-white);
+  background: var(--nc-surface);
+  position: relative;
 }
 
 .nc-partnership-inner {
-  max-width: 52rem;
+  max-width: 56rem;
   margin: 0 auto;
   border: 1px solid var(--nc-card-border);
   border-radius: var(--nc-radius-lg);
-  padding: 3.5rem;
+  padding: 0;
   position: relative;
   background: var(--nc-card-bg);
-  box-shadow: var(--nc-shadow-md);
+  box-shadow: var(--nc-shadow-lg);
+  overflow: hidden;
 }
 
+/* Gradient accent bar at top */
+.nc-partner-accent-bar {
+  height: 4px;
+  background: linear-gradient(90deg, var(--nc-accent), #4BAF4F, var(--nc-accent));
+  background-size: 200% 100%;
+  animation: ncAccentShimmer 4s ease infinite;
+}
+
+@keyframes ncAccentShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Corner accents */
 .nc-partnership-inner::before,
 .nc-partnership-inner::after {
   content: '';
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-color: var(--nc-accent);
   border-style: solid;
+  z-index: 1;
 }
 
 .nc-partnership-inner::before {
@@ -1040,12 +1057,25 @@
   border-radius: 0 0 var(--nc-radius-lg) 0;
 }
 
+/* Header zone */
+.nc-partner-header {
+  padding: 2.5rem 3.5rem 2rem;
+  position: relative;
+}
+
+/* Logo row */
 .nc-partner-logos {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
+  gap: 2rem;
+}
+
+.nc-partner-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .nc-partner-logo img {
@@ -1053,68 +1083,160 @@
   height: auto;
 }
 
-.nc-partner-plus {
-  font-size: 1.5rem;
-  font-weight: 300;
+.nc-partner-fallback {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--nc-text-primary);
+}
+
+/* Bridge connector between logos */
+.nc-partner-bridge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nc-partner-bridge-line {
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--nc-accent), transparent);
+}
+
+.nc-partner-bridge-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(28,109,208,0.08);
+  border: 1.5px solid rgba(28,109,208,0.2);
+  color: var(--nc-accent);
+  flex-shrink: 0;
+}
+
+/* Interplast partner card */
+.nc-partner-logo--interplast {
+  gap: 0.25rem;
+}
+
+.nc-partner-flag {
+  margin-bottom: 0.25rem;
+}
+
+.nc-partner-name {
+  font-weight: 800;
+  color: var(--nc-text-primary);
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.nc-partner-country {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
   color: var(--nc-text-muted);
 }
 
-.nc-partner-interplast {
-  font-weight: 700;
-  color: var(--nc-text-primary);
-  font-size: 1rem;
+/* Partnership badge */
+.nc-partner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem auto 0;
+  padding: 0.4rem 1rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--nc-accent);
+  background: rgba(28,109,208,0.06);
+  border: 1px solid rgba(28,109,208,0.15);
+  border-radius: 100px;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
 }
 
+.nc-partner-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Divider */
+.nc-partner-divider {
+  height: 1px;
+  margin: 0 3.5rem;
+  background: linear-gradient(90deg, transparent, var(--nc-divider) 20%, var(--nc-divider) 80%, transparent);
+}
+
+/* Content zone */
 .nc-partnership-content {
+  padding: 2rem 3.5rem 3rem;
   text-align: center;
 }
 
 .nc-partnership-content h2 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
   font-weight: 800;
   color: var(--nc-text-primary);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   margin-bottom: 1rem;
 }
 
 .nc-partnership-content p {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   color: var(--nc-text-secondary);
-  line-height: 1.65;
-  max-width: 40rem;
-  margin: 0 auto 2rem;
+  line-height: 1.7;
+  max-width: 42rem;
+  margin: 0 auto 2.25rem;
 }
 
+/* Capabilities grid */
 .nc-partner-caps {
   list-style: none;
   padding: 0;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
+  gap: 1rem;
   text-align: left;
-  max-width: 36rem;
+  max-width: 40rem;
 }
 
 .nc-partner-caps li {
   display: flex;
   align-items: flex-start;
-  gap: 0.6rem;
-  font-size: 0.85rem;
+  gap: 0.75rem;
+  font-size: 0.88rem;
   color: var(--nc-text-secondary);
-  line-height: 1.5;
+  line-height: 1.55;
+  padding: 0.85rem 1rem;
+  background: var(--nc-surface);
+  border-radius: var(--nc-radius);
+  border: 1px solid var(--nc-card-border);
+  transition: all 0.25s ease;
 }
 
-.nc-partner-caps li::before {
-  content: '';
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  min-width: 16px;
+.nc-partner-caps li:hover {
+  border-color: rgba(28,109,208,0.25);
+  box-shadow: 0 2px 8px rgba(28,109,208,0.06);
+  transform: translateY(-1px);
+}
+
+.nc-cap-check {
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 50%;
-  background: rgba(28,109,208,0.08);
-  border: 1.5px solid var(--nc-accent);
-  margin-top: 2px;
+  background: linear-gradient(135deg, rgba(28,109,208,0.12), rgba(75,175,79,0.12));
+  color: var(--nc-accent);
+  margin-top: 1px;
 }
 
 .nc-content-block {
@@ -1224,8 +1346,11 @@
     border-top: 3px solid var(--nc-accent);
   }
 
-  .nc-partnership-inner { padding: 2.5rem 1.5rem; }
+  .nc-partner-header { padding: 2rem 1.5rem 1.5rem; }
+  .nc-partnership-content { padding: 1.5rem 1.5rem 2.5rem; }
+  .nc-partner-divider { margin: 0 1.5rem; }
   .nc-partner-caps { grid-template-columns: 1fr; }
+  .nc-partner-bridge-line { width: 20px; }
 }
 
 @media (max-width: 480px) {
@@ -1274,12 +1399,20 @@
 
   .nc-innovation-visual { max-width: 200px; }
 
-  .nc-partnership-inner { padding: 2rem 1rem; }
+  .nc-partner-header { padding: 1.5rem 1rem 1.25rem; }
+  .nc-partnership-content { padding: 1.25rem 1rem 2rem; }
+  .nc-partner-divider { margin: 0 1rem; }
 
   .nc-partner-logos {
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1rem;
   }
+
+  .nc-partner-bridge {
+    transform: rotate(90deg);
+  }
+
+  .nc-partner-badge { font-size: 0.6rem; }
 
   .nc-content-block-inner { min-height: 50vh; }
   .nc-content-block-overlay { padding: 3rem 1.25rem; }
