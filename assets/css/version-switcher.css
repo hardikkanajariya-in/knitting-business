@@ -24,7 +24,7 @@
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  color: #1a1a2e;
+  color: #0A2A43;
   cursor: pointer;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.03);
   transition: all 0.25s ease;
@@ -96,7 +96,7 @@
   padding: 0.6rem 0.75rem;
   border-radius: 8px;
   text-decoration: none;
-  color: #1a1a2e;
+  color: #0A2A43;
   transition: background 0.15s ease;
   position: relative;
   border: none;
@@ -112,11 +112,11 @@
 }
 
 .vs-item-active {
-  background: rgba(192, 57, 43, 0.06);
+  background: rgba(28, 109, 208, 0.06);
 }
 
 .vs-item-active:hover {
-  background: rgba(192, 57, 43, 0.1);
+  background: rgba(28, 109, 208, 0.1);
 }
 
 .vs-item-label {
@@ -142,15 +142,15 @@
   letter-spacing: 0.08em;
   padding: 0.15rem 0.4rem;
   border-radius: 4px;
-  background: rgba(192, 57, 43, 0.1);
-  color: #c0392b;
+  background: rgba(28, 109, 208, 0.1);
+  color: #1C6DD0;
 }
 
 /* ── DARK THEME ────────────────────────────── */
 .dark .vs-trigger {
-  background: rgba(30, 30, 42, 0.85);
+  background: rgba(6, 21, 32, 0.85);
   border-color: rgba(255, 255, 255, 0.08);
-  color: #e0ddd8;
+  color: #eef4ff;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
@@ -159,7 +159,7 @@
 }
 
 .dark .vs-dropdown {
-  background: rgba(25, 25, 35, 0.95);
+  background: rgba(6, 21, 32, 0.95);
   border-color: rgba(255, 255, 255, 0.06);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
@@ -169,7 +169,7 @@
 }
 
 .dark .vs-item {
-  color: #e0ddd8;
+  color: #eef4ff;
 }
 
 .dark .vs-item:hover {
@@ -177,11 +177,11 @@
 }
 
 .dark .vs-item-active {
-  background: rgba(212, 167, 69, 0.08);
+  background: rgba(77, 163, 255, 0.08);
 }
 
 .dark .vs-item-active:hover {
-  background: rgba(212, 167, 69, 0.12);
+  background: rgba(77, 163, 255, 0.12);
 }
 
 .dark .vs-item-sub {
@@ -189,15 +189,15 @@
 }
 
 .dark .vs-item-badge {
-  background: rgba(212, 167, 69, 0.15);
-  color: #d4a745;
+  background: rgba(77, 163, 255, 0.15);
+  color: #4da3ff;
 }
 
 /* V5 loom-cinema section uses dark bg natively */
 .loom-cinema .vs-trigger {
-  background: rgba(30, 30, 42, 0.85);
+  background: rgba(6, 21, 32, 0.85);
   border-color: rgba(255, 255, 255, 0.08);
-  color: #e0ddd8;
+  color: #eef4ff;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 

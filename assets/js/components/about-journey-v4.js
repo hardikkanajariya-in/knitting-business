@@ -394,6 +394,8 @@ function renderAboutStrengthsV4(strengths) {
     bolt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
   };
 
+  const centerIdx = Math.floor(strengths.length / 2);
+
   return `
     <section class="sd-strengths-section">
       <div class="container">
@@ -403,7 +405,7 @@ function renderAboutStrengthsV4(strengths) {
         </div>
         <div class="sd-patchwork">
           ${strengths.map((s, i) => `
-            <div class="sd-patch" data-aos="fade-up" data-aos-delay="${i * 60}">
+            <div class="sd-patch${i === centerIdx ? ' sd-patch--hero' : ''}" data-aos="fade-up" data-aos-delay="${i * 60}">
               <div class="sd-patch-icon">${ICONS[s.icon] || ICONS.factory}</div>
               <div class="sd-patch-title">${s.title}</div>
               <div class="sd-patch-desc">${s.description}</div>

@@ -4,21 +4,21 @@
    Embroidered milestones · Fabric canvas
    ============================================ */
 
-/* ── ROOT VARIABLES ──────────────────────────── */
+/* ── ROOT VARIABLES (aliased from global brand palette) ── */
 :root {
-  --sd-fabric: #faf6f0;
-  --sd-fabric-dark: #1a1714;
-  --sd-thread: #c0392b;
-  --sd-thread-gold: #d4a745;
-  --sd-needle: #7f8c8d;
-  --sd-stitch: rgba(192, 57, 43, 0.7);
-  --sd-linen: #e8dfd0;
-  --sd-denim: #2c3e6b;
+  --sd-fabric: var(--bg-primary);
+  --sd-fabric-dark: var(--bg-primary);
+  --sd-thread: var(--bright-blue);
+  --sd-thread-gold: var(--eco-green);
+  --sd-needle: var(--steel-grey);
+  --sd-stitch: rgba(28, 109, 208, 0.7);
+  --sd-linen: var(--bg-tertiary);
+  --sd-denim: var(--accent-deep);
 }
 
 .dark {
-  --sd-fabric: #1a1714;
-  --sd-linen: #2a2520;
+  --sd-fabric: var(--bg-primary);
+  --sd-linen: var(--bg-card);
 }
 
 /* ── FABRIC CANVAS (Main wrapper) ────────────── */
@@ -134,7 +134,7 @@
   stroke-width: 2;
   stroke-linecap: round;
   stroke-dasharray: 8 6;
-  filter: drop-shadow(0 1px 2px rgba(192, 57, 43, 0.3));
+  filter: drop-shadow(0 1px 2px rgba(28, 109, 208, 0.3));
 }
 
 .sd-thread-glow {
@@ -380,7 +380,7 @@
   gap: 1.5rem;
   margin-top: 3rem;
   padding-top: 2.5rem;
-  border-top: 1px dashed rgba(192, 57, 43, 0.2);
+  border-top: 1px dashed rgba(28, 109, 208, 0.2);
   position: relative;
 }
 
@@ -505,8 +505,8 @@
   border-radius: 50%;
   border: 4px solid var(--sd-thread-gold);
   box-shadow:
-    inset 0 0 0 2px rgba(212, 167, 69, 0.2),
-    0 0 0 2px rgba(212, 167, 69, 0.15),
+    inset 0 0 0 2px rgba(75, 175, 79, 0.2),
+    0 0 0 2px rgba(75, 175, 79, 0.15),
     0 8px 32px rgba(0,0,0,0.08);
   opacity: 0;
   transform: scale(0.85);
@@ -531,7 +531,7 @@
 }
 
 .dark .sd-hoop-fabric {
-  background: #2a2520;
+  background: var(--bg-card);
 }
 
 /* Weave texture on hoop fabric */
@@ -692,7 +692,7 @@
 .sd-progress-thread {
   width: 2px;
   height: 200px;
-  background: rgba(192, 57, 43, 0.12);
+  background: rgba(28, 109, 208, 0.12);
   position: relative;
   border-radius: 1px;
 }
@@ -737,7 +737,7 @@
   height: 8px;
   border-radius: 50%;
   background: transparent;
-  border: 2px solid rgba(192, 57, 43, 0.2);
+  border: 2px solid rgba(28, 109, 208, 0.2);
   cursor: pointer;
   transition: all 0.3s ease;
   position: absolute;
@@ -748,7 +748,7 @@
 .sd-progress-dot.is-active {
   background: var(--sd-thread);
   border-color: var(--sd-thread);
-  box-shadow: 0 0 8px rgba(192, 57, 43, 0.4);
+  box-shadow: 0 0 8px rgba(28, 109, 208, 0.4);
 }
 
 /* ── STORY SECTION (Embroidered) ─────────────── */
@@ -808,7 +808,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.3);
+  box-shadow: 0 4px 20px rgba(28, 109, 208, 0.3);
   z-index: 3;
 }
 
@@ -893,13 +893,13 @@
 
 .sd-patchwork {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   max-width: 1100px;
   margin: 0 auto;
-  background: rgba(192, 57, 43, 0.08);
+  background: rgba(28, 109, 208, 0.08);
   border-radius: 12px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .sd-patch {
@@ -911,6 +911,35 @@
 
 .sd-patch:hover {
   background: var(--bg-secondary);
+}
+
+/* Hero center card — floating circle highlight */
+.sd-patch--hero {
+  grid-column: 2 / 3;
+  justify-self: center;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 1.5rem;
+  transform: translateY(-1.2rem);
+  box-shadow: 0 8px 32px rgba(28, 109, 208, 0.12);
+  z-index: 2;
+  border: 1px solid var(--sd-thread);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, background 0.3s ease;
+}
+
+.sd-patch--hero:hover {
+  transform: translateY(-1.5rem);
+  box-shadow: 0 12px 40px rgba(28, 109, 208, 0.2);
+}
+
+.sd-patch--hero::after {
+  border-radius: 50%;
 }
 
 /* Stitch border on hover */
@@ -1051,7 +1080,7 @@
   height: 6px;
   border-radius: 50%;
   background: var(--sd-thread-gold);
-  box-shadow: 0 0 0 2px rgba(212, 167, 69, 0.3);
+  box-shadow: 0 0 0 2px rgba(75, 175, 79, 0.3);
   z-index: 2;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -1101,7 +1130,14 @@
   }
 
   .sd-patchwork {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sd-patch--hero {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 240px;
+    height: 240px;
   }
 
   .sd-corner-stitch {
@@ -1130,6 +1166,13 @@
 
   .sd-patchwork {
     grid-template-columns: 1fr;
+  }
+
+  .sd-patch--hero {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 220px;
+    height: 220px;
   }
 
   .sd-story-badge {
@@ -1175,7 +1218,7 @@
 }
 
 .dark .sd-patchwork {
-  background: rgba(192, 57, 43, 0.04);
+  background: rgba(28, 109, 208, 0.04);
 }
 
 .dark .sd-swatch {

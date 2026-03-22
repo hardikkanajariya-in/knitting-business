@@ -3,53 +3,53 @@
    Award-winning page design for Nirbhay Chemicals
    ============================================================ */
 
-/* --- Theme Variables (Light) --- */
+/* --- Theme Variables (aliased from global style.css palette) --- */
 :root {
-  --nc-accent:        #0A2A43;
-  --nc-accent-light:  #1C6DD0;
-  --nc-accent-glow:   rgba(28, 109, 208, 0.35);
-  --nc-flow:          #1C6DD0;
-  --nc-flow-glow:     rgba(28, 109, 208, 0.25);
-  --nc-gauge-fill:    linear-gradient(135deg, #1C6DD0, #0A2A43);
-  --nc-hero-bg:       linear-gradient(160deg, #0A2A43 0%, #122d4a 50%, #1a3a5c 100%);
-  --nc-surface:       #f3f6fd;
-  --nc-surface-alt:   #e2eafb;
-  --nc-card-bg:       #ffffff;
+  --nc-accent:        var(--accent);
+  --nc-accent-light:  var(--bright-blue);
+  --nc-accent-glow:   var(--accent-glow);
+  --nc-flow:          var(--bright-blue);
+  --nc-flow-glow:     var(--accent-glow-soft);
+  --nc-gauge-fill:    linear-gradient(135deg, var(--bright-blue), var(--accent-deep));
+  --nc-hero-bg:       linear-gradient(160deg, var(--accent-deep) 0%, var(--accent-mid) 50%, var(--bright-blue) 100%);
+  --nc-surface:       var(--bg-secondary);
+  --nc-surface-alt:   var(--bg-tertiary);
+  --nc-card-bg:       var(--bg-card);
   --nc-card-border:   rgba(10, 42, 67, 0.08);
-  --nc-text-primary:  #0A2A43;
-  --nc-text-secondary:#41557e;
-  --nc-text-muted:    #6E7A86;
-  --nc-badge-bg:      rgba(28, 109, 208, 0.1);
-  --nc-badge-text:    #1C6DD0;
-  --nc-glass:         rgba(255, 255, 255, 0.72);
-  --nc-glass-border:  rgba(255, 255, 255, 0.4);
+  --nc-text-primary:  var(--text-primary);
+  --nc-text-secondary:var(--text-secondary);
+  --nc-text-muted:    var(--text-tertiary);
+  --nc-badge-bg:      var(--accent-light);
+  --nc-badge-text:    var(--bright-blue);
+  --nc-glass:         var(--surface-frosted);
+  --nc-glass-border:  rgba(10, 42, 67, 0.10);
   --nc-divider:       rgba(10, 42, 67, 0.08);
-  --nc-green:         #4BAF4F;
+  --nc-green:         var(--eco-green);
   --nc-green-glow:    rgba(75, 175, 79, 0.25);
 }
 
-/* --- Dark Theme --- */
+/* --- Dark Theme (aliased from global) --- */
 .dark {
-  --nc-accent:        #5ba3e6;
-  --nc-accent-light:  #7eb8f0;
-  --nc-accent-glow:   rgba(91, 163, 230, 0.3);
-  --nc-flow:          #5ba3e6;
-  --nc-flow-glow:     rgba(91, 163, 230, 0.35);
-  --nc-gauge-fill:    linear-gradient(135deg, #5ba3e6, #7eb8f0);
-  --nc-hero-bg:       linear-gradient(160deg, #060d14 0%, #0c1a28 50%, #0f2136 100%);
-  --nc-surface:       #0c1a28;
-  --nc-surface-alt:   #101e2e;
-  --nc-card-bg:       #12202f;
-  --nc-card-border:   rgba(91, 163, 230, 0.1);
-  --nc-text-primary:  #e4eaf2;
-  --nc-text-secondary:#94a8c4;
-  --nc-text-muted:    #6a7f9a;
-  --nc-badge-bg:      rgba(91, 163, 230, 0.12);
-  --nc-badge-text:    #7eb8f0;
-  --nc-glass:         rgba(12, 26, 40, 0.78);
-  --nc-glass-border:  rgba(91, 163, 230, 0.15);
-  --nc-divider:       rgba(91, 163, 230, 0.08);
-  --nc-green:         #66d16a;
+  --nc-accent:        var(--accent);
+  --nc-accent-light:  var(--bright-blue);
+  --nc-accent-glow:   var(--accent-glow);
+  --nc-flow:          var(--bright-blue);
+  --nc-flow-glow:     var(--accent-glow);
+  --nc-gauge-fill:    linear-gradient(135deg, var(--bright-blue), var(--accent));
+  --nc-hero-bg:       linear-gradient(160deg, var(--bg-primary) 0%, var(--bg-card) 50%, var(--accent-mid) 100%);
+  --nc-surface:       var(--bg-secondary);
+  --nc-surface-alt:   var(--bg-tertiary);
+  --nc-card-bg:       var(--bg-card);
+  --nc-card-border:   var(--glass-border);
+  --nc-text-primary:  var(--text-primary);
+  --nc-text-secondary:var(--text-secondary);
+  --nc-text-muted:    var(--text-tertiary);
+  --nc-badge-bg:      var(--accent-light);
+  --nc-badge-text:    var(--bright-blue);
+  --nc-glass:         var(--surface-frosted);
+  --nc-glass-border:  var(--glass-border);
+  --nc-divider:       var(--glass-border);
+  --nc-green:         var(--eco-green);
   --nc-green-glow:    rgba(102, 209, 106, 0.2);
 }
 
