@@ -49,6 +49,7 @@ document.addEventListener('error', function(e) {
     source.src = cdnUrl;
     video.load();
 
+    video.playbackRate = 0.6;
     const playPromise = video.play();
     if (playPromise && typeof playPromise.catch === 'function') {
       playPromise.catch(() => {});
@@ -255,6 +256,14 @@ function initHeroBAnimations() {
   const heroBgMedia = heroB.querySelector('.hero-b-bg img, .hero-b-bg video');
   const heroContent = heroB.querySelector('.hero-b-content');
 
+  /* Slow down hero video playback */
+  const heroVideo = heroB.querySelector('.hero-b-bg video');
+  if (heroVideo) {
+    heroVideo.playbackRate = 0.6;
+    heroVideo.addEventListener('loadeddata', () => { heroVideo.playbackRate = 0.6; });
+    heroVideo.addEventListener('play', () => { heroVideo.playbackRate = 0.6; });
+  }
+
   const tl = gsap.timeline({ delay: 0.3 });
   if (typeof ScrollTrigger !== 'undefined' && heroB.dataset.scrollFxInit !== 'true') {
     heroB.dataset.scrollFxInit = 'true';
@@ -326,6 +335,65 @@ function initHeroBAnimations() {
     ease: 'power2.out',
   }, '-=0.2');
 }
+
+/* ── Temporary Video Switcher ── */
+function initVideoSwitcher() {
+  const toggle = document.getElementById('videoSwitcherToggle');
+  const panel = document.getElementById('videoSwitcherPanel');
+  const close = document.getElementById('videoSwitcherClose');
+  const optionsContainer = document.getElementById('videoSwitcherOptions');
+  if (!toggle || !panel || !optionsContainer) return;
+
+  const videos = [
+    { src: 'assets/video/hero-video-hd.mp4', label: 'Current — Industrial Machinery' },
+    { src: 'assets/video/option-1-textile-spools.mp4', label: 'Option 1 — Textile Spools' },
+    { src: 'assets/video/option-2-highspeed-production.mp4', label: 'Option 2 — High Speed Production' },
+    { src: 'assets/video/option-3-production-machine.mp4', label: 'Option 3 — Production Machine' },
+    { src: 'assets/video/option-4-machinery-operation.mp4', label: 'Option 4 — Machinery Operation' },
+    { src: 'assets/video/option-5-machine-closeup.mp4', label: 'Option 5 — Machine Close-up' },
+    { src: 'assets/video/option-6-factory-operating.mp4', label: 'Option 6 — Factory Operating' },
+    { src: 'assets/video/option-7-factory-production.mp4', label: 'Option 7 — Factory Production' },
+    { src: 'assets/video/option-8-weaving-machine.mp4', label: 'Option 8 — Weaving Machine' },
+    { src: 'assets/video/option-9-thread-machine.mp4', label: 'Option 9 — Thread Machine' },
+    { src: 'assets/video/hero-video.mp4', label: 'Original — Local Low-Res' },
+  ];
+
+  const heroVideo = document.querySelector('.hero-b-bg-video');
+  const currentSrc = heroVideo ? heroVideo.querySelector('source')?.src || heroVideo.src : '';
+
+  videos.forEach((v, i) => {
+    const card = document.createElement('div');
+    card.className = 'video-switcher-card' + (currentSrc.includes(v.src) ? ' active' : '');
+    card.innerHTML = `
+      <video src="${v.src}" muted loop playsinline preload="metadata"></video>
+      <div class="video-switcher-card-label">${v.label}</div>
+    `;
+
+    const thumb = card.querySelector('video');
+    card.addEventListener('mouseenter', () => { thumb.currentTime = 0; thumb.play().catch(() => {}); });
+    card.addEventListener('mouseleave', () => { thumb.pause(); });
+
+    card.addEventListener('click', () => {
+      if (!heroVideo) return;
+      document.querySelectorAll('.video-switcher-card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+
+      const source = heroVideo.querySelector('source');
+      if (source) source.src = v.src;
+      heroVideo.src = v.src;
+      heroVideo.load();
+      heroVideo.play().catch(() => {});
+      heroVideo.playbackRate = 0.6;
+      heroVideo.addEventListener('loadeddata', () => { heroVideo.playbackRate = 0.6; }, { once: true });
+    });
+
+    optionsContainer.appendChild(card);
+  });
+
+  toggle.addEventListener('click', () => panel.classList.toggle('open'));
+  close.addEventListener('click', () => panel.classList.remove('open'));
+}
+
 function initStatCounters() {
   if (typeof gsap === 'undefined') return;
 
@@ -426,6 +494,7 @@ async function initPage(pageKey) {
   switch (pageKey) {
     case 'home':
       initHeroBAnimations();
+      initVideoSwitcher();
       initStatCounters();
       if (typeof initHomeInteractiveFX === 'function') {
         initHomeInteractiveFX();
