@@ -120,20 +120,29 @@
 .sd-thread-path {
   fill: none;
   stroke: var(--sd-thread);
-  stroke-width: 2.5;
+  stroke-width: 3;
   stroke-linecap: round;
-  stroke-dasharray: 12 4 4 4;
-  filter: drop-shadow(0 2px 4px rgba(28, 109, 208, 0.35))
-         drop-shadow(0 0 6px rgba(28, 109, 208, 0.15));
+  stroke-dasharray: 10 3 2 3 6 3;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.35))
+         drop-shadow(0 2px 5px rgba(28, 109, 208, 0.3))
+         drop-shadow(0 0 8px rgba(28, 109, 208, 0.12));
+}
+
+.sd-thread-highlight {
+  fill: none;
+  stroke: rgba(140, 200, 255, 0.35);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-dasharray: 10 3 2 3 6 3;
 }
 
 .sd-thread-glow {
   fill: none;
   stroke: var(--sd-thread);
-  stroke-width: 8;
+  stroke-width: 10;
   stroke-linecap: round;
-  opacity: 0.12;
-  filter: blur(6px);
+  opacity: 0.08;
+  filter: blur(8px);
 }
 
 .sd-needle-group {
@@ -141,18 +150,27 @@
 }
 
 .sd-needle-body {
-  fill: var(--sd-needle);
-  filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.3));
+  fill: url(#needleGrad);
+  filter: drop-shadow(1px 2px 4px rgba(0,0,0,0.4))
+         drop-shadow(-1px 0 2px rgba(0,0,0,0.15));
 }
 
 .sd-needle-eye {
-  fill: none;
+  fill: rgba(0,0,0,0.15);
   stroke: var(--sd-needle);
-  stroke-width: 1.5;
+  stroke-width: 1.2;
 }
 
 .sd-needle-tip {
-  fill: #bdc3c7;
+  fill: url(#needleTipGrad);
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+}
+
+.sd-needle-thread-link {
+  fill: none;
+  stroke: var(--sd-thread);
+  stroke-width: 1.5;
+  opacity: 0.6;
 }
 
 .sd-stitch-marks {
@@ -164,31 +182,59 @@
 
 .sd-stitch {
   position: absolute;
-  width: 14px;
-  height: 3px;
-  background: var(--sd-stitch);
-  border-radius: 2px;
+  width: 16px;
+  height: 2.5px;
+  background: linear-gradient(90deg, transparent, var(--sd-stitch) 15%, var(--sd-stitch) 85%, transparent);
+  border-radius: 1px;
   opacity: 0;
-  transform: rotate(var(--stitch-angle, -30deg));
-  transition: opacity 0.4s ease;
-  box-shadow: 0 1px 3px rgba(28, 109, 208, 0.25);
+  transform: rotate(var(--stitch-angle, -30deg)) scale(0.4);
+  transition: opacity 0.35s ease, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow:
+    0 1px 2px rgba(0,0,0,0.25),
+    0 0 4px rgba(28, 109, 208, 0.2);
 }
 
 .sd-stitch::before {
   content: '';
   position: absolute;
-  top: -3px;
-  left: 2px;
+  top: -3.5px;
+  left: 3px;
   width: 10px;
-  height: 3px;
-  background: var(--sd-stitch);
-  border-radius: 2px;
-  opacity: 0.5;
+  height: 2.5px;
+  background: linear-gradient(90deg, transparent, var(--sd-stitch) 20%, var(--sd-stitch) 80%, transparent);
+  border-radius: 1px;
+  opacity: 0.55;
   transform: rotate(90deg);
+}
+
+.sd-stitch::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: rgba(28, 109, 208, 0.6);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 3px rgba(28, 109, 208, 0.3);
 }
 
 .sd-stitch.is-visible {
   opacity: 1;
+  transform: rotate(var(--stitch-angle, -30deg)) scale(1);
+}
+
+.sd-stitch:nth-child(odd) {
+  --sd-stitch: rgba(28, 109, 208, 0.75);
+}
+
+.sd-stitch:nth-child(even) {
+  --sd-stitch: rgba(75, 175, 79, 0.6);
+}
+
+.sd-stitch:nth-child(3n) {
+  --sd-stitch: rgba(212, 167, 69, 0.55);
 }
 
 .sd-hero {
@@ -560,14 +606,16 @@
 
 .sd-cross {
   position: absolute;
-  width: 10px;
-  height: 10px;
+  width: 14px;
+  height: 14px;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transform: scale(0) rotate(45deg);
+  transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .sd-milestone.is-revealed .sd-cross {
   opacity: 1;
+  transform: scale(1) rotate(0deg);
 }
 
 .sd-cross::before,
@@ -576,14 +624,21 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 10px;
-  height: 2px;
-  background: var(--sd-thread);
+  width: 12px;
+  height: 2.5px;
   border-radius: 1px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
-.sd-cross::before { transform: translate(-50%, -50%) rotate(45deg); }
-.sd-cross::after { transform: translate(-50%, -50%) rotate(-45deg); }
+.sd-cross::before {
+  background: linear-gradient(90deg, transparent, var(--sd-thread) 25%, var(--sd-thread) 75%, transparent);
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.sd-cross::after {
+  background: linear-gradient(90deg, transparent, var(--sd-thread-gold) 25%, var(--sd-thread-gold) 75%, transparent);
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
 
 .sd-milestone-text {
   flex: 1;

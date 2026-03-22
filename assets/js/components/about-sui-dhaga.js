@@ -3,13 +3,13 @@ function renderAboutJourneyV4(section) {
   const milestones = section.milestones || [];
 
   const milestonesHTML = milestones.map((m, i) => {
-    const crossCount = 8;
+    const crossCount = 12;
     const crosses = Array.from({ length: crossCount }, (_, ci) => {
-      const angle = (ci / crossCount) * 360;
-      const r = 125;
+      const angle = (ci / crossCount) * 360 + (i * 15);
+      const r = 130;
       const x = 50 + r * Math.cos((angle * Math.PI) / 180) / 2.4;
       const y = 50 + r * Math.sin((angle * Math.PI) / 180) / 2.4;
-      return `<div class="sd-cross" style="left:${x}%;top:${y}%;transition-delay:${ci * 60}ms"></div>`;
+      return `<div class="sd-cross" style="left:${x}%;top:${y}%;transition-delay:${ci * 80 + 200}ms"></div>`;
     }).join('');
 
     return `
@@ -57,13 +57,27 @@ function renderAboutJourneyV4(section) {
       
       <div class="sd-needle-layer" id="sd-needle-layer">
         <svg class="sd-needle-svg" id="sd-needle-svg" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="needleGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#d4d4d4"/>
+              <stop offset="30%" stop-color="#a8a8a8"/>
+              <stop offset="50%" stop-color="#c0c0c0"/>
+              <stop offset="70%" stop-color="#909090"/>
+              <stop offset="100%" stop-color="#787878"/>
+            </linearGradient>
+            <linearGradient id="needleTipGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#c0c0c0"/>
+              <stop offset="100%" stop-color="#e0e0e0"/>
+            </linearGradient>
+          </defs>
           <path class="sd-thread-glow" id="sd-thread-glow" d="" />
           <path class="sd-thread-path" id="sd-thread-path" d="" />
+          <path class="sd-thread-highlight" id="sd-thread-highlight" d="" />
           <g class="sd-needle-group" id="sd-needle-group">
-            
-            <path class="sd-needle-body" d="M -2,-18 L 0,-26 L 2,-18 L 2,8 L -2,8 Z"/>
-            <ellipse class="sd-needle-eye" cx="0" cy="-13" rx="1.2" ry="2.5"/>
-            <polygon class="sd-needle-tip" points="-1.5,8 1.5,8 0,14"/>
+            <path class="sd-needle-body" d="M -2.5,-20 L -0.8,-30 L 0,-32 L 0.8,-30 L 2.5,-20 L 2.5,10 Q 2.5,11 2,11 L -2,11 Q -2.5,11 -2.5,10 Z"/>
+            <line class="sd-needle-thread-link" x1="0" y1="-28" x2="0" y2="-36" stroke-dasharray="2 2"/>
+            <ellipse class="sd-needle-eye" cx="0" cy="-16" rx="1" ry="3"/>
+            <polygon class="sd-needle-tip" points="-2,11 2,11 0,18"/>
           </g>
         </svg>
       </div>
@@ -152,6 +166,7 @@ function initAboutJourneyV4Animations() {
   const milestones = gsap.utils.toArray('.sd-milestone');
   const threadPath = document.getElementById('sd-thread-path');
   const threadGlow = document.getElementById('sd-thread-glow');
+  const threadHighlight = document.getElementById('sd-thread-highlight');
   const needleGroup = document.getElementById('sd-needle-group');
   const progressFill = document.getElementById('sd-progress-fill');
   const stitchMarks = document.getElementById('sd-stitch-marks');
@@ -208,24 +223,30 @@ function initAboutJourneyV4Animations() {
 
     threadPath.setAttribute('d', d);
     threadGlow.setAttribute('d', d);
+    if (threadHighlight) threadHighlight.setAttribute('d', d);
 
     const pathLen = threadPath.getTotalLength();
     gsap.set(threadPath, { strokeDasharray: pathLen, strokeDashoffset: pathLen });
     gsap.set(threadGlow, { strokeDasharray: pathLen, strokeDashoffset: pathLen });
+    if (threadHighlight) {
+      gsap.set(threadHighlight, { strokeDasharray: pathLen, strokeDashoffset: pathLen });
+    }
 
     
     stitchMarks.innerHTML = '';
-    const stitchCount = Math.floor(pathLen / 18);
+    const stitchSpacing = 14;
+    const stitchCount = Math.floor(pathLen / stitchSpacing);
     for (let i = 0; i < stitchCount; i++) {
-      const pt = threadPath.getPointAtLength((i / stitchCount) * pathLen);
-      const pt2 = threadPath.getPointAtLength(Math.min(1, (i / stitchCount) + 0.005) * pathLen);
+      const t = i / stitchCount;
+      const pt = threadPath.getPointAtLength(t * pathLen);
+      const pt2 = threadPath.getPointAtLength(Math.min(pathLen, t * pathLen + 2));
       const angle = Math.atan2(pt2.y - pt.y, pt2.x - pt.x) * (180 / Math.PI) + 90;
       const stitch = document.createElement('div');
       stitch.className = 'sd-stitch';
       stitch.style.left = pt.x + 'px';
       stitch.style.top = pt.y + 'px';
       stitch.style.setProperty('--stitch-angle', angle + 'deg');
-      stitch.dataset.dist = String((i / stitchCount));
+      stitch.dataset.dist = String(t);
       stitchMarks.appendChild(stitch);
     }
 
@@ -293,6 +314,7 @@ function initAboutJourneyV4Animations() {
           const offset = pathLength * (1 - progress);
           gsap.set(threadPath, { strokeDashoffset: offset });
           gsap.set(threadGlow, { strokeDashoffset: offset });
+          if (threadHighlight) gsap.set(threadHighlight, { strokeDashoffset: offset });
 
           
           const pt = threadPath.getPointAtLength(progress * pathLength);
