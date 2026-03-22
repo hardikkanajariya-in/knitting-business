@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NK — Idea 1: Thread of Time</title>
+  <title>NK — Sui Dhaga</title>
   <link rel="icon" type="image/jpeg" href="assets/img/logo/nk-logo.jpg">
 
   <link rel="preconnect" href="https://cdn.tailwindcss.com">
@@ -24,9 +24,10 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/about-journey-v2.css">
+  <link rel="stylesheet" href="assets/css/about-journey-v4.css">
+  <link rel="stylesheet" href="assets/css/version-switcher.css">
 </head>
-<body data-page="about-v2">
+<body data-page="about-v4">
   <div id="site-header"></div>
   <div class="page-transition">
     <main id="page-content"></main>
@@ -41,10 +42,11 @@
 
   <script src="assets/js/components/header.js" defer></script>
   <script src="assets/js/components/footer.js" defer></script>
-  <script src="assets/js/components/about-journey-v2.js" defer></script>
+  <script src="assets/js/components/about-journey-v4.js" defer></script>
   <script src="assets/js/components/page-banner.js" defer></script>
   <script src="assets/js/components/team-card.js" defer></script>
   <script src="assets/js/components/global-bg.js" defer></script>
+  <script src="assets/js/components/version-switcher.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 
   <script defer>
@@ -52,22 +54,20 @@
       document.body.dataset.page = 'about';
       const data = await loadContent();
 
-      // Render header/footer
       const headerEl = document.getElementById('site-header');
       const footerEl = document.getElementById('site-footer');
       if (headerEl && typeof renderHeader === 'function') headerEl.innerHTML = renderHeader(data);
       if (footerEl && typeof renderFooter === 'function') footerEl.innerHTML = renderFooter(data);
 
-      // Render V2 about page
       const contentEl = document.getElementById('page-content');
       const about = data.about;
       const team = data.team;
 
       contentEl.innerHTML = `
-        ${typeof renderAboutStoryV2 === 'function' && about.story ? renderAboutStoryV2(about.story) : ''}
-        ${typeof renderAboutJourneyV2 === 'function' ? renderAboutJourneyV2(about.journeySection) : ''}
-        ${typeof renderFactoryGalleryV2 === 'function' && about.factoryGallery ? renderFactoryGalleryV2(about.factoryGallery) : ''}
-        ${typeof renderAboutStrengthsV2 === 'function' && about.strengths ? renderAboutStrengthsV2(about.strengths) : ''}
+        ${typeof renderAboutJourneyV4 === 'function' ? renderAboutJourneyV4(about.journeySection) : ''}
+        ${typeof renderAboutStoryV4 === 'function' && about.story ? renderAboutStoryV4(about.story) : ''}
+        ${typeof renderFactoryGalleryV4 === 'function' && about.factoryGallery ? renderFactoryGalleryV4(about.factoryGallery) : ''}
+        ${typeof renderAboutStrengthsV4 === 'function' && about.strengths ? renderAboutStrengthsV4(about.strengths) : ''}
         <section class="section" style="background: var(--bg-secondary); padding-top: 2rem;">
           <div class="container">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -80,20 +80,23 @@
         ${team ? '<section class="team-section section"><div class="container"><div class="section-header" data-aos="fade-up"><h2 class="section-title">' + (team.sectionTitle || 'People and Capability') + '</h2><p class="section-subtitle">' + (team.sectionSubtitle || '') + '</p></div><div class="team-grid">' + (typeof renderTeamCards === 'function' ? renderTeamCards(team.leadership) : '') + '</div></div></section>' : ''}
       `;
 
-      // Header overlay mode
       const header = document.querySelector('.site-header');
       if (header) header.classList.remove('hero-overlay-mode');
 
-      // Init
       initTheme();
       initMobileMenu();
       initLenis();
       initAOS();
       initGSAP();
       if (typeof initGlobalBackground === 'function') initGlobalBackground();
-      if (typeof initAboutJourneyV2Animations === 'function') initAboutJourneyV2Animations();
+      if (typeof initAboutJourneyV4Animations === 'function') initAboutJourneyV4Animations();
       if (typeof initFactoryGallery === 'function') initFactoryGallery();
       if (typeof initStatCounters === 'function') initStatCounters();
+
+      if (typeof renderVersionSwitcher === 'function') {
+        document.body.insertAdjacentHTML('beforeend', renderVersionSwitcher());
+        initVersionSwitcher();
+      }
 
       document.body.classList.add('loaded');
       const pt = document.querySelector('.page-transition');

@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NK — Idea 2: Fabric Layers</title>
+  <meta name="description" content="Learn how Nirbhay Knitting Industries Pvt. Ltd. is evolving through knitting, coating, laminating, in-house testing, and sustainable material innovation.">
+  <meta name="theme-color" content="#0A2A43">
+  <title>NK — Nirbhay Knitting Industries Pvt. Ltd.</title>
   <link rel="icon" type="image/jpeg" href="assets/img/logo/nk-logo.jpg">
 
   <link rel="preconnect" href="https://cdn.tailwindcss.com">
@@ -24,12 +26,19 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/about-journey-v3.css">
+  <link rel="stylesheet" href="assets/css/about-journey-v4.css">
+  <link rel="stylesheet" href="assets/css/about-journey-v5.css">
+  <link rel="stylesheet" href="assets/css/version-switcher.css">
 </head>
-<body data-page="about-v3">
+<body data-page="about">
   <div id="site-header"></div>
   <div class="page-transition">
-    <main id="page-content"></main>
+    <main>
+      <!-- Sui Dhaga version (default visible) -->
+      <div id="version-sui-dhaga" class="nk-version nk-version-active"></div>
+      <!-- The Loom version (hidden by default) -->
+      <div id="version-the-loom" class="nk-version" style="display:none;"></div>
+    </main>
     <div id="site-footer"></div>
   </div>
 
@@ -37,37 +46,33 @@
   <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
 
   <script src="assets/js/components/header.js" defer></script>
   <script src="assets/js/components/footer.js" defer></script>
-  <script src="assets/js/components/about-journey-v3.js" defer></script>
+  <script src="assets/js/components/about-journey-v4.js" defer></script>
+  <script src="assets/js/components/about-journey-v5.js" defer></script>
+  <script src="assets/js/components/about-journey-v5-engine.js" defer></script>
   <script src="assets/js/components/page-banner.js" defer></script>
   <script src="assets/js/components/team-card.js" defer></script>
   <script src="assets/js/components/global-bg.js" defer></script>
+  <script src="assets/js/components/version-switcher.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 
   <script defer>
     document.addEventListener('DOMContentLoaded', async () => {
-      document.body.dataset.page = 'about';
       const data = await loadContent();
 
-      // Render header/footer
       const headerEl = document.getElementById('site-header');
       const footerEl = document.getElementById('site-footer');
       if (headerEl && typeof renderHeader === 'function') headerEl.innerHTML = renderHeader(data);
       if (footerEl && typeof renderFooter === 'function') footerEl.innerHTML = renderFooter(data);
 
-      // Render V3 about page
-      const contentEl = document.getElementById('page-content');
       const about = data.about;
       const team = data.team;
 
-      contentEl.innerHTML = `
-        ${typeof renderAboutStoryV3 === 'function' && about.story ? renderAboutStoryV3(about.story) : ''}
-        ${typeof renderAboutJourneyV3 === 'function' ? renderAboutJourneyV3(about.journeySection) : ''}
-        ${typeof renderFactoryGalleryV3 === 'function' && about.factoryGallery ? renderFactoryGalleryV3(about.factoryGallery) : ''}
-        ${typeof renderAboutStrengthsV3 === 'function' && about.strengths ? renderAboutStrengthsV3(about.strengths) : ''}
+      const sharedSections = `
         <section class="section" style="background: var(--bg-secondary); padding-top: 2rem;">
           <div class="container">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -80,20 +85,43 @@
         ${team ? '<section class="team-section section"><div class="container"><div class="section-header" data-aos="fade-up"><h2 class="section-title">' + (team.sectionTitle || 'People and Capability') + '</h2><p class="section-subtitle">' + (team.sectionSubtitle || '') + '</p></div><div class="team-grid">' + (typeof renderTeamCards === 'function' ? renderTeamCards(team.leadership) : '') + '</div></div></section>' : ''}
       `;
 
-      // Header overlay mode
+      /* ── Sui Dhaga (V4) ── */
+      const v4El = document.getElementById('version-sui-dhaga');
+      v4El.innerHTML = `
+        ${typeof renderAboutJourneyV4 === 'function' ? renderAboutJourneyV4(about.journeySection) : ''}
+        ${typeof renderAboutStoryV4 === 'function' && about.story ? renderAboutStoryV4(about.story) : ''}
+        ${typeof renderFactoryGalleryV4 === 'function' && about.factoryGallery ? renderFactoryGalleryV4(about.factoryGallery) : ''}
+        ${typeof renderAboutStrengthsV4 === 'function' && about.strengths ? renderAboutStrengthsV4(about.strengths) : ''}
+        ${sharedSections}
+      `;
+
+      /* ── The Loom (V5) ── */
+      const v5El = document.getElementById('version-the-loom');
+      v5El.innerHTML = `
+        ${typeof renderAboutJourneyV5 === 'function' ? renderAboutJourneyV5(about.journeySection) : ''}
+        ${typeof renderAboutStoryV5 === 'function' && about.story ? renderAboutStoryV5(about.story) : ''}
+        ${typeof renderFactoryGalleryV5 === 'function' && about.factoryGallery ? renderFactoryGalleryV5(about.factoryGallery) : ''}
+        ${typeof renderAboutStrengthsV5 === 'function' && about.strengths ? renderAboutStrengthsV5(about.strengths) : ''}
+        ${sharedSections}
+      `;
+
       const header = document.querySelector('.site-header');
       if (header) header.classList.remove('hero-overlay-mode');
 
-      // Init
       initTheme();
       initMobileMenu();
       initLenis();
       initAOS();
       initGSAP();
       if (typeof initGlobalBackground === 'function') initGlobalBackground();
-      if (typeof initAboutJourneyV3Animations === 'function') initAboutJourneyV3Animations();
+      if (typeof initAboutJourneyV4Animations === 'function') initAboutJourneyV4Animations();
       if (typeof initFactoryGallery === 'function') initFactoryGallery();
       if (typeof initStatCounters === 'function') initStatCounters();
+
+      if (typeof renderVersionSwitcher === 'function') {
+        document.body.insertAdjacentHTML('beforeend', renderVersionSwitcher());
+        initVersionSwitcher();
+      }
 
       document.body.classList.add('loaded');
       const pt = document.querySelector('.page-transition');

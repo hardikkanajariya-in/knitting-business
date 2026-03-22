@@ -880,6 +880,22 @@
   .loom-film-frame:first-child {
     flex: 0 0 300px;
   }
+
+  .loom-scene-content {
+    padding: 3rem 1.5rem;
+  }
+
+  .loom-strengths-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .loom-ms-counter {
+    font-size: 2.5rem;
+  }
+
+  .loom-pulse-ring-1 { width: 200px; height: 200px; }
+  .loom-pulse-ring-2 { width: 340px; height: 340px; }
+  .loom-pulse-ring-3 { width: 480px; height: 480px; }
 }
 
 @media (max-width: 480px) {
@@ -892,4 +908,36 @@
     width: 120px;
     height: 120px;
   }
+
+  .loom-ms-counter {
+    font-size: 2rem;
+  }
+
+  .loom-strengths-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .loom-strengths-scene,
+  .loom-gallery-scene {
+    padding: 3rem 1rem;
+  }
+
+  .loom-scene-content {
+    padding: 2rem 1rem;
+  }
+
+  .loom-closing {
+    min-height: 50vh;
+  }
+
+  .loom-film-frame {
+    flex: 0 0 200px;
+  }
+  .loom-film-frame:first-child {
+    flex: 0 0 260px;
+  }
+
+  .loom-pulse-ring-1 { width: 150px; height: 150px; }
+  .loom-pulse-ring-2 { width: 260px; height: 260px; }
+  .loom-pulse-ring-3 { width: 370px; height: 370px; }
 }

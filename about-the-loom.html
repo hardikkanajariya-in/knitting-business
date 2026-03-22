@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NK — Idea 4: The Loom (Auto-Scroll Cinema)</title>
+  <title>NK — The Loom</title>
   <link rel="icon" type="image/jpeg" href="assets/img/logo/nk-logo.jpg">
 
   <link rel="preconnect" href="https://cdn.tailwindcss.com">
@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/about-journey-v5.css">
+  <link rel="stylesheet" href="assets/css/version-switcher.css">
 </head>
 <body data-page="about-v5">
   <div id="site-header"></div>
@@ -47,6 +48,7 @@
   <script src="assets/js/components/page-banner.js" defer></script>
   <script src="assets/js/components/team-card.js" defer></script>
   <script src="assets/js/components/global-bg.js" defer></script>
+  <script src="assets/js/components/version-switcher.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 
   <script defer>
@@ -92,6 +94,11 @@
       if (typeof initAboutJourneyV5Animations === 'function') initAboutJourneyV5Animations();
       if (typeof initFactoryGallery === 'function') initFactoryGallery();
       if (typeof initStatCounters === 'function') initStatCounters();
+
+      if (typeof renderVersionSwitcher === 'function') {
+        document.body.insertAdjacentHTML('beforeend', renderVersionSwitcher());
+        initVersionSwitcher();
+      }
 
       document.body.classList.add('loaded');
       const pt = document.querySelector('.page-transition');
