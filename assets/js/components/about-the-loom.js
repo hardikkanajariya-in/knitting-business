@@ -1,3 +1,64 @@
+function renderNKHero(about) {
+  const banner = about.banner || {};
+  const journey = about.journeySection || {};
+  const title = journey.title || banner.title || 'Nirbhay Knitting';
+  const subtitle = journey.storyTitle || banner.subtitle || '';
+  const bgImage = banner.backgroundImage || '';
+  const eyebrow = journey.eyebrow || 'NK';
+
+  const words = title.split(' ');
+  const titleLine1 = words.slice(0, 2).join(' ');
+  const titleLine2 = words.slice(2).join(' ');
+
+  return `
+    <section class="nk-hero" id="nk-hero">
+      <div class="nk-hero-bg">
+        <img src="${bgImage}" alt="${title}" width="1920" height="1080"
+          onerror="this.style.display='none';this.parentElement.style.background='var(--bg-tertiary)'">
+      </div>
+      <div class="nk-hero-overlay"></div>
+
+      <div class="nk-hero-annotations" aria-hidden="true">
+        <span class="nk-hero-anno nk-hero-anno--1">Technical Textiles</span>
+        <span class="nk-hero-anno nk-hero-anno--2">Since 1984</span>
+        <span class="nk-hero-anno nk-hero-anno--3">Zero Discharge</span>
+      </div>
+
+      <div class="nk-hero-content">
+        <div class="nk-hero-eyebrow">
+          <span class="nk-hero-eyebrow-line"></span>
+          ${eyebrow} <span class="nk-hero-dot"></span> Nirbhay Knitting Industries
+        </div>
+
+        <h1 class="nk-hero-title">
+          <span class="nk-hero-title-line">${titleLine1}</span>
+          <span class="nk-hero-title-line nk-hero-title-accent">${titleLine2}</span>
+        </h1>
+
+        <div class="nk-hero-desc">
+          <p>${subtitle}</p>
+        </div>
+
+        <div class="nk-hero-cta-row">
+          <a href="contact.html" class="nk-hero-cta">
+            Start a Project
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </a>
+          <a href="#loom-cinema" class="nk-hero-cta nk-hero-cta--secondary">
+            Explore Journey
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="nk-hero-scroll" aria-hidden="true">
+        <div class="nk-hero-mouse"><div class="nk-hero-mouse-dot"></div></div>
+        <span class="nk-hero-scroll-label">Scroll</span>
+      </div>
+    </section>
+  `;
+}
+
 const LOOM_ICONS = {
   play: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
   pause: '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>',

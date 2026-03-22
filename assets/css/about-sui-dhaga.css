@@ -107,7 +107,7 @@
 .sd-needle-layer {
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 1;
   pointer-events: none;
 }
 
@@ -158,7 +158,7 @@
 .sd-stitch-marks {
   position: absolute;
   inset: 0;
-  z-index: 3;
+  z-index: 1;
   pointer-events: none;
 }
 

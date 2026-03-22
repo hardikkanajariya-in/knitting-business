@@ -87,8 +87,11 @@
       `;
 
       
+      const nkHeroHTML = typeof renderNKHero === 'function' ? renderNKHero(about) : '';
+
       const v4El = document.getElementById('version-sui-dhaga');
       v4El.innerHTML = `
+        ${nkHeroHTML}
         ${typeof renderAboutJourneyV4 === 'function' ? renderAboutJourneyV4(about.journeySection) : ''}
         ${typeof renderAboutStoryV4 === 'function' && about.story ? renderAboutStoryV4(about.story) : ''}
         ${typeof renderFactoryGalleryV4 === 'function' && about.factoryGallery ? renderFactoryGalleryV4(about.factoryGallery) : ''}
@@ -99,6 +102,7 @@
       
       const v5El = document.getElementById('version-the-loom');
       v5El.innerHTML = `
+        ${nkHeroHTML}
         ${typeof renderAboutJourneyV5 === 'function' ? renderAboutJourneyV5(about.journeySection) : ''}
         ${typeof renderAboutStoryV5 === 'function' && about.story ? renderAboutStoryV5(about.story) : ''}
         ${typeof renderFactoryGalleryV5 === 'function' && about.factoryGallery ? renderFactoryGalleryV5(about.factoryGallery) : ''}
@@ -107,7 +111,7 @@
       `;
 
       const header = document.querySelector('.site-header');
-      if (header) header.classList.remove('hero-overlay-mode');
+      if (header) header.classList.add('hero-overlay-mode');
 
       initTheme();
       initMobileMenu();
@@ -116,6 +120,7 @@
       initGSAP();
       if (typeof initScrollToTop === 'function') initScrollToTop();
       if (typeof initGlobalBackground === 'function') initGlobalBackground();
+      if (typeof initNKHeroAnimations === 'function') initNKHeroAnimations();
       if (typeof initAboutJourneyV4Animations === 'function') initAboutJourneyV4Animations();
       if (typeof initFactoryGallery === 'function') initFactoryGallery();
       if (typeof initStatCounters === 'function') initStatCounters();
