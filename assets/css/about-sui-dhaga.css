@@ -444,18 +444,6 @@
   margin: 0 auto;
 }
 
-.sd-hero-spool {
-  margin-top: 2.5rem;
-  display: flex;
-  justify-content: center;
-}
-
-.sd-hero-spool svg {
-  width: 60px;
-  height: 60px;
-  opacity: 0.25;
-}
-
 .sd-hero-paragraph {
   font-size: clamp(0.9rem, 1.1vw, 1.05rem);
   color: var(--text-secondary);

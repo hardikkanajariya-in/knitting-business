@@ -114,16 +114,6 @@ function renderAboutJourneyV4(section) {
               <stop offset="0%" stop-color="rgba(10,40,80,0.3)"/>
               <stop offset="100%" stop-color="transparent"/>
             </radialGradient>
-            <radialGradient id="yarnBallShadow" cx="50%" cy="95%" r="50%">
-              <stop offset="0%" stop-color="rgba(0,0,0,0.25)"/>
-              <stop offset="60%" stop-color="rgba(0,0,0,0.08)"/>
-              <stop offset="100%" stop-color="transparent"/>
-            </radialGradient>
-            <!-- Yarn fiber texture filter -->
-            <filter id="yarnFiber" x="-5%" y="-5%" width="110%" height="110%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.8 0.3" numOctaves="5" seed="7" result="fb"/>
-              <feDisplacementMap in="SourceGraphic" in2="fb" scale="0.8" xChannelSelector="R" yChannelSelector="G"/>
-            </filter>
             <filter id="yarnSoftShadow" x="-30%" y="-10%" width="160%" height="160%">
               <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
               <feOffset dx="2" dy="5" result="off"/>
