@@ -36,14 +36,9 @@
         "subtitle": "Trusted across industrial applications",
         "items": [
           { "name": "Automotive", "icon": "car", "image": "assets/img/industries/automotive.jpg", "tag": "Interior and technical uses" },
-          { "name": "Leather Goods", "icon": "layers", "image": "assets/img/industries/furnishing.jpg", "tag": "Base fabrics and coated surfaces" },
           { "name": "Footwear", "icon": "shoe", "image": "assets/img/industries/footwear.jpg", "tag": "Comfort and structure" },
-          { "name": "Apparel", "icon": "shirt", "image": "assets/img/industries/aerospace.jpg", "tag": "Performance textiles" },
           { "name": "Home Furnishings", "icon": "sofa", "image": "assets/img/industries/furnishing.jpg", "tag": "Durable fabric systems" },
-          { "name": "Contract Manufacturing", "icon": "flask", "image": "assets/img/factory/stenter.jpg", "tag": "PU coating and laminating" },
-          { "name": "Safety & PPE", "icon": "shield", "image": "assets/img/industries/automotive.jpg", "tag": "FR fabrics for protective equipment" },
-          { "name": "Medical Textiles", "icon": "heart", "image": "assets/img/products/3d-spacer-white.png", "tag": "Technical cushioning and substrates" },
-          { "name": "Outdoor & Technical", "icon": "mountain", "image": "assets/img/products/raised-fabric-rolls.png", "tag": "Performance and durability" }
+          { "name": "Protective Applications", "icon": "shield", "image": "assets/img/industries/automotive.jpg", "tag": "FR fabrics and safety textiles" }
         ]
       },
       "statsBand": [
@@ -71,7 +66,7 @@
       "showcase": {
         "eyebrow": "Capabilities",
         "title": "A material and coatings partner with practical manufacturing depth",
-        "description": "Nirbhay connects substrate development, specialty coating support, quality validation, and responsive manufacturing into one streamlined industrial offering.",
+        "description": "Nirbhay connects substrate development, coating support, quality validation, and responsive manufacturing into an integrated industrial platform.",
         "cards": [
           {
             "category": "Nirbhay Knitting",
@@ -110,12 +105,12 @@
       "process": {
         "eyebrow": "How we work",
         "title": "A development workflow built around technical clarity and manufacturing follow-through",
-        "description": "Each project starts with application needs and ends with a tested, scalable solution - whether the requirement is a knitted base fabric, a coated surface, or a new laminated construction.",
+        "description": "Each project starts with application needs and ends with a tested, reliable solution — whether the requirement is a knitted base fabric, a coated surface, or a new laminated construction.",
         "stats": [
-          { "value": "4", "label": "Core growth engines: knitting, coating, laminating, chemicals" },
-          { "value": "24h", "label": "Response cadence for active discussions" },
-          { "value": "2022", "label": "Interplast partnership began" },
-          { "value": "2024+", "label": "Current innovation window" }
+          { "value": "40+", "label": "Years of engineering heritage" },
+          { "value": "125 MT", "label": "Monthly production capacity" },
+          { "value": "Zero", "label": "Discharge certified facility" },
+          { "value": "Interplast", "label": "Kimya partnership" }
         ],
         "steps": [
           {
@@ -134,8 +129,8 @@
       },
       "spotlight": {
         "eyebrow": "Why customers choose us",
-        "title": "Full in-house production, coating intelligence, and sustainability discipline",
-        "description": "Nirbhay's strength comes from connecting fabric expertise with coating chemistry, process control, fast delivery, and customization — key competitive advantages for industrial and international buyers.",
+        "title": "Full in-house production, coating expertise, and sustainability discipline",
+        "description": "Nirbhay's strength comes from connecting fabric expertise with coating knowledge, process control, responsive delivery, and customization — built on trust, transparency, and technical excellence.",
         "panels": [
           {
             "title": "Knitted material platform",
@@ -171,10 +166,10 @@
     "journeySection": {
       "eyebrow": "NK",
       "title": "How Nirbhay Is Evolving",
-      "storyTitle": "From textile manufacturer to integrated materials and coatings partner",
+      "storyTitle": "Engineering precision with sustainable innovation for over 40 years",
       "paragraphs": [
-        "Nirbhay Knitting Industries Pvt. Ltd. operates from Halol near Vadodara in Gujarat, India. The company has built a reputation on full in-house production and testing for knitted fabrics, vinyl coating applications, and customer-specific industrial requirements — with fast delivery and customization as key competitive advantages.",
-        "Today, Nirbhay's growth is driven by broader product development, sustainable processing, and vertical integration through coating, laminating, and the representation of Interplast Kimya (Turkey). That shift — combined with innovations in coated 3D fabrics, FR textiles, and water-based breathable coatings — is expanding the company into an innovation-driven niche player with a strong sustainability profile aligned with European and North American market expectations."
+        "For over 40 years, Nirbhay Knitting has engineered technical textiles that serve as the foundation for high-performance coated and laminated materials. From 3D spacer fabrics to coated-ready knits and raised substrates, our materials are designed to perform consistently on coating and lamination lines.",
+        "With zero-discharge manufacturing, waterless finishing, and a commitment to clean, responsible production, we combine engineering precision with sustainable innovation. We don't just supply fabrics — we build long-term partnerships based on trust, transparency, and technical excellence."
       ],
       "decor": {
         "topThreads": "assets/img/journey/thread-cluster.svg",
@@ -226,7 +221,7 @@
       "title": "Built for industrial performance, positioned for international growth",
       "paragraphs": [
         "Nirbhay combines 125 MT/month manufacturing capability, coating support, and testing discipline for applications where consistency and customization matter. Its portfolio spans knitted base fabrics, 3D spacer fabrics, raised fabrics, recycled yarn fabrics, vinyl coated textiles, and value-added coating services — with FR fabrics and breathable coatings in active development.",
-        "The company is now pushing into higher-value material systems through laminating, PU coating, Interplast Kimya-linked chemistry, and a focused innovation pipeline. International expansion is underway — with Europe as the first target market for sustainability-aligned technical textiles, followed by North America for innovation-driven coated materials, and Japan/Korea for high-tech niche applications."
+        "The company is expanding through laminating, PU coating, Interplast Kimya-linked chemistry, and a focused innovation pipeline. With a sustainability profile aligned with European market expectations, Nirbhay is building long-term partnerships based on trust, transparency, and technical excellence."
       ]
     },
     "factoryGallery": {
@@ -295,10 +290,10 @@
     "divisionLogoAlt": "NirChem - a division of Nirbhay Knitting Industries",
     "divisionStatement": "A division focused on value-added coating, laminating, and chemistry-backed material development.",
     "heroStats": [
-      { "value": "5+", "label": "Coating Types" },
-      { "value": "50+", "label": "Substrate Grades" },
-      { "value": "Interplast", "label": "Kimya Partner" },
-      { "value": "R&D", "label": "Breathable Systems" }
+      { "value": "125 MT", "label": "Monthly Capacity" },
+      { "value": "35,000+", "label": "sq. ft. Infrastructure" },
+      { "value": "Zero", "label": "Discharge Facility" },
+      { "value": "40+", "label": "Years of Heritage" }
     ],
     "processStages": [
       {
@@ -306,15 +301,15 @@
         "title": "Substrate Preparation",
         "description": "The process begins with selecting and preparing the right knitted base fabric. Every substrate is inspected for weight, structure, and surface consistency before entering the coating line.",
         "lottie": "assets/lottie/fiber-weave.lottie",
-        "gauge": { "label": "Quality Gate", "value": "100%", "fill": 100 },
+        "gauge": { "label": "Substrate QC", "value": "Verified", "fill": 100 },
         "layerIndex": 0
       },
       {
         "number": "02",
         "title": "Coating Application",
-        "description": "PU or vinyl coating is applied using blade-over-roll or direct coating techniques. Film thickness, viscosity, and application speed are controlled to meet exact specifications.",
+        "description": "PU or vinyl coating is applied using direct coating techniques. Application parameters are controlled to meet customer specifications for each substrate and end-use.",
         "lottie": "assets/lottie/gears.lottie",
-        "gauge": { "label": "Precision", "value": "±0.02mm", "fill": 92 },
+        "gauge": { "label": "Process", "value": "Controlled", "fill": 90 },
         "layerIndex": 1
       },
       {
@@ -322,15 +317,15 @@
         "title": "Lamination",
         "description": "Multiple layers are bonded under controlled pressure and temperature. The laminating process creates composite materials with enhanced mechanical and surface performance.",
         "lottie": "assets/lottie/factory.lottie",
-        "gauge": { "label": "Bond Strength", "value": "High", "fill": 88 },
+        "gauge": { "label": "Bond", "value": "Validated", "fill": 88 },
         "layerIndex": 2
       },
       {
         "number": "04",
         "title": "Curing and Drying",
-        "description": "Coated substrates pass through precision-controlled ovens for crosslinking and heat setting. Temperature profiles are calibrated for each chemistry system.",
+        "description": "Coated substrates pass through controlled drying and heat setting. Temperature and speed profiles are calibrated for each chemistry system and end-use requirement.",
         "lottie": "assets/lottie/automation.lottie",
-        "gauge": { "label": "Temp Control", "value": "±2°C", "fill": 95 },
+        "gauge": { "label": "Heat Setting", "value": "Calibrated", "fill": 92 },
         "layerIndex": 3
       },
       {
@@ -338,7 +333,7 @@
         "title": "Quality and Finish",
         "description": "Final surface treatment, testing, and quality certification. Every batch is validated against customer specifications before dispatch.",
         "lottie": "assets/lottie/globe.lottie",
-        "gauge": { "label": "Pass Rate", "value": "99.5%", "fill": 99 },
+        "gauge": { "label": "Final QC", "value": "Certified", "fill": 95 },
         "layerIndex": 4
       }
     ],
@@ -375,29 +370,28 @@
       }
     ],
     "capabilities": [
-      { "title": "Coating Types", "value": "5+", "unit": "PU · Vinyl · Water-based · Specialty · Breathable", "icon": "layers", "gaugeFill": 85 },
-      { "title": "Thickness Range", "value": "0.3–2.5", "unit": "mm coating thickness", "icon": "ruler", "gaugeFill": 78 },
-      { "title": "Substrate Compatibility", "value": "50+", "unit": "Knit · Woven · Non-woven grades", "icon": "grid", "gaugeFill": 90 },
-      { "title": "Processing Width", "value": "Up to 60\"", "unit": "Standard production width", "icon": "width", "gaugeFill": 72 },
-      { "title": "Annual Capacity", "value": "1M+", "unit": "Linear meters per year", "icon": "chart", "gaugeFill": 82 },
-      { "title": "Quality Standards", "value": "ISO", "unit": "Testing · Certification · Compliance", "icon": "shield", "gaugeFill": 95 }
+      { "title": "Product Range", "value": "Vinyl · PU · Laminated", "unit": "Coated textiles, laminated composites, specialty finishes", "icon": "layers", "gaugeFill": 85 },
+      { "title": "Monthly Capacity", "value": "125 MT", "unit": "Integrated knitting + coating production", "icon": "chart", "gaugeFill": 82 },
+      { "title": "Infrastructure", "value": "35,000+", "unit": "sq. ft. built-up manufacturing space", "icon": "grid", "gaugeFill": 90 },
+      { "title": "Sustainability", "value": "Zero Discharge", "unit": "Waterless finishing · Clean energy", "icon": "shield", "gaugeFill": 95 },
+      { "title": "Chemistry Partner", "value": "Interplast Kimya", "unit": "PU resins · Lacquers · Formulation support", "icon": "layers", "gaugeFill": 88 },
+      { "title": "Innovation Pipeline", "value": "Active R&D", "unit": "Breathable coatings · Coated 3D · FR substrates", "icon": "ruler", "gaugeFill": 72 }
     ],
     "innovation": {
       "title": "Breathable Coating Systems in Development",
       "badge": "In Development",
-      "description": "Current innovation work includes water-based breathable coatings and coated 3D constructions designed to move the portfolio into more advanced technical territory. These next-generation systems aim to combine comfort, performance, and reduced environmental impact.",
-      "detail": "The R&D pipeline focuses on three frontiers: water-based PU coatings that eliminate solvent dependency, breathable membranes for performance apparel substrates, and coated 3D spacer constructions for automotive and technical applications.",
+      "description": "Current innovation work includes water-based breathable coatings and coated 3D constructions designed to move the portfolio into more advanced technical territory. Combined with FR textile development, these next-generation systems aim to address growing performance and sustainability requirements.",
+      "detail": "The R&D pipeline focuses on three frontiers: water-based breathable coatings for reduced environmental impact, coated 3D spacer constructions for automotive and technical applications, and FR (flame retardant) substrates for protective end-uses.",
       "image": "assets/img/factory/stenter.jpg"
     },
     "partnership": {
       "title": "Backed by Interplast Kimya",
-      "description": "Through the Interplast Kimya relationship, NirChem customers gain access to a portfolio of PU resins, lacquers, and specialty chemicals that complement Nirbhay's coating and textile development capabilities.",
+      "description": "Through the Interplast Kimya (Turkey) partnership, NirChem customers gain access to PU resins and lacquers that complement Nirbhay's coating and textile development capabilities — enabling vertical integration and higher-value coated solutions.",
       "capabilities": [
-        "PU resins for coating and laminating",
-        "Specialty lacquers for surface finishing",
-        "Technical support and formulation guidance",
-        "Consistent supply chain for critical chemistry",
-        "Joint development for customer-specific solutions"
+        "PU resins for coating and laminating applications",
+        "Lacquers for surface finishing",
+        "Vertical integration into higher-value coated solutions",
+        "Partnership active since 2022"
       ]
     },
     "contentBlock": {
@@ -416,14 +410,14 @@
     "intro": {
       "title": "How we approach responsible manufacturing",
       "paragraphs": [
-        "Nirbhay's sustainability profile comes from practical operating choices: all finishing processes are water free, the facility follows a zero discharge model, and core energy inputs are limited to electricity and gas. These decisions reduce process complexity while supporting cleaner production discipline.",
+        "Nirbhay's sustainability profile comes from practical operating choices: all finishing processes are water free, the facility follows a zero discharge model, and energy usage is managed for efficiency. These decisions reduce process complexity while supporting cleaner production discipline.",
         "The product roadmap also reflects this direction. Recycled yarn fabric options are already part of the portfolio, while new development work focuses on lower-footprint coating systems, coated 3D materials, and water-based breathable solutions for the future."
       ]
     },
     "pillars": [
       {
         "title": "Zero Discharge Facility",
-        "description": "Manufacturing is positioned around zero discharge operations, giving customers a stronger sustainability story and better alignment with international expectations.",
+        "description": "Manufacturing is built around zero discharge operations, reducing environmental impact and aligning with international sustainability standards.",
         "icon": "leaf"
       },
       {
@@ -433,7 +427,7 @@
       },
       {
         "title": "Efficient Utility Profile",
-        "description": "The facility runs on electricity and gas only, supporting a more controlled and efficient production setup.",
+        "description": "The facility operates on clean energy inputs, supporting a controlled and efficient production environment.",
         "icon": "bolt"
       },
       {
@@ -450,7 +444,7 @@
     "stats": [
       { "value": "Zero", "label": "Discharge certified facility" },
       { "value": "Water-free", "label": "Finishing processes" },
-      { "value": "2", "label": "Primary energy inputs: electricity and gas" },
+      { "value": "Clean", "label": "Energy-efficient operations" },
       { "value": "Recycled", "label": "Yarn-based options in portfolio" }
     ]
   },
@@ -462,7 +456,7 @@
         "name": "Leadership and Strategy",
         "designation": "Management Team",
         "photo": "assets/img/team/rajeev-kumar.jpg",
-        "bio": "The management team guides Nirbhay's transition from a regional textile manufacturer to an integrated materials and coatings partner, with emphasis on innovation, customization, and long-term market development."
+        "bio": "The management team guides Nirbhay's direction as an integrated materials and coatings partner, with emphasis on engineering precision, sustainable innovation, and long-term partnerships."
       },
       {
         "name": "Technical and Commercial Team",
