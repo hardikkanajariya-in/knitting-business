@@ -253,7 +253,7 @@ function initHeroBAnimations() {
   if (!heroB) return;
 
   const heroBgMedia = heroB.querySelector('.hero-b-bg img, .hero-b-bg video');
-  const heroCopy = heroB.querySelector('.hero-b-copy');
+  const heroContent = heroB.querySelector('.hero-b-content');
 
   const tl = gsap.timeline({ delay: 0.3 });
   if (typeof ScrollTrigger !== 'undefined' && heroB.dataset.scrollFxInit !== 'true') {
@@ -272,8 +272,8 @@ function initHeroBAnimations() {
       });
     }
 
-    if (heroCopy) {
-      gsap.to(heroCopy, {
+    if (heroContent) {
+      gsap.to(heroContent, {
         yPercent: -10,
         opacity: 0.78,
         ease: 'none',
@@ -293,18 +293,13 @@ function initHeroBAnimations() {
     duration: 0.55,
     ease: 'power3.out',
   })
-  .from('.hero-b-title', {
+  .from('.hero-b-title-line', {
     y: 60,
     opacity: 0,
     duration: 1,
+    stagger: 0.15,
     ease: 'power3.out',
   }, '-=0.28')
-  .from('.hero-b-subtitle', {
-    y: 40,
-    opacity: 0,
-    duration: 0.7,
-    ease: 'power3.out',
-  }, '-=0.4')
   .from('.hero-b-desc', {
     y: 30,
     opacity: 0,
@@ -317,6 +312,18 @@ function initHeroBAnimations() {
     duration: 0.5,
     stagger: 0.1,
     ease: 'power3.out',
+  }, '-=0.2')
+  .from('.hero-b-anno', {
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.12,
+    ease: 'power2.out',
+  }, '-=0.3')
+  .from('.hero-b-scroll', {
+    opacity: 0,
+    y: 10,
+    duration: 0.5,
+    ease: 'power2.out',
   }, '-=0.2');
 }
 function initStatCounters() {

@@ -3,6 +3,10 @@ function renderHeroB(data) {
   const secondaryCta = data.secondaryCta;
   const posterImage = data.posterImage || data.backgroundImage || '';
 
+  const titleWords = data.title.split(' ');
+  const titleLine1 = titleWords.slice(0, 3).join(' ');
+  const titleLine2 = titleWords.slice(3).join(' ');
+
   return `
     <section class="hero-b">
       <div class="hero-b-bg">
@@ -21,26 +25,48 @@ function renderHeroB(data) {
         `}
       </div>
       <div class="hero-b-overlay"></div>
-      <div class="container hero-b-content py-24 md:py-32">
-        <div class="hero-b-copy max-w-3xl">
-          ${data.eyebrow ? `<p class="hero-b-eyebrow">${data.eyebrow}</p>` : ''}
-          <h1 class="hero-b-title">${data.title}</h1>
-          <p class="hero-b-subtitle">${data.subtitle}</p>
-          <p class="hero-b-desc">${data.description}</p>
-          <div class="hero-b-cta-row mt-8 flex flex-wrap gap-4">
-            <a href="${data.cta.href}" class="btn-primary btn-primary-light">
-              ${data.cta.label}
-              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-              </svg>
-            </a>
-            ${secondaryCta ? `
-              <a href="${secondaryCta.href}" class="btn-outline hero-b-btn-secondary">
-                ${secondaryCta.label}
-              </a>
-            ` : ''}
+
+      <div class="hero-b-annotations" aria-hidden="true">
+        <span class="hero-b-anno hero-b-anno--1">Technical Textiles</span>
+        <span class="hero-b-anno hero-b-anno--2">Since 1984</span>
+        <span class="hero-b-anno hero-b-anno--3">Zero Discharge</span>
+      </div>
+
+      <div class="hero-b-content">
+        ${data.eyebrow ? `
+          <div class="hero-b-eyebrow">
+            <span class="hero-b-eyebrow-line"></span>
+            ${data.eyebrow}
           </div>
+        ` : ''}
+
+        <h1 class="hero-b-title">
+          <span class="hero-b-title-line">${titleLine1}</span>
+          <span class="hero-b-title-line hero-b-title-accent">${titleLine2}</span>
+        </h1>
+
+        <div class="hero-b-desc">
+          <p>${data.subtitle}</p>
         </div>
+
+        <div class="hero-b-cta-row">
+          <a href="${data.cta.href}" class="hero-b-cta">
+            ${data.cta.label}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+          </a>
+          ${secondaryCta ? `
+            <a href="${secondaryCta.href}" class="hero-b-cta hero-b-cta--secondary">
+              ${secondaryCta.label}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          ` : ''}
+        </div>
+
+      </div>
+
+      <div class="hero-b-scroll" aria-hidden="true">
+        <div class="hero-b-mouse"><div class="hero-b-mouse-dot"></div></div>
+        <span class="hero-b-scroll-label">Scroll</span>
       </div>
     </section>
   `;
