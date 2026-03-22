@@ -171,49 +171,37 @@
         "For over 40 years, Nirbhay Knitting has engineered technical textiles that serve as the foundation for high-performance coated and laminated materials. From 3D spacer fabrics to coated-ready knits and raised substrates, our materials are designed to perform consistently on coating and lamination lines.",
         "With zero-discharge manufacturing, waterless finishing, and a commitment to clean, responsible production, we combine engineering precision with sustainable innovation. We don't just supply fabrics — we build long-term partnerships based on trust, transparency, and technical excellence."
       ],
-      "decor": {
-        "topThreads": "assets/img/journey/thread-cluster.svg",
-        "bottomThreads": "assets/img/journey/thread-bottom.svg",
-        "leftLines": "assets/img/journey/line-art-left.svg",
-        "rightLines": "assets/img/journey/line-art-right.svg",
-        "carPrimary": "assets/img/journey/car-blue.svg",
-        "carSecondary": "assets/img/journey/car-silver.svg"
-      },
+      "decor": {},
       "milestones": [
         {
           "year": "Base",
           "title": "Knitted fabrics and coated textile support",
           "description": "Core manufacturing centered on knitted fabrics, vinyl coating support, and industrial application know-how.",
-          "icon": "assets/img/journey/milestone-founded.svg",
-          "lottie": "assets/lottie/factory.lottie"
+          "image": "assets/img/factory/Main Entry.JPG"
         },
         {
           "year": "Control",
           "title": "In-house testing capability",
           "description": "Quality control and customer-specific validation became central to the company's operating model.",
-          "icon": "assets/img/journey/milestone-innovation.svg",
-          "lottie": "assets/lottie/gears.lottie"
+          "image": "assets/img/factory/Pailung 1.jpg"
         },
         {
           "year": "2022",
           "title": "Interplast Kimya represented",
           "description": "PU resins and lacquers strengthened vertical integration and cross-selling potential.",
-          "icon": "assets/img/journey/milestone-materials.svg",
-          "lottie": "assets/lottie/globe.lottie"
+          "image": "assets/img/factory/Pinlung 2.jpg"
         },
         {
           "year": "2023",
           "title": "New fabric categories launched",
           "description": "3D spacer fabrics, raised fabrics, and recycled-yarn developments broadened the offer.",
-          "icon": "assets/img/journey/milestone-global.svg",
-          "lottie": "assets/lottie/fiber-weave.lottie"
+          "image": "assets/img/factory/stenter.jpg"
         },
         {
           "year": "2024+",
           "title": "Coating and innovation pipeline expands",
           "description": "Laminating, PU coating, coated 3D materials, FR trials, and breathable coatings define the current direction.",
-          "icon": "assets/img/journey/milestone-future.svg",
-          "lottie": "assets/lottie/automation.lottie"
+          "image": "assets/img/factory/Pailung 1.jpg"
         }
       ]
     },

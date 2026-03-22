@@ -5,7 +5,6 @@
 
 // --- Image CDN Fallback ---
 // Maps local paths to Pexels CDN URLs. If local images aren't downloaded,
-// images automatically load from CDN. Run download-images.ps1 to go fully local.
 const IMAGE_CDN_FALLBACK = {
   'assets/img/hero/hero-bg.jpg': 'https://images.pexels.com/photos/36327501/pexels-photo-36327501.jpeg?auto=compress&cs=tinysrgb&w=1920',
   'assets/img/hero/about-bg.jpg': 'https://images.pexels.com/photos/8246487/pexels-photo-8246487.jpeg?auto=compress&cs=tinysrgb&w=1920',

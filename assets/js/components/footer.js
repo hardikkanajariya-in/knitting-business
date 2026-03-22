@@ -1,11 +1,14 @@
-/* Footer Component */
+/* Footer Component — Premium Redesign */
 function renderFooter(data) {
   const footer = data.footer;
   const site = data.site;
   const socialLinks = site.socialLinks || [];
 
   const quickLinks = footer.quickLinks.map(link =>
-    `<a href="${link.href}" class="footer-link">${link.label}</a>`
+    `<a href="${link.href}" class="footer-link">
+      <svg class="footer-link-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      <span>${link.label}</span>
+    </a>`
   ).join('');
 
   const socialIcons = socialLinks.map(social =>
@@ -16,9 +19,23 @@ function renderFooter(data) {
 
   return `
     <footer class="site-footer" role="contentinfo">
-      <div class="container">
+      <!-- Decorative background -->
+      <div class="footer-bg" aria-hidden="true">
+        <div class="footer-glow footer-glow--1"></div>
+        <div class="footer-glow footer-glow--2"></div>
+        <svg class="footer-thread-decor" viewBox="0 0 1200 40" preserveAspectRatio="none">
+          <path d="M0 20 Q150 0 300 20 Q450 40 600 20 Q750 0 900 20 Q1050 40 1200 20" fill="none" stroke="rgba(77,163,255,0.15)" stroke-width="1.5" stroke-dasharray="8 6"/>
+          <path d="M0 28 Q200 8 400 28 Q600 48 800 28 Q1000 8 1200 28" fill="none" stroke="rgba(75,175,79,0.10)" stroke-width="1" stroke-dasharray="6 8"/>
+        </svg>
+      </div>
+
+      <!-- Top gradient edge -->
+      <div class="footer-edge" aria-hidden="true"></div>
+
+      <div class="container footer-container">
         <div class="footer-grid">
-          <div class="footer-col footer-col--brand">
+          <!-- Col 1: Brand -->
+          <div class="footer-col footer-col--brand reveal-up">
             <a href="index.html" class="footer-brand" aria-label="${site.name} — Home">
               <span class="footer-brand-logo">
                 <img
@@ -33,7 +50,7 @@ function renderFooter(data) {
                 <span class="footer-brand-fallback" style="display:none;">${site.name}</span>
               </span>
             </a>
-            <p class="footer-text">${footer.tagline}</p>
+            <p class="footer-tagline">${footer.tagline}</p>
             ${socialIcons ? `
             <div class="footer-social">
               ${socialIcons}
@@ -41,31 +58,65 @@ function renderFooter(data) {
             ` : ''}
           </div>
 
-          <div class="footer-col footer-col--links">
-            <h4 class="footer-heading">Quick Links</h4>
+          <!-- Col 2: Quick Links -->
+          <div class="footer-col footer-col--links reveal-up">
+            <h4 class="footer-heading">
+              <span class="footer-heading-accent"></span>
+              Quick Links
+            </h4>
             <div class="footer-links-list">
               ${quickLinks}
             </div>
           </div>
 
-          <div class="footer-col footer-col--contact">
-            <h4 class="footer-heading">Contact</h4>
-            <p class="footer-text">${footer.contactInfo.address}</p>
-            <div class="footer-contact-links">
-              <a href="mailto:${footer.contactInfo.email}" class="footer-link">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-                ${footer.contactInfo.email}
+          <!-- Col 3: Contact -->
+          <div class="footer-col footer-col--contact reveal-up">
+            <h4 class="footer-heading">
+              <span class="footer-heading-accent"></span>
+              Contact
+            </h4>
+            <div class="footer-contact-card">
+              <div class="footer-contact-item">
+                <svg class="footer-contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                <p class="footer-contact-text">${footer.contactInfo.address}</p>
+              </div>
+              <a href="mailto:${footer.contactInfo.email}" class="footer-contact-item footer-contact-item--link">
+                <svg class="footer-contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <span class="footer-contact-text">${footer.contactInfo.email}</span>
               </a>
-              <a href="tel:${footer.contactInfo.phone.replace(/\s/g, '')}" class="footer-link">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                ${footer.contactInfo.phone}
+              <a href="tel:${footer.contactInfo.phone.replace(/\s/g, '')}" class="footer-contact-item footer-contact-item--link">
+                <svg class="footer-contact-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <span class="footer-contact-text">${footer.contactInfo.phone}</span>
               </a>
             </div>
           </div>
+
+          <!-- Col 4: Connect -->
+          <div class="footer-col footer-col--connect reveal-up">
+            <h4 class="footer-heading">
+              <span class="footer-heading-accent"></span>
+              Partner With Us
+            </h4>
+            <p class="footer-connect-text">Let's discuss your next technical textile requirement.</p>
+            <a href="contact.html" class="footer-cta">
+              Start a Discussion
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            ${socialIcons ? `
+            <div class="footer-social footer-social--connect">
+              ${socialIcons}
+            </div>
+            ` : ''}
+          </div>
         </div>
 
+        <!-- Bottom bar -->
+        <div class="footer-divider" aria-hidden="true"></div>
         <div class="footer-bottom">
           <p class="footer-copyright">${footer.copyright}</p>
+          <button class="footer-back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+          </button>
         </div>
       </div>
     </footer>

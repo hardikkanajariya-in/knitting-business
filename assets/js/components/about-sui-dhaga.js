@@ -26,7 +26,7 @@ function renderAboutJourneyV4(section) {
           <div class="sd-hoop">
             <div class="sd-hoop-ring"></div>
             <div class="sd-hoop-fabric">
-              ${m.icon ? `<img src="${m.icon}" alt="${m.title}" class="sd-hoop-img" loading="lazy">` : ''}
+              ${m.image ? `<img src="${m.image}" alt="${m.title}" class="sd-hoop-img" loading="lazy">` : ''}
             </div>
             <div class="sd-cross-stitches">${crosses}</div>
           </div>
