@@ -301,6 +301,7 @@ function initHeroBAnimations() {
     opacity: 0,
     duration: 0.55,
     ease: 'power3.out',
+    clearProps: 'opacity,y',
   })
   .from('.hero-b-title-line', {
     y: 60,
@@ -308,12 +309,14 @@ function initHeroBAnimations() {
     duration: 1,
     stagger: 0.15,
     ease: 'power3.out',
+    clearProps: 'opacity,y',
   }, '-=0.28')
   .from('.hero-b-desc', {
     y: 30,
     opacity: 0,
     duration: 0.6,
     ease: 'power3.out',
+    clearProps: 'opacity,y',
   }, '-=0.3')
   .from('.hero-b-cta-row > *', {
     y: 20,
@@ -321,18 +324,21 @@ function initHeroBAnimations() {
     duration: 0.5,
     stagger: 0.1,
     ease: 'power3.out',
+    clearProps: 'opacity,y',
   }, '-=0.2')
   .from('.hero-b-anno', {
     opacity: 0,
     duration: 0.6,
     stagger: 0.12,
     ease: 'power2.out',
+    clearProps: 'opacity',
   }, '-=0.3')
   .from('.hero-b-scroll', {
     opacity: 0,
     y: 10,
     duration: 0.5,
     ease: 'power2.out',
+    clearProps: 'opacity,y',
   }, '-=0.2');
 }
 
