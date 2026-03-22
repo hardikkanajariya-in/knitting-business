@@ -18,28 +18,28 @@
 
   --nc-hero-bg:       #F8FAFE;
   --nc-hero-text:     #0A2A43;
-  --nc-hero-text-sub: rgba(10,42,67,0.5);
-  --nc-hero-text-muted: rgba(10,42,67,0.35);
-  --nc-hero-line:     rgba(10,42,67,0.08);
-  --nc-hero-dot:      rgba(10,42,67,0.06);
-  --nc-hero-ring:     rgba(10,42,67,0.06);
-  --nc-hero-ring-inner: rgba(10,42,67,0.03);
-  --nc-hero-anno:     rgba(10,42,67,0.15);
-  --nc-hero-anno-border: rgba(10,42,67,0.08);
+  --nc-hero-text-sub: rgba(10,42,67,0.65);
+  --nc-hero-text-muted: rgba(10,42,67,0.5);
+  --nc-hero-line:     rgba(10,42,67,0.10);
+  --nc-hero-dot:      rgba(10,42,67,0.08);
+  --nc-hero-ring:     rgba(10,42,67,0.08);
+  --nc-hero-ring-inner: rgba(10,42,67,0.04);
+  --nc-hero-anno:     rgba(10,42,67,0.25);
+  --nc-hero-anno-border: rgba(10,42,67,0.12);
   --nc-hero-cta-border: rgba(10,42,67,0.2);
   --nc-hero-cta-text: #0A2A43;
-  --nc-hero-mouse:    rgba(10,42,67,0.25);
-  --nc-hero-mouse-dot: rgba(10,42,67,0.5);
+  --nc-hero-mouse:    rgba(10,42,67,0.35);
+  --nc-hero-mouse-dot: rgba(10,42,67,0.6);
 
   --nc-cap-bg:              #F8FAFE;
   --nc-cap-text:            #0A2A43;
-  --nc-cap-text-sub:        rgba(10,42,67,0.5);
-  --nc-cap-text-muted:      rgba(10,42,67,0.45);
-  --nc-cap-card-bg:         rgba(10,42,67,0.03);
-  --nc-cap-card-border:     rgba(10,42,67,0.06);
+  --nc-cap-text-sub:        rgba(10,42,67,0.65);
+  --nc-cap-text-muted:      rgba(10,42,67,0.55);
+  --nc-cap-card-bg:         rgba(10,42,67,0.04);
+  --nc-cap-card-border:     rgba(10,42,67,0.08);
   --nc-cap-card-hover-bg:   rgba(10,42,67,0.05);
   --nc-cap-card-hover-border: rgba(28,109,208,0.3);
-  --nc-cap-gauge-bg:        rgba(10,42,67,0.08);
+  --nc-cap-gauge-bg:        rgba(10,42,67,0.10);
 
   
   --nc-shadow-sm:     0 1px 3px rgba(10,42,67,0.06), 0 1px 2px rgba(10,42,67,0.04);
