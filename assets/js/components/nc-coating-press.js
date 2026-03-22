@@ -93,7 +93,6 @@ function renderNCHero(nc) {
 function renderNCProcessFlow(stages) {
   if (!stages || !stages.length) return '';
 
-  /* SVG icons for each stage — replaces broken Lottie CDN */
   const STAGE_ICONS = [
     `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 32V14l12-6 12 6v18"/><path d="M14 32V20h12v12"/><path d="M20 8v6"/><circle cx="20" cy="26" r="2"/></svg>`,
     `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="12" width="28" height="20" rx="2"/><path d="M6 20h28"/><path d="M14 12V8h12v4"/><circle cx="20" cy="26" r="3"/></svg>`,

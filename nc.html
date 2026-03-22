@@ -121,7 +121,6 @@
           initNCCoatingAnimations();
         }
 
-        /* Reveal-up for footer (rendered after main.js ran) */
         gsap.utils.toArray('#site-footer .reveal-up').forEach(el => {
           gsap.to(el, {
             y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',

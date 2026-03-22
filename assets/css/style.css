@@ -285,13 +285,12 @@ ul, ol {
   max-width: min(54vw, 22rem);
   object-fit: contain;
   border-radius: 0.25rem;
-  mix-blend-mode: multiply;
 }
 
 .site-header.hero-overlay-mode:not(.scrolled) .header-logo-mark,
 .dark .site-header.scrolled .header-logo-mark {
-  background: rgba(255, 255, 255, 0.9);
-  padding: 0.2rem 0.4rem;
+  background: transparent;
+  padding: 0;
 }
 
 .header-logo-fallback {
