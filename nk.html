@@ -86,12 +86,8 @@
         ${team ? '<section class="team-section section"><div class="container"><div class="section-header" data-aos="fade-up"><h2 class="section-title">' + (team.sectionTitle || 'People and Capability') + '</h2><p class="section-subtitle">' + (team.sectionSubtitle || '') + '</p></div><div class="team-grid">' + (typeof renderTeamCards === 'function' ? renderTeamCards(team.leadership) : '') + '</div></div></section>' : ''}
       `;
 
-      
-      const nkHeroHTML = typeof renderNKHero === 'function' ? renderNKHero(about) : '';
-
       const v4El = document.getElementById('version-sui-dhaga');
       v4El.innerHTML = `
-        ${nkHeroHTML}
         ${typeof renderAboutJourneyV4 === 'function' ? renderAboutJourneyV4(about.journeySection) : ''}
         ${typeof renderAboutStoryV4 === 'function' && about.story ? renderAboutStoryV4(about.story) : ''}
         ${typeof renderFactoryGalleryV4 === 'function' && about.factoryGallery ? renderFactoryGalleryV4(about.factoryGallery) : ''}
@@ -102,7 +98,6 @@
       
       const v5El = document.getElementById('version-the-loom');
       v5El.innerHTML = `
-        ${nkHeroHTML}
         ${typeof renderAboutJourneyV5 === 'function' ? renderAboutJourneyV5(about.journeySection) : ''}
         ${typeof renderAboutStoryV5 === 'function' && about.story ? renderAboutStoryV5(about.story) : ''}
         ${typeof renderFactoryGalleryV5 === 'function' && about.factoryGallery ? renderFactoryGalleryV5(about.factoryGallery) : ''}
@@ -120,7 +115,6 @@
       initGSAP();
       if (typeof initScrollToTop === 'function') initScrollToTop();
       if (typeof initGlobalBackground === 'function') initGlobalBackground();
-      if (typeof initNKHeroAnimations === 'function') initNKHeroAnimations();
       if (typeof initAboutJourneyV4Animations === 'function') initAboutJourneyV4Animations();
       if (typeof initFactoryGallery === 'function') initFactoryGallery();
       if (typeof initStatCounters === 'function') initStatCounters();
