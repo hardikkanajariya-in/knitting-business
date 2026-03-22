@@ -16,20 +16,20 @@ function initGlobalBackground() {
   const SHAPES = ['circle', 'square', 'diamond', 'ring', 'cross', 'triangle', 'dots', 'hexagon'];
   const COLORS = ['gbg-blue', 'gbg-purple', 'gbg-teal', 'gbg-pink', 'gbg-amber', 'gbg-green', 'gbg-red'];
   const FLOATS = ['gbgFloat1', 'gbgFloat2', 'gbgFloat3', 'gbgFloat4'];
-  const ELEMENT_COUNT = 22;
+  const ELEMENT_COUNT = 16;
 
   const elements = [];
 
   for (let i = 0; i < ELEMENT_COUNT; i++) {
     const shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
     const color = COLORS[Math.floor(Math.random() * COLORS.length)];
-    const size = 10 + Math.floor(Math.random() * 35); // 10-45px
+    const size = 8 + Math.floor(Math.random() * 18); // 8-26px
     const x = Math.random() * 95; // % from left
     const y = Math.random() * 95; // % from top
     const float = FLOATS[Math.floor(Math.random() * FLOATS.length)];
     const duration = 12 + Math.random() * 20; // 12-32s
     const delay = -(Math.random() * 15); // negative delay for stagger
-    const opacity = 0.5 + Math.random() * 0.5; // 0.5-1.0
+    const opacity = 0.3 + Math.random() * 0.3; // 0.3-0.6
 
     const el = document.createElement('div');
     el.className = `gbg-el gbg-el--${shape} ${color}`;
@@ -92,9 +92,9 @@ function initGlobalBackground() {
     const cy = window.innerHeight / 2;
 
     elements.forEach((item, i) => {
-      const depth = 0.5 + (i % 5) * 0.15; // parallax depth layer
-      const dx = (mouseX - 0.5) * depth * 40;
-      const dy = (mouseY - 0.5) * depth * 40;
+      const depth = 0.3 + (i % 5) * 0.1; // parallax depth layer
+      const dx = (mouseX - 0.5) * depth * 25;
+      const dy = (mouseY - 0.5) * depth * 25;
       item.el.style.marginLeft = dx + 'px';
       item.el.style.marginTop = dy + 'px';
 

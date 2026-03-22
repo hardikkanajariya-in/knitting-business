@@ -492,6 +492,7 @@
 /* ── STORY SECTION ───────────────────────────── */
 .jrny-story-section {
   padding: 5rem 0;
+  position: relative;
 }
 
 .jrny-story-grid {
@@ -499,6 +500,18 @@
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
+}
+
+/* Readable text backdrop */
+.jrny-story-copy {
+  position: relative;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.dark .jrny-story-copy {
+  background: rgba(6, 21, 32, 0.85);
 }
 
 .jrny-story-image-wrap {
