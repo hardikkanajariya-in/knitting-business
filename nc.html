@@ -26,6 +26,7 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/nc-coating-press.css">
 </head>
 <body>
   <div id="site-header"></div>
@@ -34,25 +35,97 @@
     <div id="site-footer"></div>
   </div>
 
+  <!-- CDN libs -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@nicepkg/dotlottie-player@2.7.12/dist/dotlottie-player.js" defer></script>
 
+  <!-- Shared components -->
   <script src="assets/js/components/header.js" defer></script>
   <script src="assets/js/components/footer.js" defer></script>
-  <script src="assets/js/components/hero-b.js" defer></script>
-  <script src="assets/js/components/product-grid.js" defer></script>
-  <script src="assets/js/components/page-banner.js" defer></script>
-  <script src="assets/js/components/content-block.js" defer></script>
   <script src="assets/js/components/cta-strip.js" defer></script>
-  <script src="assets/js/components/team-card.js" defer></script>
-  <script src="assets/js/components/contact-form.js" defer></script>
   <script src="assets/js/components/global-bg.js" defer></script>
+
+  <!-- NC Coating Press components -->
+  <script src="assets/js/components/nc-coating-press.js" defer></script>
+  <script src="assets/js/components/nc-coating-engine.js" defer></script>
+
+  <!-- Main (for shared init: theme, mobile menu, lenis, AOS, GSAP) -->
   <script src="assets/js/main.js" defer></script>
 
   <script defer>
-    document.addEventListener('DOMContentLoaded', () => initPage('nc'));
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res  = await fetch('data/content.json');
+        const data = await res.json();
+        const nc   = data.nc;
+        if (!nc) { console.error('NC data not found in content.json'); return; }
+
+        /* ---- Render all sections ---- */
+        const contentEl = document.getElementById('page-content');
+        if (!contentEl) return;
+
+        contentEl.innerHTML = [
+          typeof renderNCHero === 'function'         ? renderNCHero(nc) : '',
+          typeof renderNCProcessFlow === 'function'  ? renderNCProcessFlow(nc.processStages) : '',
+          typeof renderNCProducts === 'function'     ? renderNCProducts(nc.products) : '',
+          typeof renderNCCapabilities === 'function' ? renderNCCapabilities(nc.capabilities) : '',
+          typeof renderNCInnovation === 'function'   ? renderNCInnovation(nc.innovation) : '',
+          typeof renderNCPartnership === 'function'  ? renderNCPartnership(nc) : '',
+          typeof renderNCContentBlock === 'function' ? renderNCContentBlock(nc.contentBlock) : '',
+          typeof renderCTAStrip === 'function'       ? renderCTAStrip(data) : ''
+        ].join('');
+
+        /* ---- Shared global init ---- */
+        if (typeof renderHeader === 'function') {
+          const headerEl = document.getElementById('site-header');
+          if (headerEl) headerEl.innerHTML = renderHeader(data);
+        }
+        if (typeof renderFooter === 'function') {
+          const footerEl = document.getElementById('site-footer');
+          if (footerEl) footerEl.innerHTML = renderFooter(data);
+        }
+
+        /* Theme, mobile menu, smooth scroll */
+        if (typeof initTheme === 'function')      initTheme();
+        if (typeof initMobileMenu === 'function') initMobileMenu();
+        if (typeof initLenis === 'function')      initLenis();
+
+        /* AOS */
+        if (typeof AOS !== 'undefined') {
+          AOS.init({ duration: 700, once: true, offset: 80 });
+        }
+
+        /* GSAP */
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+          gsap.registerPlugin(ScrollTrigger);
+        }
+
+        /* Global background */
+        if (typeof initGlobalBackground === 'function') initGlobalBackground();
+
+        /* Header overlay mode — hero is always dark */
+        const header = document.querySelector('.site-header');
+        if (header) header.classList.add('hero-overlay-mode');
+
+        /* ---- NC-specific animations ---- */
+        if (typeof initNCCoatingAnimations === 'function') {
+          initNCCoatingAnimations();
+        }
+
+        /* Page load transition */
+        document.body.classList.add('loaded');
+        const pageTransition = document.querySelector('.page-transition');
+        if (pageTransition) {
+          requestAnimationFrame(() => pageTransition.classList.add('loaded'));
+        }
+
+      } catch (err) {
+        console.error('NC page init failed:', err);
+      }
+    });
   </script>
 </body>
 </html>

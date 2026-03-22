@@ -1,0 +1,998 @@
+/* ============================================================
+   NC — "The Coating Press" 
+   Award-winning page design for Nirbhay Chemicals
+   ============================================================ */
+
+/* --- Theme Variables (Light) --- */
+:root {
+  --nc-accent:        #0A2A43;
+  --nc-accent-light:  #1C6DD0;
+  --nc-accent-glow:   rgba(28, 109, 208, 0.35);
+  --nc-flow:          #1C6DD0;
+  --nc-flow-glow:     rgba(28, 109, 208, 0.25);
+  --nc-gauge-fill:    linear-gradient(135deg, #1C6DD0, #0A2A43);
+  --nc-hero-bg:       linear-gradient(160deg, #0A2A43 0%, #122d4a 50%, #1a3a5c 100%);
+  --nc-surface:       #f3f6fd;
+  --nc-surface-alt:   #e2eafb;
+  --nc-card-bg:       #ffffff;
+  --nc-card-border:   rgba(10, 42, 67, 0.08);
+  --nc-text-primary:  #0A2A43;
+  --nc-text-secondary:#41557e;
+  --nc-text-muted:    #6E7A86;
+  --nc-badge-bg:      rgba(28, 109, 208, 0.1);
+  --nc-badge-text:    #1C6DD0;
+  --nc-glass:         rgba(255, 255, 255, 0.72);
+  --nc-glass-border:  rgba(255, 255, 255, 0.4);
+  --nc-divider:       rgba(10, 42, 67, 0.08);
+  --nc-green:         #4BAF4F;
+  --nc-green-glow:    rgba(75, 175, 79, 0.25);
+}
+
+/* --- Dark Theme --- */
+.dark {
+  --nc-accent:        #5ba3e6;
+  --nc-accent-light:  #7eb8f0;
+  --nc-accent-glow:   rgba(91, 163, 230, 0.3);
+  --nc-flow:          #5ba3e6;
+  --nc-flow-glow:     rgba(91, 163, 230, 0.35);
+  --nc-gauge-fill:    linear-gradient(135deg, #5ba3e6, #7eb8f0);
+  --nc-hero-bg:       linear-gradient(160deg, #060d14 0%, #0c1a28 50%, #0f2136 100%);
+  --nc-surface:       #0c1a28;
+  --nc-surface-alt:   #101e2e;
+  --nc-card-bg:       #12202f;
+  --nc-card-border:   rgba(91, 163, 230, 0.1);
+  --nc-text-primary:  #e4eaf2;
+  --nc-text-secondary:#94a8c4;
+  --nc-text-muted:    #6a7f9a;
+  --nc-badge-bg:      rgba(91, 163, 230, 0.12);
+  --nc-badge-text:    #7eb8f0;
+  --nc-glass:         rgba(12, 26, 40, 0.78);
+  --nc-glass-border:  rgba(91, 163, 230, 0.15);
+  --nc-divider:       rgba(91, 163, 230, 0.08);
+  --nc-green:         #66d16a;
+  --nc-green-glow:    rgba(102, 209, 106, 0.2);
+}
+
+
+/* ============================================================
+   HERO — "The Line"
+   ============================================================ */
+.nc-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--nc-hero-bg);
+  overflow: hidden;
+  padding: 6rem 1.5rem 4rem;
+}
+
+.nc-hero-bg-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.nc-hero-bg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.15;
+}
+
+.nc-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,42,67,0.92) 0%, rgba(10,42,67,0.7) 60%, rgba(10,42,67,0.95) 100%);
+  z-index: 1;
+}
+
+.nc-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 56rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+.nc-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 1.5rem;
+}
+.nc-hero-eyebrow .nc-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+}
+
+.nc-hero-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 1rem;
+}
+.nc-hero-logo img {
+  max-height: 3.5rem;
+  width: auto;
+}
+
+.nc-hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.nc-hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 400;
+  color: rgba(255,255,255,0.75);
+  max-width: 38rem;
+  margin: 0 auto 2.5rem;
+  line-height: 1.6;
+}
+
+/* Hero Stats Row */
+.nc-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 44rem;
+  margin: 0 auto 2.5rem;
+}
+.nc-hero-stat {
+  padding: 1rem 0.5rem;
+  border-radius: 0.75rem;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.nc-hero-stat-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+}
+.nc-hero-stat-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 0.25rem;
+}
+
+/* Scroll indicator */
+.nc-hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255,255,255,0.5);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: ncScrollPulse 2s ease-in-out infinite;
+}
+.nc-hero-scroll svg {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke: currentColor;
+}
+
+/* Roller animation */
+.nc-roller-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  z-index: 1;
+  overflow: hidden;
+  opacity: 0.25;
+}
+.nc-roller {
+  width: 100%;
+  height: 100%;
+}
+.nc-roller-cylinder {
+  fill: none;
+  stroke: rgba(255,255,255,0.3);
+  stroke-width: 2;
+}
+.nc-roller-groove {
+  stroke: rgba(255,255,255,0.08);
+  stroke-width: 1;
+  stroke-dasharray: 6 4;
+}
+.nc-roller-spin {
+  animation: ncRollerSpin 4s linear infinite;
+  transform-origin: center;
+}
+
+
+/* ============================================================
+   PROCESS FLOW — "The Run" (Core section)
+   ============================================================ */
+.nc-process {
+  position: relative;
+  padding: 6rem 1.5rem;
+  background: var(--bg-primary, #fff);
+}
+
+.nc-process-header {
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto 4rem;
+}
+.nc-process-header h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: var(--nc-text-primary);
+  margin-bottom: 0.75rem;
+}
+.nc-process-header p {
+  font-size: 1.05rem;
+  color: var(--nc-text-secondary);
+  line-height: 1.6;
+}
+
+/* Flow line SVG container */
+.nc-flow-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+.nc-flow-line-track {
+  stroke: var(--nc-divider);
+  stroke-width: 3;
+}
+.nc-flow-line-active {
+  stroke: var(--nc-flow);
+  stroke-width: 3;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 6px var(--nc-flow-glow));
+}
+
+/* Stages container */
+.nc-stages {
+  position: relative;
+  z-index: 1;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+/* Individual stage */
+.nc-stage {
+  display: grid;
+  grid-template-columns: 1fr 4rem 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+.nc-stage:last-child { margin-bottom: 0; }
+
+/* Alternating layout */
+.nc-stage-visual { order: 1; }
+.nc-stage-center { order: 2; }
+.nc-stage-text   { order: 3; }
+
+.nc-stage:nth-child(even) .nc-stage-visual { order: 3; }
+.nc-stage:nth-child(even) .nc-stage-text   { order: 1; text-align: right; }
+
+/* Stage number badge (center column) */
+.nc-stage-badge {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #fff;
+  background: var(--nc-gauge-fill);
+  box-shadow: 0 0 0 4px var(--bg-primary, #fff), 0 0 0 6px var(--nc-flow);
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+}
+
+/* Stage visual — Lottie / icon card */
+.nc-stage-card {
+  background: var(--nc-card-bg);
+  border-radius: 1.25rem;
+  border: 1px solid var(--nc-card-border);
+  padding: 2rem;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.nc-stage-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+
+.nc-stage-lottie {
+  width: 100%;
+  max-width: 10rem;
+  aspect-ratio: 1;
+}
+
+/* Cross-section layer diagram */
+.nc-cross-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  border: 1px solid var(--nc-card-border);
+}
+.nc-layer {
+  height: 8px;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.nc-layer.nc-layer-visible { opacity: 1; }
+.nc-layer-substrate  { background: #8B7355; }
+.nc-layer-primer     { background: #B8860B; }
+.nc-layer-coating    { background: var(--nc-flow); }
+.nc-layer-laminate   { background: #2ecc71; }
+.nc-layer-finish     { background: #9b59b6; }
+
+/* Gauge indicator */
+.nc-gauge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+.nc-gauge-track {
+  flex: 1;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--nc-divider);
+  overflow: hidden;
+}
+.nc-gauge-bar {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--nc-gauge-fill);
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nc-gauge-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--nc-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+.nc-gauge-value {
+  font-family: 'Courier New', monospace;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--nc-accent);
+  min-width: 3rem;
+  text-align: right;
+}
+
+/* Stage text */
+.nc-stage-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--nc-text-primary);
+  margin-bottom: 0.5rem;
+}
+.nc-stage-desc {
+  font-size: 0.95rem;
+  color: var(--nc-text-secondary);
+  line-height: 1.65;
+}
+
+
+/* ============================================================
+   PRODUCTS — "Material Catalog"
+   ============================================================ */
+.nc-products {
+  padding: 6rem 1.5rem;
+  background: var(--nc-surface);
+}
+
+.nc-products-header {
+  text-align: center;
+  max-width: 36rem;
+  margin: 0 auto 3.5rem;
+}
+.nc-products-header h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: var(--nc-text-primary);
+  margin-bottom: 0.75rem;
+}
+.nc-products-header p {
+  font-size: 1.05rem;
+  color: var(--nc-text-secondary);
+}
+
+.nc-product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 68rem;
+  margin: 0 auto;
+}
+
+/* Swatch card */
+.nc-swatch {
+  position: relative;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: var(--nc-card-bg);
+  border: 1px solid var(--nc-card-border);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  cursor: default;
+}
+.nc-swatch:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+}
+
+.nc-swatch-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+.nc-swatch-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.nc-swatch:hover .nc-swatch-image img {
+  transform: scale(1.05);
+}
+.nc-swatch-image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(10,42,67,0.7) 100%);
+}
+
+.nc-swatch-badge {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 2rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background: var(--nc-badge-bg);
+  color: var(--nc-badge-text);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--nc-glass-border);
+}
+
+.nc-swatch-body {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+.nc-swatch-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--nc-text-primary);
+  margin-bottom: 0.5rem;
+}
+.nc-swatch-desc {
+  font-size: 0.88rem;
+  color: var(--nc-text-secondary);
+  line-height: 1.6;
+}
+
+/* Cross-section reveal on hover */
+.nc-swatch-layers {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: 0;
+  transition: height 0.4s ease;
+  overflow: hidden;
+}
+.nc-swatch:hover .nc-swatch-layers {
+  height: 6px;
+}
+.nc-swatch-layer {
+  flex: 1;
+  transition: opacity 0.3s ease;
+}
+
+
+/* ============================================================
+   CAPABILITIES — "The Spec Sheet"
+   ============================================================ */
+.nc-capabilities {
+  padding: 6rem 1.5rem;
+  background: var(--bg-primary, #fff);
+}
+
+.nc-capabilities-header {
+  text-align: center;
+  max-width: 36rem;
+  margin: 0 auto 3.5rem;
+}
+.nc-capabilities-header h2 {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: var(--nc-text-primary);
+  margin-bottom: 0.75rem;
+}
+.nc-capabilities-header p {
+  font-size: 1.05rem;
+  color: var(--nc-text-secondary);
+}
+
+.nc-cap-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 64rem;
+  margin: 0 auto;
+}
+
+.nc-cap-card {
+  padding: 2rem;
+  border-radius: 1.25rem;
+  background: var(--nc-card-bg);
+  border: 1px solid var(--nc-card-border);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.nc-cap-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+}
+
+.nc-cap-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--nc-badge-bg);
+  color: var(--nc-badge-text);
+  margin-bottom: 1.25rem;
+}
+.nc-cap-icon svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.nc-cap-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--nc-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.nc-cap-value {
+  font-family: 'Courier New', monospace;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--nc-accent);
+  margin-bottom: 0.25rem;
+}
+
+.nc-cap-unit {
+  font-size: 0.75rem;
+  color: var(--nc-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Cap gauge */
+.nc-cap-gauge {
+  margin-top: 1rem;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--nc-divider);
+  overflow: hidden;
+}
+.nc-cap-gauge-bar {
+  height: 100%;
+  border-radius: 2px;
+  background: var(--nc-gauge-fill);
+  width: 0%;
+  transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* ============================================================
+   INNOVATION — "The Lab"
+   ============================================================ */
+.nc-innovation {
+  padding: 6rem 1.5rem;
+  background: var(--nc-surface);
+}
+
+.nc-innovation-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.nc-innovation-visual {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+.nc-innovation-visual img,
+.nc-innovation-visual dotlottie-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Grid overlay for lab aesthetic */
+.nc-innovation-visual::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent 0px, transparent 39px, var(--nc-divider) 39px, var(--nc-divider) 40px),
+    repeating-linear-gradient(90deg, transparent 0px, transparent 39px, var(--nc-divider) 39px, var(--nc-divider) 40px);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.nc-innovation-content {
+  padding: 1rem 0;
+}
+
+.nc-innovation-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 2rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--nc-green-glow);
+  color: var(--nc-green);
+  margin-bottom: 1.5rem;
+}
+.nc-innovation-badge .nc-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--nc-green);
+  animation: ncPulseDot 1.5s ease-in-out infinite;
+}
+
+.nc-innovation-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--nc-text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.nc-innovation-desc {
+  font-size: 1rem;
+  color: var(--nc-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+/* Glass panel for extra details */
+.nc-innovation-panel {
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  background: var(--nc-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--nc-glass-border);
+}
+.nc-innovation-panel p {
+  font-size: 0.88rem;
+  color: var(--nc-text-muted);
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   PARTNERSHIP — "Interplast Kimya"
+   ============================================================ */
+.nc-partnership {
+  padding: 6rem 1.5rem;
+  background: var(--bg-primary, #fff);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hexagonal grid background */
+.nc-partnership::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, var(--nc-divider) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.nc-partnership-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.nc-partnership-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nc-partner-logos {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.nc-partner-logo {
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  background: var(--nc-card-bg);
+  border: 1px solid var(--nc-card-border);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.nc-partner-logo img {
+  max-height: 3rem;
+  width: auto;
+}
+.nc-partner-plus {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--nc-text-muted);
+}
+
+.nc-partnership-content h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--nc-text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+.nc-partnership-content > p {
+  font-size: 1rem;
+  color: var(--nc-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.nc-partner-caps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.nc-partner-caps li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+  color: var(--nc-text-secondary);
+}
+.nc-partner-caps li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--nc-flow);
+  flex-shrink: 0;
+}
+
+
+/* ============================================================
+   CONTENT BLOCK (Enhanced)
+   ============================================================ */
+.nc-content-block {
+  padding: 6rem 1.5rem;
+  background: var(--nc-surface);
+}
+.nc-content-block-inner {
+  max-width: 64rem;
+  margin: 0 auto;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+}
+.nc-content-block-inner img {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  display: block;
+}
+.nc-content-block-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2.5rem;
+  background: linear-gradient(180deg, transparent 30%, rgba(10,42,67,0.85) 100%);
+}
+.nc-content-block-overlay h3 {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+.nc-content-block-overlay p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.8);
+  max-width: 36rem;
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   KEYFRAME ANIMATIONS
+   ============================================================ */
+@keyframes ncScrollPulse {
+  0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
+  50%      { opacity: 1;   transform: translateX(-50%) translateY(6px); }
+}
+
+@keyframes ncRollerSpin {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -40; }
+}
+
+@keyframes ncPulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.4; transform: scale(0.7); }
+}
+
+@keyframes ncFlowGlow {
+  0%, 100% { filter: drop-shadow(0 0 4px var(--nc-flow-glow)); }
+  50%      { filter: drop-shadow(0 0 10px var(--nc-flow-glow)); }
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .nc-cap-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .nc-hero {
+    padding: 5rem 1rem 3rem;
+    min-height: 90vh;
+  }
+  .nc-hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .nc-hero-stat-value { font-size: 1.25rem; }
+
+  /* Process stages: single column */
+  .nc-stage {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 3.5rem;
+  }
+  .nc-stage-visual { order: 1 !important; }
+  .nc-stage-center { order: 0 !important; justify-self: start; }
+  .nc-stage-text   { order: 2 !important; text-align: left !important; }
+
+  .nc-flow-line { display: none; }
+
+  .nc-stage-badge {
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 0.75rem;
+    box-shadow: 0 0 0 3px var(--bg-primary, #fff), 0 0 0 5px var(--nc-flow);
+  }
+
+  /* Products: 2 columns */
+  .nc-product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  /* Capabilities: 2 columns */
+  .nc-cap-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  /* Innovation: single column */
+  .nc-innovation-inner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Partnership: single column */
+  .nc-partnership-inner {
+    grid-template-columns: 1fr;
+    gap: 2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .nc-hero-title {
+    font-size: 1.8rem;
+  }
+  .nc-hero-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nc-product-grid {
+    grid-template-columns: 1fr;
+  }
+  .nc-cap-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nc-stage-card { padding: 1.25rem; }
+  .nc-cap-card   { padding: 1.25rem; }
+
+  .nc-swatch-body {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+
+  .nc-content-block-overlay {
+    padding: 1.5rem;
+  }
+}

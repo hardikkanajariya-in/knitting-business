@@ -415,9 +415,6 @@ async function initPage(pageKey) {
       case 'home':
         html = renderHomePage(data);
         break;
-      case 'nc':
-        html = renderNCPage(data);
-        break;
       case 'sustainability':
         html = renderSustainabilityPage(data);
         break;
@@ -458,8 +455,6 @@ async function initPage(pageKey) {
         initHomeInteractiveFX();
       }
       break;
-    case 'nc':
-      break;
     case 'sustainability':
       initStatCounters();
       break;
@@ -480,54 +475,6 @@ function renderHomePage(data) {
   return `
     ${typeof renderHeroB === 'function' ? renderHeroB(heroVariantB) : ''}
     ${typeof renderHomePremiumSections === 'function' ? renderHomePremiumSections(data) : ''}
-  `;
-}
-
-function renderNCPage(data) {
-  const nc = data.nc;
-  return `
-    ${typeof renderPageBanner === 'function' ? renderPageBanner(nc.banner) : ''}
-    ${renderDivisionBrandCard(nc)}
-    <section class="section">
-      <div class="container">
-        <div class="section-header" data-aos="fade-up">
-          <h2 class="section-title">Our Products</h2>
-          <p class="section-subtitle">Coating, laminating, and chemistry-backed solutions for industrial surfaces</p>
-        </div>
-        ${typeof renderProductGrid === 'function' ? renderProductGrid(nc.products) : ''}
-      </div>
-    </section>
-    <section class="section" style="background: var(--bg-secondary);">
-      <div class="container">
-        ${typeof renderContentBlock === 'function' ? renderContentBlock(nc.contentBlock) : ''}
-      </div>
-    </section>
-    ${typeof renderCTAStrip === 'function' ? renderCTAStrip(data) : ''}
-  `;
-}
-
-function renderDivisionBrandCard(section) {
-  if (!section?.divisionLogo) return '';
-
-  return `
-    <section class="division-brand-section">
-      <div class="container">
-        <div class="division-brand-card" data-aos="fade-up">
-          <div class="division-brand-logo">
-            <img
-              src="${section.divisionLogo}"
-              alt="${section.divisionLogoAlt || section.banner?.title || 'Division logo'}"
-              width="720"
-              height="220"
-              loading="lazy"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex'"
-            >
-            <span class="division-brand-fallback" style="display:none;">${section.banner?.title || 'NirChem'}</span>
-          </div>
-          <p class="division-brand-copy">${section.divisionStatement || ''}</p>
-        </div>
-      </div>
-    </section>
   `;
 }
 

@@ -294,33 +294,112 @@
     "divisionLogo": "assets/img/logo/nc-logo.PNG",
     "divisionLogoAlt": "NirChem - a division of Nirbhay Knitting Industries",
     "divisionStatement": "A division focused on value-added coating, laminating, and chemistry-backed material development.",
+    "heroStats": [
+      { "value": "5+", "label": "Coating Types" },
+      { "value": "50+", "label": "Substrate Grades" },
+      { "value": "Interplast", "label": "Kimya Partner" },
+      { "value": "R&D", "label": "Breathable Systems" }
+    ],
+    "processStages": [
+      {
+        "number": "01",
+        "title": "Substrate Preparation",
+        "description": "The process begins with selecting and preparing the right knitted base fabric. Every substrate is inspected for weight, structure, and surface consistency before entering the coating line.",
+        "lottie": "assets/lottie/fiber-weave.lottie",
+        "gauge": { "label": "Quality Gate", "value": "100%", "fill": 100 },
+        "layerIndex": 0
+      },
+      {
+        "number": "02",
+        "title": "Coating Application",
+        "description": "PU or vinyl coating is applied using blade-over-roll or direct coating techniques. Film thickness, viscosity, and application speed are controlled to meet exact specifications.",
+        "lottie": "assets/lottie/gears.lottie",
+        "gauge": { "label": "Precision", "value": "±0.02mm", "fill": 92 },
+        "layerIndex": 1
+      },
+      {
+        "number": "03",
+        "title": "Lamination",
+        "description": "Multiple layers are bonded under controlled pressure and temperature. The laminating process creates composite materials with enhanced mechanical and surface performance.",
+        "lottie": "assets/lottie/factory.lottie",
+        "gauge": { "label": "Bond Strength", "value": "High", "fill": 88 },
+        "layerIndex": 2
+      },
+      {
+        "number": "04",
+        "title": "Curing and Drying",
+        "description": "Coated substrates pass through precision-controlled ovens for crosslinking and heat setting. Temperature profiles are calibrated for each chemistry system.",
+        "lottie": "assets/lottie/automation.lottie",
+        "gauge": { "label": "Temp Control", "value": "±2°C", "fill": 95 },
+        "layerIndex": 3
+      },
+      {
+        "number": "05",
+        "title": "Quality and Finish",
+        "description": "Final surface treatment, testing, and quality certification. Every batch is validated against customer specifications before dispatch.",
+        "lottie": "assets/lottie/globe.lottie",
+        "gauge": { "label": "Pass Rate", "value": "99.5%", "fill": 99 },
+        "layerIndex": 4
+      }
+    ],
     "products": [
       {
         "name": "Vinyl Coated Textiles",
         "description": "Durable coated textile systems developed for industrial applications where surface protection, consistency, and reliable substrate performance are essential.",
-        "image": "assets/img/products/synthetic-leather.jpg"
+        "image": "assets/img/products/synthetic-leather.jpg",
+        "badge": "Multi-Layer"
       },
       {
         "name": "PU Coating and Laminating",
         "description": "New laminating and PU coating capabilities open the door to higher-value coated constructions, contract manufacturing, and customer-specific surface solutions.",
-        "image": "assets/img/products/direct-coating.jpg"
+        "image": "assets/img/products/direct-coating.jpg",
+        "badge": "Direct Coat"
       },
       {
         "name": "Contract Manufacturing / Job Work",
         "description": "NirChem can support partners as a processing specialist, combining textile understanding with coating know-how for outsourced development and production needs.",
-        "image": "assets/img/products/others.jpg"
+        "image": "assets/img/products/others.jpg",
+        "badge": "Job Work"
       },
       {
         "name": "Interplast Resins and Lacquers",
         "description": "Through the Interplast Kimya relationship, customers gain access to PU resins and lacquers that complement Nirbhay's coating and textile development capabilities.",
-        "image": "assets/img/products/genuine-leather.jpg"
+        "image": "assets/img/products/genuine-leather.jpg",
+        "badge": "Chemistry"
       },
       {
-        "name": "Breathable Coating Systems in Development",
+        "name": "Breathable Coating Systems",
         "description": "Current innovation work includes water-based breathable coatings and coated 3D constructions designed to move the portfolio into more advanced technical territory.",
-        "image": "assets/img/products/direct-coating.jpg"
+        "image": "assets/img/products/direct-coating.jpg",
+        "badge": "In Development"
       }
     ],
+    "capabilities": [
+      { "title": "Coating Types", "value": "5+", "unit": "PU · Vinyl · Water-based · Specialty · Breathable", "icon": "layers", "gaugeFill": 85 },
+      { "title": "Thickness Range", "value": "0.3–2.5", "unit": "mm coating thickness", "icon": "ruler", "gaugeFill": 78 },
+      { "title": "Substrate Compatibility", "value": "50+", "unit": "Knit · Woven · Non-woven grades", "icon": "grid", "gaugeFill": 90 },
+      { "title": "Processing Width", "value": "Up to 60\"", "unit": "Standard production width", "icon": "width", "gaugeFill": 72 },
+      { "title": "Annual Capacity", "value": "1M+", "unit": "Linear meters per year", "icon": "chart", "gaugeFill": 82 },
+      { "title": "Quality Standards", "value": "ISO", "unit": "Testing · Certification · Compliance", "icon": "shield", "gaugeFill": 95 }
+    ],
+    "innovation": {
+      "title": "Breathable Coating Systems in Development",
+      "badge": "In Development",
+      "description": "Current innovation work includes water-based breathable coatings and coated 3D constructions designed to move the portfolio into more advanced technical territory. These next-generation systems aim to combine comfort, performance, and reduced environmental impact.",
+      "detail": "The R&D pipeline focuses on three frontiers: water-based PU coatings that eliminate solvent dependency, breathable membranes for performance apparel substrates, and coated 3D spacer constructions for automotive and technical applications.",
+      "image": "assets/img/factory/stenter.jpg"
+    },
+    "partnership": {
+      "title": "Backed by Interplast Kimya",
+      "description": "Through the Interplast Kimya relationship, NirChem customers gain access to a portfolio of PU resins, lacquers, and specialty chemicals that complement Nirbhay's coating and textile development capabilities.",
+      "capabilities": [
+        "PU resins for coating and laminating",
+        "Specialty lacquers for surface finishing",
+        "Technical support and formulation guidance",
+        "Consistent supply chain for critical chemistry",
+        "Joint development for customer-specific solutions"
+      ]
+    },
     "contentBlock": {
       "title": "Where chemistry and textile know-how come together",
       "description": "NirChem connects coating capability, laminating, and chemical support to Nirbhay's textile base. The result is a more integrated platform for customers seeking performance-driven coated materials and future-ready developments.",
