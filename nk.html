@@ -26,8 +26,8 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/about-journey-v4.css">
-  <link rel="stylesheet" href="assets/css/about-journey-v5.css">
+  <link rel="stylesheet" href="assets/css/about-sui-dhaga.css">
+  <link rel="stylesheet" href="assets/css/about-the-loom.css">
   <link rel="stylesheet" href="assets/css/version-switcher.css">
 </head>
 <body data-page="about">
@@ -51,9 +51,10 @@
 
   <script src="assets/js/components/header.js" defer></script>
   <script src="assets/js/components/footer.js" defer></script>
-  <script src="assets/js/components/about-journey-v4.js" defer></script>
-  <script src="assets/js/components/about-journey-v5.js" defer></script>
-  <script src="assets/js/components/about-journey-v5-engine.js" defer></script>
+  <script src="assets/js/components/strengths-grid.js" defer></script>
+  <script src="assets/js/components/about-sui-dhaga.js" defer></script>
+  <script src="assets/js/components/about-the-loom.js" defer></script>
+  <script src="assets/js/components/about-the-loom-engine.js" defer></script>
   <script src="assets/js/components/page-banner.js" defer></script>
   <script src="assets/js/components/team-card.js" defer></script>
   <script src="assets/js/components/global-bg.js" defer></script>
@@ -91,7 +92,7 @@
         ${typeof renderAboutJourneyV4 === 'function' ? renderAboutJourneyV4(about.journeySection) : ''}
         ${typeof renderAboutStoryV4 === 'function' && about.story ? renderAboutStoryV4(about.story) : ''}
         ${typeof renderFactoryGalleryV4 === 'function' && about.factoryGallery ? renderFactoryGalleryV4(about.factoryGallery) : ''}
-        ${typeof renderAboutStrengthsV4 === 'function' && about.strengths ? renderAboutStrengthsV4(about.strengths) : ''}
+        ${typeof renderStrengthsGrid === 'function' && about.strengths ? renderStrengthsGrid(about.strengths) : ''}
         ${sharedSections}
       `;
 
@@ -101,7 +102,7 @@
         ${typeof renderAboutJourneyV5 === 'function' ? renderAboutJourneyV5(about.journeySection) : ''}
         ${typeof renderAboutStoryV5 === 'function' && about.story ? renderAboutStoryV5(about.story) : ''}
         ${typeof renderFactoryGalleryV5 === 'function' && about.factoryGallery ? renderFactoryGalleryV5(about.factoryGallery) : ''}
-        ${typeof renderAboutStrengthsV5 === 'function' && about.strengths ? renderAboutStrengthsV5(about.strengths) : ''}
+        ${typeof renderStrengthsGrid === 'function' && about.strengths ? renderStrengthsGrid(about.strengths) : ''}
         ${sharedSections}
       `;
 

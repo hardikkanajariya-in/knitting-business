@@ -170,30 +170,7 @@ function renderAboutStoryV5(story) {
   `;
 }
 
-/* ── STRENGTHS V5 ────────────────────────────── */
-function renderAboutStrengthsV5(strengths) {
-  if (!strengths || !strengths.length) return '';
-  return `
-    <div class="loom-strengths-scene">
-      <div class="container">
-        <div class="loom-strengths-header">
-          <h2>What Sets Us Apart</h2>
-          <p>Built on manufacturing depth, sustainability, and innovation</p>
-        </div>
-        <div class="loom-strengths-grid">
-          ${strengths.map((s, i) => `
-            <div class="loom-str-card" data-aos="fade-up" data-aos-delay="${i * 60}">
-              <div class="loom-str-card-icon">${LOOM_ICONS[s.icon] || LOOM_ICONS.factory}</div>
-              <div class="loom-str-card-title">${s.title}</div>
-              <div class="loom-str-card-desc">${s.description}</div>
-              <div class="loom-str-card-num">${String(i + 1).padStart(2, '0')}</div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    </div>
-  `;
-}
+/* ── STRENGTHS V5 — now in strengths-grid.js as renderStrengthsGrid() ── */
 
 /* ── GALLERY V5 (Film strip) ─────────────────── */
 function renderFactoryGalleryV5(gallery) {
