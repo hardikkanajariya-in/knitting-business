@@ -3,7 +3,10 @@ function renderHeader(data) {
   const site = data.site;
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   const pageLogos = site.pageLogos || {};
+  const pageLogosDark = site.pageLogosDark || {};
   const headerLogo = pageLogos[currentPage] || site.logo;
+  const headerLogoDark = pageLogosDark[currentPage] || site.logoDark || headerLogo;
+  const hasDarkVariant = headerLogoDark !== headerLogo;
 
   const navLinks = nav.map(item => {
     const isActive = currentPage === item.href || (currentPage === '' && item.href === 'index.html');
@@ -15,11 +18,24 @@ function renderHeader(data) {
     return `<a href="${item.href}" class="mobile-link${isActive ? ' active' : ''}">${item.label}</a>`;
   }).join('');
 
-  return `
-    <header class="site-header" role="banner">
-      <div class="container header-inner">
-        <a href="index.html" class="header-logo" aria-label="${site.name} — Home">
-          <span class="header-logo-mark">
+  const logoMarkup = hasDarkVariant ? `
+            <img
+              src="${headerLogo}"
+              alt="${site.name}"
+              class="header-logo-image logo-dark"
+              width="720"
+              height="180"
+              loading="eager"
+            >
+            <img
+              src="${headerLogoDark}"
+              alt="${site.name}"
+              class="header-logo-image logo-light"
+              width="720"
+              height="180"
+              loading="eager"
+            >
+  ` : `
             <img
               src="${headerLogo}"
               alt="${site.name}"
@@ -29,6 +45,14 @@ function renderHeader(data) {
               loading="eager"
               onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex'"
             >
+  `;
+
+  return `
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a href="index.html" class="header-logo" aria-label="${site.name} — Home">
+          <span class="header-logo-mark">
+            ${logoMarkup}
             <span class="header-logo-fallback" style="display:none;">${site.name}</span>
           </span>
         </a>

@@ -204,54 +204,18 @@ ul, ol {
   width: 100%;
   z-index: 1000;
   height: var(--header-height);
-  background: transparent;
-  transition: background var(--transition-base), box-shadow var(--transition-base), backdrop-filter var(--transition-base);
+  background: #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  transition: box-shadow var(--transition-base);
 }
 
 .site-header.scrolled {
-  background: var(--bg-header);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   box-shadow: var(--shadow-sm);
 }
 
-.site-header.hero-overlay-mode:not(.scrolled) {
-  background: linear-gradient(180deg, rgba(7, 17, 38, 0.45) 0%, transparent 100%);
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  box-shadow: none;
-}
-
-.site-header.hero-overlay-mode:not(.scrolled) .header-logo-fallback,
-.site-header.hero-overlay-mode:not(.scrolled) .nav-link,
-.site-header.hero-overlay-mode:not(.scrolled) .theme-toggle,
-.site-header.hero-overlay-mode:not(.scrolled) .hamburger-line {
-  color: #fff;
-}
-
-.site-header.hero-overlay-mode:not(.scrolled) .nav-link::after {
-  background: rgba(255, 255, 255, 0.85);
-}
-
-.site-header.hero-overlay-mode:not(.scrolled) .hamburger-line {
-  background: #fff;
-}
-
-.site-header.hero-overlay-mode:not(.scrolled) .theme-toggle svg {
-  stroke: #fff;
-}
-
-.dark .site-header.hero-overlay-mode:not(.scrolled) .header-logo-fallback,
-.dark .site-header.hero-overlay-mode:not(.scrolled) .nav-link,
-.dark .site-header.hero-overlay-mode:not(.scrolled) .theme-toggle,
-.dark .site-header.hero-overlay-mode:not(.scrolled) .hamburger-line {
-  color: #fff;
-}
-.dark .site-header.hero-overlay-mode:not(.scrolled) .hamburger-line {
-  background: #fff;
-}
-.dark .site-header.hero-overlay-mode:not(.scrolled) .theme-toggle svg {
-  stroke: #fff;
+.dark .site-header {
+  background: var(--bg-header);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 .header-inner {
@@ -287,11 +251,10 @@ ul, ol {
   border-radius: 0.25rem;
 }
 
-.site-header.hero-overlay-mode:not(.scrolled) .header-logo-mark,
-.dark .site-header.scrolled .header-logo-mark {
-  background: transparent;
-  padding: 0;
-}
+.dark .header-logo-image.logo-light { display: block; }
+.dark .header-logo-image.logo-dark { display: none; }
+.header-logo-image.logo-light { display: none; }
+.header-logo-image.logo-dark { display: block; }
 
 .header-logo-fallback {
   display: inline-flex;
@@ -303,9 +266,7 @@ ul, ol {
   color: var(--text-primary);
 }
 
-.site-header.hero-overlay-mode:not(.scrolled) .header-logo-fallback {
-  color: var(--accent);
-}
+
 
 @media (max-width: 767px) {
   .header-logo-image {

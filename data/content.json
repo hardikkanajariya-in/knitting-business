@@ -7,6 +7,9 @@
     "pageLogos": {
       "nc.html": "assets/img/logo/nc-logo-transparent.png"
     },
+    "pageLogosDark": {
+      "nc.html": "assets/img/logo/nc-logo-light.png"
+    },
     "metaDescription": "Nirbhay Knitting Industries — Engineered technical textiles for coating, lamination & performance applications. 40 years of precision, consistency, and sustainable innovation.",
     "themeColor": "#0A2A43",
     "socialLinks": [
