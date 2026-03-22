@@ -1,4 +1,3 @@
-/* Header Component */
 function renderHeader(data) {
   const nav = data.navigation;
   const site = data.site;

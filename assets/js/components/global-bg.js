@@ -1,9 +1,3 @@
-/* ============================================
-   GLOBAL-BG.JS — Interactive Background Elements
-   Colorful floating shapes across the entire site
-   with mouse-reactive parallax & glow
-   ============================================ */
-
 function initGlobalBackground() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (document.querySelector('.global-bg-canvas')) return;
@@ -23,13 +17,13 @@ function initGlobalBackground() {
   for (let i = 0; i < ELEMENT_COUNT; i++) {
     const shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
     const color = COLORS[Math.floor(Math.random() * COLORS.length)];
-    const size = 8 + Math.floor(Math.random() * 18); // 8-26px
-    const x = Math.random() * 95; // % from left
-    const y = Math.random() * 95; // % from top
+    const size = 8 + Math.floor(Math.random() * 18);
+    const x = Math.random() * 95;
+    const y = Math.random() * 95;
     const float = FLOATS[Math.floor(Math.random() * FLOATS.length)];
-    const duration = 12 + Math.random() * 20; // 12-32s
-    const delay = -(Math.random() * 15); // negative delay for stagger
-    const opacity = 0.3 + Math.random() * 0.3; // 0.3-0.6
+    const duration = 12 + Math.random() * 20;
+    const delay = -(Math.random() * 15);
+    const opacity = 0.3 + Math.random() * 0.3;
 
     const el = document.createElement('div');
     el.className = `gbg-el gbg-el--${shape} ${color}`;
@@ -62,8 +56,6 @@ function initGlobalBackground() {
     el.style.opacity = opacity;
     el.style.setProperty('--gbg-opacity', opacity);
     el.style.animation = `${float} ${duration}s ease-in-out ${delay}s infinite`;
-
-    // Add a secondary pulse to some elements
     if (Math.random() > 0.6) {
       el.style.animation += `, gbgPulse ${3 + Math.random() * 4}s ease-in-out ${delay}s infinite`;
     }
@@ -71,8 +63,6 @@ function initGlobalBackground() {
     canvas.appendChild(el);
     elements.push({ el, x, y, size });
   }
-
-  // ── Mouse-reactive parallax ──
   let mouseX = 0.5, mouseY = 0.5;
   let rafActive = false;
 
@@ -92,13 +82,11 @@ function initGlobalBackground() {
     const cy = window.innerHeight / 2;
 
     elements.forEach((item, i) => {
-      const depth = 0.3 + (i % 5) * 0.1; // parallax depth layer
+      const depth = 0.3 + (i % 5) * 0.1;
       const dx = (mouseX - 0.5) * depth * 25;
       const dy = (mouseY - 0.5) * depth * 25;
       item.el.style.marginLeft = dx + 'px';
       item.el.style.marginTop = dy + 'px';
-
-      // Proximity glow
       const elRect = item.el.getBoundingClientRect();
       const elCX = elRect.left + elRect.width / 2;
       const elCY = elRect.top + elRect.height / 2;
@@ -114,13 +102,9 @@ function initGlobalBackground() {
       }
     });
   }
-
-  // Only add mouse tracking on non-touch devices
   if (!('ontouchstart' in window) && navigator.maxTouchPoints === 0) {
     window.addEventListener('mousemove', onMouseMove, { passive: true });
   }
-
-  // ── Scroll-based vertical shift ──
   let lastScroll = 0;
   function onScroll() {
     const scrollY = window.scrollY || window.pageYOffset;
@@ -130,7 +114,6 @@ function initGlobalBackground() {
     elements.forEach((item, i) => {
       const speed = 0.02 + (i % 4) * 0.008;
       const currentTop = parseFloat(item.el.style.top);
-      // Subtle vertical drift based on scroll
       const shift = scrollY * speed * 0.1;
       item.el.style.transform = `translateY(${-shift}px)`;
     });
@@ -138,8 +121,6 @@ function initGlobalBackground() {
 
   window.addEventListener('scroll', onScroll, { passive: true });
 }
-
-// Helper: get a visible fill color for triangles
 function getTriangleColor(cls) {
   const map = {
     'gbg-blue': 'rgba(59, 130, 246, 0.45)',

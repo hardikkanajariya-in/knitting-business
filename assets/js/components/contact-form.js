@@ -1,4 +1,3 @@
-/* Contact Form Component — Static UI */
 function renderContactForm(fields) {
   return `
     <form class="contact-form" onsubmit="event.preventDefault(); alert('Thank you! Form submission is not yet connected to a backend.'); return false;" novalidate>

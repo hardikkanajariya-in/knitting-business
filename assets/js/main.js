@@ -1,10 +1,3 @@
-/* ============================================
-   MAIN.JS — Core Infrastructure
-   Content loader, theme, menu, scroll, animations
-   ============================================ */
-
-// --- Image CDN Fallback ---
-// Maps local paths to Pexels CDN URLs. If local images aren't downloaded,
 const IMAGE_CDN_FALLBACK = {
   'assets/img/hero/hero-bg.jpg': 'https://images.pexels.com/photos/36327501/pexels-photo-36327501.jpeg?auto=compress&cs=tinysrgb&w=1920',
   'assets/img/hero/about-bg.jpg': 'https://images.pexels.com/photos/8246487/pexels-photo-8246487.jpeg?auto=compress&cs=tinysrgb&w=1920',
@@ -29,8 +22,6 @@ const VIDEO_CDN_FALLBACK = {
   'assets/video/hero-automotive-interior.mp4': 'https://videos.pexels.com/video-files/6872084/6872084-uhd_2560_1440_25fps.mp4',
   'assets/video/textile-factory.mp4': 'https://videos.pexels.com/video-files/5304551/5304551-hd_1920_1080_30fps.mp4',
 };
-
-// Capture-phase error listener: intercepts failed image loads before inline onerror handlers
 document.addEventListener('error', function(e) {
   if (e.target.tagName === 'IMG') {
     const src = e.target.getAttribute('src');
@@ -64,8 +55,6 @@ document.addEventListener('error', function(e) {
     }
   }
 }, true);
-
-// --- Content Cache ---
 let _contentCache = null;
 
 async function loadContent() {
@@ -77,14 +66,11 @@ async function loadContent() {
 }
 
 function getBasePath() {
-  // Determine base path relative to current HTML file
   const path = window.location.pathname;
   const depth = (path.match(/\//g) || []).length - 1;
   if (path.includes('/pages/')) return '../';
   return '';
 }
-
-// --- Theme System ---
 function initTheme() {
   const saved = localStorage.getItem('theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -118,8 +104,6 @@ function updateThemeIcon() {
     }
   });
 }
-
-// --- Mobile Menu ---
 function initMobileMenu() {
   const hamburger = document.querySelector('.hamburger');
   const mobileNav = document.querySelector('.nav-mobile');
@@ -131,8 +115,6 @@ function initMobileMenu() {
     mobileNav.classList.toggle('open');
     document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
   });
-
-  // Close on link click
   mobileNav.querySelectorAll('.mobile-link').forEach(link => {
     link.addEventListener('click', () => {
       hamburger.classList.remove('active');
@@ -140,8 +122,6 @@ function initMobileMenu() {
       document.body.style.overflow = '';
     });
   });
-
-  // Close on escape
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && mobileNav.classList.contains('open')) {
       hamburger.classList.remove('active');
@@ -150,16 +130,12 @@ function initMobileMenu() {
     }
   });
 }
-
-// --- Lenis Smooth Scroll ---
 function isTouchDevice() {
   return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 }
 
 function initLenis() {
   if (typeof Lenis === 'undefined') return;
-
-  // Skip Lenis on touch devices — native inertial scroll is smoother
   if (isTouchDevice()) {
     window._lenis = null;
     return;
@@ -174,8 +150,6 @@ function initLenis() {
     wheelMultiplier: 1.2,
     touchMultiplier: 1.5,
   });
-
-  // Sync with GSAP ScrollTrigger
   if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add((time) => {
@@ -192,11 +166,8 @@ function initLenis() {
 
   window._lenis = lenis;
 }
-
-// --- AOS Init ---
 function initAOS() {
   if (typeof AOS === 'undefined') return;
-  // Skip AOS on home page — GSAP handles all scroll animations there
   const page = document.body.dataset.page;
   if (page === 'home') return;
   AOS.init({
@@ -207,14 +178,10 @@ function initAOS() {
     throttleDelay: 50,
   });
 }
-
-// --- GSAP Animations ---
 function initGSAP() {
   if (typeof gsap === 'undefined') return;
 
   gsap.registerPlugin(ScrollTrigger);
-
-  // Header scroll effect — use efficient onToggle instead of per-frame onUpdate
   const header = document.querySelector('.site-header');
   if (header) {
     ScrollTrigger.create({
@@ -223,8 +190,6 @@ function initGSAP() {
       onLeaveBack: () => header.classList.remove('scrolled'),
     });
   }
-
-  // Reveal animations
   gsap.utils.toArray('.reveal-up').forEach(el => {
     gsap.to(el, {
       y: 0,
@@ -281,8 +246,6 @@ function initGSAP() {
     });
   });
 }
-
-// --- Hero B Animations ---
 function initHeroBAnimations() {
   if (typeof gsap === 'undefined') return;
 
@@ -293,8 +256,6 @@ function initHeroBAnimations() {
   const heroCopy = heroB.querySelector('.hero-b-copy');
 
   const tl = gsap.timeline({ delay: 0.3 });
-
-  // Parallax on background
   if (typeof ScrollTrigger !== 'undefined' && heroB.dataset.scrollFxInit !== 'true') {
     heroB.dataset.scrollFxInit = 'true';
 
@@ -358,8 +319,6 @@ function initHeroBAnimations() {
     ease: 'power3.out',
   }, '-=0.2');
 }
-
-// --- Stat Counter Animation ---
 function initStatCounters() {
   if (typeof gsap === 'undefined') return;
 
@@ -387,8 +346,6 @@ function initStatCounters() {
     }
   });
 }
-
-// --- Scroll-to-Top Button ---
 function initScrollToTop() {
   if (document.getElementById('scroll-to-top')) return;
 
@@ -413,13 +370,9 @@ function initScrollToTop() {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 }
-
-// --- Page Initialization ---
 async function initPage(pageKey) {
   document.body.dataset.page = pageKey;
   const data = await loadContent();
-
-  // Render global components
   const headerEl = document.getElementById('site-header');
   const footerEl = document.getElementById('site-footer');
 
@@ -430,8 +383,6 @@ async function initPage(pageKey) {
   if (footerEl && typeof renderFooter === 'function') {
     footerEl.innerHTML = renderFooter(data);
   }
-
-  // Render page content
   const contentEl = document.getElementById('page-content');
   if (contentEl) {
     let html = '';
@@ -450,29 +401,21 @@ async function initPage(pageKey) {
 
     contentEl.innerHTML = html;
   }
-
-  // Add hero-overlay-mode to header if page has a full-bleed dark hero or page banner
   const header = document.querySelector('.site-header');
   const visibleHeroB = document.querySelector('.hero-b');
   const pageBanner = document.querySelector('.page-banner:not(.no-bg)');
   if (header) {
     header.classList.toggle('hero-overlay-mode', Boolean(visibleHeroB || pageBanner));
   }
-
-  // Initialize all interactions
   initTheme();
   initMobileMenu();
   initLenis();
   initAOS();
   initGSAP();
   initScrollToTop();
-
-  // Global interactive background
   if (typeof initGlobalBackground === 'function') {
     initGlobalBackground();
   }
-
-  // Page-specific animations
   switch (pageKey) {
     case 'home':
       initHeroBAnimations();
@@ -485,16 +428,12 @@ async function initPage(pageKey) {
       initStatCounters();
       break;
   }
-
-  // Page load transition
   document.body.classList.add('loaded');
   const pageTransition = document.querySelector('.page-transition');
   if (pageTransition) {
     requestAnimationFrame(() => pageTransition.classList.add('loaded'));
   }
 }
-
-// --- Render Page Functions ---
 function renderHomePage(data) {
   const heroVariantB = data.home.heroVariantB;
 
@@ -604,8 +543,6 @@ function renderContactPage(data) {
     </section>
   `;
 }
-
-// --- Utility: Pillar Icons ---
 function getPillarIcon(icon) {
   const icons = {
     leaf: '<svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>',
@@ -615,8 +552,6 @@ function getPillarIcon(icon) {
   };
   return icons[icon] || icons.leaf;
 }
-
-// --- Social Icon SVGs ---
 function getSocialIcon(name) {
   const icons = {
     linkedin: '<svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>',

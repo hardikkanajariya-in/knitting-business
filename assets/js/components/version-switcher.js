@@ -1,9 +1,3 @@
-/* ============================================
-   VERSION-SWITCHER.JS
-   Floating dropdown to switch between about
-   page design versions (inline toggle).
-   ============================================ */
-
 function renderVersionSwitcher() {
   const versions = [
     { id: 'sui-dhaga', label: 'Sui Dhaga', subtitle: 'Needle & Thread' },
@@ -62,28 +56,28 @@ function switchVersion(targetId) {
     target.classList.add('nk-version-active');
   }
 
-  /* Refresh ScrollTrigger for new content */
+  
   if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
 
-  /* Re-init V5 engine when switching to The Loom */
+  
   if (targetId === 'the-loom' && typeof initAboutJourneyV5Animations === 'function') {
     initAboutJourneyV5Animations();
   }
-  /* Re-init V4 when switching back to Sui Dhaga */
+  
   if (targetId === 'sui-dhaga' && typeof initAboutJourneyV4Animations === 'function') {
     initAboutJourneyV4Animations();
   }
 
-  /* Re-init AOS for newly visible elements */
+  
   if (typeof AOS !== 'undefined') AOS.refresh();
 
-  /* Update switcher UI */
+  
   _refreshSwitcherUI(targetId);
 
-  /* Scroll to top */
+  
   window.scrollTo({ top: 0, behavior: 'instant' });
 
-  /* Toggle loom-cinema class on body for V5 styling */
+  
   document.body.classList.toggle('loom-cinema', targetId === 'the-loom');
 }
 
@@ -115,7 +109,7 @@ function initVersionSwitcher() {
     trigger.setAttribute('aria-expanded', isOpen);
   });
 
-  /* Handle version item clicks */
+  
   dropdown.addEventListener('click', (e) => {
     const item = e.target.closest('.vs-item');
     if (!item) return;

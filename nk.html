@@ -34,9 +34,9 @@
   <div id="site-header"></div>
   <div class="page-transition">
     <main>
-      <!-- Sui Dhaga version (default visible) -->
+      
       <div id="version-sui-dhaga" class="nk-version nk-version-active"></div>
-      <!-- The Loom version (hidden by default) -->
+      
       <div id="version-the-loom" class="nk-version" style="display:none;"></div>
     </main>
     <div id="site-footer"></div>
@@ -86,7 +86,7 @@
         ${team ? '<section class="team-section section"><div class="container"><div class="section-header" data-aos="fade-up"><h2 class="section-title">' + (team.sectionTitle || 'People and Capability') + '</h2><p class="section-subtitle">' + (team.sectionSubtitle || '') + '</p></div><div class="team-grid">' + (typeof renderTeamCards === 'function' ? renderTeamCards(team.leadership) : '') + '</div></div></section>' : ''}
       `;
 
-      /* ── Sui Dhaga (V4) ── */
+      
       const v4El = document.getElementById('version-sui-dhaga');
       v4El.innerHTML = `
         ${typeof renderAboutJourneyV4 === 'function' ? renderAboutJourneyV4(about.journeySection) : ''}
@@ -96,7 +96,7 @@
         ${sharedSections}
       `;
 
-      /* ── The Loom (V5) ── */
+      
       const v5El = document.getElementById('version-the-loom');
       v5El.innerHTML = `
         ${typeof renderAboutJourneyV5 === 'function' ? renderAboutJourneyV5(about.journeySection) : ''}

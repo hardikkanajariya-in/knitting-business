@@ -3,7 +3,6 @@ function initHomeInteractiveFX() {
   initInteractiveCards();
   initHomeSectionScrollFX();
   initParallaxCards();
-  // Skip heavy background parallax layers on touch / mobile
   if (!('ontouchstart' in window || navigator.maxTouchPoints > 0)) {
     initParallaxBackgrounds();
   }
@@ -33,7 +32,6 @@ function initMagneticButtons() {
   });
 }
 
-/* --- Parallax Card Reveal System --- */
 function initParallaxCards() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   if (prefersReducedMotion()) {
@@ -60,30 +58,21 @@ function initParallaxCards() {
   });
 }
 
-/* --- Parallax Background Effects --- */
 function initParallaxBackgrounds() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   if (prefersReducedMotion()) return;
-
-  // Industries gallery scroll-speed variation (functional, keep)
   document.querySelectorAll('[data-scroll-gallery]').forEach((row) => {
     if (row.dataset.galleryInit === 'true') return;
     row.dataset.galleryInit = 'true';
 
     const track = row.querySelector('.home-ind-track');
     if (!track) return;
-    const dir = row.dataset.scrollGallery; // 'left' or 'right'
-
-    // GSAP takes over from CSS animation
+    const dir = row.dataset.scrollGallery;
     track.style.animation = 'none';
 
-    const totalW = track.scrollWidth / 3; // items are tripled
+    const totalW = track.scrollWidth / 3;
     const duration = dir === 'left' ? 35 : 40;
-
-    // Set starting position
     if (dir === 'right') gsap.set(track, { x: -totalW });
-
-    // Infinite loop tween
     gsap.to(track, {
       x: dir === 'left' ? -totalW : 0,
       duration,
@@ -91,15 +80,10 @@ function initParallaxBackgrounds() {
       repeat: -1,
     });
   });
-
-  // Decorative glow/shape parallax removed for scroll performance
-  // Static CSS positioning provides sufficient visual quality
 }
 
 function initHomeSectionScrollFX() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-
-  // --- Process steps: activation + progress line ---
   const processSteps = gsap.utils.toArray('.home-process-step');
   const progressFill = document.querySelector('.home-process-progress-fill');
 
@@ -124,10 +108,6 @@ function initHomeSectionScrollFX() {
       }
     });
   });
-
-  // --- Showcase card image parallax removed for scroll performance ---
-
-  // --- Spotlight panel float ---
   const spotlight = document.querySelector('.home-spotlight-shell');
   if (spotlight && spotlight.dataset.floatInit !== 'true') {
     spotlight.dataset.floatInit = 'true';
@@ -142,8 +122,6 @@ function initHomeSectionScrollFX() {
       });
     });
   }
-
-  // --- Showcase shell entrance (one-shot, no scrub) ---
   const showcaseShell = document.querySelector('.home-spotlight-shell');
   if (showcaseShell && showcaseShell.dataset.scaleInit !== 'true') {
     showcaseShell.dataset.scaleInit = 'true';
@@ -162,8 +140,6 @@ function initHomeSectionScrollFX() {
       }
     });
   }
-
-  // --- Final CTA card entrance (one-shot, no scrub) ---
   const ctaCard = document.querySelector('.home-final-cta-card');
   if (ctaCard && ctaCard.dataset.scaleInit !== 'true') {
     ctaCard.dataset.scaleInit = 'true';
@@ -182,8 +158,6 @@ function initHomeSectionScrollFX() {
       }
     });
   }
-
-  // --- Marquee runs at constant speed for performance ---
 }
 
 function initInteractiveCards() {

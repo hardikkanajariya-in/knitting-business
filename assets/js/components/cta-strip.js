@@ -1,4 +1,3 @@
-/* CTA Strip Component */
 function renderCTAStrip(data) {
   const socialLinks = data.site.socialLinks || [];
   const socialIcons = socialLinks.map(social =>

@@ -1,10 +1,3 @@
-/* ============================================
-   ABOUT-JOURNEY-V4.CSS — "Sui Dhaga"
-   Needle & Thread · Handcrafted Stitchwork
-   Embroidered milestones · Fabric canvas
-   ============================================ */
-
-/* ── ROOT VARIABLES (aliased from global brand palette) ── */
 :root {
   --sd-fabric: var(--bg-primary);
   --sd-fabric-dark: var(--bg-primary);
@@ -21,7 +14,6 @@
   --sd-linen: var(--bg-card);
 }
 
-/* ── FABRIC CANVAS (Main wrapper) ────────────── */
 .sd-canvas {
   position: relative;
   background: var(--sd-fabric);
@@ -33,7 +25,6 @@
   background: var(--sd-fabric-dark);
 }
 
-/* Woven linen texture overlay */
 .sd-canvas::before {
   content: '';
   position: absolute;
@@ -51,7 +42,6 @@
     repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255,255,255,0.015) 3px, rgba(255,255,255,0.015) 4px);
 }
 
-/* ── SCROLL INDICATOR ────────────────────────── */
 .sd-scroll-indicator {
   position: fixed;
   bottom: 2rem;
@@ -114,7 +104,6 @@
   50% { height: 28px; opacity: 1; }
 }
 
-/* ── NEEDLE SVG (follows scroll path) ────────── */
 .sd-needle-layer {
   position: absolute;
   inset: 0;
@@ -166,7 +155,6 @@
   fill: #bdc3c7;
 }
 
-/* ── STITCH MARKS along thread ───────────────── */
 .sd-stitch-marks {
   position: absolute;
   inset: 0;
@@ -203,7 +191,6 @@
   opacity: 1;
 }
 
-/* ── HERO SECTION ────────────────────────────── */
 .sd-hero {
   position: relative;
   z-index: 2;
@@ -219,7 +206,6 @@
   max-width: 780px;
 }
 
-/* ── HERO DECORATIVE ELEMENTS ────────────────── */
 .sd-hero-decor {
   position: absolute;
   inset: 0;
@@ -270,7 +256,6 @@
   transform: rotate(8deg);
 }
 
-/* Cross-stitch corner accents */
 .sd-corner-stitch {
   position: absolute;
   width: 40px;
@@ -331,7 +316,6 @@
   opacity: 0.4;
 }
 
-/* Embroidered title effect */
 .sd-hero-title {
   font-size: clamp(2.5rem, 5.5vw, 4.5rem);
   font-weight: 900;
@@ -365,7 +349,6 @@
   margin: 0 auto;
 }
 
-/* Decorative spool below title */
 .sd-hero-spool {
   margin-top: 2.5rem;
   display: flex;
@@ -378,7 +361,6 @@
   opacity: 0.25;
 }
 
-/* Hero paragraph */
 .sd-hero-paragraph {
   font-size: clamp(0.9rem, 1.1vw, 1.05rem);
   color: var(--text-secondary);
@@ -388,7 +370,6 @@
   opacity: 0.85;
 }
 
-/* ── STATS ROW (Stitched counters) ───────────── */
 .sd-hero-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -445,7 +426,6 @@
   opacity: 0.7;
 }
 
-/* Mini cross-stitch under each stat */
 .sd-stat-stitch {
   position: absolute;
   bottom: -2px;
@@ -480,7 +460,6 @@
   }
 }
 
-/* ── MILESTONE EMBROIDERY PANELS ─────────────── */
 .sd-milestones {
   position: relative;
   z-index: 2;
@@ -506,7 +485,6 @@
   width: 100%;
 }
 
-/* Embroidery hoop visual */
 .sd-hoop {
   position: relative;
   width: 240px;
@@ -534,7 +512,6 @@
   transform: scale(1);
 }
 
-/* Fabric fill inside hoop */
 .sd-hoop-fabric {
   position: absolute;
   inset: 6px;
@@ -550,7 +527,6 @@
   background: var(--bg-card);
 }
 
-/* Weave texture on hoop fabric */
 .sd-hoop-fabric::before {
   content: '';
   position: absolute;
@@ -577,7 +553,6 @@
   transform: scale(1);
 }
 
-/* Cross-stitch decorations around hoop */
 .sd-cross-stitches {
   position: absolute;
   inset: -12px;
@@ -610,7 +585,6 @@
 .sd-cross::before { transform: translate(-50%, -50%) rotate(45deg); }
 .sd-cross::after { transform: translate(-50%, -50%) rotate(-45deg); }
 
-/* Text content */
 .sd-milestone-text {
   flex: 1;
   opacity: 0;
@@ -693,7 +667,6 @@
   line-height: 1;
 }
 
-/* ── PROGRESS BOBBIN (right side) ────────────── */
 .sd-progress-track {
   position: fixed;
   right: 1.5rem;
@@ -768,7 +741,6 @@
   box-shadow: 0 0 8px rgba(28, 109, 208, 0.4);
 }
 
-/* ── STORY SECTION (Embroidered) ─────────────── */
 .sd-story-section {
   position: relative;
   z-index: 2;
@@ -795,7 +767,6 @@
   box-shadow: 0 20px 60px rgba(0,0,0,0.1);
 }
 
-/* Embroidery border effect */
 .sd-story-image-wrapper::before {
   content: '';
   position: absolute;
@@ -881,7 +852,6 @@
   margin-bottom: 1rem;
 }
 
-/* ── STRENGTHS (Patchwork quilt) ─────────────── */
 .sd-strengths-section {
   position: relative;
   z-index: 2;
@@ -930,7 +900,6 @@
   background: var(--bg-secondary);
 }
 
-/* Hero center card — floating circle highlight */
 .sd-patch--hero {
   grid-column: 2 / 3;
   justify-self: center;
@@ -959,7 +928,6 @@
   border-radius: 50%;
 }
 
-/* Stitch border on hover */
 .sd-patch::after {
   content: '';
   position: absolute;
@@ -1010,7 +978,6 @@
   line-height: 1;
 }
 
-/* ── GALLERY (Fabric swatches) ───────────────── */
 .sd-gallery-section {
   position: relative;
   z-index: 2;
@@ -1087,7 +1054,6 @@
   font-weight: 600;
 }
 
-/* Pin detail on swatch corners */
 .sd-swatch::before {
   content: '';
   position: absolute;
@@ -1107,7 +1073,6 @@
   opacity: 1;
 }
 
-/* ── RESPONSIVE ──────────────────────────────── */
 @media (max-width: 768px) {
   .sd-milestone-card {
     flex-direction: column !important;
@@ -1213,7 +1178,6 @@
   }
 }
 
-/* ── DARK THEME OVERRIDES ────────────────────── */
 .dark .sd-hero-stats {
   border-top-color: rgba(192, 57, 43, 0.15);
 }

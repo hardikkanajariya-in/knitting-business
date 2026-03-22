@@ -1,8 +1,3 @@
-/* ============================================
-   STRENGTHS-GRID.JS — Shared "What Sets Us Apart"
-   Central component used by both V4 and V5
-   ============================================ */
-
 const STRENGTHS_ICONS = {
   factory: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20V8l5 3V8l5 3V4h8a2 2 0 012 2v14H2z"/><path d="M6 20v-2h3v2M13 20v-2h3v2"/></svg>',
   gauge: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="13" r="9"/><path d="M12 13l3-5M7 17h10"/></svg>',

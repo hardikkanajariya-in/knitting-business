@@ -1,9 +1,3 @@
-/* ============================================
-   ABOUT-JOURNEY-V5-ENGINE.JS — "The Loom"
-   Auto-scroll engine · Typewriter · Shuttle
-   Scene orchestration · Play/Pause controls
-   ============================================ */
-
 function initAboutJourneyV5Animations() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
@@ -24,9 +18,9 @@ function initAboutJourneyV5Animations() {
   let autoScrollTween = null;
   let sceneTimer = null;
   let isPaused = false;
-  const SCENE_DURATION = 4500; // ms per scene auto-hold
+  const SCENE_DURATION = 4500;
 
-  /* ── TYPEWRITER ENGINE ───────────────────────── */
+  
   function typewrite(el, callback) {
     if (!el) { callback && callback(); return; }
     const text = el.dataset.fullText || '';
@@ -48,7 +42,7 @@ function initAboutJourneyV5Animations() {
     tick();
   }
 
-  /* ── SHUTTLE ANIMATION ───────────────────────── */
+  
   function animateShuttle(scene) {
     const shuttle = scene.querySelector('.loom-shuttle');
     if (!shuttle) return;
@@ -58,7 +52,7 @@ function initAboutJourneyV5Animations() {
     );
   }
 
-  /* ── SCENE ACTIVATION ────────────────────────── */
+  
   function activateScene(idx) {
     if (idx < 0 || idx >= totalScenes) return;
     currentSceneIdx = idx;
@@ -67,39 +61,39 @@ function initAboutJourneyV5Animations() {
       s.classList.toggle('is-active', i === idx);
     });
 
-    /* Update time display */
+    
     if (timeDisplay) {
       timeDisplay.textContent = `Scene ${idx + 1} / ${totalScenes}`;
     }
 
-    /* Progress bar */
+    
     if (progressFill) {
       progressFill.style.width = ((idx + 1) / totalScenes * 100) + '%';
     }
 
     const scene = scenes[idx];
 
-    /* Typewriter for milestone scenes */
+    
     const tw = scene.querySelector('.loom-typewriter');
     if (tw && !tw.classList.contains('done')) {
       typewrite(tw);
     }
 
-    /* Shuttle */
+    
     animateShuttle(scene);
 
-    /* Lottie play */
+    
     const player = scene.querySelector('dotlottie-player');
     if (player && typeof player.play === 'function') {
       try { player.play(); } catch (_) {}
     }
 
-    /* Opening scene animations */
+    
     if (scene.classList.contains('loom-opening')) {
       animateOpening(scene);
     }
 
-    /* Closing scene animations */
+    
     if (scene.classList.contains('loom-closing')) {
       animateClosing(scene);
     }
@@ -139,7 +133,7 @@ function initAboutJourneyV5Animations() {
       { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 1.2);
   }
 
-  /* ── AUTO-SCROLL ENGINE ──────────────────────── */
+  
   function scrollToScene(idx, smooth = true) {
     if (idx < 0 || idx >= totalScenes) return;
     const target = scenes[idx];
@@ -209,7 +203,7 @@ function initAboutJourneyV5Animations() {
     }
   }
 
-  /* ── EVENTS ──────────────────────────────────── */
+  
   if (playBtn) playBtn.addEventListener('click', togglePlay);
 
   if (skipBtn) {
@@ -221,7 +215,7 @@ function initAboutJourneyV5Animations() {
     });
   }
 
-  /* Click on progress bar to jump */
+  
   if (progressBar) {
     progressBar.addEventListener('click', (e) => {
       const rect = progressBar.getBoundingClientRect();
@@ -233,7 +227,7 @@ function initAboutJourneyV5Animations() {
     });
   }
 
-  /* Scroll detection — also activates scenes on manual scroll */
+  
   let scrollDetectTimer;
   function onManualScroll() {
     clearTimeout(scrollDetectTimer);
@@ -260,7 +254,7 @@ function initAboutJourneyV5Animations() {
 
   window.addEventListener('scroll', onManualScroll, { passive: true });
 
-  /* Pause auto-play on user scroll */
+  
   let userScrolling = false;
   window.addEventListener('wheel', () => {
     if (isAutoPlaying && !isPaused) {
@@ -274,7 +268,7 @@ function initAboutJourneyV5Animations() {
     }
   }, { passive: true });
 
-  /* Keyboard controls */
+  
   document.addEventListener('keydown', (e) => {
     if (!cinema.getBoundingClientRect) return;
     const rect = cinema.getBoundingClientRect();
@@ -296,11 +290,11 @@ function initAboutJourneyV5Animations() {
     }
   });
 
-  /* ── GSAP ScrollTo plugin check ──────────────── */
+  
   if (!gsap.plugins || !gsap.plugins.scrollTo) {
-    /* Fallback: register inline scrollTo if plugin not loaded */
+    
     if (typeof ScrollToPlugin === 'undefined') {
-      /* Use basic scroll instead */
+      
       const originalScrollToScene = scrollToScene;
       scrollToScene = function(idx, smooth) {
         if (idx < 0 || idx >= totalScenes) return;
@@ -312,8 +306,8 @@ function initAboutJourneyV5Animations() {
     }
   }
 
-  /* ── INITIAL KICK-OFF ────────────────────────── */
-  /* Small delay to let page settle */
+  
+  
   setTimeout(() => {
     activateScene(0);
     scheduleNext();

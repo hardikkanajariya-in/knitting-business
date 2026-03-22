@@ -1,8 +1,3 @@
-/* =============================================
-   HOME PREMIUM — Immersive Parallax System
-   ============================================= */
-
-/* GPU-promote key scroll-animated layers */
 .hero-a-bg,
 .hero-a-media-frame,
 .hero-a-copy-panel,
@@ -13,7 +8,6 @@
   transform: translateZ(0);
 }
 
-/* Contain layout recalculation in independent sections */
 .home-industries,
 .home-stats-band,
 .home-trust-strip,
@@ -34,7 +28,6 @@
   pointer-events: none;
 }
 
-/* --- Shared Section Typography --- */
 .home-section-intro,
 .home-spotlight-copy {
   max-width: 48rem;
@@ -65,7 +58,6 @@
   color: var(--text-secondary);
 }
 
-/* --- Parallax Card Base (all [data-parallax-card]) --- */
 [data-parallax-card] {
   opacity: 0;
   transform: translateY(40px);
@@ -79,7 +71,6 @@
   transform: translateY(0);
 }
 
-/* === STATS BAND === */
 .home-stats-band {
   position: relative;
   overflow: hidden;
@@ -159,7 +150,6 @@
   background-clip: text;
 }
 
-/* Override global .stat-value when inside stats band */
 .home-stats-band-item .stat-value {
   font-size: clamp(2rem, 3vw, 2.8rem);
   color: inherit;
@@ -172,7 +162,6 @@
   letter-spacing: 0.04em;
 }
 
-/* === TRUST STRIP === */
 .home-trust-strip {
   position: relative;
   padding: 1.25rem 0 0;
@@ -229,8 +218,6 @@
   box-shadow: 0 14px 36px rgba(10, 42, 67, 0.12);
 }
 
-/* === INDUSTRIES === */
-/* === INDUSTRIES — Scrolling Image Gallery === */
 .home-industries {
   position: relative;
   overflow: hidden;
@@ -270,7 +257,6 @@
   margin-bottom: 2.5rem;
 }
 
-/* Gallery wrapper — full-bleed */
 .home-ind-gallery {
   display: flex;
   flex-direction: column;
@@ -290,7 +276,6 @@
   will-change: transform;
 }
 
-/* Default CSS animation — overridden by GSAP when available */
 [data-scroll-gallery="left"] .home-ind-track {
   animation: indScrollLeft 35s linear infinite;
 }
@@ -309,7 +294,6 @@
   to   { transform: translateX(0); }
 }
 
-/* Individual card */
 .home-ind-card {
   position: relative;
   flex-shrink: 0;
@@ -338,7 +322,6 @@
   transform: scale(1.15);
 }
 
-/* Fallback when image doesn't load */
 .home-ind-img--fallback {
   background: linear-gradient(135deg, var(--accent-deep) 0%, var(--accent-mid) 54%, var(--bright-blue) 100%);
 }
@@ -404,12 +387,10 @@
   line-height: 1.15;
 }
 
-/* Dark mode */
 .dark .home-ind-img--fallback {
   background: linear-gradient(135deg, #050c1c 0%, #11234a 100%);
 }
 
-/* === SHOWCASE === */
 .home-showcase {
   position: relative;
   overflow: hidden;
@@ -549,7 +530,6 @@
   gap: 0.75rem;
 }
 
-/* === PROCESS === */
 .home-process {
   position: relative;
   overflow: hidden;
@@ -627,7 +607,6 @@
   letter-spacing: -0.04em;
 }
 
-/* Override global .stat-value when inside process section */
 .home-process-stat .stat-value {
   font-size: 1.5rem;
   color: var(--text-primary);
@@ -646,7 +625,6 @@
   gap: 1rem;
 }
 
-/* Scroll-driven progress line */
 .home-process-progress {
   position: absolute;
   left: 36px;
@@ -726,7 +704,6 @@
   color: var(--text-secondary);
 }
 
-/* === SPOTLIGHT === */
 .home-spotlight {
   overflow: hidden;
 }
@@ -834,7 +811,6 @@
   color: rgba(255,255,255,0.76);
 }
 
-/* === FINAL CTA === */
 .home-final-cta {
   position: relative;
   padding-top: 2rem;
@@ -842,7 +818,6 @@
   overflow: hidden;
 }
 
-/* Override .section padding for Final CTA */
 .home-final-cta.section {
   padding-top: 2rem;
 }
@@ -905,7 +880,6 @@
   justify-content: flex-end;
 }
 
-/* Button overrides for dark CTA card */
 .home-final-cta-card .btn-outline {
   color: #fff;
   border-color: rgba(255, 255, 255, 0.28);
@@ -917,7 +891,6 @@
   border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* === DARK MODE === */
 .dark .home-stats-band {
   background: linear-gradient(135deg, var(--accent-deep), var(--accent-mid) 60%, var(--accent-deep));
 }
@@ -949,13 +922,11 @@
   background: var(--glass-border);
 }
 
-/* === KEYFRAMES === */
 @keyframes homeMarquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
-/* === RESPONSIVE === */
 @media (max-width: 1100px) {
   .home-stats-band-grid {
     grid-template-columns: repeat(2, 1fr);

@@ -1,4 +1,3 @@
-/* Product Grid Component — 2x2 Grid (reused by NK & NC) */
 function renderProductGrid(items) {
   const cards = items.map((item, i) => {
     const delay = i * 100;

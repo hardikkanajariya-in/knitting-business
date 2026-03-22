@@ -1,11 +1,3 @@
-/* ============================================================
-   NC - "The Cross-Section"
-   Award-winning redesign for Nirbhay Chemicals
-   Bold typography - Elevation depth - Precision geometry
-   NO gradients - NO stacking animations
-   ============================================================ */
-
-/* --- Theme Variables (flat solid colors, elevation tokens) --- */
 :root {
   --nc-deep:          #0A2A43;
   --nc-accent:        #1C6DD0;
@@ -24,14 +16,14 @@
   --nc-card-border:   rgba(10,42,67,0.08);
   --nc-divider:       rgba(10,42,67,0.10);
 
-  /* Elevation shadows */
+  
   --nc-shadow-sm:     0 1px 3px rgba(10,42,67,0.06), 0 1px 2px rgba(10,42,67,0.04);
   --nc-shadow-md:     0 4px 12px rgba(10,42,67,0.08), 0 2px 4px rgba(10,42,67,0.04);
   --nc-shadow-lg:     0 12px 32px rgba(10,42,67,0.10), 0 4px 8px rgba(10,42,67,0.06);
   --nc-shadow-xl:     0 20px 48px rgba(10,42,67,0.12), 0 8px 16px rgba(10,42,67,0.06);
   --nc-shadow-lift:   0 16px 40px rgba(10,42,67,0.14), 0 6px 12px rgba(10,42,67,0.08);
 
-  /* Spacing scale */
+  
   --nc-section-pad:   6rem 1.5rem;
   --nc-section-max:   72rem;
   --nc-gap:           2rem;
@@ -39,7 +31,6 @@
   --nc-radius-lg:     16px;
 }
 
-/* --- Dark Theme --- */
 .dark {
   --nc-deep:          #0A2A43;
   --nc-surface:       #0D1B2A;
@@ -58,10 +49,6 @@
   --nc-shadow-lift:   0 16px 40px rgba(0,0,0,0.35);
 }
 
-
-/* ============================================================
-   LAYER INDICATOR - Persistent sidebar navigation
-   ============================================================ */
 .nc-layer-indicator {
   position: fixed;
   left: 1.5rem;
@@ -132,192 +119,292 @@
   .nc-layer-indicator { display: none; }
 }
 
-
-/* ============================================================
-   1. HERO - "The Specimen Header"
-   ============================================================ */
 .nc-hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
   background: var(--nc-deep);
   overflow: hidden;
-  padding: 7rem 1.5rem 5rem;
+  padding: 8rem 6rem 5rem;
 }
 
-/* Animated CSS dot grid background */
 .nc-hero::before {
   content: '';
   position: absolute;
-  inset: -32px;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
-  background-size: 32px 32px;
-  animation: ncDotDrift 20s linear infinite;
+  inset: -40px;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: ncDotDrift 30s linear infinite;
+  z-index: 0;
+}
+
+.nc-hero::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05) 20%, rgba(255,255,255,0.05) 80%, transparent);
   z-index: 0;
 }
 
 @keyframes ncDotDrift {
   0%   { background-position: 0 0; }
-  100% { background-position: 32px 32px; }
+  100% { background-position: 40px 40px; }
 }
+
+.nc-hero-ring {
+  position: absolute;
+  right: -6%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 520px;
+  height: 520px;
+  border: 1px dashed rgba(255,255,255,0.06);
+  border-radius: 50%;
+  animation: ncRingSpin 60s linear infinite;
+  z-index: 0;
+}
+
+.nc-hero-ring--inner {
+  width: 360px;
+  height: 360px;
+  right: calc(-6% + 80px);
+  border-style: solid;
+  border-color: rgba(255,255,255,0.03);
+  animation-direction: reverse;
+  animation-duration: 45s;
+}
+
+.nc-hero-ring::before,
+.nc-hero-ring::after {
+  content: '';
+  position: absolute;
+  background: var(--nc-accent);
+  border-radius: 2px;
+}
+
+.nc-hero-ring::before {
+  width: 12px; height: 2px;
+  top: -1px; left: 50%;
+  transform: translateX(-50%);
+}
+
+.nc-hero-ring::after {
+  width: 2px; height: 12px;
+  left: -1px; top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes ncRingSpin {
+  0%   { transform: translateY(-50%) rotate(0deg); }
+  100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+.nc-hero-annotations {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.nc-hero-anno {
+  position: absolute;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.18);
+  padding: 0.35rem 0.75rem;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.nc-hero-anno--1 { top: 10rem; right: 9rem; }
+.nc-hero-anno--2 { top: 16rem; right: 4rem; }
+.nc-hero-anno--3 { bottom: 10rem; right: 14rem; }
 
 .nc-hero-content {
   position: relative;
   z-index: 2;
-  max-width: 60rem;
-  text-align: center;
+  max-width: 52rem;
+  text-align: left;
   color: #FFFFFF;
 }
 
 .nc-hero-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.75rem;
+  gap: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  margin-bottom: 1.5rem;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 2.5rem;
+}
+
+.nc-hero-eyebrow-line {
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: var(--nc-accent);
 }
 
 .nc-hero-eyebrow .nc-dot {
   display: inline-block;
-  width: 4px;
-  height: 4px;
+  width: 4px; height: 4px;
   border-radius: 50%;
   background: var(--nc-accent);
 }
 
-.nc-hero-logo {
+.nc-hero-title {
+  font-size: clamp(3.5rem, 9vw, 7rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.95;
+  color: #FFFFFF;
   margin-bottom: 2rem;
 }
 
-.nc-hero-logo img {
-  max-width: 200px;
-  height: auto;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
-}
+.nc-hero-title-line { display: block; }
 
-.nc-hero-title {
-  font-size: clamp(2.8rem, 7vw, 5.5rem);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-  color: #FFFFFF;
-  margin-bottom: 1rem;
-}
-
-.nc-hero-subtitle {
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  font-weight: 400;
-  color: rgba(255,255,255,0.55);
-  max-width: 36rem;
-  margin: 0 auto 3rem;
-  line-height: 1.6;
+.nc-hero-title-accent {
   position: relative;
-  padding: 1rem 0;
 }
 
-.nc-hero-subtitle::before,
-.nc-hero-subtitle::after {
+.nc-hero-title-accent::after {
   content: '';
-  display: block;
-  width: 40px;
-  height: 1px;
-  background: rgba(255,255,255,0.2);
-  margin: 0 auto;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0.05em; left: 0;
+  width: 100%; height: 4px;
+  background: var(--nc-accent);
+  opacity: 0.5;
 }
 
-.nc-hero-subtitle::before { top: 0; }
-.nc-hero-subtitle::after  { bottom: 0; }
+.nc-hero-desc {
+  max-width: 32rem;
+  margin-bottom: 2.5rem;
+}
 
-/* Hero stats */
+.nc-hero-desc p {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin: 0;
+  border-left: 2px solid var(--nc-accent);
+  padding-left: 1.25rem;
+}
+
+.nc-hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 2rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.2);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  margin-bottom: 3.5rem;
+}
+
+.nc-hero-cta:hover {
+  background: var(--nc-accent);
+  border-color: var(--nc-accent);
+}
+
+.nc-hero-cta svg { transition: transform 0.3s ease; }
+.nc-hero-cta:hover svg { transform: translate(3px, -3px); }
+
 .nc-hero-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  max-width: 48rem;
-  margin: 0 auto;
-  padding-top: 2rem;
+  display: flex;
+  max-width: 52rem;
+  padding-top: 2.5rem;
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 
-.nc-hero-stat { text-align: center; }
+.nc-hero-stat {
+  flex: 1;
+  text-align: left;
+  padding: 0 1.5rem;
+  border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+.nc-hero-stat:first-child {
+  padding-left: 0;
+  border-left: none;
+}
 
 .nc-hero-stat-value {
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 800;
   color: #FFFFFF;
   letter-spacing: -0.02em;
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 .nc-hero-stat-label {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  margin-top: 0.4rem;
+  color: rgba(255,255,255,0.35);
+  margin-top: 0.3rem;
 }
 
-/* Scroll indicator */
+/* Mouse scroll indicator */
 .nc-hero-scroll {
   position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 2.5rem;
+  right: 3rem;
   z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.75rem;
-  color: rgba(255,255,255,0.35);
+  gap: 0.5rem;
 }
 
-.nc-hero-scroll span {
-  font-size: 0.65rem;
+.nc-hero-mouse {
+  width: 26px;
+  height: 42px;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-radius: 13px;
+  position: relative;
+}
+
+.nc-hero-mouse-dot {
+  width: 3px;
+  height: 7px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 2px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: ncMouseScroll 2s ease-in-out infinite;
+}
+
+@keyframes ncMouseScroll {
+  0%   { top: 8px; opacity: 1; }
+  50%  { top: 22px; opacity: 0.3; }
+  100% { top: 8px; opacity: 1; }
+}
+
+.nc-hero-scroll-label {
+  font-size: 0.55rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
 }
 
-.nc-hero-scroll-line {
-  width: 1px;
-  height: 40px;
-  background: rgba(255,255,255,0.15);
-  position: relative;
-  overflow: hidden;
-}
-
-.nc-hero-scroll-line::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: 0;
-  width: 100%;
-  height: 50%;
-  background: var(--nc-accent);
-  animation: ncScrollPulse 2s ease-in-out infinite;
-}
-
-@keyframes ncScrollPulse {
-  0%   { top: -50%; opacity: 0; }
-  50%  { opacity: 1; }
-  100% { top: 100%; opacity: 0; }
-}
-
-
-/* ============================================================
-   2. PROCESS - "The Precision Line"
-   ============================================================ */
 .nc-process {
   position: relative;
   padding: var(--nc-section-pad);
@@ -348,7 +435,6 @@
   line-height: 1.6;
 }
 
-/* Timeline container */
 .nc-stages {
   position: relative;
   max-width: 56rem;
@@ -356,7 +442,6 @@
   padding-left: 3rem;
 }
 
-/* Precision line (left side) */
 .nc-precision-line {
   position: absolute;
   left: 0;
@@ -376,7 +461,6 @@
   transition: height 0.1s linear;
 }
 
-/* Stage */
 .nc-stage {
   position: relative;
   display: grid;
@@ -390,7 +474,6 @@
   border-top: 1px solid var(--nc-divider);
 }
 
-/* Massive stage number */
 .nc-stage-number {
   font-size: 3.5rem;
   font-weight: 900;
@@ -404,7 +487,6 @@
   opacity: 1;
 }
 
-/* Timeline dot */
 .nc-stage-dot {
   position: absolute;
   left: -3rem;
@@ -423,7 +505,6 @@
   box-shadow: 0 0 0 4px rgba(28,109,208,0.15);
 }
 
-/* Stage body */
 .nc-stage-body {
   display: flex;
   flex-direction: column;
@@ -444,7 +525,6 @@
   max-width: 32rem;
 }
 
-/* Gauge bar (flat solid) */
 .nc-gauge {
   display: flex;
   align-items: center;
@@ -485,13 +565,11 @@
   text-align: right;
 }
 
-/* Lottie in circle */
-.nc-stage-lottie-wrap {
-  width: 64px;
-  height: 64px;
+.nc-stage-icon-wrap {
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   border: 1px solid var(--nc-card-border);
-  overflow: hidden;
   background: var(--nc-card-bg);
   box-shadow: var(--nc-shadow-sm);
   display: flex;
@@ -499,17 +577,20 @@
   justify-content: center;
   flex-shrink: 0;
   margin-top: 0.25rem;
+  color: var(--nc-accent);
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.nc-stage-lottie-wrap dotlottie-player {
-  width: 48px;
-  height: 48px;
+.nc-stage-active .nc-stage-icon-wrap {
+  border-color: var(--nc-accent);
+  box-shadow: var(--nc-shadow-md);
 }
 
+.nc-stage-icon-wrap svg {
+  width: 28px;
+  height: 28px;
+}
 
-/* ============================================================
-   3. PRODUCTS - "The Material Library"
-   ============================================================ */
 .nc-products {
   padding: var(--nc-section-pad);
   background: var(--nc-white);
@@ -539,7 +620,6 @@
   line-height: 1.6;
 }
 
-/* Asymmetric product grid */
 .nc-product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -557,7 +637,6 @@
   aspect-ratio: 4 / 3;
 }
 
-/* Product card */
 .nc-swatch {
   background: var(--nc-card-bg);
   border: 1px solid var(--nc-card-border);
@@ -628,7 +707,6 @@
   line-height: 1.55;
 }
 
-/* Color strip at bottom */
 .nc-swatch-strip {
   height: 4px;
   display: flex;
@@ -643,7 +721,6 @@
   transform: scaleY(1.5);
 }
 
-/* Image fallback */
 .nc-swatch-fallback {
   height: 100%;
   display: flex;
@@ -655,10 +732,6 @@
   font-weight: 500;
 }
 
-
-/* ============================================================
-   4. CAPABILITIES - "The Specification Plate"
-   ============================================================ */
 .nc-capabilities {
   padding: var(--nc-section-pad);
   background: var(--nc-deep);
@@ -760,10 +833,6 @@
   transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-
-/* ============================================================
-   5. INNOVATION - "The Lab Window"
-   ============================================================ */
 .nc-innovation {
   padding: var(--nc-section-pad);
   background: var(--nc-surface);
@@ -882,10 +951,6 @@
   margin: 0;
 }
 
-
-/* ============================================================
-   6. PARTNERSHIP - "The Alliance"
-   ============================================================ */
 .nc-partnership {
   padding: var(--nc-section-pad);
   background: var(--nc-white);
@@ -1003,10 +1068,6 @@
   margin-top: 2px;
 }
 
-
-/* ============================================================
-   7. CONTENT BLOCK - "The Factory Floor"
-   ============================================================ */
 .nc-content-block {
   position: relative;
   overflow: hidden;
@@ -1057,23 +1118,30 @@
   margin: 0 auto;
 }
 
-
-/* ============================================================
-   RESPONSIVE DESIGN
-   ============================================================ */
-
-/* Tablet (768px) */
 @media (max-width: 768px) {
   :root {
     --nc-section-pad: 4rem 1.25rem;
   }
 
-  .nc-hero { padding: 6rem 1.25rem 4rem; }
+  .nc-hero { padding: 6rem 2rem 4rem; }
+
+  .nc-hero-ring,
+  .nc-hero-ring--inner { display: none; }
+
+  .nc-hero-annotations { display: none; }
 
   .nc-hero-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    flex-wrap: wrap;
   }
+
+  .nc-hero-stat {
+    flex: 0 0 50%;
+    padding: 0.75rem 1rem;
+    border-left: none;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .nc-hero-stat:first-child { padding-left: 1rem; }
 
   .nc-stages { padding-left: 2rem; }
 
@@ -1111,7 +1179,6 @@
   .nc-partner-caps { grid-template-columns: 1fr; }
 }
 
-/* Mobile (480px) */
 @media (max-width: 480px) {
   :root {
     --nc-section-pad: 3rem 1rem;
@@ -1119,18 +1186,29 @@
   }
 
   .nc-hero {
-    padding: 5rem 1rem 3rem;
+    padding: 5rem 1.25rem 3rem;
     min-height: 90vh;
   }
 
-  .nc-hero-title { font-size: 2.2rem; }
+  .nc-hero-title { font-size: 2.5rem; }
+  .nc-hero-desc { max-width: 100%; }
+  .nc-hero-cta { margin-bottom: 2.5rem; }
 
-  .nc-hero-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+  .nc-hero-stats { flex-direction: column; gap: 0; }
+
+  .nc-hero-stat {
+    flex: none;
+    padding: 0.6rem 0;
+    border-left: none;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
+  .nc-hero-stat:first-child { padding-left: 0; }
+  .nc-hero-stat:last-child { border-bottom: none; }
+
   .nc-hero-stat-value { font-size: 1.6rem; }
+
+  .nc-hero-scroll { right: 1.5rem; }
 
   .nc-stages { padding-left: 1.5rem; }
 

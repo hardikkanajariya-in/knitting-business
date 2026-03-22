@@ -1,4 +1,3 @@
-/* Team Cards Component — Leadership grid */
 function renderTeamCards(members) {
   return members.map((member, i) => `
     <div class="team-card" data-aos="fade-up" data-aos-delay="${i * 150}">

@@ -1,11 +1,3 @@
-/* ============================================
-   ABOUT-JOURNEY-V4.JS — "Sui Dhaga"
-   Needle & Thread Storytelling
-   An animated needle stitches through a fabric
-   canvas, embroidering each milestone into life.
-   ============================================ */
-
-/* ── HERO + MILESTONES RENDERER ────────────── */
 function renderAboutJourneyV4(section) {
   if (!section) return '';
   const milestones = section.milestones || [];
@@ -44,7 +36,7 @@ function renderAboutJourneyV4(section) {
     `;
   }).join('');
 
-  /* Spool SVG used for hero and scroll indicator */
+  
   const spoolSVG = `<svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
     <ellipse cx="30" cy="8" rx="18" ry="5" stroke="currentColor" stroke-width="1.5" fill="none"/>
     <ellipse cx="30" cy="52" rx="18" ry="5" stroke="currentColor" stroke-width="1.5" fill="none"/>
@@ -55,20 +47,20 @@ function renderAboutJourneyV4(section) {
 
   return `
     <section class="sd-canvas" id="sui-dhaga">
-      <!-- Scroll Indicator -->
+      
       <div class="sd-scroll-indicator" id="sd-scroll-cue">
         <div class="sd-spool">${spoolSVG}</div>
         <span class="sd-scroll-text">Scroll to stitch</span>
         <div class="sd-scroll-thread"></div>
       </div>
 
-      <!-- Needle & Thread SVG layer -->
+      
       <div class="sd-needle-layer" id="sd-needle-layer">
         <svg class="sd-needle-svg" id="sd-needle-svg" preserveAspectRatio="none">
           <path class="sd-thread-glow" id="sd-thread-glow" d="" />
           <path class="sd-thread-path" id="sd-thread-path" d="" />
           <g class="sd-needle-group" id="sd-needle-group">
-            <!-- Needle SVG -->
+            
             <path class="sd-needle-body" d="M -2,-18 L 0,-26 L 2,-18 L 2,8 L -2,8 Z"/>
             <ellipse class="sd-needle-eye" cx="0" cy="-13" rx="1.2" ry="2.5"/>
             <polygon class="sd-needle-tip" points="-1.5,8 1.5,8 0,14"/>
@@ -76,10 +68,10 @@ function renderAboutJourneyV4(section) {
         </svg>
       </div>
 
-      <!-- Stitch marks container -->
+      
       <div class="sd-stitch-marks" id="sd-stitch-marks"></div>
 
-      <!-- Progress Track (right rail) -->
+      
       <div class="sd-progress-track" id="sd-progress-track">
         <div class="sd-progress-thread">
           <div class="sd-progress-fill" id="sd-progress-fill"></div>
@@ -90,15 +82,15 @@ function renderAboutJourneyV4(section) {
         </div>
       </div>
 
-      <!-- Hero -->
+      
       <div class="sd-hero" id="sd-hero">
-        <!-- Decorative floating bobbins -->
+        
         <div class="sd-hero-decor">
           <svg class="sd-decor-bobbin sd-bobbin-1" viewBox="0 0 40 60" fill="none"><ellipse cx="20" cy="6" rx="14" ry="4" stroke="currentColor" stroke-width="1"/><ellipse cx="20" cy="54" rx="14" ry="4" stroke="currentColor" stroke-width="1"/><line x1="6" y1="6" x2="6" y2="54" stroke="currentColor" stroke-width="1"/><line x1="34" y1="6" x2="34" y2="54" stroke="currentColor" stroke-width="1"/><ellipse cx="20" cy="30" rx="10" ry="15" stroke="currentColor" stroke-width="0.7" stroke-dasharray="3 2" opacity="0.5"/></svg>
           <svg class="sd-decor-bobbin sd-bobbin-2" viewBox="0 0 40 60" fill="none"><ellipse cx="20" cy="6" rx="14" ry="4" stroke="currentColor" stroke-width="1"/><ellipse cx="20" cy="54" rx="14" ry="4" stroke="currentColor" stroke-width="1"/><line x1="6" y1="6" x2="6" y2="54" stroke="currentColor" stroke-width="1"/><line x1="34" y1="6" x2="34" y2="54" stroke="currentColor" stroke-width="1"/><ellipse cx="20" cy="30" rx="10" ry="15" stroke="currentColor" stroke-width="0.7" stroke-dasharray="3 2" opacity="0.5"/></svg>
           <svg class="sd-decor-thread sd-thread-1" viewBox="0 0 200 100" fill="none"><path d="M0 50 Q50 10 100 50 Q150 90 200 50" stroke="currentColor" stroke-width="1.5" stroke-dasharray="6 4"/></svg>
           <svg class="sd-decor-thread sd-thread-2" viewBox="0 0 200 100" fill="none"><path d="M0 30 Q60 80 120 30 Q180 -10 200 40" stroke="currentColor" stroke-width="1" stroke-dasharray="4 6"/></svg>
-          <!-- Cross-stitch corner accents -->
+          
           <div class="sd-corner-stitch sd-corner-tl"></div>
           <div class="sd-corner-stitch sd-corner-tr"></div>
           <div class="sd-corner-stitch sd-corner-bl"></div>
@@ -114,7 +106,7 @@ function renderAboutJourneyV4(section) {
           <p class="sd-hero-subtitle">${section.storyTitle || ''}</p>
           <p class="sd-hero-paragraph">${(section.paragraphs && section.paragraphs[0]) || 'From a single knitting unit in Halol to an integrated textile powerhouse — our journey is stitched with dedication, innovation, and relentless quality.'}</p>
 
-          <!-- Stats Row -->
+          
           <div class="sd-hero-stats">
             <div class="sd-stat">
               <span class="sd-stat-value" data-count="125">125 MT</span>
@@ -142,7 +134,7 @@ function renderAboutJourneyV4(section) {
         </div>
       </div>
 
-      <!-- Milestones -->
+      
       <div class="sd-milestones" id="sd-milestones">
         ${milestonesHTML}
       </div>
@@ -150,7 +142,6 @@ function renderAboutJourneyV4(section) {
   `;
 }
 
-/* ── NEEDLE & THREAD ANIMATION ENGINE ────────── */
 function initAboutJourneyV4Animations() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
@@ -169,14 +160,14 @@ function initAboutJourneyV4Animations() {
   const count = milestones.length;
   if (!count) return;
 
-  /* ── Build thread path through milestones ────── */
+  
   function buildThreadPath() {
     const points = [];
     const svgEl = document.getElementById('sd-needle-svg');
     if (!svgEl) return;
     const canvasRect = canvas.getBoundingClientRect();
 
-    /* Start from hero center */
+    
     const hero = document.getElementById('sd-hero');
     if (hero) {
       const hr = hero.getBoundingClientRect();
@@ -186,7 +177,7 @@ function initAboutJourneyV4Animations() {
       });
     }
 
-    /* Through each milestone hoop center */
+    
     milestones.forEach(m => {
       const hoop = m.querySelector('.sd-hoop');
       if (hoop) {
@@ -204,7 +195,7 @@ function initAboutJourneyV4Animations() {
     svgEl.style.width = canvas.scrollWidth + 'px';
     svgEl.style.height = canvas.scrollHeight + 'px';
 
-    /* Build smooth bezier path through points */
+    
     let d = `M ${points[0].x} ${points[0].y}`;
     for (let i = 1; i < points.length; i++) {
       const prev = points[i - 1];
@@ -222,7 +213,7 @@ function initAboutJourneyV4Animations() {
     gsap.set(threadPath, { strokeDasharray: pathLen, strokeDashoffset: pathLen });
     gsap.set(threadGlow, { strokeDasharray: pathLen, strokeDashoffset: pathLen });
 
-    /* Generate stitch marks along path */
+    
     stitchMarks.innerHTML = '';
     const stitchCount = Math.floor(pathLen / 18);
     for (let i = 0; i < stitchCount; i++) {
@@ -243,12 +234,12 @@ function initAboutJourneyV4Animations() {
 
   let pathLength = 0;
 
-  /* Rebuild on resize */
+  
   function rebuildPath() {
     pathLength = buildThreadPath() || 0;
   }
 
-  /* Wait for layout then build */
+  
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       rebuildPath();
@@ -266,7 +257,7 @@ function initAboutJourneyV4Animations() {
   });
 
   function initScrollAnimations() {
-    /* ── Hero entrance ── */
+    
     gsap.from('.sd-hero-eyebrow', {
       y: 20, opacity: 0, duration: 0.8, ease: 'power3.out',
       scrollTrigger: { trigger: '.sd-hero', start: 'top 80%' }
@@ -280,7 +271,7 @@ function initAboutJourneyV4Animations() {
       scrollTrigger: { trigger: '.sd-hero', start: 'top 80%' }
     });
 
-    /* ── Scroll indicator hide ── */
+    
     ScrollTrigger.create({
       trigger: '.sd-milestones',
       start: 'top 90%',
@@ -288,7 +279,7 @@ function initAboutJourneyV4Animations() {
       onLeaveBack: () => scrollCue && scrollCue.classList.remove('is-hidden'),
     });
 
-    /* ── Master thread draw + needle follow ── */
+    
     if (pathLength > 0) {
       ScrollTrigger.create({
         trigger: canvas,
@@ -298,12 +289,12 @@ function initAboutJourneyV4Animations() {
         onUpdate: (self) => {
           const progress = self.progress;
 
-          /* Draw thread */
+          
           const offset = pathLength * (1 - progress);
           gsap.set(threadPath, { strokeDashoffset: offset });
           gsap.set(threadGlow, { strokeDashoffset: offset });
 
-          /* Move needle along path */
+          
           const pt = threadPath.getPointAtLength(progress * pathLength);
           const pt2 = threadPath.getPointAtLength(Math.min(pathLength, progress * pathLength + 1));
           const angle = Math.atan2(pt2.y - pt.y, pt2.x - pt.x) * (180 / Math.PI) + 90;
@@ -313,7 +304,7 @@ function initAboutJourneyV4Animations() {
             rotation: angle,
           });
 
-          /* Reveal stitch marks */
+          
           const stitches = stitchMarks.children;
           for (let i = 0; i < stitches.length; i++) {
             const dist = parseFloat(stitches[i].dataset.dist);
@@ -322,12 +313,12 @@ function initAboutJourneyV4Animations() {
             }
           }
 
-          /* Progress bar */
+          
           if (progressFill) {
             progressFill.style.height = (progress * 100) + '%';
           }
 
-          /* Progress dots */
+          
           const currentMs = Math.min(count - 1, Math.floor(progress * count));
           progressDots.forEach((dot, di) => {
             dot.classList.toggle('is-active', di <= currentMs);
@@ -336,7 +327,7 @@ function initAboutJourneyV4Animations() {
       });
     }
 
-    /* ── Milestone reveals ── */
+    
     milestones.forEach((m, i) => {
       ScrollTrigger.create({
         trigger: m,
@@ -349,7 +340,6 @@ function initAboutJourneyV4Animations() {
   }
 }
 
-/* ── STORY V4 ── */
 function renderAboutStoryV4(story) {
   if (!story) return '';
   return `
@@ -374,8 +364,6 @@ function renderAboutStoryV4(story) {
   `;
 }
 
-
-/* ── GALLERY V4 (Fabric swatches) ── */
 function renderFactoryGalleryV4(gallery) {
   if (!gallery || !gallery.images || !gallery.images.length) return '';
   return `

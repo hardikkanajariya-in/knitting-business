@@ -1,4 +1,3 @@
-/* Content Block Component — Large image/video placeholder */
 function renderContentBlock(data) {
   return `
     <div class="content-block" data-aos="fade-up">

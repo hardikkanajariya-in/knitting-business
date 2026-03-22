@@ -1,9 +1,3 @@
-/* ============================================================
-   NC - "The Cross-Section" Render Components
-   Award-winning redesign for Nirbhay Chemicals
-   ============================================================ */
-
-/* ---------- Capability Icons (inline SVG) ---------- */
 const NC_ICONS = {
   layers: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>',
   ruler:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="6" y2="9"/><line x1="3" y1="15" x2="6" y2="15"/><line x1="18" y1="9" x2="21" y2="9"/><line x1="18" y1="15" x2="21" y2="15"/></svg>',
@@ -13,10 +7,8 @@ const NC_ICONS = {
   width:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12H3"/><path d="M21 12l-4-4"/><path d="M21 12l-4 4"/><path d="M3 12l4-4"/><path d="M3 12l4 4"/></svg>'
 };
 
-/* Layer colors for product color strips */
 const NC_LAYER_COLORS = ['#8B7355', '#B8860B', '#1C6DD0', '#2ecc71', '#9b59b6'];
 
-/* Section labels for layer indicator */
 const NC_SECTIONS = [
   { id: 'nc-hero', label: 'Hero' },
   { id: 'nc-process', label: 'Process' },
@@ -27,10 +19,6 @@ const NC_SECTIONS = [
   { id: 'nc-content-block', label: 'Factory' }
 ];
 
-
-/* ============================================================
-   LAYER INDICATOR - Persistent sidebar nav
-   ============================================================ */
 function renderNCLayerIndicator() {
   const dotsHTML = NC_SECTIONS.map((s, i) => `
     <div class="nc-layer-dot${i === 0 ? ' active' : ''}" data-nc-layer="${s.id}">
@@ -48,17 +36,13 @@ function renderNCLayerIndicator() {
   `;
 }
 
-
-/* ============================================================
-   1. HERO - "The Specimen Header"
-   Typography-driven, CSS dot grid, oversized metrics
-   ============================================================ */
 function renderNCHero(nc) {
   const banner = nc.banner;
   const stats  = nc.heroStats || [];
+  const words  = banner.title.split(' ');
 
   const statsHTML = stats.map((s, i) => `
-    <div class="nc-hero-stat" data-aos="fade-up" data-aos-delay="${300 + i * 80}">
+    <div class="nc-hero-stat" data-aos="fade-up" data-aos-delay="${400 + i * 100}">
       <div class="nc-hero-stat-value" data-nc-counter="${s.value}">${s.value}</div>
       <div class="nc-hero-stat-label">${s.label}</div>
     </div>
@@ -66,45 +50,57 @@ function renderNCHero(nc) {
 
   return `
     <section class="nc-hero" id="nc-hero">
+      <div class="nc-hero-ring" aria-hidden="true"></div>
+      <div class="nc-hero-ring nc-hero-ring--inner" aria-hidden="true"></div>
+
+      <div class="nc-hero-annotations" aria-hidden="true">
+        <span class="nc-hero-anno nc-hero-anno--1" data-aos="fade" data-aos-delay="700">Coating &amp; Lamination</span>
+        <span class="nc-hero-anno nc-hero-anno--2" data-aos="fade" data-aos-delay="800">Since 1984</span>
+        <span class="nc-hero-anno nc-hero-anno--3" data-aos="fade" data-aos-delay="900">ISO Certified</span>
+      </div>
+
       <div class="nc-hero-content">
-        <div class="nc-hero-eyebrow" data-aos="fade-down" data-aos-delay="100">
+        <div class="nc-hero-eyebrow" data-aos="fade-right" data-aos-delay="100">
+          <span class="nc-hero-eyebrow-line"></span>
           NirChem <span class="nc-dot"></span> A Division of Nirbhay Knitting
         </div>
 
-        ${nc.divisionLogo ? `
-          <div class="nc-hero-logo" data-aos="fade-up" data-aos-delay="150">
-            <img src="${nc.divisionLogo}"
-                 alt="${nc.divisionLogoAlt || 'NirChem'}"
-                 width="200" height="60" loading="eager"
-                 onerror="this.parentElement.style.display='none'">
-          </div>
-        ` : ''}
-
         <h1 class="nc-hero-title" data-aos="fade-up" data-aos-delay="200">
-          ${banner.title}
+          <span class="nc-hero-title-line">${words[0]}</span>
+          <span class="nc-hero-title-line nc-hero-title-accent">${words.slice(1).join(' ')}</span>
         </h1>
-        <p class="nc-hero-subtitle" data-aos="fade-up" data-aos-delay="250">
-          ${banner.subtitle}
-        </p>
+
+        <div class="nc-hero-desc" data-aos="fade-up" data-aos-delay="300">
+          <p>${banner.subtitle}</p>
+        </div>
+
+        <a href="#nc-process" class="nc-hero-cta" data-aos="fade-up" data-aos-delay="350">
+          Explore Our Process
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+        </a>
 
         ${stats.length ? `<div class="nc-hero-stats">${statsHTML}</div>` : ''}
       </div>
 
       <div class="nc-hero-scroll" aria-hidden="true">
-        <span>Explore</span>
-        <div class="nc-hero-scroll-line"></div>
+        <div class="nc-hero-mouse"><div class="nc-hero-mouse-dot"></div></div>
+        <span class="nc-hero-scroll-label">Scroll</span>
       </div>
     </section>
   `;
 }
 
-
-/* ============================================================
-   2. PROCESS - "The Precision Line"
-   Vertical timeline with left precision line
-   ============================================================ */
 function renderNCProcessFlow(stages) {
   if (!stages || !stages.length) return '';
+
+  /* SVG icons for each stage — replaces broken Lottie CDN */
+  const STAGE_ICONS = [
+    `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 32V14l12-6 12 6v18"/><path d="M14 32V20h12v12"/><path d="M20 8v6"/><circle cx="20" cy="26" r="2"/></svg>`,
+    `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="6" y="12" width="28" height="20" rx="2"/><path d="M6 20h28"/><path d="M14 12V8h12v4"/><circle cx="20" cy="26" r="3"/></svg>`,
+    `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 34V10a4 4 0 014-4h16a4 4 0 014 4v24"/><path d="M12 16h16M12 22h16M12 28h10"/><path d="M4 34h32"/></svg>`,
+    `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="14" cy="20" r="8"/><circle cx="26" cy="20" r="8"/><path d="M14 12v-2M26 12v-2M14 28v2M26 28v2"/></svg>`,
+    `<svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="20" cy="20" r="14"/><path d="M20 6v4M20 30v4M6 20h4M30 20h4"/><circle cx="20" cy="20" r="5"/><path d="M24 16l4-4M16 16l-4-4"/></svg>`
+  ];
 
   const stagesHTML = stages.map((stage, i) => `
     <div class="nc-stage" data-aos="fade-up" data-aos-delay="${i * 80}">
@@ -114,10 +110,8 @@ function renderNCProcessFlow(stages) {
 
       <div class="nc-stage-body">
         <div style="display:flex;align-items:flex-start;gap:1rem;">
-          <div class="nc-stage-lottie-wrap">
-            <dotlottie-player src="${stage.lottie}" background="transparent"
-              speed="1" loop autoplay
-              aria-label="${stage.title} animation"></dotlottie-player>
+          <div class="nc-stage-icon-wrap">
+            ${STAGE_ICONS[i] || STAGE_ICONS[0]}
           </div>
           <div>
             <h3 class="nc-stage-title">${stage.title}</h3>
@@ -153,11 +147,6 @@ function renderNCProcessFlow(stages) {
   `;
 }
 
-
-/* ============================================================
-   3. PRODUCTS - "The Material Library"
-   Asymmetric grid, lift-on-hover, color strip
-   ============================================================ */
 function renderNCProducts(products) {
   if (!products || !products.length) return '';
 
@@ -197,11 +186,6 @@ function renderNCProducts(products) {
   `;
 }
 
-
-/* ============================================================
-   4. CAPABILITIES - "The Specification Plate"
-   Dark section, monospace numbers, flat fill bars
-   ============================================================ */
 function renderNCCapabilities(capabilities) {
   if (!capabilities || !capabilities.length) return '';
 
@@ -235,11 +219,6 @@ function renderNCCapabilities(capabilities) {
   `;
 }
 
-
-/* ============================================================
-   5. INNOVATION - "The Lab Window"
-   Split layout, circular image, pulse badge
-   ============================================================ */
 function renderNCInnovation(innovation) {
   if (!innovation) return '';
 
@@ -269,11 +248,6 @@ function renderNCInnovation(innovation) {
   `;
 }
 
-
-/* ============================================================
-   6. PARTNERSHIP - "The Alliance"
-   Centered frame with accent corners
-   ============================================================ */
 function renderNCPartnership(nc) {
   const p = nc.partnership;
   if (!p) return '';
@@ -305,11 +279,6 @@ function renderNCPartnership(nc) {
   `;
 }
 
-
-/* ============================================================
-   7. CONTENT BLOCK - "The Factory Floor"
-   Full-width image, dark overlay, knockout text
-   ============================================================ */
 function renderNCContentBlock(block) {
   if (!block) return '';
   return `

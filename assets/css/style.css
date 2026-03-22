@@ -1,11 +1,5 @@
-/* ============================================
-  NIRBHAY KNITTING — Custom Styles
-   Theme System + Component Styles + Animations
-   ============================================ */
-
-/* --- CSS Custom Properties (Theme) --- */
 :root {
-  /* Light theme (default) — Brand Identity Guide */
+  
   --bg-primary: #ffffff;
   --bg-secondary: #f3f6fd;
   --bg-tertiary: #e2eafb;
@@ -22,13 +16,13 @@
   --accent-hover: #071d2f;
   --accent-light: #e8eefb;
 
-  /* Brand secondary & accent colors */
+  
   --steel-grey: #6E7A86;
   --eco-green: #4BAF4F;
   --bright-blue: #1C6DD0;
   --warm-grey: #D9D9D9;
 
-  /* Gradient & surface tokens */
+  
   --accent-deep: #0A2A43;
   --accent-mid: #143d60;
   --accent-glow: rgba(28, 109, 208, 0.30);
@@ -60,7 +54,6 @@
   --container-max: 100%;
 }
 
-/* Desktop containers get comfortable side padding for readability */
 @media (min-width: 1400px) {
   :root { --container-pad: 4rem; }
 }
@@ -68,7 +61,6 @@
   :root { --container-pad: 6rem; }
 }
 
-/* Dark theme — Brand Identity Guide */
 .dark {
   --bg-primary: #061520;
   --bg-secondary: #0a1f30;
@@ -91,7 +83,7 @@
   --bright-blue: #4da3ff;
   --warm-grey: #3a4550;
 
-  /* Gradient & surface tokens — dark */
+  
   --accent-deep: #030a12;
   --accent-mid: #0c2438;
   --accent-glow: rgba(77, 163, 255, 0.20);
@@ -109,7 +101,6 @@
   --shadow-xl: 0 24px 70px rgba(0, 0, 0, 0.5);
 }
 
-/* --- Base & Reset --- */
 *,
 *::before,
 *::after {
@@ -178,13 +169,11 @@ ul, ol {
   list-style: none;
 }
 
-/* --- Focus styles for accessibility --- */
 :focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
-/* --- Container --- */
 .container {
   width: 100%;
   max-width: var(--container-max);
@@ -208,7 +197,6 @@ ul, ol {
   .container { padding: 0 var(--container-pad, 6rem); }
 }
 
-/* --- Header --- */
 .site-header {
   position: fixed;
   top: 0;
@@ -234,7 +222,6 @@ ul, ol {
   box-shadow: none;
 }
 
-/* Header over hero overlay — white text in dark mode when transparent */
 .site-header.hero-overlay-mode:not(.scrolled) .header-logo-fallback,
 .site-header.hero-overlay-mode:not(.scrolled) .nav-link,
 .site-header.hero-overlay-mode:not(.scrolled) .theme-toggle,
@@ -301,7 +288,6 @@ ul, ol {
   mix-blend-mode: multiply;
 }
 
-/* Dark contexts: wrap logo in a compact white badge so multiply can remove white bg */
 .site-header.hero-overlay-mode:not(.scrolled) .header-logo-mark,
 .dark .site-header.scrolled .header-logo-mark {
   background: rgba(255, 255, 255, 0.9);
@@ -333,7 +319,6 @@ ul, ol {
   }
 }
 
-/* Desktop Nav */
 .nav-desktop {
   display: none;
   align-items: center;
@@ -381,7 +366,6 @@ ul, ol {
   transform: translateX(-50%) scaleX(1);
 }
 
-/* Header actions */
 .header-actions {
   display: flex;
   align-items: center;
@@ -408,7 +392,6 @@ ul, ol {
   height: 20px;
 }
 
-/* Hamburger */
 .hamburger {
   display: flex;
   flex-direction: column;
@@ -449,7 +432,6 @@ ul, ol {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Mobile Nav */
 .nav-mobile {
   position: fixed;
   top: 0;
@@ -495,7 +477,6 @@ ul, ol {
   color: var(--text-primary);
 }
 
-/* Stagger mobile links */
 .nav-mobile .mobile-link:nth-child(1) { transition-delay: 0.05s; }
 .nav-mobile .mobile-link:nth-child(2) { transition-delay: 0.1s; }
 .nav-mobile .mobile-link:nth-child(3) { transition-delay: 0.15s; }
@@ -504,7 +485,6 @@ ul, ol {
 .nav-mobile .mobile-link:nth-child(6) { transition-delay: 0.3s; }
 .nav-mobile .mobile-link:nth-child(7) { transition-delay: 0.35s; }
 
-/* --- Hero B (Full-width Overlay) --- */
 .hero-b {
   position: relative;
   min-height: 100vh;
@@ -593,7 +573,6 @@ ul, ol {
   border-color: rgba(255, 255, 255, 0.44);
 }
 
-/* --- CTA Button --- */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -655,7 +634,6 @@ ul, ol {
   border-color: rgba(255, 255, 255, 0.44);
 }
 
-/* --- Hero variant toggle (dev/preview) --- */
 .hero-variant-toggle {
   position: fixed;
   left: 50%;
@@ -700,9 +678,6 @@ ul, ol {
   }
 }
 
-/* --- Timeline / Journey (see home-interactive.css for styles) --- */
-
-/* --- Page Banner --- */
 .page-banner {
   position: relative;
   min-height: 50vh;
@@ -734,7 +709,6 @@ ul, ol {
   z-index: 1;
 }
 
-/* --- Division Brand Card --- */
 .division-brand-section {
   padding: 2rem 0 0;
 }
@@ -834,7 +808,6 @@ ul, ol {
   line-height: 1.6;
 }
 
-/* --- Product / Feature Grid --- */
 .product-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -896,7 +869,6 @@ ul, ol {
   line-height: 1.6;
 }
 
-/* --- Content Block --- */
 .content-block {
   position: relative;
   overflow: hidden;
@@ -939,7 +911,6 @@ ul, ol {
   max-width: 600px;
 }
 
-/* --- CTA Strip --- */
 .cta-strip {
   background: var(--accent);
   color: var(--text-inverse);
@@ -988,7 +959,6 @@ ul, ol {
   transform: scale(1.1);
 }
 
-/* --- Team Intro --- */
 .team-intro {
   padding-top: 3rem;
   padding-bottom: 0;
@@ -1012,7 +982,6 @@ ul, ol {
   color: var(--text-secondary);
 }
 
-/* --- Team Section --- */
 .team-section {
   padding-top: 2rem;
 }
@@ -1029,7 +998,6 @@ ul, ol {
   }
 }
 
-/* --- Team Cards --- */
 .team-card {
   text-align: center;
   padding: 2.5rem 2rem 2rem;
@@ -1083,8 +1051,6 @@ ul, ol {
   line-height: 1.7;
 }
 
-/* --- Contact Form --- */
-/* --- Contact Page --- */
 .contact-section {
   padding-top: 3.5rem;
   padding-bottom: 4rem;
@@ -1263,7 +1229,6 @@ ul, ol {
   resize: vertical;
 }
 
-/* --- Stats Section --- */
 .stat-card {
   text-align: center;
   padding: 1.5rem;
@@ -1284,7 +1249,6 @@ ul, ol {
   font-weight: 500;
 }
 
-/* --- Sustainability Pillars --- */
 .pillar-card {
   padding: 2rem;
   background: var(--bg-card);
@@ -1324,7 +1288,6 @@ ul, ol {
   line-height: 1.6;
 }
 
-/* --- Footer — Premium Dark Treatment --- */
 .site-footer {
   position: relative;
   overflow: hidden;
@@ -1333,7 +1296,6 @@ ul, ol {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* Decorative background layer */
 .footer-bg {
   position: absolute;
   inset: 0;
@@ -1391,7 +1353,6 @@ ul, ol {
   100% { stroke-dashoffset: -200; }
 }
 
-/* Top gradient edge — smooth transition from page content */
 .footer-edge {
   position: absolute;
   top: 0;
@@ -1406,7 +1367,6 @@ ul, ol {
   z-index: 1;
 }
 
-/* Grid: 1 col → 2 col → 4 col */
 .footer-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1437,7 +1397,6 @@ ul, ol {
   }
 }
 
-/* — Footer columns — glassmorphic cards — */
 .footer-col {
   position: relative;
   padding: 1.5rem;
@@ -1469,7 +1428,6 @@ ul, ol {
   background: rgba(255, 255, 255, 0.06);
 }
 
-/* — Headings: eyebrow style — */
 .footer-heading {
   display: flex;
   align-items: center;
@@ -1491,7 +1449,6 @@ ul, ol {
   flex-shrink: 0;
 }
 
-/* — Brand column — */
 .footer-brand {
   display: inline-flex;
   margin-bottom: 1rem;
@@ -1538,7 +1495,6 @@ ul, ol {
   line-height: 1.7;
 }
 
-/* — Quick Links — */
 .footer-links-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1578,7 +1534,6 @@ ul, ol {
   width: 14px;
 }
 
-/* — Contact — */
 .footer-contact-card {
   display: flex;
   flex-direction: column;
@@ -1617,7 +1572,6 @@ ul, ol {
   color: inherit;
 }
 
-/* — Connect column — */
 .footer-connect-text {
   font-size: 0.84rem;
   color: rgba(255, 255, 255, 0.5);
@@ -1655,7 +1609,6 @@ ul, ol {
   transform: translateX(3px);
 }
 
-/* — Social icons — */
 .footer-social {
   display: flex;
   gap: 0.6rem;
@@ -1687,14 +1640,12 @@ ul, ol {
   box-shadow: 0 4px 16px rgba(28, 109, 208, 0.2);
 }
 
-/* — Divider — */
 .footer-divider {
   height: 1px;
   margin-top: 2.5rem;
   background: linear-gradient(90deg, transparent 5%, rgba(255, 255, 255, 0.08) 30%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.08) 70%, transparent 95%);
 }
 
-/* — Bottom bar — */
 .footer-bottom {
   margin-top: 1.25rem;
   display: flex;
@@ -1708,7 +1659,6 @@ ul, ol {
   letter-spacing: 0.01em;
 }
 
-/* — Responsive — */
 @media (max-width: 639px) {
   .site-footer { padding: 3rem 0 1.5rem; }
 
@@ -1717,7 +1667,6 @@ ul, ol {
   }
 }
 
-/* --- Scroll-to-Top Button --- */
 .scroll-to-top {
   position: fixed;
   bottom: 2rem;
@@ -1778,7 +1727,6 @@ ul, ol {
   }
 }
 
-/* --- Section spacing --- */
 .section {
   padding: 4rem 0;
 }
@@ -1816,7 +1764,6 @@ ul, ol {
   margin-right: auto;
 }
 
-/* --- Image placeholder (when no real image) --- */
 .img-placeholder {
   width: 100%;
   height: 100%;
@@ -1829,7 +1776,6 @@ ul, ol {
   font-weight: 500;
 }
 
-/* --- Custom scrollbar --- */
 html,
 body,
 * {
@@ -1843,7 +1789,6 @@ body,
   display: none;
 }
 
-/* --- Utility: hidden --- */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -1855,7 +1800,6 @@ body,
   border: 0;
 }
 
-/* --- Reveal animations (GSAP targets) --- */
 .reveal-up {
   opacity: 0;
   transform: translateY(40px);
@@ -1886,7 +1830,6 @@ body,
   transform: translateY(105%);
 }
 
-/* --- Page transition --- */
 .page-transition {
   opacity: 0;
   transform: translateY(10px);
@@ -1898,9 +1841,8 @@ body,
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* --- Touch device adjustments --- */
 @media (hover: none) and (pointer: coarse) {
-  /* Disable hover-lift on cards — feels janky when touch-scrolling */
+  
   .product-card:hover,
   .pillar-card:hover {
     transform: none;
@@ -1910,17 +1852,13 @@ body,
     transform: scale(0.98);
   }
 
-  /* Ensure tap targets meet 44px minimum */
+  
   .theme-toggle {
     min-width: 44px;
     min-height: 44px;
   }
 }
 
-/* ============================================
-   GLOBAL INTERACTIVE BACKGROUND ELEMENTS
-   Colorful floating shapes across the entire site
-   ============================================ */
 .global-bg-canvas {
   position: fixed;
   inset: 0;
@@ -1929,7 +1867,6 @@ body,
   overflow: hidden;
 }
 
-/* All page content sits above the background */
 .page-transition {
   position: relative;
   z-index: 1;
@@ -1939,7 +1876,6 @@ body,
   z-index: 1001;
 }
 
-/* Individual floating element */
 .gbg-el {
   position: absolute;
   border-radius: 50%;
@@ -1949,7 +1885,6 @@ body,
   transition: opacity 0.6s ease;
 }
 
-/* ── Shape variations ── */
 .gbg-el--circle { border-radius: 50%; }
 .gbg-el--square { border-radius: 18%; }
 .gbg-el--diamond { border-radius: 4px; transform: rotate(45deg); }
@@ -2007,7 +1942,6 @@ body,
   clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
-/* ── Color palette — visible but not overpowering ── */
 .gbg-blue { background: rgba(59, 130, 246, 0.3); }
 .gbg-blue.gbg-el--ring { border-color: rgba(59, 130, 246, 0.35); }
 .gbg-blue.gbg-el--cross { --cross-color: rgba(59, 130, 246, 0.3); }
@@ -2042,7 +1976,6 @@ body,
 .gbg-red.gbg-el--ring { border-color: rgba(239, 68, 68, 0.3); }
 .gbg-red.gbg-el--cross { --cross-color: rgba(239, 68, 68, 0.25); }
 
-/* ── Dark mode — boost brightness ── */
 .dark .gbg-blue { background: rgba(96, 165, 250, 0.25); }
 .dark .gbg-blue.gbg-el--ring { border-color: rgba(96, 165, 250, 0.3); }
 .dark .gbg-blue.gbg-el--cross { --cross-color: rgba(96, 165, 250, 0.25); }
@@ -2068,7 +2001,6 @@ body,
 .dark .gbg-red { background: rgba(248, 113, 113, 0.22); }
 .dark .gbg-red.gbg-el--ring { border-color: rgba(248, 113, 113, 0.28); }
 
-/* ── Float animations ── */
 @keyframes gbgFloat1 {
   0%, 100% { transform: translate(0, 0) rotate(0deg); }
   25% { transform: translate(30px, -40px) rotate(5deg); }
@@ -2104,14 +2036,12 @@ body,
   to { transform: rotate(360deg); }
 }
 
-/* ── Mouse-reactive glow (JS adds .gbg-near class) ── */
 .gbg-el.gbg-near {
   filter: blur(0.5px) brightness(1.15);
   transform: scale(1.1);
   transition: filter 0.4s ease, transform 0.4s ease;
 }
 
-/* ── Responsive ── */
 @media (max-width: 768px) {
   .gbg-el { transform: scale(0.6); }
   .global-bg-canvas { opacity: 0.5; }

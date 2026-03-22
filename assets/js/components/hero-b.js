@@ -1,4 +1,3 @@
-/* Hero B Component — Full-width Overlay (Avant Garde-inspired) */
 function renderHeroB(data) {
   const hasVideo = Boolean(data.heroVideo);
   const secondaryCta = data.secondaryCta;

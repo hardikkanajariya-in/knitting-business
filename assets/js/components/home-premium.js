@@ -32,7 +32,6 @@ function renderHomeIndustries(section) {
   if (!section) return '';
 
   const items = section.items || [];
-  // Build two rows of cards — row 1 scrolls left, row 2 scrolls right
   const buildTrack = (arr) => [...arr, ...arr, ...arr].map(item => `
     <div class="home-ind-card">
       <div class="home-ind-img">
@@ -50,7 +49,6 @@ function renderHomeIndustries(section) {
 
   const row1 = items.slice(0, Math.ceil(items.length / 2));
   const row2 = items.slice(Math.ceil(items.length / 2));
-  // Ensure row2 has enough cards for a seamless infinite scroll
   const row2Padded = row2.length < 3 ? [...row2, ...items].slice(0, Math.max(3, row2.length)) : row2;
 
   return `

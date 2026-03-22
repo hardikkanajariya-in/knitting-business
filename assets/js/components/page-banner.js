@@ -1,4 +1,3 @@
-/* Page Banner Component */
 function renderPageBanner(data) {
   const hasBg = data.backgroundImage ? true : false;
 

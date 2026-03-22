@@ -35,24 +35,24 @@
     <div id="site-footer"></div>
   </div>
 
-  <!-- CDN libs -->
+  
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/@nicepkg/dotlottie-player@2.7.12/dist/dotlottie-player.js" defer></script>
 
-  <!-- Shared components -->
+  
   <script src="assets/js/components/header.js" defer></script>
   <script src="assets/js/components/footer.js" defer></script>
   <script src="assets/js/components/cta-strip.js" defer></script>
   <script src="assets/js/components/global-bg.js" defer></script>
 
-  <!-- NC Coating Press components -->
+  
   <script src="assets/js/components/nc-coating-press.js" defer></script>
   <script src="assets/js/components/nc-coating-engine.js" defer></script>
 
-  <!-- Main (for shared init: theme, mobile menu, lenis, AOS, GSAP) -->
+  
   <script src="assets/js/main.js" defer></script>
 
   <script defer>
@@ -63,7 +63,7 @@
         const nc   = data.nc;
         if (!nc) { console.error('NC data not found in content.json'); return; }
 
-        /* ---- Render all sections ---- */
+        
         const contentEl = document.getElementById('page-content');
         if (!contentEl) return;
 
@@ -78,12 +78,12 @@
           typeof renderCTAStrip === 'function'       ? renderCTAStrip(data) : ''
         ].join('');
 
-        /* ---- Layer Indicator (persistent sidebar nav) ---- */
+        
         if (typeof renderNCLayerIndicator === 'function') {
           document.body.insertAdjacentHTML('beforeend', renderNCLayerIndicator());
         }
 
-        /* ---- Shared global init ---- */
+        
         if (typeof renderHeader === 'function') {
           const headerEl = document.getElementById('site-header');
           if (headerEl) headerEl.innerHTML = renderHeader(data);
@@ -93,35 +93,43 @@
           if (footerEl) footerEl.innerHTML = renderFooter(data);
         }
 
-        /* Theme, mobile menu, smooth scroll */
+        
         if (typeof initTheme === 'function')      initTheme();
         if (typeof initMobileMenu === 'function') initMobileMenu();
         if (typeof initLenis === 'function')      initLenis();
 
-        /* AOS */
+        
         if (typeof AOS !== 'undefined') {
           AOS.init({ duration: 700, once: true, offset: 80 });
         }
 
-        /* GSAP */
+        
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
           gsap.registerPlugin(ScrollTrigger);
         }
 
-        /* Scroll-to-top + Global background */
+        
         if (typeof initScrollToTop === 'function') initScrollToTop();
         if (typeof initGlobalBackground === 'function') initGlobalBackground();
 
-        /* Header overlay mode — hero is always dark */
+        
         const header = document.querySelector('.site-header');
         if (header) header.classList.add('hero-overlay-mode');
 
-        /* ---- NC-specific animations ---- */
+        
         if (typeof initNCCoatingAnimations === 'function') {
           initNCCoatingAnimations();
         }
 
-        /* Page load transition */
+        /* Reveal-up for footer (rendered after main.js ran) */
+        gsap.utils.toArray('#site-footer .reveal-up').forEach(el => {
+          gsap.to(el, {
+            y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+            scrollTrigger: { trigger: el, start: 'top 95%', toggleActions: 'play none none none' }
+          });
+        });
+
+        
         document.body.classList.add('loaded');
         const pageTransition = document.querySelector('.page-transition');
         if (pageTransition) {

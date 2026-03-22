@@ -1,11 +1,3 @@
-/* ============================================
-   ABOUT-JOURNEY-V5.JS — "The Loom"
-   Full-screen cinematic auto-scroll
-   Typewriter · Scene transitions · Shuttle
-   Play/Pause · Progress timeline · Warp&Weft
-   ============================================ */
-
-/* ── SVG ASSETS ──────────────────────────────── */
 const LOOM_ICONS = {
   play: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
   pause: '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>',
@@ -26,7 +18,6 @@ const LOOM_ICONS = {
   bolt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
 };
 
-/* ── RENDER ───────────────────────────────────── */
 function renderAboutJourneyV5(section) {
   if (!section) return '';
   const milestones = section.milestones || [];
@@ -69,10 +60,10 @@ function renderAboutJourneyV5(section) {
 
   return `
     <section class="loom-cinema" id="loom-cinema">
-      <!-- Opening -->
+      
       <div class="loom-scene loom-opening" data-scene-idx="opening">
         <div class="loom-warp-bg">${warpLines}</div>
-        <!-- Radial pulse rings -->
+        
         <div class="loom-opening-rings">
           <div class="loom-pulse-ring loom-pulse-ring-1"></div>
           <div class="loom-pulse-ring loom-pulse-ring-2"></div>
@@ -84,7 +75,7 @@ function renderAboutJourneyV5(section) {
           <div class="loom-opening-line"></div>
           <p class="loom-opening-subtitle">${section.storyTitle || 'A story woven through decades of excellence and innovation'}</p>
           <p class="loom-opening-paragraph">${(section.paragraphs && section.paragraphs[0]) || 'From a single knitting unit to an integrated textile powerhouse, our story is woven through decades of innovation, sustainability, and relentless quality.'}</p>
-          <!-- Stats Strip -->
+          
           <div class="loom-opening-stats">
             <div class="loom-open-stat">
               <span class="loom-open-stat-value">125 MT</span>
@@ -109,10 +100,10 @@ function renderAboutJourneyV5(section) {
         </div>
       </div>
 
-      <!-- Milestone Scenes -->
+      
       ${scenesHTML}
 
-      <!-- Closing -->
+      
       <div class="loom-scene loom-closing" data-scene-idx="closing">
         <div class="loom-warp-bg">${warpLines}</div>
         <h2 class="loom-closing-title">The Loom Continues</h2>
@@ -120,7 +111,7 @@ function renderAboutJourneyV5(section) {
         <a href="contact.html" class="loom-closing-cta">Begin Your Thread &rarr;</a>
       </div>
 
-      <!-- Cinema Controls -->
+      
       <div class="loom-controls" id="loom-controls">
         <div class="loom-ctrl-label">
           <span class="loom-rec-dot"></span>
@@ -145,7 +136,6 @@ function escapeAttr(str) {
   return (str || '').replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 }
 
-/* ── STORY V5 ────────────────────────────────── */
 function renderAboutStoryV5(story) {
   if (!story) return '';
   return `
@@ -170,9 +160,6 @@ function renderAboutStoryV5(story) {
   `;
 }
 
-/* ── STRENGTHS V5 — now in strengths-grid.js as renderStrengthsGrid() ── */
-
-/* ── GALLERY V5 (Film strip) ─────────────────── */
 function renderFactoryGalleryV5(gallery) {
   if (!gallery || !gallery.images || !gallery.images.length) return '';
   return `

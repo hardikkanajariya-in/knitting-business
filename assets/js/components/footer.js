@@ -1,4 +1,3 @@
-/* Footer Component — Premium Redesign */
 function renderFooter(data) {
   const footer = data.footer;
   const site = data.site;
@@ -19,7 +18,7 @@ function renderFooter(data) {
 
   return `
     <footer class="site-footer" role="contentinfo">
-      <!-- Decorative background -->
+      
       <div class="footer-bg" aria-hidden="true">
         <div class="footer-glow footer-glow--1"></div>
         <div class="footer-glow footer-glow--2"></div>
@@ -29,12 +28,12 @@ function renderFooter(data) {
         </svg>
       </div>
 
-      <!-- Top gradient edge -->
+      
       <div class="footer-edge" aria-hidden="true"></div>
 
       <div class="container footer-container">
         <div class="footer-grid">
-          <!-- Col 1: Brand -->
+          
           <div class="footer-col footer-col--brand reveal-up">
             <a href="index.html" class="footer-brand" aria-label="${site.name} — Home">
               <span class="footer-brand-logo">
@@ -58,7 +57,7 @@ function renderFooter(data) {
             ` : ''}
           </div>
 
-          <!-- Col 2: Quick Links -->
+          
           <div class="footer-col footer-col--links reveal-up">
             <h4 class="footer-heading">
               <span class="footer-heading-accent"></span>
@@ -69,7 +68,7 @@ function renderFooter(data) {
             </div>
           </div>
 
-          <!-- Col 3: Contact -->
+          
           <div class="footer-col footer-col--contact reveal-up">
             <h4 class="footer-heading">
               <span class="footer-heading-accent"></span>
@@ -91,7 +90,7 @@ function renderFooter(data) {
             </div>
           </div>
 
-          <!-- Col 4: Connect -->
+          
           <div class="footer-col footer-col--connect reveal-up">
             <h4 class="footer-heading">
               <span class="footer-heading-accent"></span>
@@ -110,7 +109,7 @@ function renderFooter(data) {
           </div>
         </div>
 
-        <!-- Bottom bar -->
+        
         <div class="footer-divider" aria-hidden="true"></div>
         <div class="footer-bottom">
           <p class="footer-copyright">${footer.copyright}</p>
