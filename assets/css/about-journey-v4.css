@@ -1,0 +1,1118 @@
+/* ============================================
+   ABOUT-JOURNEY-V4.CSS — "Sui Dhaga"
+   Needle & Thread · Handcrafted Stitchwork
+   Embroidered milestones · Fabric canvas
+   ============================================ */
+
+/* ── ROOT VARIABLES ──────────────────────────── */
+:root {
+  --sd-fabric: #faf6f0;
+  --sd-fabric-dark: #1a1714;
+  --sd-thread: #c0392b;
+  --sd-thread-gold: #d4a745;
+  --sd-needle: #7f8c8d;
+  --sd-stitch: rgba(192, 57, 43, 0.7);
+  --sd-linen: #e8dfd0;
+  --sd-denim: #2c3e6b;
+}
+
+.dark {
+  --sd-fabric: #1a1714;
+  --sd-linen: #2a2520;
+}
+
+/* ── FABRIC CANVAS (Main wrapper) ────────────── */
+.sd-canvas {
+  position: relative;
+  background: var(--sd-fabric);
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.dark .sd-canvas {
+  background: var(--sd-fabric-dark);
+}
+
+/* Woven linen texture overlay */
+.sd-canvas::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.02) 3px, rgba(0,0,0,0.02) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(0,0,0,0.02) 3px, rgba(0,0,0,0.02) 4px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dark .sd-canvas::before {
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.015) 3px, rgba(255,255,255,0.015) 4px),
+    repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255,255,255,0.015) 3px, rgba(255,255,255,0.015) 4px);
+}
+
+/* ── SCROLL INDICATOR ────────────────────────── */
+.sd-scroll-indicator {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.sd-scroll-indicator.is-hidden {
+  opacity: 0;
+}
+
+.sd-scroll-indicator .sd-spool {
+  width: 40px;
+  height: 40px;
+  position: relative;
+}
+
+.sd-scroll-indicator .sd-spool svg {
+  width: 100%;
+  height: 100%;
+  animation: sdSpoolSpin 3s linear infinite;
+}
+
+.sd-scroll-indicator .sd-scroll-text {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--sd-thread);
+  animation: sdPulseText 2s ease-in-out infinite;
+}
+
+.sd-scroll-indicator .sd-scroll-thread {
+  width: 1px;
+  height: 24px;
+  background: var(--sd-thread);
+  animation: sdThreadDrop 1.5s ease-in-out infinite;
+}
+
+@keyframes sdSpoolSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes sdPulseText {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes sdThreadDrop {
+  0%, 100% { height: 16px; opacity: 0.4; }
+  50% { height: 28px; opacity: 1; }
+}
+
+/* ── NEEDLE SVG (follows scroll path) ────────── */
+.sd-needle-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.sd-needle-svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.sd-thread-path {
+  fill: none;
+  stroke: var(--sd-thread);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 8 6;
+  filter: drop-shadow(0 1px 2px rgba(192, 57, 43, 0.3));
+}
+
+.sd-thread-glow {
+  fill: none;
+  stroke: var(--sd-thread);
+  stroke-width: 6;
+  stroke-linecap: round;
+  opacity: 0.15;
+  filter: blur(4px);
+}
+
+.sd-needle-group {
+  transform-origin: center center;
+}
+
+.sd-needle-body {
+  fill: var(--sd-needle);
+  filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.3));
+}
+
+.sd-needle-eye {
+  fill: none;
+  stroke: var(--sd-needle);
+  stroke-width: 1.5;
+}
+
+.sd-needle-tip {
+  fill: #bdc3c7;
+}
+
+/* ── STITCH MARKS along thread ───────────────── */
+.sd-stitch-marks {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.sd-stitch {
+  position: absolute;
+  width: 12px;
+  height: 3px;
+  background: var(--sd-stitch);
+  border-radius: 1px;
+  opacity: 0;
+  transform: rotate(var(--stitch-angle, -30deg));
+  transition: opacity 0.3s ease;
+}
+
+.sd-stitch.is-visible {
+  opacity: 1;
+}
+
+/* ── HERO SECTION ────────────────────────────── */
+.sd-hero {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+}
+
+.sd-hero-content {
+  max-width: 780px;
+}
+
+/* ── HERO DECORATIVE ELEMENTS ────────────────── */
+.sd-hero-decor {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.sd-decor-bobbin {
+  position: absolute;
+  color: var(--sd-thread);
+  opacity: 0.12;
+  animation: sdFloat 8s ease-in-out infinite;
+}
+
+.sd-bobbin-1 {
+  width: 60px;
+  top: 15%;
+  left: 8%;
+  animation-delay: 0s;
+}
+
+.sd-bobbin-2 {
+  width: 50px;
+  bottom: 20%;
+  right: 10%;
+  animation-delay: -3s;
+  transform: rotate(15deg);
+}
+
+.sd-decor-thread {
+  position: absolute;
+  color: var(--sd-thread);
+  opacity: 0.08;
+}
+
+.sd-thread-1 {
+  width: 300px;
+  top: 25%;
+  right: -40px;
+  transform: rotate(-5deg);
+}
+
+.sd-thread-2 {
+  width: 250px;
+  bottom: 30%;
+  left: -30px;
+  transform: rotate(8deg);
+}
+
+/* Cross-stitch corner accents */
+.sd-corner-stitch {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0.15;
+}
+
+.sd-corner-stitch::before,
+.sd-corner-stitch::after {
+  content: '';
+  position: absolute;
+  background: var(--sd-thread);
+}
+
+.sd-corner-stitch::before {
+  width: 100%;
+  height: 1.5px;
+  top: 50%;
+  transform: rotate(45deg);
+}
+
+.sd-corner-stitch::after {
+  width: 100%;
+  height: 1.5px;
+  top: 50%;
+  transform: rotate(-45deg);
+}
+
+.sd-corner-tl { top: 3rem; left: 3rem; }
+.sd-corner-tr { top: 3rem; right: 3rem; }
+.sd-corner-bl { bottom: 3rem; left: 3rem; }
+.sd-corner-br { bottom: 3rem; right: 3rem; }
+
+@keyframes sdFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(3deg); }
+  66% { transform: translateY(8px) rotate(-2deg); }
+}
+
+.sd-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--sd-thread);
+  margin-bottom: 1.5rem;
+}
+
+.sd-hero-eyebrow::before,
+.sd-hero-eyebrow::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--sd-thread);
+  opacity: 0.4;
+}
+
+/* Embroidered title effect */
+.sd-hero-title {
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.sd-hero-title .sd-embroidered {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--sd-thread), var(--sd-thread-gold), var(--sd-thread));
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: sdShimmer 4s ease-in-out infinite;
+}
+
+@keyframes sdShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.sd-hero-subtitle {
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* Decorative spool below title */
+.sd-hero-spool {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.sd-hero-spool svg {
+  width: 60px;
+  height: 60px;
+  opacity: 0.25;
+}
+
+/* Hero paragraph */
+.sd-hero-paragraph {
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  color: var(--text-secondary);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 1.5rem auto 0;
+  opacity: 0.85;
+}
+
+/* ── STATS ROW (Stitched counters) ───────────── */
+.sd-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px dashed rgba(192, 57, 43, 0.2);
+  position: relative;
+}
+
+.sd-hero-stats::before {
+  content: '×  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×  ×';
+  position: absolute;
+  top: -0.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.55rem;
+  color: var(--sd-thread);
+  opacity: 0.25;
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+}
+
+.sd-stat {
+  text-align: center;
+  position: relative;
+  padding: 1rem 0.5rem;
+}
+
+.sd-stat-value {
+  display: block;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+}
+
+.sd-stat-value.sd-stat-accent {
+  background: linear-gradient(135deg, var(--sd-thread), var(--sd-thread-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sd-stat-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-secondary);
+  opacity: 0.7;
+}
+
+/* Mini cross-stitch under each stat */
+.sd-stat-stitch {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  opacity: 0.3;
+}
+
+.sd-stat-stitch::before,
+.sd-stat-stitch::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1.5px;
+  background: var(--sd-thread);
+  top: 50%;
+}
+
+.sd-stat-stitch::before { transform: rotate(45deg); }
+.sd-stat-stitch::after { transform: rotate(-45deg); }
+
+@media (max-width: 640px) {
+  .sd-hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .sd-hero-decor .sd-decor-bobbin,
+  .sd-hero-decor .sd-decor-thread {
+    display: none;
+  }
+}
+
+/* ── MILESTONE EMBROIDERY PANELS ─────────────── */
+.sd-milestones {
+  position: relative;
+  z-index: 2;
+  padding-bottom: 6rem;
+}
+
+.sd-milestone {
+  position: relative;
+  padding: 6rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.sd-milestone:nth-child(even) .sd-milestone-card {
+  flex-direction: row-reverse;
+}
+
+.sd-milestone-card {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  max-width: 900px;
+  width: 100%;
+}
+
+/* Embroidery hoop visual */
+.sd-hoop {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  flex-shrink: 0;
+}
+
+.sd-hoop-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 4px solid var(--sd-thread-gold);
+  box-shadow:
+    inset 0 0 0 2px rgba(212, 167, 69, 0.2),
+    0 0 0 2px rgba(212, 167, 69, 0.15),
+    0 8px 32px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sd-milestone.is-revealed .sd-hoop-ring {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Fabric fill inside hoop */
+.sd-hoop-fabric {
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background: var(--sd-linen);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark .sd-hoop-fabric {
+  background: #2a2520;
+}
+
+/* Weave texture on hoop fabric */
+.sd-hoop-fabric::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 6px, rgba(0,0,0,0.04) 6px, rgba(0,0,0,0.04) 7px),
+    repeating-linear-gradient(90deg, transparent, transparent 6px, rgba(0,0,0,0.04) 6px, rgba(0,0,0,0.04) 7px);
+  pointer-events: none;
+}
+
+.sd-hoop-lottie {
+  width: 130px;
+  height: 130px;
+  position: relative;
+  z-index: 2;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.6s 0.3s ease, transform 0.6s 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.sd-milestone.is-revealed .sd-hoop-lottie {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Cross-stitch decorations around hoop */
+.sd-cross-stitches {
+  position: absolute;
+  inset: -12px;
+}
+
+.sd-cross {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sd-milestone.is-revealed .sd-cross {
+  opacity: 1;
+}
+
+.sd-cross::before,
+.sd-cross::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 2px;
+  background: var(--sd-thread);
+  border-radius: 1px;
+}
+
+.sd-cross::before { transform: translate(-50%, -50%) rotate(45deg); }
+.sd-cross::after { transform: translate(-50%, -50%) rotate(-45deg); }
+
+/* Text content */
+.sd-milestone-text {
+  flex: 1;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s 0.2s ease, transform 0.7s 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sd-milestone.is-revealed .sd-milestone-text {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sd-year-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.sd-year-tag .sd-tag-label {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 1rem;
+  background: var(--sd-thread);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  border-radius: 4px;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%);
+  padding-right: 1.4rem;
+}
+
+.sd-year-tag .sd-tag-thread {
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sd-thread), transparent);
+  position: relative;
+}
+
+.sd-year-tag .sd-tag-thread::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--sd-thread);
+  background: var(--sd-fabric);
+}
+
+.dark .sd-year-tag .sd-tag-thread::after {
+  background: var(--sd-fabric-dark);
+}
+
+.sd-milestone-title {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
+}
+
+.sd-milestone-desc {
+  font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 400px;
+}
+
+.sd-milestone-count {
+  margin-top: 1.5rem;
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--sd-thread);
+  opacity: 0.08;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+/* ── PROGRESS BOBBIN (right side) ────────────── */
+.sd-progress-track {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.sd-progress-thread {
+  width: 2px;
+  height: 200px;
+  background: rgba(192, 57, 43, 0.12);
+  position: relative;
+  border-radius: 1px;
+}
+
+.sd-progress-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: var(--sd-thread);
+  border-radius: 1px;
+  transition: height 0.3s ease;
+}
+
+.sd-progress-bobbin {
+  width: 20px;
+  height: 20px;
+  margin-top: 8px;
+}
+
+.sd-progress-bobbin svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--sd-thread);
+  opacity: 0.6;
+}
+
+.sd-progress-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+}
+
+.sd-progress-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgba(192, 57, 43, 0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.sd-progress-dot.is-active {
+  background: var(--sd-thread);
+  border-color: var(--sd-thread);
+  box-shadow: 0 0 8px rgba(192, 57, 43, 0.4);
+}
+
+/* ── STORY SECTION (Embroidered) ─────────────── */
+.sd-story-section {
+  position: relative;
+  z-index: 2;
+  padding: 6rem 2rem;
+}
+
+.sd-story-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.sd-story-image-frame {
+  position: relative;
+}
+
+.sd-story-image-wrapper {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+}
+
+/* Embroidery border effect */
+.sd-story-image-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 3px dashed var(--sd-thread-gold);
+  border-radius: 12px;
+  z-index: 2;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.sd-story-image-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.sd-story-badge {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--sd-thread);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(192, 57, 43, 0.3);
+  z-index: 3;
+}
+
+.sd-story-badge-val {
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.sd-story-badge-label {
+  color: rgba(255,255,255,0.8);
+  font-size: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.sd-story-text-block .sd-tag-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--sd-thread);
+  margin-bottom: 1rem;
+}
+
+.sd-story-text-block .sd-tag-eyebrow::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sd-thread);
+}
+
+.sd-story-text-block h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.sd-story-text-block p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* ── STRENGTHS (Patchwork quilt) ─────────────── */
+.sd-strengths-section {
+  position: relative;
+  z-index: 2;
+  padding: 5rem 2rem;
+  background: var(--bg-secondary);
+}
+
+.sd-strengths-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sd-strengths-header h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.sd-strengths-header p {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.sd-patchwork {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: rgba(192, 57, 43, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.sd-patch {
+  background: var(--bg-primary);
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.sd-patch:hover {
+  background: var(--bg-secondary);
+}
+
+/* Stitch border on hover */
+.sd-patch::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 2px dashed transparent;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+  pointer-events: none;
+}
+
+.sd-patch:hover::after {
+  border-color: var(--sd-thread);
+}
+
+.sd-patch-icon {
+  width: 40px;
+  height: 40px;
+  color: var(--sd-thread);
+  margin-bottom: 1rem;
+}
+
+.sd-patch-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.sd-patch-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.sd-patch-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.sd-patch-number {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--sd-thread);
+  opacity: 0.06;
+  line-height: 1;
+}
+
+/* ── GALLERY (Fabric swatches) ───────────────── */
+.sd-gallery-section {
+  position: relative;
+  z-index: 2;
+  padding: 5rem 2rem;
+}
+
+.sd-gallery-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sd-gallery-header h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.sd-gallery-header p {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.sd-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.sd-swatch {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  cursor: pointer;
+}
+
+.sd-swatch:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.sd-swatch img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.sd-swatch:hover img {
+  transform: scale(1.06);
+}
+
+.sd-swatch-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%);
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sd-swatch:hover .sd-swatch-overlay {
+  opacity: 1;
+}
+
+.sd-swatch-caption {
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Pin detail on swatch corners */
+.sd-swatch::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sd-thread-gold);
+  box-shadow: 0 0 0 2px rgba(212, 167, 69, 0.3);
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sd-swatch:hover::before {
+  opacity: 1;
+}
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media (max-width: 768px) {
+  .sd-milestone-card {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .sd-milestone:nth-child(even) .sd-milestone-card {
+    flex-direction: column !important;
+  }
+
+  .sd-hoop {
+    width: 180px;
+    height: 180px;
+  }
+
+  .sd-milestone-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .sd-story-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .sd-progress-track {
+    display: none;
+  }
+
+  .sd-swatch-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sd-swatch:first-child {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .sd-hero {
+    min-height: 70vh;
+    padding: 3rem 1.5rem;
+  }
+
+  .sd-milestone {
+    padding: 4rem 1rem;
+  }
+
+  .sd-hoop {
+    width: 150px;
+    height: 150px;
+  }
+}

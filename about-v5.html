@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NK — Idea 4: The Loom (Auto-Scroll Cinema)</title>
+  <link rel="icon" type="image/jpeg" href="assets/img/logo/nk-logo.jpg">
+
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      corePlugins: { container: false },
+      theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'] } } },
+    };
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/about-journey-v5.css">
+</head>
+<body data-page="about-v5">
+  <div id="site-header"></div>
+  <div class="page-transition">
+    <main id="page-content"></main>
+    <div id="site-footer"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
+
+  <script src="assets/js/components/header.js" defer></script>
+  <script src="assets/js/components/footer.js" defer></script>
+  <script src="assets/js/components/about-journey-v5.js" defer></script>
+  <script src="assets/js/components/about-journey-v5-engine.js" defer></script>
+  <script src="assets/js/components/page-banner.js" defer></script>
+  <script src="assets/js/components/team-card.js" defer></script>
+  <script src="assets/js/components/global-bg.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+
+  <script defer>
+    document.addEventListener('DOMContentLoaded', async () => {
+      document.body.dataset.page = 'about';
+      const data = await loadContent();
+
+      const headerEl = document.getElementById('site-header');
+      const footerEl = document.getElementById('site-footer');
+      if (headerEl && typeof renderHeader === 'function') headerEl.innerHTML = renderHeader(data);
+      if (footerEl && typeof renderFooter === 'function') footerEl.innerHTML = renderFooter(data);
+
+      const contentEl = document.getElementById('page-content');
+      const about = data.about;
+      const team = data.team;
+
+      contentEl.innerHTML = `
+        ${typeof renderAboutJourneyV5 === 'function' ? renderAboutJourneyV5(about.journeySection) : ''}
+        ${typeof renderAboutStoryV5 === 'function' && about.story ? renderAboutStoryV5(about.story) : ''}
+        ${typeof renderFactoryGalleryV5 === 'function' && about.factoryGallery ? renderFactoryGalleryV5(about.factoryGallery) : ''}
+        ${typeof renderAboutStrengthsV5 === 'function' && about.strengths ? renderAboutStrengthsV5(about.strengths) : ''}
+        <section class="section" style="background: var(--bg-secondary); padding-top: 2rem;">
+          <div class="container">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+              ${about.stats.map(stat =>
+                '<div class="stat-card"><div class="stat-value">' + stat.value + '</div><div class="stat-label">' + stat.label + '</div></div>'
+              ).join('')}
+            </div>
+          </div>
+        </section>
+        ${team ? '<section class="team-section section"><div class="container"><div class="section-header" data-aos="fade-up"><h2 class="section-title">' + (team.sectionTitle || 'People and Capability') + '</h2><p class="section-subtitle">' + (team.sectionSubtitle || '') + '</p></div><div class="team-grid">' + (typeof renderTeamCards === 'function' ? renderTeamCards(team.leadership) : '') + '</div></div></section>' : ''}
+      `;
+
+      const header = document.querySelector('.site-header');
+      if (header) header.classList.remove('hero-overlay-mode');
+
+      initTheme();
+      initMobileMenu();
+      initLenis();
+      initAOS();
+      initGSAP();
+      if (typeof initGlobalBackground === 'function') initGlobalBackground();
+      if (typeof initAboutJourneyV5Animations === 'function') initAboutJourneyV5Animations();
+      if (typeof initFactoryGallery === 'function') initFactoryGallery();
+      if (typeof initStatCounters === 'function') initStatCounters();
+
+      document.body.classList.add('loaded');
+      const pt = document.querySelector('.page-transition');
+      if (pt) requestAnimationFrame(() => pt.classList.add('loaded'));
+    });
+  </script>
+</body>
+</html>

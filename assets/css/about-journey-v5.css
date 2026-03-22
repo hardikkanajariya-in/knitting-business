@@ -1,0 +1,895 @@
+/* ============================================
+   ABOUT-JOURNEY-V5.CSS — "The Loom"
+   Full-screen cinematic storytelling
+   Auto-scroll · Typewriter · Scene transitions
+   Shuttle animation · Warp & weft metaphor
+   ============================================ */
+
+/* ── CINEMA WRAPPER ──────────────────────────── */
+.loom-cinema {
+  position: relative;
+  overflow: hidden;
+  background: #0a0a0f;
+  color: #e8e6e1;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ── SCENE SYSTEM ────────────────────────────── */
+.loom-scene {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.loom-scene-content {
+  position: relative;
+  z-index: 5;
+  max-width: 1000px;
+  width: 100%;
+  padding: 4rem 2rem;
+}
+
+/* Scene backgrounds */
+.loom-scene::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Warp threads background (vertical lines) */
+.loom-warp-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.loom-warp-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.03), transparent);
+}
+
+/* Weft shuttle animation */
+.loom-shuttle-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 3;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.loom-scene.is-active .loom-shuttle-track {
+  opacity: 1;
+}
+
+.loom-shuttle {
+  position: absolute;
+  left: -60px;
+  top: -8px;
+  width: 60px;
+  height: 18px;
+}
+
+.loom-shuttle svg {
+  width: 100%;
+  height: 100%;
+}
+
+.loom-shuttle-thread {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(212, 167, 69, 0.4), transparent);
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+.loom-scene.is-active .loom-shuttle-thread {
+  animation: loomWeaveThread 3s ease-out forwards;
+}
+
+@keyframes loomWeaveThread {
+  to { transform: scaleX(1); }
+}
+
+/* ── CONTROL BAR ─────────────────────────────── */
+.loom-controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 2rem;
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  gap: 1rem;
+}
+
+.loom-ctrl-btn {
+  background: none;
+  border: none;
+  color: #e8e6e1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.loom-ctrl-btn:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+.loom-ctrl-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.loom-ctrl-progress {
+  flex: 1;
+  position: relative;
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.loom-ctrl-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #c0392b, #d4a745);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.15s linear;
+}
+
+.loom-ctrl-time {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.5);
+  flex-shrink: 0;
+  min-width: 80px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.loom-ctrl-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(212, 167, 69, 0.7);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.loom-ctrl-label .loom-rec-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c0392b;
+  animation: recBlink 1.5s ease-in-out infinite;
+}
+
+@keyframes recBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* ── OPENING SCENE ───────────────────────────── */
+.loom-opening {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at center, #12121a 0%, #0a0a0f 100%);
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.loom-opening-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: rgba(212, 167, 69, 0.6);
+  opacity: 0;
+}
+
+.loom-opening-title {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-align: center;
+  opacity: 0;
+  background: linear-gradient(135deg, #e8e6e1, #d4a745, #c0392b);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: loomTitleShimmer 6s ease-in-out infinite;
+}
+
+@keyframes loomTitleShimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.loom-opening-line {
+  width: 60px;
+  height: 1px;
+  background: rgba(212, 167, 69, 0.4);
+  opacity: 0;
+}
+
+.loom-opening-subtitle {
+  font-size: clamp(0.95rem, 1.3vw, 1.15rem);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  max-width: 500px;
+  line-height: 1.7;
+  opacity: 0;
+}
+
+/* Opening paragraph */
+.loom-opening-paragraph {
+  font-size: clamp(0.85rem, 1vw, 0.95rem);
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  max-width: 580px;
+  line-height: 1.8;
+  margin-top: 1rem;
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+/* Pulse rings behind opening */
+.loom-opening-rings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.loom-pulse-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 167, 69, 0.06);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: loomPulse 6s ease-out infinite;
+}
+
+.loom-pulse-ring-1 { width: 300px; height: 300px; animation-delay: 0s; }
+.loom-pulse-ring-2 { width: 500px; height: 500px; animation-delay: 2s; }
+.loom-pulse-ring-3 { width: 700px; height: 700px; animation-delay: 4s; }
+
+@keyframes loomPulse {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.4); }
+}
+
+/* Stats Strip */
+.loom-opening-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.loom-open-stat {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.loom-open-stat-value {
+  display: block;
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: #e8e6e1;
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+}
+
+.loom-open-stat-label {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(212, 167, 69, 0.5);
+}
+
+.loom-open-stat-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255,255,255,0.1);
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: center;
+}
+
+@media (max-width: 640px) {
+  .loom-opening-stats {
+    gap: 1rem;
+  }
+  .loom-open-stat-divider {
+    display: none;
+  }
+  .loom-opening-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── MILESTONE SCENES ────────────────────────── */
+.loom-ms-scene {
+  background: #0a0a0f;
+  position: relative;
+}
+
+/* Unique color accent per scene */
+.loom-ms-scene[data-scene-idx="0"]::before { background: radial-gradient(ellipse at 30% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 60%); }
+.loom-ms-scene[data-scene-idx="1"]::before { background: radial-gradient(ellipse at 70% 40%, rgba(139, 92, 246, 0.06) 0%, transparent 60%); }
+.loom-ms-scene[data-scene-idx="2"]::before { background: radial-gradient(ellipse at 40% 60%, rgba(16, 185, 129, 0.06) 0%, transparent 60%); }
+.loom-ms-scene[data-scene-idx="3"]::before { background: radial-gradient(ellipse at 60% 30%, rgba(245, 158, 11, 0.06) 0%, transparent 60%); }
+.loom-ms-scene[data-scene-idx="4"]::before { background: radial-gradient(ellipse at 50% 50%, rgba(239, 68, 68, 0.06) 0%, transparent 60%); }
+
+.loom-ms-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.loom-ms-scene:nth-child(even) .loom-ms-layout {
+  direction: rtl;
+}
+
+.loom-ms-scene:nth-child(even) .loom-ms-layout > * {
+  direction: ltr;
+}
+
+/* Visual side (Lottie + orbit) */
+.loom-ms-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.loom-ms-lottie-frame {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Concentric rings */
+.loom-ms-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.loom-ms-ring-1 { inset: 0; }
+.loom-ms-ring-2 { inset: -20px; border-style: dashed; opacity: 0.5; }
+.loom-ms-ring-3 { inset: -40px; opacity: 0.3; }
+
+.loom-ms-lottie-player {
+  width: 160px;
+  height: 160px;
+  position: relative;
+  z-index: 3;
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+.loom-ms-scene.is-active .loom-ms-lottie-player {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.8s 0.4s ease, transform 0.8s 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Orbiting particle */
+.loom-ms-orbiter {
+  position: absolute;
+  inset: -20px;
+  animation: loomOrbit 12s linear infinite;
+}
+
+.loom-ms-orbiter::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(212, 167, 69, 0.5);
+  box-shadow: 0 0 10px rgba(212, 167, 69, 0.3);
+  transform: translateX(-50%);
+}
+
+@keyframes loomOrbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Text side */
+.loom-ms-text {
+  padding: 1rem 0;
+}
+
+.loom-ms-year {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 0.3rem 1rem;
+  background: rgba(192, 57, 43, 0.12);
+  color: #e76f51;
+  border: 1px solid rgba(192, 57, 43, 0.2);
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.loom-ms-scene.is-active .loom-ms-year {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.6s 0.2s ease;
+}
+
+.loom-ms-title {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  color: #f0ece4;
+}
+
+/* Typewriter effect */
+.loom-ms-title .loom-typewriter {
+  display: inline;
+  border-right: 2px solid rgba(212, 167, 69, 0.6);
+  animation: loomCaret 0.8s step-end infinite;
+}
+
+.loom-ms-title .loom-typewriter.done {
+  border-right-color: transparent;
+  animation: none;
+}
+
+@keyframes loomCaret {
+  50% { border-right-color: transparent; }
+}
+
+.loom-ms-desc {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.8;
+  max-width: 420px;
+  opacity: 0;
+  transform: translateY(15px);
+}
+
+.loom-ms-scene.is-active .loom-ms-desc {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.8s 1.2s ease;
+}
+
+.loom-ms-counter {
+  margin-top: 2rem;
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.03);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+/* ── STORY SCENE ─────────────────────────────── */
+.loom-story-scene {
+  background: #0d0d14;
+}
+
+.loom-story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.loom-story-img-wrap {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+}
+
+.loom-story-img-wrap img {
+  width: 100%;
+  display: block;
+}
+
+/* Film grain overlay */
+.loom-story-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    transparent 0px, rgba(0,0,0,0.02) 1px, transparent 2px
+  );
+  pointer-events: none;
+}
+
+.loom-story-stat {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(192, 57, 43, 0.9);
+  backdrop-filter: blur(8px);
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+}
+
+.loom-story-stat-val {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+}
+
+.loom-story-stat-lbl {
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.7);
+  font-weight: 700;
+}
+
+.loom-story-text-block .loom-story-eyebrow {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #d4a745;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.loom-story-text-block .loom-story-eyebrow::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: #d4a745;
+}
+
+.loom-story-text-block h2 {
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  color: #f0ece4;
+}
+
+.loom-story-text-block p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* ── STRENGTHS (Cinema cards) ────────────────── */
+.loom-strengths-scene {
+  background: #080810;
+  padding: 6rem 2rem;
+}
+
+.loom-strengths-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.loom-strengths-header h2 {
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: #f0ece4;
+  margin-bottom: 0.75rem;
+}
+
+.loom-strengths-header p {
+  color: rgba(255,255,255,0.4);
+  font-size: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.loom-strengths-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  max-width: 1100px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.loom-str-card {
+  background: rgba(255,255,255,0.02);
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: background 0.4s ease;
+  border: 1px solid transparent;
+}
+
+.loom-str-card:hover {
+  background: rgba(255,255,255,0.05);
+  border-color: rgba(212, 167, 69, 0.15);
+}
+
+.loom-str-card-icon {
+  width: 36px;
+  height: 36px;
+  color: #d4a745;
+  margin-bottom: 1.2rem;
+}
+
+.loom-str-card-icon svg { width: 100%; height: 100%; }
+
+.loom-str-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f0ece4;
+  margin-bottom: 0.5rem;
+}
+
+.loom-str-card-desc {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.6;
+}
+
+.loom-str-card-num {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.02);
+  line-height: 1;
+}
+
+/* ── GALLERY (Cinema strip) ──────────────────── */
+.loom-gallery-scene {
+  background: #0a0a0f;
+  padding: 5rem 2rem;
+}
+
+.loom-gallery-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.loom-gallery-header h2 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 800;
+  color: #f0ece4;
+  margin-bottom: 0.5rem;
+}
+
+.loom-gallery-header p {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.95rem;
+}
+
+.loom-filmstrip {
+  display: flex;
+  gap: 1rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 1rem;
+}
+
+.loom-filmstrip::-webkit-scrollbar { display: none; }
+
+.loom-film-frame {
+  position: relative;
+  flex: 0 0 280px;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  border: 2px solid rgba(255,255,255,0.06);
+}
+
+.loom-film-frame:first-child {
+  flex: 0 0 420px;
+}
+
+.loom-film-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.loom-film-frame:hover img {
+  transform: scale(1.05);
+}
+
+/* Film perforations */
+.loom-film-frame::before,
+.loom-film-frame::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 60%;
+  z-index: 2;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 6px,
+    rgba(0,0,0,0.4) 6px,
+    rgba(0,0,0,0.4) 10px,
+    transparent 10px,
+    transparent 16px
+  );
+}
+
+.loom-film-frame::before { left: 4px; }
+.loom-film-frame::after { right: 4px; }
+
+.loom-film-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 2rem 1rem 0.75rem;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.loom-film-frame:hover .loom-film-caption {
+  opacity: 1;
+}
+
+/* ── CLOSING SCENE ───────────────────────────── */
+.loom-closing {
+  min-height: 60vh;
+  background: radial-gradient(ellipse at center, #12121a 0%, #0a0a0f 100%);
+  text-align: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.loom-closing-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #f0ece4;
+  opacity: 0;
+}
+
+.loom-closing-subtitle {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.4);
+  max-width: 500px;
+  line-height: 1.7;
+  opacity: 0;
+}
+
+.loom-closing-cta {
+  margin-top: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(135deg, #c0392b, #d4a745);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transition: transform 0.3s ease;
+}
+
+.loom-closing-cta:hover {
+  transform: translateY(-2px);
+}
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media (max-width: 768px) {
+  .loom-ms-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .loom-ms-scene:nth-child(even) .loom-ms-layout {
+    direction: ltr;
+  }
+
+  .loom-ms-desc {
+    margin: 0 auto;
+  }
+
+  .loom-story-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .loom-controls {
+    padding: 0.5rem 1rem;
+  }
+
+  .loom-ctrl-label {
+    display: none;
+  }
+
+  .loom-film-frame {
+    flex: 0 0 240px;
+  }
+  .loom-film-frame:first-child {
+    flex: 0 0 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loom-ms-lottie-frame {
+    width: 180px;
+    height: 180px;
+  }
+
+  .loom-ms-lottie-player {
+    width: 120px;
+    height: 120px;
+  }
+}
