@@ -149,7 +149,6 @@
   background: linear-gradient(90deg, #1C6DD0, #4BAF4F);
   border-radius: 2px;
   width: 0%;
-  transition: width 0.15s linear;
 }
 
 .loom-ctrl-time {

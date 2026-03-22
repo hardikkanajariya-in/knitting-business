@@ -18,6 +18,7 @@ function initAboutJourneyV5Animations() {
   let autoScrollTween = null;
   let sceneTimer = null;
   let isPaused = false;
+  let progressTween = null;
   const SCENE_DURATION = 4500;
 
   
@@ -68,7 +69,20 @@ function initAboutJourneyV5Animations() {
 
     
     if (progressFill) {
-      progressFill.style.width = ((idx + 1) / totalScenes * 100) + '%';
+      const startPct = idx / totalScenes * 100;
+      const endPct = (idx + 1) / totalScenes * 100;
+      if (progressTween) progressTween.kill();
+      progressFill.style.width = startPct + '%';
+      const hold = scene.classList.contains('loom-opening') ? 7000 : SCENE_DURATION;
+      if (isAutoPlaying && !isPaused) {
+        progressTween = gsap.to(progressFill, {
+          width: endPct + '%',
+          duration: hold / 1000,
+          ease: 'none',
+        });
+      } else {
+        progressFill.style.width = endPct + '%';
+      }
     }
 
     const scene = scenes[idx];
@@ -183,6 +197,11 @@ function initAboutJourneyV5Animations() {
     isAutoPlaying = true;
     isPaused = false;
     if (playBtn) playBtn.innerHTML = LOOM_ICONS.pause;
+    if (progressTween && progressTween.paused()) {
+      progressTween.resume();
+    } else {
+      activateScene(currentSceneIdx);
+    }
     scrollToScene(currentSceneIdx);
     scheduleNext();
   }
@@ -192,6 +211,7 @@ function initAboutJourneyV5Animations() {
     isPaused = true;
     clearTimeout(sceneTimer);
     if (autoScrollTween) autoScrollTween.kill();
+    if (progressTween) progressTween.pause();
     if (playBtn) playBtn.innerHTML = LOOM_ICONS.play;
   }
 
