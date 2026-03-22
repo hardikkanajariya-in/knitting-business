@@ -16,6 +16,31 @@
   --nc-card-border:   rgba(10,42,67,0.08);
   --nc-divider:       rgba(10,42,67,0.10);
 
+  --nc-hero-bg:       #F8FAFE;
+  --nc-hero-text:     #0A2A43;
+  --nc-hero-text-sub: rgba(10,42,67,0.5);
+  --nc-hero-text-muted: rgba(10,42,67,0.35);
+  --nc-hero-line:     rgba(10,42,67,0.08);
+  --nc-hero-dot:      rgba(10,42,67,0.06);
+  --nc-hero-ring:     rgba(10,42,67,0.06);
+  --nc-hero-ring-inner: rgba(10,42,67,0.03);
+  --nc-hero-anno:     rgba(10,42,67,0.15);
+  --nc-hero-anno-border: rgba(10,42,67,0.08);
+  --nc-hero-cta-border: rgba(10,42,67,0.2);
+  --nc-hero-cta-text: #0A2A43;
+  --nc-hero-mouse:    rgba(10,42,67,0.25);
+  --nc-hero-mouse-dot: rgba(10,42,67,0.5);
+
+  --nc-cap-bg:              #F8FAFE;
+  --nc-cap-text:            #0A2A43;
+  --nc-cap-text-sub:        rgba(10,42,67,0.5);
+  --nc-cap-text-muted:      rgba(10,42,67,0.45);
+  --nc-cap-card-bg:         rgba(10,42,67,0.03);
+  --nc-cap-card-border:     rgba(10,42,67,0.06);
+  --nc-cap-card-hover-bg:   rgba(10,42,67,0.05);
+  --nc-cap-card-hover-border: rgba(28,109,208,0.3);
+  --nc-cap-gauge-bg:        rgba(10,42,67,0.08);
+
   
   --nc-shadow-sm:     0 1px 3px rgba(10,42,67,0.06), 0 1px 2px rgba(10,42,67,0.04);
   --nc-shadow-md:     0 4px 12px rgba(10,42,67,0.08), 0 2px 4px rgba(10,42,67,0.04);
@@ -47,6 +72,31 @@
   --nc-shadow-lg:     0 12px 32px rgba(0,0,0,0.30);
   --nc-shadow-xl:     0 20px 48px rgba(0,0,0,0.35);
   --nc-shadow-lift:   0 16px 40px rgba(0,0,0,0.35);
+
+  --nc-hero-bg:       #0A2A43;
+  --nc-hero-text:     #FFFFFF;
+  --nc-hero-text-sub: rgba(255,255,255,0.5);
+  --nc-hero-text-muted: rgba(255,255,255,0.35);
+  --nc-hero-line:     rgba(255,255,255,0.08);
+  --nc-hero-dot:      rgba(255,255,255,0.04);
+  --nc-hero-ring:     rgba(255,255,255,0.06);
+  --nc-hero-ring-inner: rgba(255,255,255,0.03);
+  --nc-hero-anno:     rgba(255,255,255,0.18);
+  --nc-hero-anno-border: rgba(255,255,255,0.06);
+  --nc-hero-cta-border: rgba(255,255,255,0.2);
+  --nc-hero-cta-text: #FFFFFF;
+  --nc-hero-mouse:    rgba(255,255,255,0.25);
+  --nc-hero-mouse-dot: rgba(255,255,255,0.6);
+
+  --nc-cap-bg:              #0A2A43;
+  --nc-cap-text:            #FFFFFF;
+  --nc-cap-text-sub:        rgba(255,255,255,0.5);
+  --nc-cap-text-muted:      rgba(255,255,255,0.45);
+  --nc-cap-card-bg:         rgba(255,255,255,0.04);
+  --nc-cap-card-border:     rgba(255,255,255,0.06);
+  --nc-cap-card-hover-bg:   rgba(255,255,255,0.06);
+  --nc-cap-card-hover-border: rgba(28,109,208,0.3);
+  --nc-cap-gauge-bg:        rgba(255,255,255,0.08);
 }
 
 .nc-layer-indicator {
@@ -124,7 +174,7 @@
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: var(--nc-deep);
+  background: var(--nc-hero-bg);
   overflow: hidden;
   padding: 8rem 6rem 5rem;
 }
@@ -133,7 +183,7 @@
   content: '';
   position: absolute;
   inset: -40px;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-image: radial-gradient(circle, var(--nc-hero-dot) 1px, transparent 1px);
   background-size: 40px 40px;
   animation: ncDotDrift 30s linear infinite;
   z-index: 0;
@@ -145,7 +195,7 @@
   left: 0; right: 0;
   top: 50%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05) 20%, rgba(255,255,255,0.05) 80%, transparent);
+  background: linear-gradient(90deg, transparent, var(--nc-hero-line) 20%, var(--nc-hero-line) 80%, transparent);
   z-index: 0;
 }
 
@@ -161,7 +211,7 @@
   transform: translateY(-50%);
   width: 520px;
   height: 520px;
-  border: 1px dashed rgba(255,255,255,0.06);
+  border: 1px dashed var(--nc-hero-ring);
   border-radius: 50%;
   animation: ncRingSpin 60s linear infinite;
   z-index: 0;
@@ -172,7 +222,7 @@
   height: 360px;
   right: calc(-6% + 80px);
   border-style: solid;
-  border-color: rgba(255,255,255,0.03);
+  border-color: var(--nc-hero-ring-inner);
   animation-direction: reverse;
   animation-duration: 45s;
 }
@@ -215,9 +265,9 @@
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.18);
+  color: var(--nc-hero-anno);
   padding: 0.35rem 0.75rem;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid var(--nc-hero-anno-border);
 }
 
 .nc-hero-anno--1 { top: 10rem; right: 9rem; }
@@ -229,7 +279,7 @@
   z-index: 2;
   max-width: 52rem;
   text-align: left;
-  color: #FFFFFF;
+  color: var(--nc-hero-text);
 }
 
 .nc-hero-eyebrow {
@@ -240,7 +290,7 @@
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
+  color: var(--nc-hero-text-muted);
   margin-bottom: 2.5rem;
 }
 
@@ -263,7 +313,7 @@
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 0.95;
-  color: #FFFFFF;
+  color: var(--nc-hero-text);
   margin-bottom: 2rem;
 }
 
@@ -290,7 +340,7 @@
 .nc-hero-desc p {
   font-size: 1.05rem;
   font-weight: 400;
-  color: rgba(255,255,255,0.5);
+  color: var(--nc-hero-text-sub);
   line-height: 1.7;
   margin: 0;
   border-left: 2px solid var(--nc-accent);
@@ -306,9 +356,9 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: var(--nc-hero-cta-text);
   background: transparent;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid var(--nc-hero-cta-border);
   text-decoration: none;
   transition: all 0.3s ease;
   margin-bottom: 3.5rem;
@@ -326,14 +376,14 @@
   display: flex;
   max-width: 52rem;
   padding-top: 2.5rem;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid var(--nc-hero-line);
 }
 
 .nc-hero-stat {
   flex: 1;
   text-align: left;
   padding: 0 1.5rem;
-  border-left: 1px solid rgba(255,255,255,0.08);
+  border-left: 1px solid var(--nc-hero-line);
 }
 
 .nc-hero-stat:first-child {
@@ -344,7 +394,7 @@
 .nc-hero-stat-value {
   font-size: clamp(1.8rem, 3.5vw, 2.8rem);
   font-weight: 800;
-  color: #FFFFFF;
+  color: var(--nc-hero-text);
   letter-spacing: -0.02em;
   line-height: 1.1;
   white-space: nowrap;
@@ -355,7 +405,7 @@
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  color: var(--nc-hero-text-muted);
   margin-top: 0.3rem;
 }
 
@@ -373,7 +423,7 @@
 .nc-hero-mouse {
   width: 26px;
   height: 42px;
-  border: 2px solid rgba(255,255,255,0.25);
+  border: 2px solid var(--nc-hero-mouse);
   border-radius: 13px;
   position: relative;
 }
@@ -381,7 +431,7 @@
 .nc-hero-mouse-dot {
   width: 3px;
   height: 7px;
-  background: rgba(255,255,255,0.6);
+  background: var(--nc-hero-mouse-dot);
   border-radius: 2px;
   position: absolute;
   top: 8px;
@@ -401,7 +451,7 @@
   font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.25);
+  color: var(--nc-hero-mouse);
 }
 
 .nc-process {
@@ -733,8 +783,8 @@
 
 .nc-capabilities {
   padding: var(--nc-section-pad);
-  background: var(--nc-deep);
-  color: var(--nc-text-on-dark);
+  background: var(--nc-cap-bg);
+  color: var(--nc-cap-text-sub);
 }
 
 .nc-capabilities-header {
@@ -745,14 +795,14 @@
 .nc-capabilities-header h2 {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
-  color: #FFFFFF;
+  color: var(--nc-cap-text);
   letter-spacing: -0.02em;
   margin-bottom: 0.75rem;
 }
 
 .nc-capabilities-header p {
   font-size: 1rem;
-  color: rgba(255,255,255,0.5);
+  color: var(--nc-cap-text-sub);
   max-width: 36rem;
   margin: 0 auto;
   line-height: 1.6;
@@ -767,16 +817,16 @@
 }
 
 .nc-cap-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.06);
+  background: var(--nc-cap-card-bg);
+  border: 1px solid var(--nc-cap-card-border);
   border-radius: var(--nc-radius-lg);
   padding: 2rem;
   transition: border-color 0.3s ease, background 0.3s ease;
 }
 
 .nc-cap-card:hover {
-  border-color: rgba(28,109,208,0.3);
-  background: rgba(255,255,255,0.06);
+  border-color: var(--nc-cap-card-hover-border);
+  background: var(--nc-cap-card-hover-bg);
 }
 
 .nc-cap-icon {
@@ -796,14 +846,14 @@
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: var(--nc-cap-text-muted);
   margin-bottom: 0.5rem;
 }
 
 .nc-cap-value {
   font-size: 1.8rem;
   font-weight: 800;
-  color: #FFFFFF;
+  color: var(--nc-cap-text);
   font-family: 'Inter', monospace;
   letter-spacing: -0.02em;
   line-height: 1.2;
@@ -812,14 +862,14 @@
 
 .nc-cap-unit {
   font-size: 0.78rem;
-  color: rgba(255,255,255,0.4);
+  color: var(--nc-cap-text-muted);
   line-height: 1.4;
   margin-bottom: 1.25rem;
 }
 
 .nc-cap-gauge {
   height: 3px;
-  background: rgba(255,255,255,0.08);
+  background: var(--nc-cap-gauge-bg);
   border-radius: 2px;
   overflow: hidden;
 }
@@ -1137,7 +1187,7 @@
     flex: 0 0 50%;
     padding: 0.75rem 1rem;
     border-left: none;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid var(--nc-hero-line);
   }
 
   .nc-hero-stat:first-child { padding-left: 1rem; }
@@ -1199,7 +1249,7 @@
     flex: none;
     padding: 0.6rem 0;
     border-left: none;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid var(--nc-hero-line);
   }
 
   .nc-hero-stat:first-child { padding-left: 0; }
