@@ -101,6 +101,36 @@ function renderAboutJourneyV4(section) {
                 <feMergeNode in="SourceGraphic"/>
               </feMerge>
             </filter>
+            <!-- Yarn ball gradients -->
+            <radialGradient id="yarnBallGrad" cx="38%" cy="32%" r="58%">
+              <stop offset="0%" stop-color="#6db5f0"/>
+              <stop offset="20%" stop-color="#4a9de8"/>
+              <stop offset="45%" stop-color="#2d7fd4"/>
+              <stop offset="70%" stop-color="#1c6dd0"/>
+              <stop offset="90%" stop-color="#155bb5"/>
+              <stop offset="100%" stop-color="#0f4a96"/>
+            </radialGradient>
+            <radialGradient id="yarnBallDeep" cx="65%" cy="68%" r="45%">
+              <stop offset="0%" stop-color="rgba(10,40,80,0.3)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+            <radialGradient id="yarnBallShadow" cx="50%" cy="95%" r="50%">
+              <stop offset="0%" stop-color="rgba(0,0,0,0.25)"/>
+              <stop offset="60%" stop-color="rgba(0,0,0,0.08)"/>
+              <stop offset="100%" stop-color="transparent"/>
+            </radialGradient>
+            <!-- Yarn fiber texture filter -->
+            <filter id="yarnFiber" x="-5%" y="-5%" width="110%" height="110%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.8 0.3" numOctaves="5" seed="7" result="fb"/>
+              <feDisplacementMap in="SourceGraphic" in2="fb" scale="0.8" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+            <filter id="yarnSoftShadow" x="-30%" y="-10%" width="160%" height="160%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+              <feOffset dx="2" dy="5" result="off"/>
+              <feFlood flood-color="rgba(0,0,0,0.22)"/>
+              <feComposite in2="off" operator="in" result="sh"/>
+              <feMerge><feMergeNode in="sh"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
           </defs>
           <!-- Thread shadow (bottom layer) -->
           <path class="sd-thread-shadow" id="sd-thread-shadow" d="" />
@@ -112,6 +142,53 @@ function renderAboutJourneyV4(section) {
           <path class="sd-thread-twist" id="sd-thread-twist" d="" />
           <!-- Thread specular highlight -->
           <path class="sd-thread-highlight" id="sd-thread-highlight" d="" />
+
+          <!-- Yarn ball at thread origin -->
+          <g class="sd-yarn-ball" id="sd-yarn-ball" filter="url(#yarnSoftShadow)">
+            <!-- Ground contact shadow -->
+            <ellipse cx="1" cy="30" rx="18" ry="4" fill="rgba(0,0,0,0.10)"/>
+
+            <!-- Clip to keep wraps inside circle -->
+            <clipPath id="yarnClip"><circle cx="0" cy="0" r="24"/></clipPath>
+
+            <!-- Base sphere -->
+            <circle cx="0" cy="0" r="24" fill="url(#yarnBallGrad)"/>
+
+            <!-- Yarn wraps clipped to sphere -->
+            <g clip-path="url(#yarnClip)">
+              <!-- Diagonal wraps (top-left to bottom-right) -->
+              <path d="M -28,-20 Q 0,-32 28,-12" fill="none" stroke="#1a5faa" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+              <path d="M -28,-12 Q 0,-26 28,-4" fill="none" stroke="#2070be" stroke-width="5" stroke-linecap="round" opacity="0.50"/>
+              <path d="M -28,-4 Q 0,-18 28,4" fill="none" stroke="#1a5faa" stroke-width="5" stroke-linecap="round" opacity="0.45"/>
+              <path d="M -28,4 Q 0,-10 28,12" fill="none" stroke="#2070be" stroke-width="5" stroke-linecap="round" opacity="0.40"/>
+              <path d="M -28,12 Q 0,-2 28,20" fill="none" stroke="#1a5faa" stroke-width="5" stroke-linecap="round" opacity="0.35"/>
+              <path d="M -28,20 Q 0,6 28,28" fill="none" stroke="#2070be" stroke-width="4.5" stroke-linecap="round" opacity="0.30"/>
+
+              <!-- Cross wraps (top-right to bottom-left) for woven look -->
+              <path d="M 28,-20 Q 0,-32 -28,-12" fill="none" stroke="#3585d0" stroke-width="4.5" stroke-linecap="round" opacity="0.40"/>
+              <path d="M 28,-10 Q 0,-24 -28,-2" fill="none" stroke="#2a78c4" stroke-width="4.5" stroke-linecap="round" opacity="0.35"/>
+              <path d="M 28,0 Q 0,-14 -28,8" fill="none" stroke="#3585d0" stroke-width="4.5" stroke-linecap="round" opacity="0.30"/>
+              <path d="M 28,10 Q 0,-4 -28,18" fill="none" stroke="#2a78c4" stroke-width="4" stroke-linecap="round" opacity="0.28"/>
+              <path d="M 28,20 Q 0,6 -28,26" fill="none" stroke="#3585d0" stroke-width="4" stroke-linecap="round" opacity="0.22"/>
+
+              <!-- Horizontal equator wraps -->
+              <path d="M -26,-2 Q -14,-6 0,-4 Q 14,-2 26,0" fill="none" stroke="#1860aa" stroke-width="4" stroke-linecap="round" opacity="0.30"/>
+              <path d="M -26,6 Q -14,2 0,4 Q 14,6 26,8" fill="none" stroke="#1860aa" stroke-width="3.5" stroke-linecap="round" opacity="0.25"/>
+            </g>
+
+            <!-- Depth overlay (darken lower-right) -->
+            <circle cx="0" cy="0" r="24" fill="url(#yarnBallDeep)"/>
+
+            <!-- Specular highlight -->
+            <ellipse cx="-7" cy="-10" rx="9" ry="6" fill="rgba(255,255,255,0.22)" transform="rotate(-25 -7 -10)"/>
+            <ellipse cx="-5" cy="-12" rx="4" ry="2.5" fill="rgba(255,255,255,0.18)" transform="rotate(-25 -5 -12)"/>
+
+            <!-- Thread unwinding from ball -->
+            <path d="M 18,-14 Q 26,-18 28,-10 Q 28,0 22,8 Q 16,16 8,24" fill="none" stroke="#2d7fd4" stroke-width="3.2" stroke-linecap="round" opacity="0.8"/>
+            <!-- Thread tail connecting to main stitching line -->
+            <path class="sd-yarn-tail" id="sd-yarn-tail" d="M 8,24 Q 4,28 0,32 Q -2,35 0,38" fill="none" stroke="var(--sd-thread)" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+          </g>
+
           <!-- Needle group -->
           <g class="sd-needle-group" id="sd-needle-group" filter="url(#threadDepth)">
             <!-- Needle body -->
@@ -194,7 +271,6 @@ function renderAboutJourneyV4(section) {
             </div>
           </div>
 
-          <div class="sd-hero-spool">${spoolSVG}</div>
         </div>
       </div>
 
@@ -220,6 +296,7 @@ function initAboutJourneyV4Animations() {
   const threadShadow = document.getElementById('sd-thread-shadow');
   const threadTwist = document.getElementById('sd-thread-twist');
   const needleGroup = document.getElementById('sd-needle-group');
+  const yarnBall = document.getElementById('sd-yarn-ball');
   const progressFill = document.getElementById('sd-progress-fill');
   const stitchMarks = document.getElementById('sd-stitch-marks');
   const scrollCue = document.getElementById('sd-scroll-cue');
@@ -308,6 +385,19 @@ function initAboutJourneyV4Animations() {
       stitch.style.setProperty('--stitch-angle', angle + 'deg');
       stitch.dataset.dist = String(t);
       stitchMarks.appendChild(stitch);
+    }
+
+    // Position yarn ball at thread origin
+    if (yarnBall && points.length > 0) {
+      const startX = points[0].x;
+      const startY = points[0].y;
+      // Place ball so its tail end (y=38) sits exactly at the thread start point
+      yarnBall.setAttribute('transform', `translate(${startX}, ${startY - 38})`);
+      // Tail already connects in SVG from ball body down to (0,38)
+      const yarnTail = document.getElementById('sd-yarn-tail');
+      if (yarnTail) {
+        yarnTail.setAttribute('d', `M 12,26 Q 6,30 2,34 Q -1,37 0,38`);
+      }
     }
 
     return pathLen;
@@ -399,6 +489,15 @@ function initAboutJourneyV4Animations() {
           if (threadHighlight) gsap.set(threadHighlight, { strokeDashoffset: offset });
           if (threadShadow) gsap.set(threadShadow, { strokeDashoffset: offset });
           if (threadTwist) gsap.set(threadTwist, { strokeDashoffset: offset });
+
+          // Show/hide yarn ball at thread origin
+          if (yarnBall) {
+            if (revealProgress > 0.001) {
+              yarnBall.classList.add('is-visible');
+            } else {
+              yarnBall.classList.remove('is-visible');
+            }
+          }
 
           
           const pt = threadPath.getPointAtLength(revealProgress * pathLength);
