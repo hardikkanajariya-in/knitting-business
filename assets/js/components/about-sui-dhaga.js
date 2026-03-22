@@ -237,30 +237,6 @@ function renderAboutJourneyV4(section) {
           <p class="sd-hero-subtitle">${section.storyTitle || ''}</p>
           <p class="sd-hero-paragraph">${(section.paragraphs && section.paragraphs[0]) || 'From a single knitting unit in Halol to an integrated textile powerhouse — our journey is stitched with dedication, innovation, and relentless quality.'}</p>
 
-          
-          <div class="sd-hero-stats">
-            <div class="sd-stat">
-              <span class="sd-stat-value" data-count="125">125 MT</span>
-              <span class="sd-stat-label">Monthly Capacity</span>
-              <div class="sd-stat-stitch"></div>
-            </div>
-            <div class="sd-stat">
-              <span class="sd-stat-value">35,000+</span>
-              <span class="sd-stat-label">Sq. Ft. Facility</span>
-              <div class="sd-stat-stitch"></div>
-            </div>
-            <div class="sd-stat">
-              <span class="sd-stat-value sd-stat-accent">Zero</span>
-              <span class="sd-stat-label">Discharge Certified</span>
-              <div class="sd-stat-stitch"></div>
-            </div>
-            <div class="sd-stat">
-              <span class="sd-stat-value">2022</span>
-              <span class="sd-stat-label">Interplast Partnership</span>
-              <div class="sd-stat-stitch"></div>
-            </div>
-          </div>
-
         </div>
       </div>
 
