@@ -1,46 +1,85 @@
 /* ============================================================
-   NC — "The Coating Press"  Animation Engine
+   NC - "The Cross-Section"  Animation Engine
    GSAP + ScrollTrigger powered animations
    ============================================================ */
 
 /* ----------------------------------------------------------
-   Flow Line — scroll-driven stroke animation
+   Layer Indicator - scroll-driven sidebar tracking
    ---------------------------------------------------------- */
-function _initNCFlowLine() {
-  const flowLine = document.querySelector('[data-nc-flow-line]');
-  if (!flowLine) return;
+function _initNCLayerIndicator() {
+  const dots = document.querySelectorAll('.nc-layer-dot[data-nc-layer]');
+  const progressBar = document.querySelector('.nc-layer-indicator-progress');
+  if (!dots.length) return;
 
-  const processSection = document.querySelector('.nc-process');
-  if (!processSection) return;
-
-  /* Use GSAP to animate the stroke as a proxy: control the line's y2 */
-  const totalH = processSection.scrollHeight;
-  flowLine.setAttribute('y2', '0%');
-
-  gsap.to(flowLine, {
-    attr: { y2: '100%' },
-    ease: 'none',
-    scrollTrigger: {
-      trigger: processSection,
-      start: 'top 80%',
-      end: 'bottom 20%',
-      scrub: 0.5
-    }
+  /* Click to scroll */
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      const targetId = dot.dataset.ncLayer;
+      const target = document.getElementById(targetId);
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
   });
 
-  /* Glow pulse on the flow line */
-  gsap.to(flowLine, {
-    filter: 'drop-shadow(0 0 10px var(--nc-flow-glow))',
-    duration: 1.5,
-    yoyo: true,
-    repeat: -1,
-    ease: 'sine.inOut'
+  /* Scroll tracking */
+  const sections = Array.from(dots).map(d => document.getElementById(d.dataset.ncLayer)).filter(Boolean);
+  if (!sections.length) return;
+
+  ScrollTrigger.create({
+    trigger: document.body,
+    start: 'top top',
+    end: 'bottom bottom',
+    onUpdate: (self) => {
+      if (progressBar) progressBar.style.height = (self.progress * 100) + '%';
+
+      const scrollY = window.scrollY + window.innerHeight * 0.4;
+      let activeIdx = 0;
+
+      sections.forEach((sec, i) => {
+        if (sec.offsetTop <= scrollY) activeIdx = i;
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === activeIdx);
+      });
+    }
   });
 }
 
 
 /* ----------------------------------------------------------
-   Process Stage Gauges — fill on scroll
+   Precision Line - fill on scroll through process section
+   ---------------------------------------------------------- */
+function _initNCPrecisionLine() {
+  const fill = document.querySelector('[data-nc-precision-fill]');
+  const processSection = document.querySelector('.nc-process');
+  if (!fill || !processSection) return;
+
+  gsap.to(fill, {
+    height: '100%',
+    ease: 'none',
+    scrollTrigger: {
+      trigger: processSection,
+      start: 'top 70%',
+      end: 'bottom 30%',
+      scrub: 0.3
+    }
+  });
+
+  /* Activate stages as line passes them */
+  const stages = processSection.querySelectorAll('.nc-stage');
+  stages.forEach(stage => {
+    ScrollTrigger.create({
+      trigger: stage,
+      start: 'top 60%',
+      end: 'bottom 40%',
+      toggleClass: { targets: stage, className: 'nc-stage-active' }
+    });
+  });
+}
+
+
+/* ----------------------------------------------------------
+   Process Stage Gauges - fill on scroll
    ---------------------------------------------------------- */
 function _initNCGauges() {
   const gaugeBars = document.querySelectorAll('.nc-gauge-bar[data-fill]');
@@ -50,16 +89,14 @@ function _initNCGauges() {
       trigger: bar,
       start: 'top 85%',
       once: true,
-      onEnter: () => {
-        bar.style.width = fill + '%';
-      }
+      onEnter: () => { bar.style.width = fill + '%'; }
     });
   });
 }
 
 
 /* ----------------------------------------------------------
-   Capability Gauges — fill on scroll
+   Capability Gauges - fill on scroll
    ---------------------------------------------------------- */
 function _initNCCapGauges() {
   const capBars = document.querySelectorAll('.nc-cap-gauge-bar[data-fill]');
@@ -69,63 +106,30 @@ function _initNCCapGauges() {
       trigger: bar,
       start: 'top 85%',
       once: true,
-      onEnter: () => {
-        bar.style.width = fill + '%';
-      }
+      onEnter: () => { bar.style.width = fill + '%'; }
     });
   });
 }
 
 
 /* ----------------------------------------------------------
-   Cross-section Layer Reveal — progressive opacity
-   ---------------------------------------------------------- */
-function _initNCLayerReveal() {
-  const stages = document.querySelectorAll('.nc-stage');
-  stages.forEach(stage => {
-    const layers = stage.querySelectorAll('.nc-layer');
-    if (!layers.length) return;
-
-    ScrollTrigger.create({
-      trigger: stage,
-      start: 'top 70%',
-      once: true,
-      onEnter: () => {
-        layers.forEach((layer, i) => {
-          setTimeout(() => {
-            layer.classList.add('nc-layer-visible');
-          }, i * 200);
-        });
-      }
-    });
-  });
-}
-
-
-/* ----------------------------------------------------------
-   Hero & Capability Stat Counters
+   Stat Counters - numeric animation
    ---------------------------------------------------------- */
 function _initNCStatCounters() {
-  /* Hero stat values — animate numbers if they contain digits */
   const statValues = document.querySelectorAll('.nc-hero-stat-value');
-  statValues.forEach(el => {
-    _animateStatOnScroll(el);
-  });
+  statValues.forEach(el => _animateStatOnScroll(el));
 
-  /* Capability values */
   const capValues = document.querySelectorAll('.nc-cap-value[data-nc-counter]');
-  capValues.forEach(el => {
-    _animateStatOnScroll(el);
-  });
+  capValues.forEach(el => _animateStatOnScroll(el));
 }
 
 function _animateStatOnScroll(el) {
   const text = el.textContent.trim();
   const match = text.match(/^([\d,.]+)(\+?)(.*)/);
-  if (!match) return; // non-numeric, skip
+  if (!match) return;
 
-  const target  = parseFloat(match[1].replace(/,/g, ''));
-  const hasSuffix = match[2] + match[3]; // e.g. "+" or "M+"
+  const target = parseFloat(match[1].replace(/,/g, ''));
+  const hasSuffix = match[2] + match[3];
   if (isNaN(target)) return;
 
   const isDecimal = match[1].includes('.');
@@ -154,14 +158,16 @@ function _animateStatOnScroll(el) {
 
 
 /* ----------------------------------------------------------
-   Stage entrance stagger (GSAP-powered, supplements AOS)
+   Stage entrance stagger (GSAP-powered)
    ---------------------------------------------------------- */
 function _initNCStageEntrance() {
   const stages = document.querySelectorAll('.nc-stage');
-  stages.forEach((stage, i) => {
-    const card = stage.querySelector('.nc-stage-card');
-    const badge = stage.querySelector('.nc-stage-badge');
-    const textEls = stage.querySelectorAll('.nc-stage-title, .nc-stage-desc, .nc-gauge');
+  stages.forEach(stage => {
+    const number = stage.querySelector('.nc-stage-number');
+    const title = stage.querySelector('.nc-stage-title');
+    const desc = stage.querySelector('.nc-stage-desc');
+    const gauge = stage.querySelector('.nc-gauge');
+    const lottie = stage.querySelector('.nc-stage-lottie-wrap');
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -171,39 +177,82 @@ function _initNCStageEntrance() {
       }
     });
 
-    if (badge) {
-      tl.from(badge, {
-        scale: 0, opacity: 0, duration: 0.4, ease: 'back.out(2)'
-      });
+    if (number) {
+      tl.from(number, { x: -20, opacity: 0, duration: 0.5, ease: 'power2.out' });
     }
-    if (card) {
-      tl.from(card, {
-        y: 30, opacity: 0, duration: 0.5, ease: 'power2.out'
-      }, '-=0.2');
+    if (lottie) {
+      tl.from(lottie, { scale: 0.7, opacity: 0, duration: 0.4, ease: 'back.out(1.5)' }, '-=0.3');
     }
-    if (textEls.length) {
-      tl.from(textEls, {
-        y: 20, opacity: 0, duration: 0.4, stagger: 0.1, ease: 'power2.out'
-      }, '-=0.3');
+    if (title) {
+      tl.from(title, { y: 15, opacity: 0, duration: 0.4, ease: 'power2.out' }, '-=0.2');
+    }
+    if (desc) {
+      tl.from(desc, { y: 10, opacity: 0, duration: 0.4, ease: 'power2.out' }, '-=0.2');
+    }
+    if (gauge) {
+      tl.from(gauge, { y: 10, opacity: 0, duration: 0.3, ease: 'power2.out' }, '-=0.2');
     }
   });
 }
 
 
 /* ----------------------------------------------------------
-   Master init — called from nc.html
+   Product card stagger entrance
+   ---------------------------------------------------------- */
+function _initNCProductEntrance() {
+  const cards = document.querySelectorAll('.nc-swatch');
+  if (!cards.length) return;
+
+  gsap.from(cards, {
+    y: 40,
+    opacity: 0,
+    duration: 0.6,
+    stagger: 0.1,
+    ease: 'power2.out',
+    scrollTrigger: {
+      trigger: '.nc-product-grid',
+      start: 'top 80%',
+      once: true
+    }
+  });
+}
+
+
+/* ----------------------------------------------------------
+   Content block parallax
+   ---------------------------------------------------------- */
+function _initNCParallax() {
+  const bgImg = document.querySelector('.nc-content-block-bg');
+  if (!bgImg) return;
+
+  gsap.to(bgImg, {
+    yPercent: 15,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '.nc-content-block',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 0.5
+    }
+  });
+}
+
+
+/* ----------------------------------------------------------
+   Master init
    ---------------------------------------------------------- */
 function initNCCoatingAnimations() {
   if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   gsap.registerPlugin(ScrollTrigger);
 
-  // Slight delay to let DOM settle after render
   requestAnimationFrame(() => {
-    _initNCFlowLine();
+    _initNCLayerIndicator();
+    _initNCPrecisionLine();
     _initNCGauges();
     _initNCCapGauges();
-    _initNCLayerReveal();
     _initNCStatCounters();
     _initNCStageEntrance();
+    _initNCProductEntrance();
+    _initNCParallax();
   });
 }

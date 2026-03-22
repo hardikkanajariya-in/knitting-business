@@ -48,8 +48,10 @@ function renderHomeIndustries(section) {
     </div>
   `).join('');
 
-  const row1 = items.slice(0, 3);
-  const row2 = items.slice(3);
+  const row1 = items.slice(0, Math.ceil(items.length / 2));
+  const row2 = items.slice(Math.ceil(items.length / 2));
+  // Ensure row2 has enough cards for a seamless infinite scroll
+  const row2Padded = row2.length < 3 ? [...row2, ...items].slice(0, Math.max(3, row2.length)) : row2;
 
   return `
     <section class="home-industries" data-parallax-section>
@@ -68,7 +70,7 @@ function renderHomeIndustries(section) {
           <div class="home-ind-track">${buildTrack(row1)}</div>
         </div>
         <div class="home-ind-row" data-scroll-gallery="right">
-          <div class="home-ind-track">${buildTrack(row2)}</div>
+          <div class="home-ind-track">${buildTrack(row2Padded)}</div>
         </div>
       </div>
     </section>

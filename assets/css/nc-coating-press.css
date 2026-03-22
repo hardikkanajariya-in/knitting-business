@@ -1,61 +1,140 @@
 /* ============================================================
-   NC — "The Coating Press" 
-   Award-winning page design for Nirbhay Chemicals
+   NC - "The Cross-Section"
+   Award-winning redesign for Nirbhay Chemicals
+   Bold typography - Elevation depth - Precision geometry
+   NO gradients - NO stacking animations
    ============================================================ */
 
-/* --- Theme Variables (aliased from global style.css palette) --- */
+/* --- Theme Variables (flat solid colors, elevation tokens) --- */
 :root {
-  --nc-accent:        var(--accent);
-  --nc-accent-light:  var(--bright-blue);
-  --nc-accent-glow:   var(--accent-glow);
-  --nc-flow:          var(--bright-blue);
-  --nc-flow-glow:     var(--accent-glow-soft);
-  --nc-gauge-fill:    linear-gradient(135deg, var(--bright-blue), var(--accent-deep));
-  --nc-hero-bg:       linear-gradient(160deg, var(--accent-deep) 0%, var(--accent-mid) 50%, var(--bright-blue) 100%);
-  --nc-surface:       var(--bg-secondary);
-  --nc-surface-alt:   var(--bg-tertiary);
-  --nc-card-bg:       var(--bg-card);
-  --nc-card-border:   rgba(10, 42, 67, 0.08);
-  --nc-text-primary:  var(--text-primary);
-  --nc-text-secondary:var(--text-secondary);
-  --nc-text-muted:    var(--text-tertiary);
-  --nc-badge-bg:      var(--accent-light);
-  --nc-badge-text:    var(--bright-blue);
-  --nc-glass:         var(--surface-frosted);
-  --nc-glass-border:  rgba(10, 42, 67, 0.10);
-  --nc-divider:       rgba(10, 42, 67, 0.08);
-  --nc-green:         var(--eco-green);
-  --nc-green-glow:    rgba(75, 175, 79, 0.25);
+  --nc-deep:          #0A2A43;
+  --nc-accent:        #1C6DD0;
+  --nc-green:         #4BAF4F;
+  --nc-steel:         #6E7A86;
+  --nc-warm:          #D9D9D9;
+  --nc-surface:       #F8FAFE;
+  --nc-surface-alt:   #EDF2F8;
+  --nc-white:         #FFFFFF;
+  --nc-dark-surface:  #0D1B2A;
+  --nc-text-on-dark:  #E0E8F0;
+  --nc-text-primary:  #0A2A43;
+  --nc-text-secondary:#4A5568;
+  --nc-text-muted:    #8896A6;
+  --nc-card-bg:       #FFFFFF;
+  --nc-card-border:   rgba(10,42,67,0.08);
+  --nc-divider:       rgba(10,42,67,0.10);
+
+  /* Elevation shadows */
+  --nc-shadow-sm:     0 1px 3px rgba(10,42,67,0.06), 0 1px 2px rgba(10,42,67,0.04);
+  --nc-shadow-md:     0 4px 12px rgba(10,42,67,0.08), 0 2px 4px rgba(10,42,67,0.04);
+  --nc-shadow-lg:     0 12px 32px rgba(10,42,67,0.10), 0 4px 8px rgba(10,42,67,0.06);
+  --nc-shadow-xl:     0 20px 48px rgba(10,42,67,0.12), 0 8px 16px rgba(10,42,67,0.06);
+  --nc-shadow-lift:   0 16px 40px rgba(10,42,67,0.14), 0 6px 12px rgba(10,42,67,0.08);
+
+  /* Spacing scale */
+  --nc-section-pad:   6rem 1.5rem;
+  --nc-section-max:   72rem;
+  --nc-gap:           2rem;
+  --nc-radius:        8px;
+  --nc-radius-lg:     16px;
 }
 
-/* --- Dark Theme (aliased from global) --- */
+/* --- Dark Theme --- */
 .dark {
-  --nc-accent:        var(--accent);
-  --nc-accent-light:  var(--bright-blue);
-  --nc-accent-glow:   var(--accent-glow);
-  --nc-flow:          var(--bright-blue);
-  --nc-flow-glow:     var(--accent-glow);
-  --nc-gauge-fill:    linear-gradient(135deg, var(--bright-blue), var(--accent));
-  --nc-hero-bg:       linear-gradient(160deg, var(--bg-primary) 0%, var(--bg-card) 50%, var(--accent-mid) 100%);
-  --nc-surface:       var(--bg-secondary);
-  --nc-surface-alt:   var(--bg-tertiary);
-  --nc-card-bg:       var(--bg-card);
-  --nc-card-border:   var(--glass-border);
-  --nc-text-primary:  var(--text-primary);
-  --nc-text-secondary:var(--text-secondary);
-  --nc-text-muted:    var(--text-tertiary);
-  --nc-badge-bg:      var(--accent-light);
-  --nc-badge-text:    var(--bright-blue);
-  --nc-glass:         var(--surface-frosted);
-  --nc-glass-border:  var(--glass-border);
-  --nc-divider:       var(--glass-border);
-  --nc-green:         var(--eco-green);
-  --nc-green-glow:    rgba(102, 209, 106, 0.2);
+  --nc-deep:          #0A2A43;
+  --nc-surface:       #0D1B2A;
+  --nc-surface-alt:   #112233;
+  --nc-white:         #0F1F30;
+  --nc-card-bg:       #112233;
+  --nc-card-border:   rgba(255,255,255,0.06);
+  --nc-text-primary:  #E0E8F0;
+  --nc-text-secondary:#A8B8C8;
+  --nc-text-muted:    #6E7A86;
+  --nc-divider:       rgba(255,255,255,0.06);
+  --nc-shadow-sm:     0 1px 3px rgba(0,0,0,0.20);
+  --nc-shadow-md:     0 4px 12px rgba(0,0,0,0.25);
+  --nc-shadow-lg:     0 12px 32px rgba(0,0,0,0.30);
+  --nc-shadow-xl:     0 20px 48px rgba(0,0,0,0.35);
+  --nc-shadow-lift:   0 16px 40px rgba(0,0,0,0.35);
 }
 
 
 /* ============================================================
-   HERO — "The Line"
+   LAYER INDICATOR - Persistent sidebar navigation
+   ============================================================ */
+.nc-layer-indicator {
+  position: fixed;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.nc-layer-indicator-line {
+  width: 1px;
+  height: 280px;
+  background: var(--nc-divider);
+  position: relative;
+}
+
+.nc-layer-indicator-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: var(--nc-accent);
+  transition: height 0.3s ease;
+}
+
+.nc-layer-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--nc-divider);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nc-layer-dot.active {
+  background: var(--nc-accent);
+  box-shadow: 0 0 0 4px rgba(28,109,208,0.15);
+  transform: scale(1.3);
+}
+
+.nc-layer-dot-label {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--nc-text-muted);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.nc-layer-dot:hover .nc-layer-dot-label {
+  opacity: 1;
+}
+
+@media (max-width: 1024px) {
+  .nc-layer-indicator { display: none; }
+}
+
+
+/* ============================================================
+   1. HERO - "The Specimen Header"
    ============================================================ */
 .nc-hero {
   position: relative;
@@ -63,116 +142,130 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--nc-hero-bg);
+  background: var(--nc-deep);
   overflow: hidden;
-  padding: 6rem 1.5rem 4rem;
+  padding: 7rem 1.5rem 5rem;
 }
 
-.nc-hero-bg-image {
+/* Animated CSS dot grid background */
+.nc-hero::before {
+  content: '';
   position: absolute;
-  inset: 0;
+  inset: -32px;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 32px 32px;
+  animation: ncDotDrift 20s linear infinite;
   z-index: 0;
 }
-.nc-hero-bg-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.15;
-}
 
-.nc-hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(10,42,67,0.92) 0%, rgba(10,42,67,0.7) 60%, rgba(10,42,67,0.95) 100%);
-  z-index: 1;
+@keyframes ncDotDrift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 32px 32px; }
 }
 
 .nc-hero-content {
   position: relative;
   z-index: 2;
-  max-width: 56rem;
+  max-width: 60rem;
   text-align: center;
-  color: #ffffff;
+  color: #FFFFFF;
 }
 
 .nc-hero-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.5);
   margin-bottom: 1.5rem;
 }
+
 .nc-hero-eyebrow .nc-dot {
+  display: inline-block;
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.5);
+  background: var(--nc-accent);
 }
 
 .nc-hero-logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   margin-bottom: 2rem;
-  padding: 1rem 2rem;
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 1rem;
 }
+
 .nc-hero-logo img {
-  max-height: 3.5rem;
-  width: auto;
+  max-width: 200px;
+  height: auto;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
 
 .nc-hero-title {
-  font-size: clamp(2.2rem, 5vw, 3.8rem);
-  font-weight: 800;
-  line-height: 1.1;
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #FFFFFF;
   margin-bottom: 1rem;
-  letter-spacing: -0.02em;
 }
 
 .nc-hero-subtitle {
-  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-size: clamp(1rem, 2vw, 1.25rem);
   font-weight: 400;
-  color: rgba(255,255,255,0.75);
-  max-width: 38rem;
-  margin: 0 auto 2.5rem;
+  color: rgba(255,255,255,0.55);
+  max-width: 36rem;
+  margin: 0 auto 3rem;
   line-height: 1.6;
+  position: relative;
+  padding: 1rem 0;
 }
 
-/* Hero Stats Row */
+.nc-hero-subtitle::before,
+.nc-hero-subtitle::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: rgba(255,255,255,0.2);
+  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nc-hero-subtitle::before { top: 0; }
+.nc-hero-subtitle::after  { bottom: 0; }
+
+/* Hero stats */
 .nc-hero-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-  max-width: 44rem;
-  margin: 0 auto 2.5rem;
+  gap: 2rem;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
 }
-.nc-hero-stat {
-  padding: 1rem 0.5rem;
-  border-radius: 0.75rem;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.08);
-}
+
+.nc-hero-stat { text-align: center; }
+
 .nc-hero-stat-value {
-  font-size: 1.5rem;
+  font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 800;
-  color: #ffffff;
-  line-height: 1.2;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
+
 .nc-hero-stat-label {
-  font-size: 0.72rem;
-  color: rgba(255,255,255,0.6);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-top: 0.25rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.4rem;
 }
 
 /* Scroll indicator */
@@ -181,818 +274,886 @@
   bottom: 2rem;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 2;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  color: rgba(255,255,255,0.5);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  animation: ncScrollPulse 2s ease-in-out infinite;
-}
-.nc-hero-scroll svg {
-  width: 1.25rem;
-  height: 1.25rem;
-  stroke: currentColor;
+  gap: 0.75rem;
+  color: rgba(255,255,255,0.35);
 }
 
-/* Roller animation */
-.nc-roller-wrap {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  z-index: 1;
+.nc-hero-scroll span {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.nc-hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.15);
+  position: relative;
   overflow: hidden;
-  opacity: 0.25;
 }
-.nc-roller {
+
+.nc-hero-scroll-line::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 0;
   width: 100%;
-  height: 100%;
+  height: 50%;
+  background: var(--nc-accent);
+  animation: ncScrollPulse 2s ease-in-out infinite;
 }
-.nc-roller-cylinder {
-  fill: none;
-  stroke: rgba(255,255,255,0.3);
-  stroke-width: 2;
-}
-.nc-roller-groove {
-  stroke: rgba(255,255,255,0.08);
-  stroke-width: 1;
-  stroke-dasharray: 6 4;
-}
-.nc-roller-spin {
-  animation: ncRollerSpin 4s linear infinite;
-  transform-origin: center;
+
+@keyframes ncScrollPulse {
+  0%   { top: -50%; opacity: 0; }
+  50%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
 }
 
 
 /* ============================================================
-   PROCESS FLOW — "The Run" (Core section)
+   2. PROCESS - "The Precision Line"
    ============================================================ */
 .nc-process {
   position: relative;
-  padding: 6rem 1.5rem;
-  background: var(--bg-primary, #fff);
+  padding: var(--nc-section-pad);
+  background: var(--nc-surface);
 }
 
 .nc-process-header {
   text-align: center;
-  max-width: 40rem;
-  margin: 0 auto 4rem;
+  margin-bottom: 4rem;
+  max-width: var(--nc-section-max);
+  margin-left: auto;
+  margin-right: auto;
 }
+
 .nc-process-header h2 {
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
   color: var(--nc-text-primary);
+  letter-spacing: -0.02em;
   margin-bottom: 0.75rem;
 }
+
 .nc-process-header p {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--nc-text-secondary);
+  max-width: 36rem;
+  margin: 0 auto;
   line-height: 1.6;
 }
 
-/* Flow line SVG container */
-.nc-flow-line {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 4px;
-  height: 100%;
-  z-index: 0;
-  pointer-events: none;
-}
-.nc-flow-line-track {
-  stroke: var(--nc-divider);
-  stroke-width: 3;
-}
-.nc-flow-line-active {
-  stroke: var(--nc-flow);
-  stroke-width: 3;
-  stroke-linecap: round;
-  filter: drop-shadow(0 0 6px var(--nc-flow-glow));
-}
-
-/* Stages container */
+/* Timeline container */
 .nc-stages {
   position: relative;
-  z-index: 1;
-  max-width: 64rem;
+  max-width: 56rem;
   margin: 0 auto;
+  padding-left: 3rem;
 }
 
-/* Individual stage */
+/* Precision line (left side) */
+.nc-precision-line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--nc-divider);
+}
+
+.nc-precision-line-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: var(--nc-accent);
+  transition: height 0.1s linear;
+}
+
+/* Stage */
 .nc-stage {
-  display: grid;
-  grid-template-columns: 1fr 4rem 1fr;
-  gap: 2rem;
-  align-items: center;
-  margin-bottom: 5rem;
-}
-.nc-stage:last-child { margin-bottom: 0; }
-
-/* Alternating layout */
-.nc-stage-visual { order: 1; }
-.nc-stage-center { order: 2; }
-.nc-stage-text   { order: 3; }
-
-.nc-stage:nth-child(even) .nc-stage-visual { order: 3; }
-.nc-stage:nth-child(even) .nc-stage-text   { order: 1; text-align: right; }
-
-/* Stage number badge (center column) */
-.nc-stage-badge {
-  width: 3.5rem;
-  height: 3.5rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: #fff;
-  background: var(--nc-gauge-fill);
-  box-shadow: 0 0 0 4px var(--bg-primary, #fff), 0 0 0 6px var(--nc-flow);
   position: relative;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 1.5rem;
+  padding: 2.5rem 0;
+  align-items: start;
+}
+
+.nc-stage + .nc-stage {
+  border-top: 1px solid var(--nc-divider);
+}
+
+/* Massive stage number */
+.nc-stage-number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: var(--nc-accent);
+  line-height: 1;
+  opacity: 0.15;
+  transition: opacity 0.5s ease, color 0.5s ease;
+}
+
+.nc-stage.nc-stage-active .nc-stage-number {
+  opacity: 1;
+}
+
+/* Timeline dot */
+.nc-stage-dot {
+  position: absolute;
+  left: -3rem;
+  top: 3rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--nc-divider);
+  transform: translateX(-4px);
+  transition: all 0.3s ease;
   z-index: 2;
-  margin: 0 auto;
 }
 
-/* Stage visual — Lottie / icon card */
-.nc-stage-card {
-  background: var(--nc-card-bg);
-  border-radius: 1.25rem;
-  border: 1px solid var(--nc-card-border);
-  padding: 2rem;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+.nc-stage.nc-stage-active .nc-stage-dot {
+  background: var(--nc-accent);
+  box-shadow: 0 0 0 4px rgba(28,109,208,0.15);
+}
+
+/* Stage body */
+.nc-stage-body {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.nc-stage-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  gap: 0.75rem;
 }
 
-.nc-stage-lottie {
-  width: 100%;
-  max-width: 10rem;
-  aspect-ratio: 1;
+.nc-stage-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--nc-text-primary);
+  letter-spacing: -0.01em;
 }
 
-/* Cross-section layer diagram */
-.nc-cross-section {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  border-radius: 0.5rem;
-  overflow: hidden;
-  border: 1px solid var(--nc-card-border);
+.nc-stage-desc {
+  font-size: 0.9rem;
+  color: var(--nc-text-secondary);
+  line-height: 1.65;
+  max-width: 32rem;
 }
-.nc-layer {
-  height: 8px;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-.nc-layer.nc-layer-visible { opacity: 1; }
-.nc-layer-substrate  { background: #8B7355; }
-.nc-layer-primer     { background: #B8860B; }
-.nc-layer-coating    { background: var(--nc-flow); }
-.nc-layer-laminate   { background: #2ecc71; }
-.nc-layer-finish     { background: #9b59b6; }
 
-/* Gauge indicator */
+/* Gauge bar (flat solid) */
 .nc-gauge {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   margin-top: 0.5rem;
 }
-.nc-gauge-track {
-  flex: 1;
-  height: 6px;
-  border-radius: 3px;
-  background: var(--nc-divider);
-  overflow: hidden;
-}
-.nc-gauge-bar {
-  height: 100%;
-  border-radius: 3px;
-  background: var(--nc-gauge-fill);
-  width: 0%;
-  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-}
+
 .nc-gauge-label {
   font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--nc-text-muted);
-  text-transform: uppercase;
+  font-weight: 600;
   letter-spacing: 0.05em;
-  white-space: nowrap;
+  text-transform: uppercase;
+  color: var(--nc-text-muted);
+  min-width: 5rem;
 }
+
+.nc-gauge-track {
+  flex: 1;
+  height: 4px;
+  background: var(--nc-divider);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.nc-gauge-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--nc-accent);
+  border-radius: 2px;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 .nc-gauge-value {
-  font-family: 'Courier New', monospace;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.75rem;
+  font-weight: 600;
   color: var(--nc-accent);
-  min-width: 3rem;
+  min-width: 4rem;
   text-align: right;
 }
 
-/* Stage text */
-.nc-stage-title {
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--nc-text-primary);
-  margin-bottom: 0.5rem;
+/* Lottie in circle */
+.nc-stage-lottie-wrap {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid var(--nc-card-border);
+  overflow: hidden;
+  background: var(--nc-card-bg);
+  box-shadow: var(--nc-shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 0.25rem;
 }
-.nc-stage-desc {
-  font-size: 0.95rem;
-  color: var(--nc-text-secondary);
-  line-height: 1.65;
+
+.nc-stage-lottie-wrap dotlottie-player {
+  width: 48px;
+  height: 48px;
 }
 
 
 /* ============================================================
-   PRODUCTS — "Material Catalog"
+   3. PRODUCTS - "The Material Library"
    ============================================================ */
 .nc-products {
-  padding: 6rem 1.5rem;
-  background: var(--nc-surface);
+  padding: var(--nc-section-pad);
+  background: var(--nc-white);
 }
 
 .nc-products-header {
   text-align: center;
-  max-width: 36rem;
-  margin: 0 auto 3.5rem;
-}
-.nc-products-header h2 {
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-  font-weight: 800;
-  color: var(--nc-text-primary);
-  margin-bottom: 0.75rem;
-}
-.nc-products-header p {
-  font-size: 1.05rem;
-  color: var(--nc-text-secondary);
+  margin-bottom: 3.5rem;
+  max-width: var(--nc-section-max);
+  margin-left: auto;
+  margin-right: auto;
 }
 
+.nc-products-header h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--nc-text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.nc-products-header p {
+  font-size: 1rem;
+  color: var(--nc-text-secondary);
+  max-width: 36rem;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Asymmetric product grid */
 .nc-product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  max-width: 68rem;
+  gap: var(--nc-gap);
+  max-width: var(--nc-section-max);
   margin: 0 auto;
 }
 
-/* Swatch card */
+.nc-swatch:first-child {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.nc-swatch:first-child .nc-swatch-image {
+  aspect-ratio: 4 / 3;
+}
+
+/* Product card */
 .nc-swatch {
-  position: relative;
-  border-radius: 1.25rem;
-  overflow: hidden;
   background: var(--nc-card-bg);
   border: 1px solid var(--nc-card-border);
-  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  border-radius: var(--nc-radius-lg);
+  overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s ease;
   cursor: default;
+  display: flex;
+  flex-direction: column;
 }
+
 .nc-swatch:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  transform: translateY(-8px);
+  box-shadow: var(--nc-shadow-lift);
+  border-color: var(--nc-accent);
 }
 
 .nc-swatch-image {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
+  background: var(--nc-surface-alt);
 }
+
 .nc-swatch-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
+
 .nc-swatch:hover .nc-swatch-image img {
   transform: scale(1.05);
-}
-.nc-swatch-image-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(10,42,67,0.7) 100%);
 }
 
 .nc-swatch-badge {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
-  padding: 0.3rem 0.65rem;
-  border-radius: 2rem;
+  background: var(--nc-deep);
+  color: #FFFFFF;
   font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  background: var(--nc-badge-bg);
-  color: var(--nc-badge-text);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--nc-glass-border);
+  padding: 0.3rem 0.75rem;
+  border-radius: 100px;
+  z-index: 2;
 }
 
 .nc-swatch-body {
-  padding: 1.25rem 1.5rem 1.5rem;
-}
-.nc-swatch-name {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--nc-text-primary);
-  margin-bottom: 0.5rem;
-}
-.nc-swatch-desc {
-  font-size: 0.88rem;
-  color: var(--nc-text-secondary);
-  line-height: 1.6;
+  padding: 1.25rem 1.5rem;
+  flex: 1;
 }
 
-/* Cross-section reveal on hover */
-.nc-swatch-layers {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+.nc-swatch-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--nc-text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.nc-swatch-desc {
+  font-size: 0.82rem;
+  color: var(--nc-text-secondary);
+  line-height: 1.55;
+}
+
+/* Color strip at bottom */
+.nc-swatch-strip {
+  height: 4px;
   display: flex;
-  height: 0;
-  transition: height 0.4s ease;
-  overflow: hidden;
 }
-.nc-swatch:hover .nc-swatch-layers {
-  height: 6px;
-}
-.nc-swatch-layer {
+
+.nc-swatch-strip-segment {
   flex: 1;
-  transition: opacity 0.3s ease;
+  transition: transform 0.3s ease;
+}
+
+.nc-swatch:hover .nc-swatch-strip-segment {
+  transform: scaleY(1.5);
+}
+
+/* Image fallback */
+.nc-swatch-fallback {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--nc-surface-alt);
+  color: var(--nc-text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
 }
 
 
 /* ============================================================
-   CAPABILITIES — "The Spec Sheet"
+   4. CAPABILITIES - "The Specification Plate"
    ============================================================ */
 .nc-capabilities {
-  padding: 6rem 1.5rem;
-  background: var(--bg-primary, #fff);
+  padding: var(--nc-section-pad);
+  background: var(--nc-deep);
+  color: var(--nc-text-on-dark);
 }
 
 .nc-capabilities-header {
   text-align: center;
-  max-width: 36rem;
-  margin: 0 auto 3.5rem;
+  margin-bottom: 3.5rem;
 }
+
 .nc-capabilities-header h2 {
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
-  color: var(--nc-text-primary);
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
   margin-bottom: 0.75rem;
 }
+
 .nc-capabilities-header p {
-  font-size: 1.05rem;
-  color: var(--nc-text-secondary);
+  font-size: 1rem;
+  color: rgba(255,255,255,0.5);
+  max-width: 36rem;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 .nc-cap-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  max-width: 64rem;
+  gap: var(--nc-gap);
+  max-width: var(--nc-section-max);
   margin: 0 auto;
 }
 
 .nc-cap-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--nc-radius-lg);
   padding: 2rem;
-  border-radius: 1.25rem;
-  background: var(--nc-card-bg);
-  border: 1px solid var(--nc-card-border);
-  box-shadow: 0 2px 16px rgba(0,0,0,0.03);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.3s ease, background 0.3s ease;
 }
+
 .nc-cap-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.07);
+  border-color: rgba(28,109,208,0.3);
+  background: rgba(255,255,255,0.06);
 }
 
 .nc-cap-icon {
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--nc-badge-bg);
-  color: var(--nc-badge-text);
+  width: 36px;
+  height: 36px;
+  color: var(--nc-accent);
   margin-bottom: 1.25rem;
 }
+
 .nc-cap-icon svg {
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 100%;
+  height: 100%;
 }
 
 .nc-cap-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--nc-text-primary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
   margin-bottom: 0.5rem;
 }
 
 .nc-cap-value {
-  font-family: 'Courier New', monospace;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 800;
-  color: var(--nc-accent);
-  margin-bottom: 0.25rem;
+  color: #FFFFFF;
+  font-family: 'Inter', monospace;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 0.3rem;
 }
 
 .nc-cap-unit {
-  font-size: 0.75rem;
-  color: var(--nc-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.4;
+  margin-bottom: 1.25rem;
 }
 
-/* Cap gauge */
 .nc-cap-gauge {
-  margin-top: 1rem;
-  height: 4px;
+  height: 3px;
+  background: rgba(255,255,255,0.08);
   border-radius: 2px;
-  background: var(--nc-divider);
   overflow: hidden;
 }
+
 .nc-cap-gauge-bar {
   height: 100%;
-  border-radius: 2px;
-  background: var(--nc-gauge-fill);
   width: 0%;
-  transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  background: var(--nc-accent);
+  border-radius: 2px;
+  transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 
 /* ============================================================
-   INNOVATION — "The Lab"
+   5. INNOVATION - "The Lab Window"
    ============================================================ */
 .nc-innovation {
-  padding: 6rem 1.5rem;
+  padding: var(--nc-section-pad);
   background: var(--nc-surface);
 }
 
 .nc-innovation-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  max-width: 64rem;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  max-width: var(--nc-section-max);
   margin: 0 auto;
   align-items: center;
 }
 
 .nc-innovation-visual {
   position: relative;
-  border-radius: 1.5rem;
-  overflow: hidden;
-  aspect-ratio: 4 / 3;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 1;
+  margin: 0 auto;
 }
-.nc-innovation-visual img,
-.nc-innovation-visual dotlottie-player {
+
+.nc-innovation-visual img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--nc-card-border);
+  box-shadow: var(--nc-shadow-lg);
 }
 
-/* Grid overlay for lab aesthetic */
+.nc-innovation-visual::before {
+  content: '';
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 1px dashed var(--nc-divider);
+}
+
 .nc-innovation-visual::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background:
-    repeating-linear-gradient(0deg, transparent 0px, transparent 39px, var(--nc-divider) 39px, var(--nc-divider) 40px),
-    repeating-linear-gradient(90deg, transparent 0px, transparent 39px, var(--nc-divider) 39px, var(--nc-divider) 40px);
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.nc-innovation-content {
-  padding: 1rem 0;
+  inset: -20px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-top: 1px solid rgba(28,109,208,0.2);
+  border-right: 1px solid rgba(28,109,208,0.2);
 }
 
 .nc-innovation-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.4rem 0.85rem;
-  border-radius: 2rem;
-  font-size: 0.7rem;
+  background: rgba(75,175,79,0.08);
+  color: var(--nc-green);
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  background: var(--nc-green-glow);
-  color: var(--nc-green);
+  padding: 0.4rem 0.9rem;
+  border-radius: 100px;
   margin-bottom: 1.5rem;
+  border: 1px solid rgba(75,175,79,0.15);
 }
-.nc-innovation-badge .nc-pulse-dot {
-  width: 6px;
-  height: 6px;
+
+.nc-pulse-dot {
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--nc-green);
-  animation: ncPulseDot 1.5s ease-in-out infinite;
+  position: relative;
+}
+
+.nc-pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--nc-green);
+  animation: ncPulseRing 2s ease-out infinite;
+}
+
+@keyframes ncPulseRing {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2); opacity: 0; }
 }
 
 .nc-innovation-title {
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 800;
   color: var(--nc-text-primary);
+  letter-spacing: -0.02em;
   margin-bottom: 1rem;
   line-height: 1.2;
 }
 
 .nc-innovation-desc {
-  font-size: 1rem;
+  font-size: 0.92rem;
   color: var(--nc-text-secondary);
-  line-height: 1.7;
+  line-height: 1.65;
   margin-bottom: 1.5rem;
 }
 
-/* Glass panel for extra details */
 .nc-innovation-panel {
+  background: var(--nc-card-bg);
+  border: 1px solid var(--nc-card-border);
+  border-left: 3px solid var(--nc-accent);
+  border-radius: var(--nc-radius);
   padding: 1.25rem 1.5rem;
-  border-radius: 1rem;
-  background: var(--nc-glass);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--nc-glass-border);
 }
+
 .nc-innovation-panel p {
-  font-size: 0.88rem;
-  color: var(--nc-text-muted);
+  font-size: 0.85rem;
+  color: var(--nc-text-secondary);
   line-height: 1.6;
+  margin: 0;
 }
 
 
 /* ============================================================
-   PARTNERSHIP — "Interplast Kimya"
+   6. PARTNERSHIP - "The Alliance"
    ============================================================ */
 .nc-partnership {
-  padding: 6rem 1.5rem;
-  background: var(--bg-primary, #fff);
-  position: relative;
-  overflow: hidden;
-}
-
-/* Hexagonal grid background */
-.nc-partnership::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle, var(--nc-divider) 1px, transparent 1px);
-  background-size: 24px 24px;
-  opacity: 0.6;
-  pointer-events: none;
+  padding: var(--nc-section-pad);
+  background: var(--nc-white);
 }
 
 .nc-partnership-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  max-width: 64rem;
+  max-width: 52rem;
   margin: 0 auto;
-  align-items: center;
+  border: 1px solid var(--nc-card-border);
+  border-radius: var(--nc-radius-lg);
+  padding: 3.5rem;
   position: relative;
-  z-index: 1;
+  background: var(--nc-card-bg);
+  box-shadow: var(--nc-shadow-md);
 }
 
-.nc-partnership-brand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
+.nc-partnership-inner::before,
+.nc-partnership-inner::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-color: var(--nc-accent);
+  border-style: solid;
+}
+
+.nc-partnership-inner::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+  border-radius: var(--nc-radius-lg) 0 0 0;
+}
+
+.nc-partnership-inner::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+  border-radius: 0 0 var(--nc-radius-lg) 0;
 }
 
 .nc-partner-logos {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
   justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
 }
-.nc-partner-logo {
-  padding: 1rem 1.5rem;
-  border-radius: 1rem;
-  background: var(--nc-card-bg);
-  border: 1px solid var(--nc-card-border);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-}
+
 .nc-partner-logo img {
-  max-height: 3rem;
-  width: auto;
+  max-width: 140px;
+  height: auto;
 }
+
 .nc-partner-plus {
   font-size: 1.5rem;
   font-weight: 300;
   color: var(--nc-text-muted);
 }
 
+.nc-partner-interplast {
+  font-weight: 700;
+  color: var(--nc-text-primary);
+  font-size: 1rem;
+}
+
+.nc-partnership-content {
+  text-align: center;
+}
+
 .nc-partnership-content h2 {
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 800;
   color: var(--nc-text-primary);
+  letter-spacing: -0.02em;
   margin-bottom: 1rem;
-  line-height: 1.2;
 }
-.nc-partnership-content > p {
-  font-size: 1rem;
+
+.nc-partnership-content p {
+  font-size: 0.92rem;
   color: var(--nc-text-secondary);
-  line-height: 1.7;
-  margin-bottom: 1.5rem;
+  line-height: 1.65;
+  max-width: 40rem;
+  margin: 0 auto 2rem;
 }
 
 .nc-partner-caps {
   list-style: none;
   padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  text-align: left;
+  max-width: 36rem;
 }
+
 .nc-partner-caps li {
   display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  font-size: 0.92rem;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.85rem;
   color: var(--nc-text-secondary);
+  line-height: 1.5;
 }
+
 .nc-partner-caps li::before {
   content: '';
-  width: 6px;
-  height: 6px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
   border-radius: 50%;
-  background: var(--nc-flow);
-  flex-shrink: 0;
+  background: rgba(28,109,208,0.08);
+  border: 1.5px solid var(--nc-accent);
+  margin-top: 2px;
 }
 
 
 /* ============================================================
-   CONTENT BLOCK (Enhanced)
+   7. CONTENT BLOCK - "The Factory Floor"
    ============================================================ */
 .nc-content-block {
-  padding: 6rem 1.5rem;
-  background: var(--nc-surface);
-}
-.nc-content-block-inner {
-  max-width: 64rem;
-  margin: 0 auto;
-  border-radius: 1.5rem;
-  overflow: hidden;
   position: relative;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+  overflow: hidden;
 }
-.nc-content-block-inner img {
-  width: 100%;
-  aspect-ratio: 16 / 7;
-  object-fit: cover;
-  display: block;
+
+.nc-content-block-inner {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.nc-content-block-overlay {
+
+.nc-content-block-bg {
   position: absolute;
   inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 2.5rem;
-  background: linear-gradient(180deg, transparent 30%, rgba(10,42,67,0.85) 100%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
+
+.nc-content-block-overlay {
+  position: relative;
+  z-index: 2;
+  background: rgba(10,42,67,0.82);
+  padding: 4rem 2rem;
+  max-width: 56rem;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
 .nc-content-block-overlay h3 {
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 0.5rem;
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  line-height: 1.15;
 }
+
 .nc-content-block-overlay p {
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.8);
+  font-size: 1rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.65;
   max-width: 36rem;
-  line-height: 1.6;
+  margin: 0 auto;
 }
 
 
 /* ============================================================
-   KEYFRAME ANIMATIONS
+   RESPONSIVE DESIGN
    ============================================================ */
-@keyframes ncScrollPulse {
-  0%, 100% { opacity: 0.5; transform: translateX(-50%) translateY(0); }
-  50%      { opacity: 1;   transform: translateX(-50%) translateY(6px); }
-}
 
-@keyframes ncRollerSpin {
-  from { stroke-dashoffset: 0; }
-  to   { stroke-dashoffset: -40; }
-}
-
-@keyframes ncPulseDot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50%      { opacity: 0.4; transform: scale(0.7); }
-}
-
-@keyframes ncFlowGlow {
-  0%, 100% { filter: drop-shadow(0 0 4px var(--nc-flow-glow)); }
-  50%      { filter: drop-shadow(0 0 10px var(--nc-flow-glow)); }
-}
-
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width: 1024px) {
-  .nc-cap-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
+/* Tablet (768px) */
 @media (max-width: 768px) {
+  :root {
+    --nc-section-pad: 4rem 1.25rem;
+  }
+
+  .nc-hero { padding: 6rem 1.25rem 4rem; }
+
+  .nc-hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .nc-stages { padding-left: 2rem; }
+
+  .nc-stage {
+    grid-template-columns: 60px 1fr;
+    gap: 1rem;
+  }
+
+  .nc-stage-number { font-size: 2.5rem; }
+  .nc-stage-dot { left: -2rem; }
+
+  .nc-product-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .nc-swatch:first-child {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+
+  .nc-cap-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .nc-innovation-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .nc-innovation-visual { max-width: 260px; }
+
+  .nc-innovation-panel {
+    border-left: 1px solid var(--nc-card-border);
+    border-top: 3px solid var(--nc-accent);
+  }
+
+  .nc-partnership-inner { padding: 2.5rem 1.5rem; }
+  .nc-partner-caps { grid-template-columns: 1fr; }
+}
+
+/* Mobile (480px) */
+@media (max-width: 480px) {
+  :root {
+    --nc-section-pad: 3rem 1rem;
+    --nc-gap: 1rem;
+  }
+
   .nc-hero {
     padding: 5rem 1rem 3rem;
     min-height: 90vh;
   }
+
+  .nc-hero-title { font-size: 2.2rem; }
+
   .nc-hero-stats {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .nc-hero-stat-value { font-size: 1.6rem; }
+
+  .nc-stages { padding-left: 1.5rem; }
+
+  .nc-stage { grid-template-columns: 1fr; }
+
+  .nc-stage-number { font-size: 2rem; }
+  .nc-stage-dot { left: -1.5rem; top: 1.5rem; }
+
+  .nc-product-grid { grid-template-columns: 1fr; }
+  .nc-swatch:first-child { grid-column: span 1; }
+
+  .nc-cap-grid { grid-template-columns: 1fr; }
+  .nc-cap-value { font-size: 1.4rem; }
+
+  .nc-innovation-visual { max-width: 200px; }
+
+  .nc-partnership-inner { padding: 2rem 1rem; }
+
+  .nc-partner-logos {
+    flex-direction: column;
     gap: 0.75rem;
   }
-  .nc-hero-stat-value { font-size: 1.25rem; }
 
-  /* Process stages: single column */
-  .nc-stage {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-    margin-bottom: 3.5rem;
-  }
-  .nc-stage-visual { order: 1 !important; }
-  .nc-stage-center { order: 0 !important; justify-self: start; }
-  .nc-stage-text   { order: 2 !important; text-align: left !important; }
-
-  .nc-flow-line { display: none; }
-
-  .nc-stage-badge {
-    width: 2.75rem;
-    height: 2.75rem;
-    font-size: 0.75rem;
-    box-shadow: 0 0 0 3px var(--bg-primary, #fff), 0 0 0 5px var(--nc-flow);
-  }
-
-  /* Products: 2 columns */
-  .nc-product-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
-  /* Capabilities: 2 columns */
-  .nc-cap-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-
-  /* Innovation: single column */
-  .nc-innovation-inner {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  /* Partnership: single column */
-  .nc-partnership-inner {
-    grid-template-columns: 1fr;
-    gap: 2em;
-  }
-}
-
-@media (max-width: 480px) {
-  .nc-hero-title {
-    font-size: 1.8rem;
-  }
-  .nc-hero-stats {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .nc-product-grid {
-    grid-template-columns: 1fr;
-  }
-  .nc-cap-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .nc-stage-card { padding: 1.25rem; }
-  .nc-cap-card   { padding: 1.25rem; }
-
-  .nc-swatch-body {
-    padding: 1rem 1.25rem 1.25rem;
-  }
-
-  .nc-content-block-overlay {
-    padding: 1.5rem;
-  }
+  .nc-content-block-inner { min-height: 50vh; }
+  .nc-content-block-overlay { padding: 3rem 1.25rem; }
 }

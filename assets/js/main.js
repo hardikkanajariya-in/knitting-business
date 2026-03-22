@@ -388,6 +388,32 @@ function initStatCounters() {
   });
 }
 
+// --- Scroll-to-Top Button ---
+function initScrollToTop() {
+  if (document.getElementById('scroll-to-top')) return;
+
+  const btn = document.createElement('button');
+  btn.id = 'scroll-to-top';
+  btn.className = 'scroll-to-top';
+  btn.setAttribute('aria-label', 'Scroll to top');
+  btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>';
+  btn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  document.body.appendChild(btn);
+
+  let ticking = false;
+  const onScroll = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      btn.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.35);
+      ticking = false;
+    });
+  };
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
 // --- Page Initialization ---
 async function initPage(pageKey) {
   document.body.dataset.page = pageKey;
@@ -439,6 +465,7 @@ async function initPage(pageKey) {
   initLenis();
   initAOS();
   initGSAP();
+  initScrollToTop();
 
   // Global interactive background
   if (typeof initGlobalBackground === 'function') {

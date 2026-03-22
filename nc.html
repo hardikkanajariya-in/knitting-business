@@ -78,6 +78,11 @@
           typeof renderCTAStrip === 'function'       ? renderCTAStrip(data) : ''
         ].join('');
 
+        /* ---- Layer Indicator (persistent sidebar nav) ---- */
+        if (typeof renderNCLayerIndicator === 'function') {
+          document.body.insertAdjacentHTML('beforeend', renderNCLayerIndicator());
+        }
+
         /* ---- Shared global init ---- */
         if (typeof renderHeader === 'function') {
           const headerEl = document.getElementById('site-header');
@@ -103,7 +108,8 @@
           gsap.registerPlugin(ScrollTrigger);
         }
 
-        /* Global background */
+        /* Scroll-to-top + Global background */
+        if (typeof initScrollToTop === 'function') initScrollToTop();
         if (typeof initGlobalBackground === 'function') initGlobalBackground();
 
         /* Header overlay mode — hero is always dark */

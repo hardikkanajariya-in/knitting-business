@@ -114,9 +114,6 @@ function renderFooter(data) {
         <div class="footer-divider" aria-hidden="true"></div>
         <div class="footer-bottom">
           <p class="footer-copyright">${footer.copyright}</p>
-          <button class="footer-back-to-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
-          </button>
         </div>
       </div>
     </footer>

@@ -114,6 +114,7 @@
       initLenis();
       initAOS();
       initGSAP();
+      if (typeof initScrollToTop === 'function') initScrollToTop();
       if (typeof initGlobalBackground === 'function') initGlobalBackground();
       if (typeof initAboutJourneyV4Animations === 'function') initAboutJourneyV4Animations();
       if (typeof initFactoryGallery === 'function') initFactoryGallery();

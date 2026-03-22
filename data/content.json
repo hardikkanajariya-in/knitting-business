@@ -9,7 +9,10 @@
     },
     "metaDescription": "Nirbhay Knitting Industries — Engineered technical textiles for coating, lamination & performance applications. 40 years of precision, consistency, and sustainable innovation.",
     "themeColor": "#0A2A43",
-    "socialLinks": []
+    "socialLinks": [
+      { "name": "LinkedIn", "icon": "linkedin", "url": "https://www.linkedin.com/company/nirbhay-knitting" },
+      { "name": "Instagram", "icon": "instagram", "url": "https://www.instagram.com/nirbhayknitting" }
+    ]
   },
   "navigation": [
     { "label": "Home", "href": "index.html" },
