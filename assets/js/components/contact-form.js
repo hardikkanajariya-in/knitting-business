@@ -1,8 +1,5 @@
-// Web3Forms access key — replace with your own from https://web3forms.com/
 const WEB3FORMS_ACCESS_KEY = '3064cd8e-c4a4-479e-a0d5-fda67955ab06';
-
-// Google reCAPTCHA v3 site key — replace with your own from https://www.google.com/recaptcha/admin
-const RECAPTCHA_SITE_KEY = '6LdfCJUsAAAAAD10_vovz-EWbj3lGymsz9CySpec';
+const RECAPTCHA_SITE_KEY = '6LfcC5UsAAAAAIECQw97Q1FwEDZI4y1kLwkHCM9e';
 
 function renderContactForm(fields) {
   return `
@@ -27,7 +24,9 @@ function renderContactForm(fields) {
         <label for="contact-message" class="form-label">${fields.message}</label>
         <textarea id="contact-message" name="message" class="form-textarea" placeholder="Tell us about your project or inquiry..." required></textarea>
       </div>
-      <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
+      <div class="form-group" style="display:flex;justify-content:center;">
+        <div class="g-recaptcha" data-sitekey="${RECAPTCHA_SITE_KEY}"></div>
+      </div>
       <div class="mt-2">
         <button type="submit" class="btn-primary w-full justify-center" id="contact-submit-btn">
           <span class="btn-text">${fields.submit}</span>
@@ -59,6 +58,16 @@ async function handleContactSubmit(e) {
     return;
   }
 
+  // reCAPTCHA v2 validation (client-side gate)
+  const recaptchaResponse = typeof grecaptcha !== 'undefined' ? grecaptcha.getResponse() : '';
+  if (!recaptchaResponse) {
+    status.style.display = 'block';
+    status.style.background = '#fff3e0';
+    status.style.color = '#e65100';
+    status.textContent = 'Please complete the reCAPTCHA verification.';
+    return;
+  }
+
   // Show loading state
   btn.disabled = true;
   btnText.textContent = 'Sending...';
@@ -67,13 +76,9 @@ async function handleContactSubmit(e) {
   status.style.display = 'none';
 
   try {
-    // Get reCAPTCHA v3 token
-    if (typeof grecaptcha !== 'undefined') {
-      const token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact_submit' });
-      form.querySelector('#recaptchaResponse').value = token;
-    }
-
     const formData = new FormData(form);
+    // Remove reCAPTCHA response from payload (Web3Forms free plan doesn't support it)
+    formData.delete('g-recaptcha-response');
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       body: formData
@@ -86,6 +91,7 @@ async function handleContactSubmit(e) {
       status.style.color = 'var(--accent, #2e7d32)';
       status.textContent = 'Thank you! Your message has been sent successfully. We will get back to you shortly.';
       form.reset();
+      if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
     } else {
       throw new Error(result.message || 'Submission failed');
     }
@@ -94,6 +100,7 @@ async function handleContactSubmit(e) {
     status.style.background = '#ffeaea';
     status.style.color = '#c62828';
     status.textContent = 'Something went wrong. Please try again or email us directly at info@nirbhayknits.com';
+    if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
   } finally {
     btn.disabled = false;
     btnText.textContent = form.querySelector('#contact-form-status').style.color === 'rgb(198, 40, 40)' ? 'Send Message' : 'Send Message';
