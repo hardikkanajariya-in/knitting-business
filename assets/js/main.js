@@ -2,7 +2,6 @@ const IMAGE_CDN_FALLBACK = {
   'assets/img/hero/hero-bg.jpg': 'https://images.pexels.com/photos/36327501/pexels-photo-36327501.jpeg?auto=compress&cs=tinysrgb&w=1920',
   'assets/img/hero/about-bg.jpg': 'https://images.pexels.com/photos/8246487/pexels-photo-8246487.jpeg?auto=compress&cs=tinysrgb&w=1920',
   'assets/img/hero/nc-bg.jpg': 'https://images.pexels.com/photos/4149333/pexels-photo-4149333.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  'assets/img/hero/sustainability-bg.jpg': 'https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg?auto=compress&cs=tinysrgb&w=1920',
   'assets/img/products/raised.jpg': 'https://images.pexels.com/photos/925706/pexels-photo-925706.jpeg?auto=compress&cs=tinysrgb&w=800',
   'assets/img/products/3d.jpg': 'https://images.pexels.com/photos/4863009/pexels-photo-4863009.jpeg?auto=compress&cs=tinysrgb&w=800',
   'assets/img/products/fr.jpg': 'https://images.pexels.com/photos/6717035/pexels-photo-6717035.jpeg?auto=compress&cs=tinysrgb&w=800',
