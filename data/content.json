@@ -5,7 +5,7 @@
     "logo": "assets/img/logo/nk-logo.jpg",
     "logoDark": "assets/img/logo/nk-logo.jpg",
     "pageLogos": {
-      "nc.html": "assets/img/logo/nc-logo-transparent.png"
+      "nc.html": "assets/img/logo/nc-logo.png"
     },
     "pageLogosDark": {
       "nc.html": "assets/img/logo/nc-logo-light.png"
@@ -19,8 +19,8 @@
   },
   "navigation": [
     { "label": "Home", "href": "index.html" },
-    { "label": "Nirbhay Knitting", "href": "nk.html", "title": "Nirbhay Knitting" },
-    { "label": "Nirbhay Chemicals", "href": "nc.html", "title": "Nirbhay Chemicals" },
+    { "label": "Nirbhay Knitting", "href": "nk.html", "title": "Nirbhay Knitting", "navLogo": "assets/img/logo/nk-logo.jpg" },
+    { "label": "Nirbhay Chemicals", "href": "nc.html", "title": "Nirbhay Chemicals", "navLogo": "assets/img/logo/nc-logo.png", "navLogoDark": "assets/img/logo/nc-logo-light.png" },
     { "label": "Sustainability", "href": "sustainability.html" },
     { "label": "Contact", "href": "contact.html" }
   ],
@@ -227,7 +227,7 @@
     "story": {
       "title": "Built for industrial performance, positioned for international growth",
       "paragraphs": [
-        "Having been in the industry for over 40 years, we have mastered the art of offering fabrics engineered to be highly technical while having the best handfeel achievable. Our portfolio spans knitted base fabrics, 3D spacer fabrics, raised fabrics, recycled yarn fabrics, vinyl coated textiles, and FR fabrics — all manufactured without the use of water.",
+        "Having been in the industry for over 40 years, we have mastered the art of offering fabrics engineered to be highly technical while having the best handfeel achievable. Our range of raised fabrics is testimony to exactly that. Our portfolio spans knitted base fabrics, 3D spacer fabrics, raised fabrics, recycled yarn fabrics, vinyl coated textiles, and FR fabrics — all manufactured without the use of water.",
         "In 2020, as part of our portfolio diversification plan, we expanded into trading of Chemicals, under the brand, NirChem. NirChem deals in all kinds of chemicals needed, across various industries ranging from synthetic leather to direct coating."
       ]
     },
@@ -280,6 +280,11 @@
         "icon": "lightbulb"
       },
       {
+        "title": "Coated Fabrics",
+        "description": "Our range of fabrics combined with our range of chemicals, puts us in a unique position to offer the most technically advance products (or product combinations) to our diverse clientele.",
+        "icon": "layers"
+      },
+      {
         "title": "Fast Delivery & Customization",
         "description": "Responsive manufacturing and custom development as key competitive advantages.",
         "icon": "bolt"
@@ -293,7 +298,7 @@
       "description": "We are the certified agents for Interplast Kimya, based out of Istanbul Turkey, specialising in chemicals for different types of coating.",
       "backgroundImage": "assets/img/hero/nc-bg.jpg"
     },
-    "divisionLogo": "assets/img/logo/nc-logo-transparent.png",
+    "divisionLogo": "assets/img/logo/nc-logo.png",
     "divisionLogoAlt": "NirChem - a division of Nirbhay Knitting Industries",
     "divisionStatement": "We offer a wide range of Solvent based, Water based and bio based chemicals for various industries including Synthetic Leather, Genuine Leather, and Direct Coating.",
     "heroStats": [

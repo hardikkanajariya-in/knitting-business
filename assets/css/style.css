@@ -366,6 +366,41 @@ ul, ol {
   color: var(--text-primary);
 }
 
+.nav-link.has-nav-logo {
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.35rem 0.875rem;
+}
+
+.nav-link-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+}
+
+.nav-logo-img {
+  height: 22px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav-logo-img.logo-light {
+  display: none;
+}
+
+.dark .nav-logo-img.logo-dark {
+  display: none;
+}
+
+.dark .nav-logo-img.logo-light {
+  display: block;
+}
+
+.nav-link-label {
+  white-space: nowrap;
+}
+
 .nav-link::after {
   content: '';
   position: absolute;

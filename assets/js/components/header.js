@@ -10,7 +10,8 @@ function renderHeader(data) {
 
   const navLinks = nav.map(item => {
     const isActive = currentPage === item.href || (currentPage === '' && item.href === 'index.html');
-    return `<a href="${item.href}" class="nav-link${isActive ? ' active' : ''}" ${item.title ? `title="${item.title}"` : ''}>${item.label}</a>`;
+    const logoHtml = item.navLogo ? `<span class="nav-link-logo">${item.navLogoDark ? `<img src="${item.navLogo}" alt="" class="nav-logo-img logo-dark"><img src="${item.navLogoDark}" alt="" class="nav-logo-img logo-light">` : `<img src="${item.navLogo}" alt="" class="nav-logo-img">`}</span>` : '';
+    return `<a href="${item.href}" class="nav-link${isActive ? ' active' : ''}${item.navLogo ? ' has-nav-logo' : ''}" ${item.title ? `title="${item.title}"` : ''}>${logoHtml}<span class="nav-link-label">${item.label}</span></a>`;
   }).join('');
 
   const mobileLinks = nav.map(item => {
