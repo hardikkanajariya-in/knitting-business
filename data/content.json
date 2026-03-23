@@ -29,7 +29,7 @@
       "eyebrow": "40 Years of Engineering Excellence",
       "title": "Engineered Technical Textiles for Coating, Lamination & Performance",
       "subtitle": "Consistent substrates. Predictable performance.",
-      "description": "With zero-discharge manufacturing, waterless finishing, and a commitment to clean, responsible production, we combine engineering precision with sustainable innovation. We don't just supply fabrics — we build long-term partnerships based on trust, transparency, and technical excellence.",
+      "description": "Founded by Late Mr. Rohit D. Kamdar, NKI started off as a company offering high quality polyester fabrics for the synthetic leather industry. Under the leadership of our CMD, Mr. Rajeev Kamdar, the company has expanded across horizons — never compromising on Quality and Sustainability. Today, we are proud to say that we are a certified ZERO DISCHARGE COMPANY.",
       "cta": { "label": "Start a Project", "href": "contact.html" },
       "secondaryCta": { "label": "Explore NirChem", "href": "nc.html" },
       "backgroundImage": "assets/img/hero/hero-bg.jpg",
@@ -61,7 +61,7 @@
           "3D spacer fabrics",
           "Raised fabrics",
           "Recycled yarn fabrics",
-          "FR fabrics (R&D)",
+          "FR fabrics",
           "PU coating",
           "Laminating",
           "Contract manufacturing",
@@ -75,20 +75,20 @@
         "description": "Nirbhay connects substrate development, coating support, quality validation, and responsive manufacturing into an integrated industrial platform.",
         "cards": [
           {
-            "category": "Nirbhay Knitting",
-            "title": "Knitted fabrics designed for structure, flexibility, and end-use performance",
-            "description": "Base fabrics, raised fabrics, 3D spacer constructions, recycled yarn options, and FR developments tailored to customer need.",
+            "category": "Fire Retardant Fabrics",
+            "title": "FR Fabrics — From impossible to reality",
+            "description": "As the saying goes, it always seems impossible until it's done and that is exactly what happened with us. With incessant work and round the clock efforts of our technical team, we now manufacture standard FR fabrics.",
             "image": "assets/img/products/3d-spacer-stacked.png",
-            "href": "index.html",
-            "cta": "Explore knitting"
+            "href": "nk.html",
+            "cta": "Explore NK"
           },
           {
-            "category": "Nirbhay Chemicals",
-            "title": "Coating and laminating services that move beyond basic conversion",
-            "description": "Vinyl coated textiles, PU coating, laminating, specialty finishes, and chemical support backed by the Interplast Kimya relationship.",
+            "category": "Coated Fabrics",
+            "title": "Technically advanced products for a diverse clientele",
+            "description": "Our range of fabrics combined with our range of chemicals, puts us in a unique position to offer the most technically advance products (or product combinations) to our diverse clientele.",
             "image": "assets/img/products/direct-coating.jpg",
             "href": "nc.html",
-            "cta": "Explore coatings"
+            "cta": "Explore NC"
           },
           {
             "category": "Testing and Manufacturing",
@@ -140,12 +140,12 @@
         "panels": [
           {
             "title": "Knitted material platform",
-            "description": "Base fabrics, 3D spacer constructions, raised fabrics, recycled yarn developments, and FR samples designed around end-use performance.",
+            "description": "Base fabrics, 3D spacer constructions, raised fabrics, recycled yarn developments, and FR fabrics designed around end-use performance.",
             "badge": "NK"
           },
           {
-            "title": "Chemical and coating support",
-            "description": "PU coating, vinyl coated textiles, laminating, and Interplast-linked chemical knowledge create a stronger value-added proposition.",
+            "title": "Chemical trading and support",
+            "description": "Certified agents for Interplast Kimya. Solvent based, water based and bio based chemicals for synthetic leather, genuine leather, and direct coating.",
             "badge": "NC"
           },
           {
@@ -160,13 +160,18 @@
         "description": "Talk to our team about knitted substrates, coated textiles, PU coating, laminating, recycled yarn options, FR developments, or contract manufacturing for your next project.",
         "primary": { "label": "Contact our team", "href": "contact.html" },
         "secondary": { "label": "Explore capabilities", "href": "nk.html" }
+      },
+      "clientList": {
+        "title": "Our Clients",
+        "subtitle": "Trusted by industry leaders",
+        "clients": []
       }
     }
   },
   "about": {
     "banner": {
       "title": "NK",
-      "subtitle": "From regional textile specialist to integrated materials and coatings partner",
+      "subtitle": "All fabrics without the use of water.",
       "backgroundImage": "assets/img/hero/about-bg.jpg"
     },
     "journeySection": {
@@ -174,8 +179,10 @@
       "title": "How Nirbhay Is Evolving",
       "storyTitle": "Engineering precision with sustainable innovation for over 40 years",
       "paragraphs": [
-        "For over 40 years, Nirbhay Knitting has engineered technical textiles that serve as the foundation for high-performance coated and laminated materials. From 3D spacer fabrics to coated-ready knits and raised substrates, our materials are designed to perform consistently on coating and lamination lines.",
-        "With zero-discharge manufacturing, waterless finishing, and a commitment to clean, responsible production, we combine engineering precision with sustainable innovation. We don't just supply fabrics — we build long-term partnerships based on trust, transparency, and technical excellence."
+        "NKI started off as a company offering high quality polyester fabrics for the synthetic leather industry. Founded by Late Mr. Rohit D. Kamdar, the company quickly established itself as a trusted name in the industry.",
+        "After the sudden demise of our founder, the baton was handed over to a confident young man, his son and our current CMD, Mr. Rajeev Kamdar. Under his leadership, the company has expanded across horizons.",
+        "Two things Mr. Kamdar has never compromised on are Quality and Sustainability. And today, we are proud to say that we are a certified ZERO DISCHARGE COMPANY.",
+        "In 2020, as part of our portfolio diversification plan, we expanded into trading of Chemicals, under the brand, NirChem. NirChem deals in all kinds of chemicals needed, across various industries ranging from synthetic leather to direct coating."
       ],
       "decor": {},
       "milestones": [
@@ -192,9 +199,15 @@
           "image": "assets/img/factory/Pailung 1.jpg"
         },
         {
+          "year": "2020",
+          "title": "NirChem brand launched",
+          "description": "As part of our portfolio diversification plan, we expanded into trading of Chemicals, under the brand, NirChem.",
+          "image": "assets/img/factory/stenter.jpg"
+        },
+        {
           "year": "2022",
           "title": "Interplast Kimya represented",
-          "description": "PU resins and lacquers strengthened vertical integration and cross-selling potential.",
+          "description": "Became certified agents for Interplast Kimya, based out of Istanbul Turkey, specialising in chemicals for different types of coating.",
           "image": "assets/img/factory/Pinlung 2.jpg"
         },
         {
@@ -205,8 +218,8 @@
         },
         {
           "year": "2024+",
-          "title": "Coating and innovation pipeline expands",
-          "description": "Laminating, PU coating, coated 3D materials, FR trials, and breathable coatings define the current direction.",
+          "title": "FR fabrics and innovation pipeline expands",
+          "description": "As the saying goes, it always seems impossible until it's done. With incessant work and round the clock efforts of our technical team, we now manufacture standard FR fabrics.",
           "image": "assets/img/factory/Pailung 1.jpg"
         }
       ]
@@ -214,8 +227,8 @@
     "story": {
       "title": "Built for industrial performance, positioned for international growth",
       "paragraphs": [
-        "Nirbhay combines 125 MT/month manufacturing capability, coating support, and testing discipline for applications where consistency and customization matter. Its portfolio spans knitted base fabrics, 3D spacer fabrics, raised fabrics, recycled yarn fabrics, vinyl coated textiles, and value-added coating services — with FR fabrics and breathable coatings in active development.",
-        "The company is expanding through laminating, PU coating, Interplast Kimya-linked chemistry, and a focused innovation pipeline. With a sustainability profile aligned with European market expectations, Nirbhay is building long-term partnerships based on trust, transparency, and technical excellence."
+        "Having been in the industry for over 40 years, we have mastered the art of offering fabrics engineered to be highly technical while having the best handfeel achievable. Our portfolio spans knitted base fabrics, 3D spacer fabrics, raised fabrics, recycled yarn fabrics, vinyl coated textiles, and FR fabrics — all manufactured without the use of water.",
+        "In 2020, as part of our portfolio diversification plan, we expanded into trading of Chemicals, under the brand, NirChem. NirChem deals in all kinds of chemicals needed, across various industries ranging from synthetic leather to direct coating."
       ]
     },
     "factoryGallery": {
@@ -248,7 +261,7 @@
       },
       {
         "title": "Broad Product Portfolio",
-        "description": "Knits, coated fabrics, 3D spacer, raised, FR developments — covering diverse industrial needs.",
+        "description": "Knits, coated fabrics, 3D spacer, raised, FR fabrics — covering diverse industrial needs.",
         "icon": "layers"
       },
       {
@@ -263,7 +276,7 @@
       },
       {
         "title": "Innovation in Coated 3D Fabrics",
-        "description": "Early market validation with coated 3D constructions and breathable coating R&D.",
+        "description": "With years of R&D we have managed to achieve 3D spacer fabrics available in a wide range of thicknesses starting from 1mm all the way to 3.5mm and above.",
         "icon": "lightbulb"
       },
       {
@@ -276,13 +289,13 @@
   "nc": {
     "banner": {
       "title": "Nirbhay Chemicals",
-      "subtitle": "Coating, laminating, and chemical solutions for advanced material systems",
-      "description": "NirChem extends Nirbhay's offering through PU coating, laminating, vinyl coated textile support, specialty finishes, and the added strength of Interplast Kimya representation.",
+      "subtitle": "Certified agents for Interplast Kimya, specialising in chemicals for different types of coating",
+      "description": "We are the certified agents for Interplast Kimya, based out of Istanbul Turkey, specialising in chemicals for different types of coating.",
       "backgroundImage": "assets/img/hero/nc-bg.jpg"
     },
     "divisionLogo": "assets/img/logo/nc-logo-transparent.png",
     "divisionLogoAlt": "NirChem - a division of Nirbhay Knitting Industries",
-    "divisionStatement": "A division focused on value-added coating, laminating, and chemistry-backed material development.",
+    "divisionStatement": "We offer a wide range of Solvent based, Water based and bio based chemicals for various industries including Synthetic Leather, Genuine Leather, and Direct Coating.",
     "heroStats": [
       { "value": "125 MT", "label": "Monthly Capacity" },
       { "value": "35,000+", "label": "sq. ft. Infrastructure" },
@@ -292,154 +305,121 @@
     "processStages": [
       {
         "number": "01",
-        "title": "Substrate Preparation",
-        "description": "The process begins with selecting and preparing the right knitted base fabric. Every substrate is inspected for weight, structure, and surface consistency before entering the coating line.",
+        "title": "Synthetic Leather",
+        "description": "Our range of Chemicals includes water based, solvent based and bio-based chemicals across the respective categories: PUs, PVCs, Aliphatics, Aromatics, Polycarbonates.",
         "lottie": "assets/lottie/fiber-weave.lottie",
-        "gauge": { "label": "Substrate QC", "value": "Verified", "fill": 100 },
+        "gauge": { "label": "Range", "value": "Complete", "fill": 100 },
         "layerIndex": 0
       },
       {
         "number": "02",
-        "title": "Coating Application",
-        "description": "PU or vinyl coating is applied using direct coating techniques. Application parameters are controlled to meet customer specifications for each substrate and end-use.",
+        "title": "Genuine Leather",
+        "description": "We offer waterbased finishing PUs for genuine leather in various finishes like gloss and matt.",
         "lottie": "assets/lottie/gears.lottie",
-        "gauge": { "label": "Process", "value": "Controlled", "fill": 90 },
+        "gauge": { "label": "Finishing", "value": "Specialized", "fill": 90 },
         "layerIndex": 1
       },
       {
         "number": "03",
-        "title": "Lamination",
-        "description": "Multiple layers are bonded under controlled pressure and temperature. The laminating process creates composite materials with enhanced mechanical and surface performance.",
+        "title": "Direct Coating",
+        "description": "Chemicals and systems for direct coating applications across various industrial end-uses.",
         "lottie": "assets/lottie/factory.lottie",
-        "gauge": { "label": "Bond", "value": "Validated", "fill": 88 },
+        "gauge": { "label": "Application", "value": "Industrial", "fill": 88 },
         "layerIndex": 2
-      },
-      {
-        "number": "04",
-        "title": "Curing and Drying",
-        "description": "Coated substrates pass through controlled drying and heat setting. Temperature and speed profiles are calibrated for each chemistry system and end-use requirement.",
-        "lottie": "assets/lottie/automation.lottie",
-        "gauge": { "label": "Heat Setting", "value": "Calibrated", "fill": 92 },
-        "layerIndex": 3
-      },
-      {
-        "number": "05",
-        "title": "Quality and Finish",
-        "description": "Final surface treatment, testing, and quality certification. Every batch is validated against customer specifications before dispatch.",
-        "lottie": "assets/lottie/globe.lottie",
-        "gauge": { "label": "Final QC", "value": "Certified", "fill": 95 },
-        "layerIndex": 4
       }
     ],
     "products": [
       {
-        "name": "Vinyl Coated Textiles",
-        "description": "Durable coated textile systems developed for industrial applications where surface protection, consistency, and reliable substrate performance are essential.",
+        "name": "Synthetic Leather Chemicals",
+        "description": "Our range of Chemicals includes water based, solvent based and bio-based chemicals across the respective categories: PUs, PVCs, Aliphatics, Aromatics, Polycarbonates.",
         "image": "assets/img/products/synthetic-leather.jpg",
-        "badge": "Multi-Layer"
+        "badge": "Full Range"
       },
       {
-        "name": "PU Coating and Laminating",
-        "description": "New laminating and PU coating capabilities open the door to higher-value coated constructions, contract manufacturing, and customer-specific surface solutions.",
-        "image": "assets/img/products/direct-coating.jpg",
-        "badge": "Direct Coat"
-      },
-      {
-        "name": "Contract Manufacturing / Job Work",
-        "description": "NirChem can support partners as a processing specialist, combining textile understanding with coating know-how for outsourced development and production needs.",
-        "image": "assets/img/products/others.jpg",
-        "badge": "Job Work"
-      },
-      {
-        "name": "Interplast Resins and Lacquers",
-        "description": "Through the Interplast Kimya relationship, customers gain access to PU resins and lacquers that complement Nirbhay's coating and textile development capabilities.",
+        "name": "Genuine Leather Chemicals",
+        "description": "We offer waterbased finishing PUs for genuine leather in various finishes like gloss and matt.",
         "image": "assets/img/products/genuine-leather.jpg",
-        "badge": "Chemistry"
+        "badge": "Waterbased"
       },
       {
-        "name": "Breathable Coating Systems",
-        "description": "Current innovation work includes water-based breathable coatings and coated 3D constructions designed to move the portfolio into more advanced technical territory.",
+        "name": "Direct Coating Chemicals",
+        "description": "Chemicals and systems for direct coating applications across various industrial end-uses.",
         "image": "assets/img/products/direct-coating.jpg",
-        "badge": "In Development"
+        "badge": "Industrial"
       }
     ],
     "capabilities": [
-      { "title": "Product Range", "value": "Vinyl · PU · Laminated", "unit": "Coated textiles, laminated composites, specialty finishes", "icon": "layers", "gaugeFill": 85 },
-      { "title": "Monthly Capacity", "value": "125 MT", "unit": "Integrated knitting + coating production", "icon": "chart", "gaugeFill": 82 },
-      { "title": "Infrastructure", "value": "35,000+", "unit": "sq. ft. built-up manufacturing space", "icon": "grid", "gaugeFill": 90 },
-      { "title": "Sustainability", "value": "Zero Discharge", "unit": "Waterless finishing · Clean energy", "icon": "shield", "gaugeFill": 95 },
-      { "title": "Chemistry Partner", "value": "Interplast Kimya", "unit": "PU resins · Lacquers · Formulation support", "icon": "layers", "gaugeFill": 88 },
-      { "title": "Innovation Pipeline", "value": "Active R&D", "unit": "Breathable coatings · Coated 3D · FR substrates", "icon": "ruler", "gaugeFill": 72 }
+      { "title": "Chemical Range", "value": "Solvent · Water · Bio-based", "unit": "PUs, PVCs, Aliphatics, Aromatics, Polycarbonates", "icon": "layers", "gaugeFill": 95 },
+      { "title": "Synthetic Leather", "value": "Full Range", "unit": "Water based, solvent based and bio-based chemicals", "icon": "chart", "gaugeFill": 90 },
+      { "title": "Genuine Leather", "value": "Waterbased PUs", "unit": "Finishing PUs in gloss and matt finishes", "icon": "grid", "gaugeFill": 85 },
+      { "title": "Direct Coating", "value": "Industrial", "unit": "Chemicals for direct coating applications", "icon": "shield", "gaugeFill": 88 },
+      { "title": "Principal", "value": "Interplast Kimya", "unit": "Istanbul, Turkey · Certified agents", "icon": "layers", "gaugeFill": 100 },
+      { "title": "Sustainability", "value": "Bio-based PUs", "unit": "Water-based and bio-based polyurethane systems", "icon": "ruler", "gaugeFill": 82 }
     ],
     "innovation": {
-      "title": "Breathable Coating Systems in Development",
-      "badge": "In Development",
-      "description": "Current innovation work includes water-based breathable coatings and coated 3D constructions designed to move the portfolio into more advanced technical territory. Combined with FR textile development, these next-generation systems aim to address growing performance and sustainability requirements.",
-      "detail": "The R&D pipeline focuses on three frontiers: water-based breathable coatings for reduced environmental impact, coated 3D spacer constructions for automotive and technical applications, and FR (flame retardant) substrates for protective end-uses.",
+      "title": "Bio-based and Water-based PU Systems",
+      "badge": "Sustainability",
+      "description": "In NirChem, by the introduction of water-based and bio-based PUs, we pledge our support to initiatives like the CBE JU of the European Union, promoting the use of bio-based PUs.",
+      "detail": "Our commitment to sustainable chemistry drives the development of water-based and bio-based polyurethane systems that reduce environmental impact while maintaining performance across synthetic leather, genuine leather, and direct coating applications.",
       "image": "assets/img/factory/stenter.jpg"
     },
     "partnership": {
-      "title": "Backed by Interplast Kimya",
-      "description": "Through the Interplast Kimya (Turkey) partnership, NirChem customers gain access to PU resins and lacquers that complement Nirbhay's coating and textile development capabilities — enabling vertical integration and higher-value coated solutions.",
+      "title": "Strategic Partnership with ANEX by Interplast",
+      "description": "We are the certified agents for Interplast Kimya, based out of Istanbul Turkey, specialising in chemicals for different types of coating. Our strategic partnership with ANEX by Interplast strengthens our position as a comprehensive chemicals solutions provider.",
       "capabilities": [
-        "PU resins for coating and laminating applications",
-        "Lacquers for surface finishing",
-        "Vertical integration into higher-value coated solutions",
-        "Partnership active since 2022"
+        "Certified agents for Interplast Kimya, Istanbul Turkey",
+        "Solvent based, water based and bio based chemicals",
+        "Chemicals for synthetic leather, genuine leather, and direct coating",
+        "Strategic partnership with ANEX by Interplast"
       ]
     },
     "contentBlock": {
-      "title": "Where chemistry and textile know-how come together",
-      "description": "NirChem connects coating capability, laminating, and chemical support to Nirbhay's textile base. The result is a more integrated platform for customers seeking performance-driven coated materials and future-ready developments.",
+      "title": "Your partner in coating chemicals",
+      "description": "NirChem offers a wide range of Solvent based, Water based and bio based chemicals for various industries including Synthetic Leather, Genuine Leather, and Direct Coating. As certified agents for Interplast Kimya, we bring world-class chemical solutions to our diverse clientele.",
       "image": "assets/img/factory/stenter.jpg"
     }
   },
   "sustainability": {
     "banner": {
       "title": "Sustainability",
-      "subtitle": "Responsible process choices built into manufacturing",
-      "description": "Nirbhay's sustainability direction is grounded in water-free finishing, certified zero discharge operations, efficient utilities, reduced chemical footprint, and lower-impact product development.",
+      "subtitle": "Growth is irrelevant without sustainability",
+      "description": "We at Nirbhay, believe that growth is irrelevant without sustainability and hence we have consciously taken steps to ensure that we do as much as we can for the environment.",
       "backgroundImage": "assets/img/hero/sustainability-bg.jpg"
     },
     "intro": {
-      "title": "How we approach responsible manufacturing",
+      "title": "Our commitment to the environment",
       "paragraphs": [
-        "Nirbhay's sustainability profile comes from practical operating choices: all finishing processes are water free, the facility follows a zero discharge model, and energy usage is managed for efficiency. These decisions reduce process complexity while supporting cleaner production discipline.",
-        "The product roadmap also reflects this direction. Recycled yarn fabric options are already part of the portfolio, while new development work focuses on lower-footprint coating systems, coated 3D materials, and water-based breathable solutions for the future."
+        "We at Nirbhay, believe that growth is irrelevant without sustainability and hence we have consciously taken steps to ensure that we do as much as we can for the environment.",
+        "The first step was to ensure that no water is used in manufacturing and processing any of our fabrics. This makes us a ZERO DISCHARGE COMPANY."
       ]
     },
     "pillars": [
       {
-        "title": "Zero Discharge Facility",
-        "description": "Manufacturing is built around zero discharge operations, reducing environmental impact and aligning with international sustainability standards.",
+        "title": "Zero Discharge Company",
+        "description": "The first step was to ensure that no water is used in manufacturing and processing any of our fabrics. This makes us a ZERO DISCHARGE COMPANY.",
         "icon": "leaf"
       },
       {
-        "title": "Water-Free Finishing",
-        "description": "All finishing processes are water free, reducing water dependency and helping simplify environmental process management.",
+        "title": "Green Space",
+        "description": "At our manufacturing facility in Halol, Gujarat, we have maintained acres of green space to contribute to a healthier environment.",
         "icon": "recycle"
       },
       {
-        "title": "Efficient Utility Profile",
-        "description": "The facility operates on clean energy inputs, supporting a controlled and efficient production environment.",
+        "title": "Clean Energy Sources",
+        "description": "We only use electricity and gas as our sources of energy.",
         "icon": "bolt"
       },
       {
-        "title": "Lower-Impact Product Development",
-        "description": "Recycled yarn fabrics, future water-based coatings, and cleaner finishing choices are part of a broader move toward more responsible material innovation.",
+        "title": "Bio-based PUs via NirChem",
+        "description": "In NirChem, by the introduction of water-based and bio-based PUs, we pledge our support to initiatives like the CBE JU of the European Union, promoting the use of bio-based PUs.",
         "icon": "people"
-      },
-      {
-        "title": "Reduced Chemical Footprint",
-        "description": "Through the Interplast Kimya partnership and focused R&D in water-based breathable coatings, Nirbhay is actively reducing chemical intensity across its coating and finishing operations.",
-        "icon": "droplet"
       }
     ],
     "stats": [
-      { "value": "Zero", "label": "Discharge certified facility" },
-      { "value": "Water-free", "label": "Finishing processes" },
-      { "value": "Clean", "label": "Energy-efficient operations" },
-      { "value": "Recycled", "label": "Yarn-based options in portfolio" }
+      { "value": "Zero", "label": "Discharge Company" },
+      { "value": "Water-free", "label": "All fabrics made without the use of water" },
+      { "value": "Electricity & Gas", "label": "Only sources of energy" },
+      { "value": "Bio-based", "label": "PUs via NirChem" }
     ]
   },
   "team": {

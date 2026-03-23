@@ -11,12 +11,12 @@ const NC_LAYER_COLORS = ['#8B7355', '#B8860B', '#1C6DD0', '#2ecc71', '#9b59b6'];
 
 const NC_SECTIONS = [
   { id: 'nc-hero', label: 'Hero' },
-  { id: 'nc-process', label: 'Process' },
+  { id: 'nc-process', label: 'Industries' },
   { id: 'nc-products', label: 'Products' },
   { id: 'nc-capabilities', label: 'Specs' },
-  { id: 'nc-innovation', label: 'Innovation' },
+  { id: 'nc-innovation', label: 'Sustainability' },
   { id: 'nc-partnership', label: 'Alliance' },
-  { id: 'nc-content-block', label: 'Factory' }
+  { id: 'nc-content-block', label: 'About' }
 ];
 
 function renderNCLayerIndicator() {
@@ -133,8 +133,8 @@ function renderNCProcessFlow(stages) {
   return `
     <section class="nc-process" id="nc-process">
       <div class="nc-process-header" data-aos="fade-up">
-        <h2>The Coating Process</h2>
-        <p>Follow the material as it moves through five precision-controlled stages.</p>
+        <h2>Industries We Serve</h2>
+        <p>Solvent based, water based and bio based chemicals across these key sectors.</p>
       </div>
       <div class="nc-stages">
         <div class="nc-precision-line">
@@ -175,8 +175,8 @@ function renderNCProducts(products) {
   return `
     <section class="nc-products" id="nc-products">
       <div class="nc-products-header" data-aos="fade-up">
-        <h2>What We Create</h2>
-        <p>Coating, laminating, and chemistry-backed solutions for industrial surfaces</p>
+        <h2>Our Chemical Range</h2>
+        <p>Comprehensive coating chemicals for synthetic leather, genuine leather, and direct coating</p>
       </div>
       <div class="nc-product-grid">
         ${cardsHTML}
@@ -208,8 +208,8 @@ function renderNCCapabilities(capabilities) {
   return `
     <section class="nc-capabilities" id="nc-capabilities">
       <div class="nc-capabilities-header" data-aos="fade-up">
-        <h2>Technical Capabilities</h2>
-        <p>Engineering precision across every coating parameter</p>
+        <h2>Our Capabilities</h2>
+        <p>Comprehensive chemical solutions across coating categories</p>
       </div>
       <div class="nc-cap-grid">
         ${cardsHTML}

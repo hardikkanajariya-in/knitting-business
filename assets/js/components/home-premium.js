@@ -9,6 +9,7 @@ function renderHomePremiumSections(data) {
     ${renderHomeShowcase(premium.showcase)}
     ${renderHomeProcess(premium.process)}
     ${renderHomeSpotlight(premium.spotlight)}
+    ${renderHomeClientList(premium.clientList)}
     ${renderHomeFinalCta(premium.finalCta)}
   `;
 }
@@ -223,6 +224,49 @@ function renderHomeSpotlight(section) {
               </article>
             `).join('')}
           </div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderHomeClientList(section) {
+  if (!section) return '';
+
+  const clients = section.clients || [];
+  if (!clients.length) {
+    return `
+      <section class="home-client-list section" data-parallax-section>
+        <div class="container">
+          <div class="home-client-header reveal-up">
+            <p class="home-section-eyebrow">${section.subtitle || ''}</p>
+            <h2 class="home-section-title">${section.title || ''}</h2>
+          </div>
+          <div class="home-client-placeholder reveal-up" style="text-align:center;padding:3rem 1rem;opacity:0.5;font-style:italic;color:var(--text-secondary);">
+            Client logos coming soon
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  const logosHTML = [...clients, ...clients].map(c => `
+    <div class="home-client-logo">
+      <img src="${c.logo}" alt="${c.name}" width="160" height="80" loading="lazy"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div class="home-client-fallback" style="display:none">${c.name}</div>
+    </div>
+  `).join('');
+
+  return `
+    <section class="home-client-list section" data-parallax-section>
+      <div class="container">
+        <div class="home-client-header reveal-up">
+          <p class="home-section-eyebrow">${section.subtitle || ''}</p>
+          <h2 class="home-section-title">${section.title || ''}</h2>
+        </div>
+        <div class="home-client-marquee">
+          <div class="home-client-track">${logosHTML}</div>
         </div>
       </div>
     </section>
