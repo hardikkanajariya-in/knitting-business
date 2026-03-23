@@ -6,11 +6,7 @@ function renderHomePremiumSections(data) {
     ${renderHomeStatsBand(premium.statsBand)}
     ${renderHomeTrustStrip(premium.trustStrip)}
     ${renderHomeIndustries(premium.industries)}
-    ${renderHomeShowcase(premium.showcase)}
-    ${renderHomeProcess(premium.process)}
     ${renderHomeSpotlight(premium.spotlight)}
-    ${renderHomeClientList(premium.clientList)}
-    ${renderHomeFinalCta(premium.finalCta)}
   `;
 }
 

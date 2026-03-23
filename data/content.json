@@ -19,8 +19,8 @@
   },
   "navigation": [
     { "label": "Home", "href": "index.html" },
-    { "label": "NK", "href": "nk.html", "title": "Nirbhay Knitting" },
-    { "label": "NC", "href": "nc.html", "title": "Nirbhay Chemicals" },
+    { "label": "Nirbhay Knitting", "href": "nk.html", "title": "Nirbhay Knitting" },
+    { "label": "Nirbhay Chemicals", "href": "nc.html", "title": "Nirbhay Chemicals" },
     { "label": "Sustainability", "href": "sustainability.html" },
     { "label": "Contact", "href": "contact.html" }
   ],
@@ -332,19 +332,19 @@
       {
         "name": "Synthetic Leather Chemicals",
         "description": "Our range of Chemicals includes water based, solvent based and bio-based chemicals across the respective categories: PUs, PVCs, Aliphatics, Aromatics, Polycarbonates.",
-        "image": "assets/img/products/synthetic-leather.jpg",
+        "image": "assets/img/products/prd-1.png",
         "badge": "Full Range"
       },
       {
         "name": "Genuine Leather Chemicals",
         "description": "We offer waterbased finishing PUs for genuine leather in various finishes like gloss and matt.",
-        "image": "assets/img/products/genuine-leather.jpg",
+        "image": "assets/img/products/prd-2.png",
         "badge": "Waterbased"
       },
       {
         "name": "Direct Coating Chemicals",
         "description": "Chemicals and systems for direct coating applications across various industrial end-uses.",
-        "image": "assets/img/products/direct-coating.jpg",
+        "image": "assets/img/products/prd-3.png",
         "badge": "Industrial"
       }
     ],

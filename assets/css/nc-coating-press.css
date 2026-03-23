@@ -1001,7 +1001,7 @@
 }
 
 .nc-partnership {
-  padding: var(--nc-section-pad);
+  padding: 2rem 1.5rem;
   background: var(--nc-surface);
   position: relative;
 }

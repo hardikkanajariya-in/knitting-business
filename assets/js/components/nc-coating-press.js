@@ -14,7 +14,6 @@ const NC_SECTIONS = [
   { id: 'nc-process', label: 'Industries' },
   { id: 'nc-products', label: 'Products' },
   { id: 'nc-capabilities', label: 'Specs' },
-  { id: 'nc-innovation', label: 'Sustainability' },
   { id: 'nc-partnership', label: 'Alliance' },
   { id: 'nc-content-block', label: 'About' }
 ];
@@ -38,15 +37,7 @@ function renderNCLayerIndicator() {
 
 function renderNCHero(nc) {
   const banner = nc.banner;
-  const stats  = nc.heroStats || [];
   const words  = banner.title.split(' ');
-
-  const statsHTML = stats.map((s, i) => `
-    <div class="nc-hero-stat" data-aos="fade-up" data-aos-delay="${400 + i * 100}">
-      <div class="nc-hero-stat-value" data-nc-counter="${s.value}">${s.value}</div>
-      <div class="nc-hero-stat-label">${s.label}</div>
-    </div>
-  `).join('');
 
   return `
     <section class="nc-hero" id="nc-hero">
@@ -78,8 +69,6 @@ function renderNCHero(nc) {
           Explore Our Process
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
         </a>
-
-        ${stats.length ? `<div class="nc-hero-stats">${statsHTML}</div>` : ''}
       </div>
 
       <div class="nc-hero-scroll" aria-hidden="true">
@@ -161,11 +150,6 @@ function renderNCProducts(products) {
           <img src="${p.image}" alt="${p.name}" width="600" height="450" loading="lazy"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
           <div class="nc-swatch-fallback" style="display:none">${p.name}</div>
-          ${p.badge ? `<span class="nc-swatch-badge">${p.badge}</span>` : ''}
-        </div>
-        <div class="nc-swatch-body">
-          <h3 class="nc-swatch-name">${p.name}</h3>
-          <p class="nc-swatch-desc">${p.description}</p>
         </div>
         <div class="nc-swatch-strip" aria-hidden="true">${stripHTML}</div>
       </div>
@@ -175,8 +159,7 @@ function renderNCProducts(products) {
   return `
     <section class="nc-products" id="nc-products">
       <div class="nc-products-header" data-aos="fade-up">
-        <h2>Our Chemical Range</h2>
-        <p>Comprehensive coating chemicals for synthetic leather, genuine leather, and direct coating</p>
+        <h2>Industries We Cater To</h2>
       </div>
       <div class="nc-product-grid">
         ${cardsHTML}
@@ -251,70 +234,12 @@ function renderNCPartnership(nc) {
   const p = nc.partnership;
   if (!p) return '';
 
-  const capIcons = [
-    `<svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-    `<svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-    `<svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-    `<svg viewBox="0 0 20 20" fill="none"><path d="M4 10.5l4 4 8-8.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`
-  ];
-
-  const capsHTML = (p.capabilities || []).map((c, i) =>
-    `<li>
-      <span class="nc-cap-check">${capIcons[i] || capIcons[0]}</span>
-      <span>${c}</span>
-    </li>`
-  ).join('');
-
   return `
     <section class="nc-partnership" id="nc-partnership">
       <div class="nc-partnership-inner" data-aos="fade-up">
-        <div class="nc-partner-accent-bar"></div>
-
-        <div class="nc-partner-header">
-          <div class="nc-partner-logos">
-            <div class="nc-partner-logo nc-partner-logo--nirchem">
-              <img src="${nc.divisionLogo}" alt="NirChem" width="140" height="42" loading="lazy"
-                   onerror="this.parentElement.innerHTML='<span class=nc-partner-fallback>NirChem</span>'">
-            </div>
-            <span class="nc-partner-bridge">
-              <span class="nc-partner-bridge-line"></span>
-              <span class="nc-partner-bridge-icon">
-                <svg viewBox="0 0 24 24" fill="none" width="20" height="20">
-                  <path d="M17 11H3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M21 11H17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <path d="M14 7l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-              <span class="nc-partner-bridge-line"></span>
-            </span>
-            <div class="nc-partner-logo nc-partner-logo--interplast">
-              <div class="nc-partner-flag">
-                <svg viewBox="0 0 32 22" width="28" height="18">
-                  <rect width="32" height="22" rx="2" fill="#E30A17"/>
-                  <circle cx="14" cy="11" r="5.5" fill="#fff"/>
-                  <circle cx="15.5" cy="11" r="4.5" fill="#E30A17"/>
-                  <polygon points="16.5,8.5 17.2,10.4 19.2,10.4 17.5,11.6 18.1,13.5 16.5,12.3 14.9,13.5 15.5,11.6 13.8,10.4 15.8,10.4" fill="#fff"/>
-                </svg>
-              </div>
-              <span class="nc-partner-name">Interplast Kimya</span>
-              <span class="nc-partner-country">Turkey</span>
-            </div>
-          </div>
-
-          <div class="nc-partner-badge">
-            <svg viewBox="0 0 16 16" fill="none" width="14" height="14">
-              <path d="M8 1l1.8 3.6L14 5.3l-3 2.9.7 4.1L8 10.5 4.3 12.3l.7-4.1-3-2.9 4.2-.7L8 1z" fill="var(--nc-accent)" opacity="0.2" stroke="var(--nc-accent)" stroke-width="1"/>
-            </svg>
-            Strategic Partnership · Since 2022
-          </div>
-        </div>
-
-        <div class="nc-partner-divider"></div>
-
-        <div class="nc-partnership-content">
-          <h2>${p.title}</h2>
-          <p>${p.description}</p>
-          ${capsHTML ? `<ul class="nc-partner-caps">${capsHTML}</ul>` : ''}
+        <div style="display:flex;justify-content:center;align-items:center;padding:1rem;overflow:hidden;max-height:280px;">
+          <img src="assets/img/logo/interplast.png" alt="Strategic Partnership — NirChem × ANEX by Interplast"
+               style="display:block;max-width:600px;width:100%;height:auto;margin-top:-12%;margin-bottom:-12%;" loading="lazy">
         </div>
       </div>
     </section>

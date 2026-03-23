@@ -72,10 +72,8 @@
           typeof renderNCProcessFlow === 'function'  ? renderNCProcessFlow(nc.processStages) : '',
           typeof renderNCProducts === 'function'     ? renderNCProducts(nc.products) : '',
           typeof renderNCCapabilities === 'function' ? renderNCCapabilities(nc.capabilities) : '',
-          typeof renderNCInnovation === 'function'   ? renderNCInnovation(nc.innovation) : '',
           typeof renderNCPartnership === 'function'  ? renderNCPartnership(nc) : '',
-          typeof renderNCContentBlock === 'function' ? renderNCContentBlock(nc.contentBlock) : '',
-          typeof renderCTAStrip === 'function'       ? renderCTAStrip(data) : ''
+          typeof renderNCContentBlock === 'function' ? renderNCContentBlock(nc.contentBlock) : ''
         ].join('');
 
         

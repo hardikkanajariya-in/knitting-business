@@ -92,9 +92,6 @@ function _initNCCapGauges() {
 }
 
 function _initNCStatCounters() {
-  const statValues = document.querySelectorAll('.nc-hero-stat-value');
-  statValues.forEach(el => _animateStatOnScroll(el));
-
   const capValues = document.querySelectorAll('.nc-cap-value[data-nc-counter]');
   capValues.forEach(el => _animateStatOnScroll(el));
 }

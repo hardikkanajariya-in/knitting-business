@@ -1,6 +1,5 @@
 function renderHeroB(data) {
   const hasVideo = Boolean(data.heroVideo);
-  const secondaryCta = data.secondaryCta;
   const posterImage = data.posterImage || data.backgroundImage || '';
 
   const titleWords = data.title.split(' ');
@@ -47,19 +46,6 @@ function renderHeroB(data) {
 
         <div class="hero-b-desc">
           <p>${data.subtitle}</p>
-        </div>
-
-        <div class="hero-b-cta-row">
-          <a href="${data.cta.href}" class="hero-b-cta">
-            ${data.cta.label}
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
-          </a>
-          ${secondaryCta ? `
-            <a href="${secondaryCta.href}" class="hero-b-cta hero-b-cta--secondary">
-              ${secondaryCta.label}
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          ` : ''}
         </div>
 
       </div>

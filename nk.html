@@ -67,15 +67,6 @@
       const team = data.team;
 
       const sharedSections = `
-        <section class="section" style="background: var(--bg-secondary); padding-top: 2rem;">
-          <div class="container">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-              ${about.stats.map(stat =>
-                '<div class="stat-card"><div class="stat-value">' + stat.value + '</div><div class="stat-label">' + stat.label + '</div></div>'
-              ).join('')}
-            </div>
-          </div>
-        </section>
         ${team ? '<section class="team-section section"><div class="container"><div class="section-header" data-aos="fade-up"><h2 class="section-title">' + (team.sectionTitle || 'People and Capability') + '</h2><p class="section-subtitle">' + (team.sectionSubtitle || '') + '</p></div><div class="team-grid">' + (typeof renderTeamCards === 'function' ? renderTeamCards(team.leadership) : '') + '</div></div></section>' : ''}
       `;
 
@@ -103,7 +94,6 @@
       if (typeof initAboutJourneyV4Animations === 'function') initAboutJourneyV4Animations();
       if (typeof initStrengthsAnimations === 'function') initStrengthsAnimations();
       if (typeof initFactoryGallery === 'function') initFactoryGallery();
-      if (typeof initStatCounters === 'function') initStatCounters();
 
       document.body.classList.add('loaded');
       const pt = document.querySelector('.page-transition');

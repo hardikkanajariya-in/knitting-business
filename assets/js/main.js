@@ -567,6 +567,21 @@ function renderSustainabilityPage(data) {
         </div>
       </div>
     </section>
+    ${data.nc && data.nc.innovation ? `
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
+            <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;"></span>
+            <span style="font-size:0.875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);">${data.nc.innovation.badge}</span>
+          </div>
+          <h2 class="section-title mb-4">${data.nc.innovation.title}</h2>
+          <p class="text-base md:text-lg leading-relaxed mb-4" style="color:var(--text-secondary);">${data.nc.innovation.description}</p>
+          ${data.nc.innovation.detail ? `<p class="text-base leading-relaxed" style="color:var(--text-secondary);">${data.nc.innovation.detail}</p>` : ''}
+        </div>
+      </div>
+    </section>
+    ` : ''}
   `;
 }
 

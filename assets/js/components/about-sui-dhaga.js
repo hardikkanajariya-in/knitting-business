@@ -237,15 +237,6 @@ function renderAboutJourneyV4(section) {
                 '<span class="sd-embroidered">$1</span>')}
             </h2>
             <p class="sd-hero-paragraph">${(section.paragraphs && section.paragraphs[0]) || 'From a single knitting unit in Halol to an integrated textile powerhouse — our journey is stitched with dedication, innovation, and relentless quality.'}</p>
-            <div class="sd-hero-cta-row">
-              <a href="#sd-milestones" class="sd-hero-btn sd-hero-btn--primary">
-                <span>Explore Our Journey</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-              <a href="contact.html" class="sd-hero-btn sd-hero-btn--ghost">
-                <span>Get in Touch</span>
-              </a>
-            </div>
           </div>
 
           <!-- Right column: visual feature card -->
@@ -278,22 +269,6 @@ function renderAboutJourneyV4(section) {
                 </svg>
               </div>
               <div class="sd-feature-subtitle">${section.storyTitle || 'Engineering precision with sustainable innovation for over 40 years'}</div>
-              <div class="sd-feature-stats-row">
-                <div class="sd-feature-stat">
-                  <span class="sd-feature-stat-val">40+</span>
-                  <span class="sd-feature-stat-label">Years</span>
-                </div>
-                <div class="sd-feature-stat-divider"></div>
-                <div class="sd-feature-stat">
-                  <span class="sd-feature-stat-val">125 MT</span>
-                  <span class="sd-feature-stat-label">Monthly</span>
-                </div>
-                <div class="sd-feature-stat-divider"></div>
-                <div class="sd-feature-stat">
-                  <span class="sd-feature-stat-val">Zero</span>
-                  <span class="sd-feature-stat-label">Discharge</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
@@ -323,10 +298,8 @@ function initAboutJourneyV4Animations() {
       .fromTo('.sd-hero-eyebrow', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 })
       .fromTo('.sd-hero-title', { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.3')
       .fromTo('.sd-hero-paragraph', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, '-=0.4')
-      .fromTo('.sd-hero-cta-row', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, '-=0.2')
       .fromTo(heroCard, { y: 60, opacity: 0, scale: 0.94 }, { y: 0, opacity: 1, scale: 1, duration: 0.9, ease: 'back.out(1.4)' }, '-=0.7')
-      .fromTo('.sd-feature-loom-icon', { rotate: -15, scale: 0.6, opacity: 0 }, { rotate: 0, scale: 1, opacity: 1, duration: 0.7, ease: 'back.out(2)' }, '-=0.4')
-      .fromTo('.sd-feature-stat', { y: 15, opacity: 0 }, { y: 0, opacity: 1, stagger: 0.1, duration: 0.4 }, '-=0.3');
+      .fromTo('.sd-feature-loom-icon', { rotate: -15, scale: 0.6, opacity: 0 }, { rotate: 0, scale: 1, opacity: 1, duration: 0.7, ease: 'back.out(2)' }, '-=0.4');
 
     /* Gentle floating for the loom icon */
     gsap.to('.sd-feature-loom-icon', {
@@ -484,21 +457,6 @@ function initAboutJourneyV4Animations() {
   });
 
   function initScrollAnimations() {
-    
-    gsap.from('.sd-hero-eyebrow', {
-      y: 20, opacity: 0, duration: 0.8, ease: 'power3.out',
-      scrollTrigger: { trigger: '.sd-hero', start: 'top 80%' }
-    });
-    gsap.from('.sd-hero-title', {
-      y: 40, opacity: 0, duration: 1, delay: 0.2, ease: 'power3.out',
-      scrollTrigger: { trigger: '.sd-hero', start: 'top 80%' }
-    });
-    gsap.from('.sd-hero-subtitle', {
-      y: 30, opacity: 0, duration: 0.8, delay: 0.4, ease: 'power3.out',
-      scrollTrigger: { trigger: '.sd-hero', start: 'top 80%' }
-    });
-
-    
     ScrollTrigger.create({
       trigger: '.sd-milestones',
       start: 'top 90%',
