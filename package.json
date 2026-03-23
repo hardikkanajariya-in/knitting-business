@@ -1,0 +1,25 @@
+{
+  "name": "knitting-business",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hardikkanajariya-in/knitting-business.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hardikkanajariya-in/knitting-business/issues"
+  },
+  "homepage": "https://github.com/hardikkanajariya-in/knitting-business#readme",
+  "devDependencies": {
+    "javascript-obfuscator": "^5.4.1"
+  }
+}

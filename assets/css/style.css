@@ -2426,3 +2426,25 @@ body,
   .gbg-el { transform: scale(0.6); }
   .global-bg-canvas { opacity: 0.5; }
 }
+
+/* ── Copy Protection ───────────────────────────────────────────── */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+img {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+  pointer-events: none;
+}
+
+@media print {
+  body { display: none !important; }
+}
