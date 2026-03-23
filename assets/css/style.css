@@ -635,6 +635,11 @@ ul, ol {
   50% { box-shadow: 0 0 28px rgba(59,130,246,0.25), inset 0 0 16px rgba(255,255,255,0.06); transform: translateY(-3px); }
 }
 
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* Content block */
 .hero-b-content {
   position: relative;
