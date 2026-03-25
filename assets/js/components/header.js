@@ -56,7 +56,7 @@ function renderHeader(data) {
             ${logoMarkup}
             <span class="header-logo-fallback" style="display:none;">${site.name}</span>
           </span>
-          <span class="header-logo-company-name">Nirbhay Knitting Pvt. Ltd.</span>
+          <span class="header-logo-company-name"${currentPage === 'nc.html' ? ' style="display:none"' : ''}>Nirbhay Knitting Pvt. Ltd.</span>
         </a>
 
         <nav class="nav-desktop" role="navigation" aria-label="Main navigation">

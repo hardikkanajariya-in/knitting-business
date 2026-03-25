@@ -37,7 +37,6 @@ function renderNCLayerIndicator() {
 
 function renderNCHero(nc) {
   const banner = nc.banner;
-  const words  = banner.title.split(' ');
 
   return `
     <section class="nc-hero" id="nc-hero">
@@ -45,7 +44,7 @@ function renderNCHero(nc) {
       <div class="nc-hero-ring nc-hero-ring--inner" aria-hidden="true"></div>
 
       <div class="nc-hero-annotations" aria-hidden="true">
-        <span class="nc-hero-anno nc-hero-anno--1" data-aos="fade" data-aos-delay="700">Coating &amp; Lamination</span>
+        <span class="nc-hero-anno nc-hero-anno--1" data-aos="fade" data-aos-delay="700">Coating for Lamination</span>
         <span class="nc-hero-anno nc-hero-anno--2" data-aos="fade" data-aos-delay="800">Since 2020</span>
         <span class="nc-hero-anno nc-hero-anno--3" data-aos="fade" data-aos-delay="900">ISO Certified</span>
       </div>
@@ -122,7 +121,7 @@ function renderNCProcessFlow(stages) {
     <section class="nc-process" id="nc-process">
       <div class="nc-process-header" data-aos="fade-up">
         <h2>Industries We Serve</h2>
-        <p>Solvent based, water based and bio based chemicals across these key sectors.</p>
+        <p>Solvent-based, water-based, and bio-based chemicals across these key sectors.</p>
       </div>
       <div class="nc-stages">
         <div class="nc-precision-line">

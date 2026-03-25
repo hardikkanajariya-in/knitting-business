@@ -29,7 +29,7 @@
       "eyebrow": "40 Years of Engineering Excellence",
       "title": "Engineered Technical Textiles for Coating, Lamination & Performance",
       "subtitle": "Consistent substrates. Predictable performance.",
-      "description": "Founded by Late Mr. Rohit D. Kamdar, NKI started off as a company offering high quality polyester fabrics for the synthetic leather industry. Under the leadership of our CMD, Mr. Rajeev Kamdar, the company has expanded across horizons — never compromising on Quality and Sustainability. Today, we are proud to say that we are a certified ZERO DISCHARGE COMPANY.",
+      "description": "Founded by Late Mr. Rohit D. Kamdar, NKI started off as a company offering high-quality polyester fabrics for the synthetic leather industry. Under the leadership of our CMD, Mr. Rajeev Kamdar, the company has expanded across horizons — never compromising on Quality and Sustainability. Today, we are proud to say that we are a certified ZERO DISCHARGE COMPANY.",
       "cta": { "label": "Start a Project", "href": "contact.html" },
       "secondaryCta": { "label": "Explore NirChem", "href": "nc.html" },
       "backgroundImage": "assets/img/hero/hero-bg.jpg",
@@ -77,12 +77,12 @@
         "panels": [
           {
             "title": "Knitted Material Platform",
-            "description": "Base fabrics, 3D spacer constructions, raised fabrics, recycled febrics developments, and FR fabrics designed around end-use performance.",
+            "description": "Base fabrics, 3D spacer constructions, raised fabrics, recycled fabrics developments, and FR fabrics designed around end-use performance.",
             "badge": "NK"
           },
           {
             "title": "Chemical Trading and Support",
-            "description": "Certified agents for Interplast Kimya. Solvent based, water based and bio based chemicals for synthetic leather, genuine leather and direct coating.",
+            "description": "Certified agents for Interplast Kimya. Solvent-based, water-based, and bio-based chemicals for synthetic leather, genuine leather, and direct coating.",
             "badge": "NC"
           },
           {
@@ -111,7 +111,7 @@
       "title": "How Nirbhay Is Evolving",
       "storyTitle": "Engineering precision with sustainable innovation for over 40 years",
       "paragraphs": [
-        "Nirbhay started off as a company offering high quality polyester fabrics for the synthetic leather industry. Founded by Late Mr. Rohit D. Kamdar, the company quickly established itself as a trusted name in the industry.",
+        "Nirbhay started off as a company offering high-quality polyester fabrics for the synthetic leather industry. Founded by Late Mr. Rohit D. Kamdar, the company quickly established itself as a trusted name in the industry.",
         "After the sudden demise of our founder, the baton was handed over to a confident young man, his son and our current CMD, Mr. Rajeev Kamdar. Under his leadership, the company has expanded across horizons.",
         "Two things Mr. Kamdar has never compromised on are Quality and Sustainability. And today, we are proud to say that we are a certified ZERO DISCHARGE COMPANY.",
         "In 2020, as part of our portfolio diversification plan, we expanded into trading of Chemicals, under the brand, NirChem. NirChem deals in all kinds of chemicals needed, across various industries ranging from synthetic leather to direct coating."
@@ -151,7 +151,7 @@
         {
           "year": "2024+",
           "title": "FR fabrics and innovation pipeline expands",
-          "description": "As the saying goes, it always seems impossible until it's done. With incessant work and round the clock efforts of our technical team, we now manufacture standard FR fabrics.",
+          "description": "As the saying goes, it always seems impossible until it's done. With incessant work and round-the-clock efforts of our technical team, we now manufacture standard FR fabrics.",
           "image": "assets/img/factory/Pailung 1.jpg"
         }
       ]
@@ -213,7 +213,7 @@
       },
       {
         "title": "Coated Fabrics",
-        "description": "Our range of fabrics combined with our range of chemicals, puts us in a unique position to offer the most technically advance products (or product combinations) to our diverse clientele.",
+        "description": "Our range of fabrics combined with our range of chemicals, puts us in a unique position to offer the most technically advanced products (or product combinations) to our diverse clientele.",
         "icon": "layers"
       },
       {
@@ -227,12 +227,12 @@
     "banner": {
       "title": "Nirbhay Chemicals",
       "subtitle": "Certified agents for Interplast Kimya, specialising in chemicals for different types of coating",
-      "description": "We are the certified agents for Interplast Kimya, based out of Istanbul Turkey, specialising in chemicals for different types of coating.",
+      "description": "We are the certified agents for Interplast Kimya, based out of Istanbul, Turkey, specialising in chemicals for different types of coating.",
       "backgroundImage": "assets/img/hero/nc-bg.jpg"
     },
     "divisionLogo": "assets/img/logo/nc-logo.png",
     "divisionLogoAlt": "NirChem - a division of Nirbhay Knitting Industries",
-    "divisionStatement": "We offer a wide range of Solvent based, Water based and bio based chemicals for various industries including Synthetic Leather, Genuine Leather, and Direct Coating.",
+    "divisionStatement": "We offer a wide range of solvent-based, water-based, and bio-based chemicals for various industries including Synthetic Leather, Genuine Leather, and Direct Coating.",
     "heroStats": [
       { "value": "125 MT", "label": "Monthly Capacity" },
       { "value": "35,000+", "label": "sq. ft. Infrastructure" },
@@ -251,7 +251,7 @@
       {
         "number": "02",
         "title": "Genuine Leather",
-        "description": "We offer waterbased finishing PUs for genuine leather in various finishes like gloss and matt.",
+        "description": "We offer water-based finishing PUs for genuine leather in various finishes like gloss and matt.",
         "lottie": "assets/lottie/gears.lottie",
         "gauge": { "label": "Finishing", "value": "Specialized", "fill": 90 },
         "layerIndex": 1
@@ -274,9 +274,9 @@
       },
       {
         "name": "Genuine Leather Chemicals",
-        "description": "We offer waterbased finishing PUs for genuine leather in various finishes like gloss and matt.",
+        "description": "We offer water-based finishing PUs for genuine leather in various finishes like gloss and matt.",
         "image": "assets/img/products/prd-2.png",
-        "badge": "Waterbased"
+        "badge": "Water-based"
       },
       {
         "name": "Direct Coating Chemicals",
@@ -287,8 +287,8 @@
     ],
     "capabilities": [
       { "title": "Chemical Range", "value": "Solvent · Water · Bio-based", "unit": "PUs, PVCs, Aliphatics, Aromatics, Polycarbonates", "icon": "layers", "gaugeFill": 95 },
-      { "title": "Synthetic Leather", "value": "Full Range", "unit": "Water based, solvent based and bio-based chemicals", "icon": "chart", "gaugeFill": 90 },
-      { "title": "Genuine Leather", "value": "Waterbased PUs", "unit": "Finishing PUs in gloss and matt finishes", "icon": "grid", "gaugeFill": 85 },
+      { "title": "Synthetic Leather", "value": "Full Range", "unit": "Water-based, solvent-based, and bio-based chemicals", "icon": "chart", "gaugeFill": 90 },
+      { "title": "Genuine Leather", "value": "Water-based PUs", "unit": "Finishing PUs in gloss and matt finishes", "icon": "grid", "gaugeFill": 85 },
       { "title": "Direct Coating", "value": "Industrial", "unit": "Chemicals for direct coating applications", "icon": "shield", "gaugeFill": 88 },
       { "title": "Principal", "value": "Interplast Kimya", "unit": "Istanbul, Turkey · Certified agents", "icon": "layers", "gaugeFill": 100 },
       { "title": "Sustainability", "value": "Bio-based PUs", "unit": "Water-based and bio-based polyurethane systems", "icon": "ruler", "gaugeFill": 82 }
@@ -302,17 +302,17 @@
     },
     "partnership": {
       "title": "Strategic Partnership with ANEX by Interplast",
-      "description": "We are the certified agents for Interplast Kimya, based out of Istanbul Turkey, specialising in chemicals for different types of coating. Our strategic partnership with ANEX by Interplast strengthens our position as a comprehensive chemicals solutions provider.",
+      "description": "We are the certified agents for Interplast Kimya, based out of Istanbul, Turkey, specialising in chemicals for different types of coating. Our strategic partnership with ANEX by Interplast strengthens our position as a comprehensive chemicals solutions provider.",
       "capabilities": [
-        "Certified agents for Interplast Kimya, Istanbul Turkey",
-        "Solvent based, water based and bio based chemicals",
+        "Certified agents for Interplast Kimya, Istanbul, Turkey",
+        "Solvent-based, water-based, and bio-based chemicals",
         "Chemicals for synthetic leather, genuine leather, and direct coating",
         "Strategic partnership with ANEX by Interplast"
       ]
     },
     "contentBlock": {
       "title": "Your partner in coating chemicals",
-      "description": "NirChem offers a wide range of Solvent based, Water based and bio based chemicals for various industries including Synthetic Leather, Genuine Leather, and Direct Coating. As certified agents for Interplast Kimya, we bring world-class chemical solutions to our diverse clientele.",
+      "description": "NirChem offers a wide range of solvent-based, water-based, and bio-based chemicals for various industries including Synthetic Leather, Genuine Leather, and Direct Coating. As certified agents for Interplast Kimya, we bring world-class chemical solutions to our diverse clientele.",
       "image": "assets/img/factory/stenter.jpg"
     }
   },
@@ -385,7 +385,7 @@
     "description": "Reach out for knitted fabrics, coated textiles, PU coating, laminating support, sampling discussions, or broader partnership opportunities. We would be glad to understand your requirement and guide the next step.",
     "address": "81, Noorpura, P.O. Baska, Tal. Halol - 389 350, Dist. Panchmahals, Gujarat, India.",
     "email": "info@nirbhayknits.com",
-    "phone": "+91 93743 62436",
+    "phone": "+91 93756 17878",
     "mapEmbedUrl": "",
     "formFields": {
       "name": "Full Name",
@@ -408,7 +408,7 @@
     "contactInfo": {
       "address": "81, Noorpura, P.O. Baska, Tal. Halol - 389 350, Dist. Panchmahals, Gujarat, India.",
       "email": "info@nirbhayknits.com",
-      "phone": "+91 93743 62436"
+      "phone": "+91 93756 17878"
     },
     "copyright": "© 2026 Nirbhay Knitting Industries Pvt. Ltd. All rights reserved."
   }
