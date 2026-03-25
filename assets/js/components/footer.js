@@ -101,11 +101,6 @@ function renderFooter(data) {
               Start a Discussion
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
-            ${socialIcons ? `
-            <div class="footer-social footer-social--connect">
-              ${socialIcons}
-            </div>
-            ` : ''}
           </div>
         </div>
 

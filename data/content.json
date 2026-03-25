@@ -20,7 +20,7 @@
     { "label": "Home", "href": "index.html" },
     { "label": "About Us", "href": "about.html" },
     { "label": "Textile", "href": "nk.html" },
-    { "label": "Nirchem", "href": "nc.html" },
+    { "label": "NirChem", "href": "nc.html" },
     { "label": "Sustainability", "href": "sustainability.html" },
     { "label": "Contact Us", "href": "contact.html" }
   ],
