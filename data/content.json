@@ -13,16 +13,16 @@
     "metaDescription": "Nirbhay Knitting Industries — Engineered technical textiles for coating, lamination & performance applications. 40 years of precision, consistency, and sustainable innovation.",
     "themeColor": "#0A2A43",
     "socialLinks": [
-      { "name": "LinkedIn", "icon": "linkedin", "url": "https://www.linkedin.com/company/nirbhay-knitting" },
-      { "name": "Instagram", "icon": "instagram", "url": "https://www.instagram.com/nirbhayknitting" }
+      { "name": "LinkedIn", "icon": "linkedin", "url": "https://www.linkedin.com/company/nirbhay-knitting" }
     ]
   },
   "navigation": [
     { "label": "Home", "href": "index.html" },
-    { "label": "Nirbhay Knitting", "href": "nk.html", "title": "Nirbhay Knitting", "navLogo": "assets/img/logo/nk-logo.jpg" },
-    { "label": "Nirbhay Chemicals", "href": "nc.html", "title": "Nirbhay Chemicals", "navLogo": "assets/img/logo/nc-logo.png", "navLogoDark": "assets/img/logo/nc-logo-light.png" },
+    { "label": "About Us", "href": "about.html" },
+    { "label": "Textile", "href": "nk.html" },
+    { "label": "Nirchem", "href": "nc.html" },
     { "label": "Sustainability", "href": "sustainability.html" },
-    { "label": "Contact", "href": "contact.html" }
+    { "label": "Contact Us", "href": "contact.html" }
   ],
   "home": {
     "heroVariantB": {
@@ -44,112 +44,49 @@
           { "name": "Automotive", "icon": "car", "image": "assets/img/industries/automotive.jpg", "tag": "Interior and technical uses" },
           { "name": "Footwear", "icon": "shoe", "image": "assets/img/industries/footwear.jpg", "tag": "Comfort and structure" },
           { "name": "Home Furnishings", "icon": "sofa", "image": "assets/img/industries/furnishing.jpg", "tag": "Durable fabric systems" },
-          { "name": "Protective Applications", "icon": "shield", "image": "assets/img/industries/automotive.jpg", "tag": "FR fabrics and safety textiles" }
+          { "name": "Protective Applications", "icon": "shield", "image": "assets/img/industries/automotive.jpg", "tag": "FR fabrics and safety textiles" },
+          { "name": "Luggage", "icon": "shield", "image": "assets/img/industries/automotive.jpg", "tag": "FR fabrics and safety textiles" }
         ]
       },
       "statsBand": [
-        { "value": "125 MT", "label": "Monthly capacity" },
-        { "value": "35,000+", "label": "sq. ft. infrastructure" },
-        { "value": "Zero", "label": "Discharge certified facility" },
+        { "value": "150 MT", "label": "Monthly capacity" },
+        { "value": "45,000+", "label": "sq. ft. infrastructure" },
+        { "value": "70,000", "label": "sq. ft. Green Space" },
         { "value": "Water-free", "label": "Finishing processes" }
       ],
       "trustStrip": {
         "label": "Built for industrial applications",
         "items": [
-          "Knitted base fabrics",
-          "Vinyl coated textiles",
-          "3D spacer fabrics",
-          "Raised fabrics",
-          "Recycled yarn fabrics",
-          "FR fabrics",
-          "PU coating",
+          "Knitted Base Fabrics",
+          "Vinyl Coated Textiles",
+          "3D Spacer Fabrics",
+          "Raised Fabrics",
+          "Sustainable Fabrics",
+          "FR Fabrics",
+          "PU Coating",
           "Laminating",
-          "Contract manufacturing",
-          "In-house testing",
-          "Interplast Kimya resins"
-        ]
-      },
-      "showcase": {
-        "eyebrow": "Capabilities",
-        "title": "A material and coatings partner with practical manufacturing depth",
-        "description": "Nirbhay connects substrate development, coating support, quality validation, and responsive manufacturing into an integrated industrial platform.",
-        "cards": [
-          {
-            "category": "Fire Retardant Fabrics",
-            "title": "FR Fabrics — From impossible to reality",
-            "description": "As the saying goes, it always seems impossible until it's done and that is exactly what happened with us. With incessant work and round the clock efforts of our technical team, we now manufacture standard FR fabrics.",
-            "image": "assets/img/products/3d-spacer-stacked.png",
-            "href": "nk.html",
-            "cta": "Explore NK"
-          },
-          {
-            "category": "Coated Fabrics",
-            "title": "Technically advanced products for a diverse clientele",
-            "description": "Our range of fabrics combined with our range of chemicals, puts us in a unique position to offer the most technically advance products (or product combinations) to our diverse clientele.",
-            "image": "assets/img/products/direct-coating.jpg",
-            "href": "nc.html",
-            "cta": "Explore NC"
-          },
-          {
-            "category": "Testing and Manufacturing",
-            "title": "Process control and in-house testing for customer-specific requirements",
-            "description": "The Halol facility combines production, validation, and responsive development to reduce risk and shorten the path from sample to supply.",
-            "image": "assets/img/factory/Pailung 1.jpg",
-            "href": "nk.html",
-            "cta": "See our story"
-          },
-          {
-            "category": "Sustainability",
-            "title": "Cleaner process choices supporting future-ready material development",
-            "description": "Zero discharge operations, water-free finishing, recycled yarn options, and lower-footprint product development shape the company's next phase.",
-            "image": "assets/img/hero/sustainability-bg.jpg",
-            "href": "sustainability.html",
-            "cta": "View commitments"
-          }
-        ]
-      },
-      "process": {
-        "eyebrow": "How we work",
-        "title": "A development workflow built around technical clarity and manufacturing follow-through",
-        "description": "Each project starts with application needs and ends with a tested, reliable solution — whether the requirement is a knitted base fabric, a coated surface, or a new laminated construction.",
-        "stats": [
-          { "value": "40+", "label": "Years of engineering heritage" },
-          { "value": "125 MT", "label": "Monthly production capacity" },
-          { "value": "Zero", "label": "Discharge certified facility" },
-          { "value": "Interplast", "label": "Kimya partnership" }
-        ],
-        "steps": [
-          {
-            "title": "Understand the application",
-            "description": "We begin with end-use conditions, performance expectations, coating compatibility, and customization needs before recommending a fabric or material route."
-          },
-          {
-            "title": "Develop the right substrate and finish",
-            "description": "Our teams match knit structure, surface treatment, lamination, or PU systems to the requirement, building practical samples for evaluation."
-          },
-          {
-            "title": "Validate, scale, and support",
-            "description": "In-house testing, disciplined production control, and responsive commercial support help move successful developments toward repeatable supply."
-          }
+          "Contract Manufacturing",
+          "In-house Testing",
+          "PU Resins"
         ]
       },
       "spotlight": {
         "eyebrow": "Why customers choose us",
-        "title": "Full in-house production, coating expertise, and sustainability discipline",
+        "title": "Full in-house production, coating Solutions, and sustainability discipline",
         "description": "Nirbhay's strength comes from connecting fabric expertise with coating knowledge, process control, responsive delivery, and customization — built on trust, transparency, and technical excellence.",
         "panels": [
           {
-            "title": "Knitted material platform",
-            "description": "Base fabrics, 3D spacer constructions, raised fabrics, recycled yarn developments, and FR fabrics designed around end-use performance.",
+            "title": "Knitted Material Platform",
+            "description": "Base fabrics, 3D spacer constructions, raised fabrics, recycled febrics developments, and FR fabrics designed around end-use performance.",
             "badge": "NK"
           },
           {
-            "title": "Chemical trading and support",
+            "title": "Chemical Trading and Support",
             "description": "Certified agents for Interplast Kimya. Solvent based, water based and bio based chemicals for synthetic leather, genuine leather, and direct coating.",
             "badge": "NC"
           },
           {
-            "title": "Responsible process direction",
+            "title": "Environmental, Social, and Governance",
             "description": "Zero discharge, water-free finishing, efficient utilities, and lower-footprint product development support future-facing customer expectations.",
             "badge": "ESG"
           }
@@ -169,17 +106,12 @@
     }
   },
   "about": {
-    "banner": {
-      "title": "NK",
-      "subtitle": "All fabrics without the use of water.",
-      "backgroundImage": "assets/img/hero/about-bg.jpg"
-    },
     "journeySection": {
-      "eyebrow": "NK",
+      "eyebrow": "About Us",
       "title": "How Nirbhay Is Evolving",
       "storyTitle": "Engineering precision with sustainable innovation for over 40 years",
       "paragraphs": [
-        "NKI started off as a company offering high quality polyester fabrics for the synthetic leather industry. Founded by Late Mr. Rohit D. Kamdar, the company quickly established itself as a trusted name in the industry.",
+        "Nirbhay started off as a company offering high quality polyester fabrics for the synthetic leather industry. Founded by Late Mr. Rohit D. Kamdar, the company quickly established itself as a trusted name in the industry.",
         "After the sudden demise of our founder, the baton was handed over to a confident young man, his son and our current CMD, Mr. Rajeev Kamdar. Under his leadership, the company has expanded across horizons.",
         "Two things Mr. Kamdar has never compromised on are Quality and Sustainability. And today, we are proud to say that we are a certified ZERO DISCHARGE COMPANY.",
         "In 2020, as part of our portfolio diversification plan, we expanded into trading of Chemicals, under the brand, NirChem. NirChem deals in all kinds of chemicals needed, across various industries ranging from synthetic leather to direct coating."
@@ -234,7 +166,7 @@
     "factoryGallery": {
       "eyebrow": "Our Facility",
       "title": "Inside the Halol Manufacturing Unit",
-      "subtitle": "35,000+ sq. ft. of integrated knitting, coating, and testing infrastructure",
+      "subtitle": "45,000+ sq. ft. of integrated knitting, coating, and testing infrastructure",
       "images": [
         { "src": "assets/img/factory/Main Entry.JPG", "alt": "Nirbhay Knitting factory main entrance", "caption": "Factory Entrance" },
         { "src": "assets/img/factory/Pailung 1.jpg", "alt": "Pailung circular knitting machine", "caption": "Pailung Knitting Machine" },
@@ -243,9 +175,9 @@
       ]
     },
     "stats": [
-      { "value": "125 MT", "label": "Monthly production capacity" },
-      { "value": "35,000+", "label": "sq. ft. built-up space" },
-      { "value": "Zero", "label": "Discharge certified facility" },
+      { "value": "150 MT", "label": "Monthly production capacity" },
+      { "value": "45,000+", "label": "sq. ft. built-up space" },
+      { "value": "70,000", "label": "Discharge certified facility" },
       { "value": "2022", "label": "Interplast Kimya partnership since" }
     ],
     "strengths": [
@@ -255,7 +187,7 @@
         "icon": "factory"
       },
       {
-        "title": "125 MT Monthly Capacity",
+        "title": "150 MT Monthly Capacity",
         "description": "Reliable production scale with economies that support both development and volume supply.",
         "icon": "gauge"
       },
@@ -271,12 +203,12 @@
       },
       {
         "title": "Interplast Kimya Partnership",
-        "description": "Access to PU resins and lacquers for vertical integration and higher-value coated solutions.",
+        "description": "Access to PU resins and lacquers for Horizontal integration and higher-value Coating solutions.",
         "icon": "handshake"
       },
       {
         "title": "Innovation in Coated 3D Fabrics",
-        "description": "With years of R&D we have managed to achieve 3D spacer fabrics available in a wide range of thicknesses starting from 1mm all the way to 3.5mm and above.",
+        "description": "With years of R&D we have managed to achieve 3D spacer fabrics available in a wide range of thicknesses starting from 1mm all the way to 3.5mm.",
         "icon": "lightbulb"
       },
       {
@@ -388,7 +320,6 @@
     "banner": {
       "title": "Sustainability",
       "subtitle": "Growth is irrelevant without sustainability",
-      "description": "We at Nirbhay, believe that growth is irrelevant without sustainability and hence we have consciously taken steps to ensure that we do as much as we can for the environment.",
       "backgroundImage": "assets/img/hero/sustainability-bg.jpg"
     },
     "intro": {
@@ -468,10 +399,11 @@
     "tagline": "Engineered technical textiles for coating, lamination & performance applications. 40 years of precision, consistency, and sustainable innovation.",
     "quickLinks": [
       { "label": "Home", "href": "index.html" },
-      { "label": "NC", "href": "nc.html" },
-      { "label": "NK", "href": "nk.html" },
+      { "label": "About Us", "href": "about.html" },
+      { "label": "Textile", "href": "nk.html" },
+      { "label": "Nirchem", "href": "nc.html" },
       { "label": "Sustainability", "href": "sustainability.html" },
-      { "label": "Contact", "href": "contact.html" }
+      { "label": "Contact Us", "href": "contact.html" }
     ],
     "contactInfo": {
       "address": "81, Noorpura, P.O. Baska, Tal. Halol - 389 350, Dist. Panchmahals, Gujarat, India.",

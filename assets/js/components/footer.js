@@ -112,7 +112,7 @@ function renderFooter(data) {
         
         <div class="footer-divider" aria-hidden="true"></div>
         <div class="footer-bottom">
-          <p class="footer-copyright">${footer.copyright}</p>
+          <p class="footer-copyright">${footer.copyright.replace(/\d{4}/, new Date().getFullYear())}</p>
         </div>
       </div>
     </footer>

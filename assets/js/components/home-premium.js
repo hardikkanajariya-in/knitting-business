@@ -44,10 +44,6 @@ function renderHomeIndustries(section) {
     </div>
   `).join('');
 
-  const row1 = items.slice(0, Math.ceil(items.length / 2));
-  const row2 = items.slice(Math.ceil(items.length / 2));
-  const row2Padded = row2.length < 3 ? [...row2, ...items].slice(0, Math.max(3, row2.length)) : row2;
-
   return `
     <section class="home-industries" data-parallax-section>
       <div class="home-industries-bg" aria-hidden="true">
@@ -62,10 +58,7 @@ function renderHomeIndustries(section) {
       </div>
       <div class="home-ind-gallery">
         <div class="home-ind-row" data-scroll-gallery="left">
-          <div class="home-ind-track">${buildTrack(row1)}</div>
-        </div>
-        <div class="home-ind-row" data-scroll-gallery="right">
-          <div class="home-ind-track">${buildTrack(row2Padded)}</div>
+          <div class="home-ind-track">${buildTrack(items)}</div>
         </div>
       </div>
     </section>

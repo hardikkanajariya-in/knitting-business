@@ -76,7 +76,6 @@
       v4El.innerHTML = `
         ${typeof renderAboutJourneyV4 === 'function' ? renderAboutJourneyV4(about.journeySection) : ''}
         ${typeof renderAboutStoryV4 === 'function' && about.story ? renderAboutStoryV4(about.story) : ''}
-        ${typeof renderFactoryGalleryV4 === 'function' && about.factoryGallery ? renderFactoryGalleryV4(about.factoryGallery) : ''}
         ${typeof renderStrengthsGrid === 'function' && about.strengths ? renderStrengthsGrid(about.strengths) : ''}
         ${sharedSections}
       `;
@@ -95,7 +94,6 @@
       if (typeof initGlobalBackground === 'function') initGlobalBackground();
       if (typeof initAboutJourneyV4Animations === 'function') initAboutJourneyV4Animations();
       if (typeof initStrengthsAnimations === 'function') initStrengthsAnimations();
-      if (typeof initFactoryGallery === 'function') initFactoryGallery();
 
       document.body.classList.add('loaded');
       const pt = document.querySelector('.page-transition');

@@ -72,10 +72,10 @@
 
         contentEl.innerHTML = [
           typeof renderNCHero === 'function'         ? renderNCHero(nc) : '',
+          typeof renderNCPartnership === 'function'  ? renderNCPartnership(nc) : '',
           typeof renderNCProcessFlow === 'function'  ? renderNCProcessFlow(nc.processStages) : '',
           typeof renderNCProducts === 'function'     ? renderNCProducts(nc.products) : '',
           typeof renderNCCapabilities === 'function' ? renderNCCapabilities(nc.capabilities) : '',
-          typeof renderNCPartnership === 'function'  ? renderNCPartnership(nc) : '',
           typeof renderNCContentBlock === 'function' ? renderNCContentBlock(nc.contentBlock) : ''
         ].join('');
 
@@ -129,7 +129,8 @@
           });
         });
 
-        
+        ScrollTrigger.refresh();
+
         document.body.classList.add('loaded');
         const pageTransition = document.querySelector('.page-transition');
         if (pageTransition) {

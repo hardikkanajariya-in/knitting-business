@@ -260,7 +260,6 @@
 .home-ind-gallery {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
 }
 
 .home-ind-row {

@@ -245,6 +245,8 @@ function initGSAP() {
       }
     });
   });
+
+  ScrollTrigger.refresh();
 }
 function initHeroBAnimations() {
   if (typeof gsap === 'undefined') return;

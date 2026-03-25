@@ -46,7 +46,7 @@ function renderNCHero(nc) {
 
       <div class="nc-hero-annotations" aria-hidden="true">
         <span class="nc-hero-anno nc-hero-anno--1" data-aos="fade" data-aos-delay="700">Coating &amp; Lamination</span>
-        <span class="nc-hero-anno nc-hero-anno--2" data-aos="fade" data-aos-delay="800">Since 1984</span>
+        <span class="nc-hero-anno nc-hero-anno--2" data-aos="fade" data-aos-delay="800">Since 2020</span>
         <span class="nc-hero-anno nc-hero-anno--3" data-aos="fade" data-aos-delay="900">ISO Certified</span>
       </div>
 
@@ -57,8 +57,7 @@ function renderNCHero(nc) {
         </div>
 
         <h1 class="nc-hero-title" data-aos="fade-up" data-aos-delay="200">
-          <span class="nc-hero-title-line">${words[0]}</span>
-          <span class="nc-hero-title-line nc-hero-title-accent">${words.slice(1).join(' ')}</span>
+          <span class="nc-hero-title-line">NirChem</span>
         </h1>
 
         <div class="nc-hero-desc" data-aos="fade-up" data-aos-delay="300">
@@ -159,7 +158,7 @@ function renderNCProducts(products) {
   return `
     <section class="nc-products" id="nc-products">
       <div class="nc-products-header" data-aos="fade-up">
-        <h2>Industries We Cater To</h2>
+        <h2>Industries We Application To</h2>
       </div>
       <div class="nc-product-grid">
         ${cardsHTML}

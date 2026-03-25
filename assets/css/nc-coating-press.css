@@ -289,7 +289,7 @@
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.2em;
-  text-transform: uppercase;
+  text-transform: none;
   color: var(--nc-hero-text-muted);
   margin-bottom: 2.5rem;
 }
