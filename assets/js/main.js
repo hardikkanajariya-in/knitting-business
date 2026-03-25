@@ -409,7 +409,8 @@ function initStatCounters() {
     const num = parseInt(text.replace(/[^0-9]/g, ''));
 
     if (!isNaN(num) && num > 0) {
-      const suffix = text.replace(/[0-9]/g, '');
+      const hasCommas = text.includes(',');
+      const suffix = text.replace(/^[\d,]+/, '');
       const obj = { val: 0 };
 
       gsap.to(obj, {
@@ -422,7 +423,9 @@ function initStatCounters() {
           toggleActions: 'play none none none',
         },
         onUpdate: () => {
-          el.textContent = Math.round(obj.val) + suffix;
+          const rounded = Math.round(obj.val);
+          const formatted = hasCommas ? rounded.toLocaleString('en-IN') : String(rounded);
+          el.textContent = formatted + suffix;
         }
       });
     }
@@ -501,7 +504,6 @@ async function initPage(pageKey) {
   switch (pageKey) {
     case 'home':
       initHeroBAnimations();
-      initVideoSwitcher();
       initStatCounters();
       if (typeof initHomeInteractiveFX === 'function') {
         initHomeInteractiveFX();

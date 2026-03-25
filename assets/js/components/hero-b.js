@@ -54,21 +54,6 @@ function renderHeroB(data) {
         <div class="hero-b-mouse"><div class="hero-b-mouse-dot"></div></div>
         <span class="hero-b-scroll-label">Scroll</span>
       </div>
-
-      <!-- Temporary Video Switcher -->
-      <div class="video-switcher" id="videoSwitcher">
-        <button class="video-switcher-toggle" id="videoSwitcherToggle" title="Switch hero video">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          Video Picker
-        </button>
-        <div class="video-switcher-panel" id="videoSwitcherPanel">
-          <div class="video-switcher-header">
-            <span>Choose Hero Video</span>
-            <button class="video-switcher-close" id="videoSwitcherClose">&times;</button>
-          </div>
-          <div class="video-switcher-options" id="videoSwitcherOptions"></div>
-        </div>
-      </div>
     </section>
   `;
 }
