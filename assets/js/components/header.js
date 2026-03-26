@@ -4,9 +4,12 @@ function renderHeader(data) {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   const pageLogos = site.pageLogos || {};
   const pageLogosDark = site.pageLogosDark || {};
-  const headerLogo = pageLogos[currentPage] || site.logo;
-  const headerLogoDark = pageLogosDark[currentPage] || site.logoDark || headerLogo;
+  const isNCPage = currentPage === 'nc.html';
+  const headerLogo = isNCPage ? site.logo : (pageLogos[currentPage] || site.logo);
+  const headerLogoDark = isNCPage ? (site.logoDark || headerLogo) : (pageLogosDark[currentPage] || site.logoDark || headerLogo);
   const hasDarkVariant = headerLogoDark !== headerLogo;
+  const ncLogo = isNCPage ? (pageLogos['nc.html'] || '') : '';
+  const ncLogoDark = isNCPage ? (pageLogosDark['nc.html'] || ncLogo) : '';
 
   const navLinks = nav.map(item => {
     const isActive = currentPage === item.href || (currentPage === '' && item.href === 'index.html');
@@ -56,7 +59,8 @@ function renderHeader(data) {
             ${logoMarkup}
             <span class="header-logo-fallback" style="display:none;">${site.name}</span>
           </span>
-          <span class="header-logo-company-name"${currentPage === 'nc.html' ? ' style="display:none"' : ''}>Nirbhay Knitting Pvt. Ltd.</span>
+          <span class="header-logo-company-name">Nirbhay Knitting Pvt. Ltd.</span>
+          ${isNCPage && ncLogo ? `<span class="header-nc-logo"><img src="${ncLogo}" alt="NirChem" class="header-nc-logo-img logo-dark" height="36">${ncLogoDark !== ncLogo ? `<img src="${ncLogoDark}" alt="NirChem" class="header-nc-logo-img logo-light" height="36">` : ''}</span>` : ''}
         </a>
 
         <nav class="nav-desktop" role="navigation" aria-label="Main navigation">

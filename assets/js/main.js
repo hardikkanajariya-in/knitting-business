@@ -419,7 +419,7 @@ function initStatCounters() {
         ease: 'power2.out',
         scrollTrigger: {
           trigger: el,
-          start: 'top 85%',
+          start: 'top 95%',
           toggleActions: 'play none none none',
         },
         onUpdate: () => {
@@ -552,21 +552,21 @@ function renderSustainabilityPage(data) {
     <section class="section">
       <div class="container">
         <div class="max-w-3xl mx-auto">
-          <h2 class="section-title mb-6" data-aos="fade-up">${sus.intro.title}</h2>
+          <h2 class="section-title mb-6">${sus.intro.title}</h2>
           ${sus.intro.paragraphs.map((p, i) =>
-            `<p class="text-base md:text-lg leading-relaxed mb-4" style="color: var(--text-secondary);" data-aos="fade-up" data-aos-delay="${(i + 1) * 100}">${p}</p>`
+            `<p class="text-base md:text-lg leading-relaxed mb-4" style="color: var(--text-secondary);">${p}</p>`
           ).join('')}
         </div>
       </div>
     </section>
     <section class="section" style="background: var(--bg-secondary);">
       <div class="container">
-        <div class="section-header" data-aos="fade-up">
+        <div class="section-header">
           <h2 class="section-title">Our Pillars</h2>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           ${sus.pillars.map((pillar, i) =>
-            `<div class="pillar-card" data-aos="fade-up" data-aos-delay="${i * 100}">
+            `<div class="pillar-card">
               <div class="pillar-icon">${getPillarIcon(pillar.icon)}</div>
               <h3 class="pillar-title">${pillar.title}</h3>
               <p class="pillar-desc">${pillar.description}</p>
@@ -579,7 +579,7 @@ function renderSustainabilityPage(data) {
       <div class="container">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
           ${sus.stats.map((stat, i) =>
-            `<div class="stat-card" data-aos="fade-up" data-aos-delay="${i * 100}">
+            `<div class="stat-card">
               <div class="stat-value">${stat.value}</div>
               <div class="stat-label">${stat.label}</div>
             </div>`
@@ -590,7 +590,7 @@ function renderSustainabilityPage(data) {
     ${data.nc && data.nc.innovation ? `
     <section class="section" style="background: var(--bg-secondary);">
       <div class="container">
-        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+        <div class="max-w-4xl mx-auto">
           <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:1rem;">
             <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite;"></span>
             <span style="font-size:0.875rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent);">${data.nc.innovation.badge}</span>

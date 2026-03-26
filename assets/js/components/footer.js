@@ -34,7 +34,7 @@ function renderFooter(data) {
       <div class="container footer-container">
         <div class="footer-grid">
           
-          <div class="footer-col footer-col--brand reveal-up">
+          <div class="footer-col footer-col--brand">
             <a href="index.html" class="footer-brand" aria-label="${site.name} — Home">
               <span class="footer-brand-logo">
                 <img
@@ -66,7 +66,7 @@ function renderFooter(data) {
           </div>
 
           
-          <div class="footer-col footer-col--links reveal-up">
+          <div class="footer-col footer-col--links">
             <h4 class="footer-heading">
               <span class="footer-heading-accent"></span>
               Quick Links
@@ -77,7 +77,7 @@ function renderFooter(data) {
           </div>
 
           
-          <div class="footer-col footer-col--contact reveal-up">
+          <div class="footer-col footer-col--contact">
             <h4 class="footer-heading">
               <span class="footer-heading-accent"></span>
               Contact
@@ -96,19 +96,6 @@ function renderFooter(data) {
                 <span class="footer-contact-text">${footer.contactInfo.phone}</span>
               </a>
             </div>
-          </div>
-
-          
-          <div class="footer-col footer-col--connect reveal-up">
-            <h4 class="footer-heading">
-              <span class="footer-heading-accent"></span>
-              Partner With Us
-            </h4>
-            <p class="footer-connect-text">Let's discuss your next technical textile requirement.</p>
-            <a href="contact.html" class="footer-cta">
-              Start a Discussion
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-            </a>
           </div>
         </div>
 
