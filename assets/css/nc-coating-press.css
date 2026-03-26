@@ -282,6 +282,16 @@
   color: var(--nc-hero-text);
 }
 
+.nc-hero-division-logo {
+  margin-bottom: 1.5rem;
+}
+
+.nc-hero-division-logo-img {
+  height: clamp(2rem, 4vw, 3rem);
+  width: auto;
+  object-fit: contain;
+}
+
 .nc-hero-eyebrow {
   display: inline-flex;
   align-items: center;

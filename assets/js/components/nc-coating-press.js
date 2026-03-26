@@ -50,6 +50,9 @@ function renderNCHero(nc) {
       </div>
 
       <div class="nc-hero-content">
+        ${nc.divisionLogo ? `<div class="nc-hero-division-logo">
+          <img src="${nc.divisionLogo}" alt="${nc.divisionLogoAlt || 'NirChem'}" class="nc-hero-division-logo-img">
+        </div>` : ''}
         <div class="nc-hero-eyebrow" data-aos="fade-right" data-aos-delay="100">
           <span class="nc-hero-eyebrow-line"></span>
           NirChem <span class="nc-dot"></span> A Division of Nirbhay Knitting
