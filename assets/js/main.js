@@ -482,6 +482,9 @@ async function initPage(pageKey) {
       case 'contact':
         html = renderContactPage(data);
         break;
+      case 'textile':
+        html = renderTextilePage(data);
+        break;
     }
 
     contentEl.innerHTML = html;
@@ -525,6 +528,20 @@ function renderHomePage(data) {
   return `
     ${typeof renderHeroB === 'function' ? renderHeroB(heroVariantB) : ''}
     ${typeof renderHomePremiumSections === 'function' ? renderHomePremiumSections(data) : ''}
+  `;
+}
+
+function renderTextilePage(data) {
+  const textile = data.textile;
+  return `
+    ${typeof renderPageBanner === 'function' ? renderPageBanner(textile.banner) : ''}
+    <section class="section">
+      <div class="container">
+        <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+          <p class="text-base md:text-lg leading-relaxed" style="color: var(--text-secondary);">Content coming soon.</p>
+        </div>
+      </div>
+    </section>
   `;
 }
 

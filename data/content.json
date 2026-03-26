@@ -19,7 +19,7 @@
   "navigation": [
     { "label": "Home", "href": "index.html" },
     { "label": "About Us", "href": "about.html" },
-    { "label": "Textile", "href": "nk.html" },
+    { "label": "Textile", "href": "textile.html" },
     { "label": "NirChem", "href": "nc.html" },
     { "label": "Sustainability", "href": "sustainability.html" },
     { "label": "Contact Us", "href": "contact.html" }
@@ -44,14 +44,14 @@
           { "name": "Automotive", "icon": "car", "image": "assets/img/industries/automotive.jpg", "tag": "Interior and technical uses" },
           { "name": "Footwear", "icon": "shoe", "image": "assets/img/industries/footwear.jpg", "tag": "Comfort and structure" },
           { "name": "Home Furnishings", "icon": "sofa", "image": "assets/img/industries/furnishing.jpg", "tag": "Durable fabric systems" },
-          { "name": "Protective Applications", "icon": "shield", "image": "assets/img/industries/automotive.jpg", "tag": "FR fabrics and safety textiles" },
-          { "name": "Luggage", "icon": "shield", "image": "assets/img/industries/automotive.jpg", "tag": "FR fabrics and safety textiles" }
+          { "name": "Protective Applications", "icon": "shield", "image": "assets/img/industries/protective.jpg", "tag": "FR fabrics and safety textiles" },
+          { "name": "Luggage", "icon": "shield", "image": "assets/img/industries/luggage.jpg", "tag": "FR fabrics and safety textiles" }
         ]
       },
       "statsBand": [
         { "value": "150 MT", "label": "Monthly capacity" },
-        { "value": "45,000+", "label": "sq. ft. infrastructure" },
-        { "value": "70,000", "label": "sq. ft. Green Space" },
+        { "value": "45,000+", "label": "Sq. Ft. Infrastructure" },
+        { "value": "70,000", "label": "Sq. Ft. Of Green Space" },
         { "value": "Water-free", "label": "Finishing processes" }
       ],
       "trustStrip": {
@@ -76,7 +76,7 @@
         "description": "Nirbhay's strength comes from connecting fabric expertise with coating knowledge, process control, responsive delivery, and customization — built on trust, transparency, and technical excellence.",
         "panels": [
           {
-            "title": "Knitted Material Platform",
+            "title": "Knitted Fabric Platform",
             "description": "Base fabrics, 3D spacer constructions, raised fabrics, recycled fabrics developments, and FR fabrics designed around end-use performance.",
             "badge": "NK"
           },
@@ -96,7 +96,7 @@
         "title": "Ready to develop a material program with us?",
         "description": "Talk to our team about knitted substrates, coated textiles, PU coating, laminating, recycled yarn options, FR developments, or contract manufacturing for your next project.",
         "primary": { "label": "Contact our team", "href": "contact.html" },
-        "secondary": { "label": "Explore capabilities", "href": "nk.html" }
+        "secondary": { "label": "Explore capabilities", "href": "textile.html" }
       },
       "clientList": {
         "title": "Our Clients",
@@ -395,12 +395,19 @@
       "submit": "Send Message"
     }
   },
+  "textile": {
+    "banner": {
+      "title": "Textile",
+      "subtitle": "Knitted fabrics engineered for performance",
+      "backgroundImage": "assets/img/hero/hero-bg.jpg"
+    }
+  },
   "footer": {
     "tagline": "Engineered technical textiles for coating, lamination & performance applications. 40 years of precision, consistency, and sustainable innovation.",
     "quickLinks": [
       { "label": "Home", "href": "index.html" },
       { "label": "About Us", "href": "about.html" },
-      { "label": "Textile", "href": "nk.html" },
+      { "label": "Textile", "href": "textile.html" },
       { "label": "Nirchem", "href": "nc.html" },
       { "label": "Sustainability", "href": "sustainability.html" },
       { "label": "Contact Us", "href": "contact.html" }
