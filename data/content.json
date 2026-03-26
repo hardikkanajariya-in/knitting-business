@@ -286,7 +286,7 @@
       }
     ],
     "capabilities": [
-      { "title": "Chemical Range", "value": "Solvent · Water · Bio-based", "unit": "PUs, PVCs, Aliphatics, Aromatics, Polycarbonates", "icon": "layers", "gaugeFill": 95 },
+      { "title": "Chemical Range", "value": "Solvent · Water · Bio-based", "unit": "Aliphatics, Aromatics and Polycarbonates", "icon": "layers", "gaugeFill": 95 },
       { "title": "Synthetic Leather", "value": "Full Range", "unit": "Water-based, solvent-based, and bio-based chemicals", "icon": "chart", "gaugeFill": 90 },
       { "title": "Genuine Leather", "value": "Water-based PUs", "unit": "Finishing PUs in gloss and matt finishes", "icon": "grid", "gaugeFill": 85 },
       { "title": "Direct Coating", "value": "Industrial", "unit": "Chemicals for direct coating applications", "icon": "shield", "gaugeFill": 88 },
@@ -327,7 +327,7 @@
       "paragraphs": [
         "We at Nirbhay, believe that growth is irrelevant without sustainability and hence we have consciously taken steps to ensure that we do as much as we can for the environment.",
         "The first step was to ensure that no water is used in manufacturing and processing any of our fabrics. This makes us a ZERO DISCHARGE COMPANY.",
-        "At our manufacturing facility in Halol, Gujarat, we have maintained acres of green space to contribute to a healthier environment.",
+        "At our manufacturing facility in Halol, Gujarat, we have 70,000 Sq. Ft of green space to contribute to a healthier environment.",
         "We only use electricity and gas as our sources of energy.",
         "In NirChem, by the introduction of water-based and bio-based PUs, we pledge our support to initiatives like the CBE JU of the European Union, promoting the use of bio-based PUs."
       ]

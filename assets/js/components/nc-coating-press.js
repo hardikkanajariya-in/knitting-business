@@ -157,7 +157,7 @@ function renderNCProducts(products) {
   return `
     <section class="nc-products" id="nc-products">
       <div class="nc-products-header" data-aos="fade-up">
-        <h2>Industries We Application To</h2>
+        <h2>Applications</h2>
       </div>
       <div class="nc-product-grid">
         ${cardsHTML}

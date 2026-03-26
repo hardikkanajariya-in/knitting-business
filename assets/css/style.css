@@ -1838,6 +1838,7 @@ ul, ol {
   letter-spacing: 0.22em;
   color: var(--footer-text-heading);
   margin-bottom: 1.25rem;
+  white-space: nowrap;
 }
 
 .footer-heading-accent {
@@ -1944,6 +1945,15 @@ ul, ol {
   display: flex;
   align-items: flex-start;
   gap: 0.65rem;
+}
+
+.footer-contact-item .footer-contact-icon {
+  margin-top: 3px;
+}
+
+.footer-contact-item .footer-contact-text {
+  flex: 1;
+  min-width: 0;
 }
 
 .footer-contact-item--link {
