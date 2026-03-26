@@ -1281,6 +1281,133 @@ ul, ol {
   letter-spacing: 0.01em;
 }
 
+/* ===== Textile – Water-Free Hero Strip ===== */
+.tx-wf-strip {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-mid) 100%);
+  color: var(--text-inverse);
+  padding: 3.5rem 2rem;
+}
+.tx-wf-strip-inner {
+  max-width: 56rem; margin: 0 auto;
+  display: flex; align-items: center; gap: 2rem;
+}
+.tx-wf-strip-icon {
+  flex-shrink: 0; width: 5rem; height: 5rem;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%; padding: 1rem;
+  color: #fff;
+  animation: txWfPulse 2.5s ease-in-out infinite;
+}
+@keyframes txWfPulse {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,255,255,0.3); }
+  50% { transform: scale(1.06); box-shadow: 0 0 20px 6px rgba(255,255,255,0.1); }
+}
+.tx-wf-strip-icon svg { width: 100%; height: 100%; }
+.tx-wf-strip-title {
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem); font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+.tx-wf-strip-text { font-size: 1rem; opacity: 0.85; line-height: 1.6; }
+@media (max-width: 640px) {
+  .tx-wf-strip-inner { flex-direction: column; text-align: center; }
+}
+
+/* ===== Textile – Alternating Write-up Rows ===== */
+.tx-alt-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+}
+.tx-alt-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.tx-alt-num {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  opacity: 0.25;
+  line-height: 1;
+  min-width: 3.5rem;
+  text-align: center;
+}
+.tx-alt-title {
+  font-size: 1.35rem; font-weight: 700; color: var(--text-primary);
+  margin-bottom: 0.6rem;
+}
+.tx-alt-desc {
+  font-size: 0.95rem; line-height: 1.75; color: var(--text-primary); opacity: 0.8;
+}
+@media (max-width: 767px) {
+  .tx-alt-row {
+    grid-template-columns: auto 1fr; direction: ltr;
+  }
+  .tx-alt-num { font-size: 1.75rem; min-width: 2.5rem; }
+}
+
+/* ===== Textile – Product Gallery (3 images) ===== */
+.tx-gallery-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.75rem;
+  max-height: calc(100vh - var(--header-height) - 10rem);
+}
+.tx-gallery-hero {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  grid-row: 1 / -1;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+.tx-gallery-hero img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+.tx-gallery-hero:hover img { transform: scale(1.04); }
+.tx-gallery-pair {
+  display: contents;
+}
+.tx-gallery-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+.tx-gallery-card img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+.tx-gallery-card:hover img { transform: scale(1.05); }
+.tx-gallery-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.25rem 1rem 0.75rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.6));
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+@media (max-width: 640px) {
+  .tx-gallery-3 {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    max-height: none;
+  }
+  .tx-gallery-hero { grid-row: auto; aspect-ratio: 16/9; }
+  .tx-gallery-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+  .tx-gallery-card { aspect-ratio: 4/3; }
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: 1fr;

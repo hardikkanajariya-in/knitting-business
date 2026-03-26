@@ -533,29 +533,66 @@ function renderHomePage(data) {
 
 function renderTextilePage(data) {
   const textile = data.textile;
+
+  const waterFreeSVG = `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M24 4C24 4 10 20 10 30a14 14 0 0028 0C38 20 24 4 24 4z" stroke="currentColor" stroke-width="2.5" fill="none"/>
+    <line x1="8" y1="42" x2="40" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+  </svg>`;
+
+  /* Separate product images from write-ups */
+  const productImages = [
+    { src: 'assets/img/products/raised-fabric-triptych.png', alt: 'Raised Fabric Textures', label: 'Raised Fabrics' },
+    { src: 'assets/img/products/raised-fabric-rolls.png', alt: 'Raised Fabric Rolls', label: 'Fabric Rolls' },
+    { src: 'assets/img/products/3d-spacer-stacked.png', alt: '3D Spacer Fabric Layers', label: '3D Spacer' },
+  ];
+
   return `
     ${typeof renderPageBanner === 'function' ? renderPageBanner(textile.banner) : ''}
 
-    <section class="section">
-      <div class="container">
-        <div class="textile-water-free">
-          <div class="textile-water-free-icon">
-            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 4C24 4 10 20 10 30a14 14 0 0028 0C38 20 24 4 24 4z" stroke="currentColor" stroke-width="2.5" fill="none"/>
-              <line x1="8" y1="42" x2="40" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <p class="textile-water-free-text">${textile.intro}</p>
+    <section class="tx-wf-strip">
+      <div class="tx-wf-strip-inner">
+        <div class="tx-wf-strip-icon">${waterFreeSVG}</div>
+        <div class="tx-wf-strip-content">
+          <h2 class="tx-wf-strip-title">100% Water-Free Manufacturing</h2>
+          <p class="tx-wf-strip-text">${textile.intro} — Making us a Zero Discharge Company.</p>
         </div>
       </div>
     </section>
 
-    <section class="section" style="background: var(--bg-secondary);">
+    <section class="section" style="background:var(--bg-card);">
       <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Our Fabrics</h2>
+        <div class="section-header"><h2 class="section-title">Our Fabrics</h2></div>
+        ${textile.products.map((p, i) => `
+          <div class="tx-alt-row">
+            <div class="tx-alt-num">${String(i + 1).padStart(2, '0')}</div>
+            <div class="tx-alt-body">
+              <h3 class="tx-alt-title">${p.name}</h3>
+              <p class="tx-alt-desc">${p.description}</p>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+
+    <section class="section" style="background:var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header"><h2 class="section-title">Product Gallery</h2></div>
+        <div class="tx-gallery-3">
+          <div class="tx-gallery-hero">
+            <img src="${productImages[0].src}" alt="${productImages[0].alt}" loading="lazy">
+            <span class="tx-gallery-label">${productImages[0].label}</span>
+          </div>
+          <div class="tx-gallery-pair">
+            <div class="tx-gallery-card">
+              <img src="${productImages[1].src}" alt="${productImages[1].alt}" loading="lazy">
+              <span class="tx-gallery-label">${productImages[1].label}</span>
+            </div>
+            <div class="tx-gallery-card">
+              <img src="${productImages[2].src}" alt="${productImages[2].alt}" loading="lazy">
+              <span class="tx-gallery-label">${productImages[2].label}</span>
+            </div>
+          </div>
         </div>
-        ${typeof renderProductGrid === 'function' ? renderProductGrid(textile.products) : ''}
       </div>
     </section>
   `;
