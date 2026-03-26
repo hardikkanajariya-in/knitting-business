@@ -400,7 +400,30 @@
       "title": "Textile",
       "subtitle": "Knitted fabrics engineered for performance",
       "backgroundImage": "assets/img/hero/hero-bg.jpg"
-    }
+    },
+    "intro": "All fabrics without the use of water.",
+    "products": [
+      {
+        "name": "Raised Fabrics",
+        "description": "Having been in the industry for over 40 years, we have mastered the art of offering fabrics engineered to be highly technical while having the best handfeel achievable. Our range of raised fabrics is testimony to exactly that.",
+        "image": "assets/img/products/raised-fabric-rolls.png"
+      },
+      {
+        "name": "3D Fabrics",
+        "description": "With years of R&D we have managed to achieve 3D spacer fabrics available in a wide range of thicknesses starting from 1mm all the way to 3.5mm and above.",
+        "image": "assets/img/products/3d-spacer-stacked.png"
+      },
+      {
+        "name": "Fire Retardant Fabrics",
+        "description": "As the saying goes, it always seems impossible until it's done and that is exactly what happened with us. With incessant work and round the clock efforts of our technical team, we now manufacture standard FR fabrics.",
+        "image": ""
+      },
+      {
+        "name": "Coated Fabrics",
+        "description": "Our range of fabrics combined with our range of chemicals puts us in a unique position to offer the most technically advanced products (or product combinations) to our diverse clientele.",
+        "image": ""
+      }
+    ]
   },
   "footer": {
     "tagline": "Engineered technical textiles for coating, lamination & performance applications. 40 years of precision, consistency, and sustainable innovation.",

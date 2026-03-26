@@ -60,6 +60,7 @@ function renderHeader(data) {
             <span class="header-logo-fallback" style="display:none;">${site.name}</span>
           </span>
           <span class="header-logo-company-name"><span class="header-company-line1">Nirbhay Knitting</span><span class="header-company-line2">Industries Pvt. Ltd</span></span>
+          ${isNCPage && ncLogo ? `<span class="header-nc-logo"><img src="${ncLogo}" alt="NirChem" class="header-nc-logo-img logo-dark">${ncLogoDark !== ncLogo ? `<img src="${ncLogoDark}" alt="NirChem" class="header-nc-logo-img logo-light">` : ''}</span>` : ''}
         </a>
 
         <nav class="nav-desktop" role="navigation" aria-label="Main navigation">

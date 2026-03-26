@@ -535,11 +535,27 @@ function renderTextilePage(data) {
   const textile = data.textile;
   return `
     ${typeof renderPageBanner === 'function' ? renderPageBanner(textile.banner) : ''}
+
     <section class="section">
       <div class="container">
-        <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
-          <p class="text-base md:text-lg leading-relaxed" style="color: var(--text-secondary);">Content coming soon.</p>
+        <div class="textile-water-free">
+          <div class="textile-water-free-icon">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M24 4C24 4 10 20 10 30a14 14 0 0028 0C38 20 24 4 24 4z" stroke="currentColor" stroke-width="2.5" fill="none"/>
+              <line x1="8" y1="42" x2="40" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="textile-water-free-text">${textile.intro}</p>
         </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Our Fabrics</h2>
+        </div>
+        ${typeof renderProductGrid === 'function' ? renderProductGrid(textile.products) : ''}
       </div>
     </section>
   `;

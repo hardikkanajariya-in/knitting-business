@@ -348,6 +348,25 @@ ul, ol {
   color: var(--text-primary);
 }
 
+.header-nc-logo {
+  display: inline-flex;
+  align-items: center;
+  padding-left: 0.6rem;
+  margin-left: 0.6rem;
+  border-left: 1.5px solid var(--border);
+}
+
+.header-nc-logo-img {
+  display: block;
+  height: clamp(2rem, 3.5vw, 2.8rem);
+  width: auto;
+  object-fit: contain;
+}
+
+.header-nc-logo-img.logo-light { display: none; }
+.dark .header-nc-logo-img.logo-light { display: block; }
+.dark .header-nc-logo-img.logo-dark { display: none; }
+
 
 
 @media (max-width: 767px) {
@@ -1222,6 +1241,44 @@ ul, ol {
   margin-right: auto;
   opacity: 0.75;
   line-height: 1.6;
+}
+
+.textile-water-free {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 1.5rem 2.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.textile-water-free-icon {
+  flex-shrink: 0;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-light);
+  color: var(--accent);
+  border-radius: 50%;
+  padding: 0.6rem;
+}
+
+.textile-water-free-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.textile-water-free-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.01em;
 }
 
 .product-grid {
