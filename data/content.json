@@ -399,31 +399,63 @@
     "banner": {
       "title": "Textile",
       "subtitle": "Knitted fabrics engineered for performance",
-      "backgroundImage": "assets/img/hero/hero-bg.jpg"
+      "backgroundImage": "assets/img/hero/textile-bg.png"
     },
     "intro": "All fabrics without the use of water — Making us a Zero Discharge Company.",
     "products": [
       {
+        "name": "Conventional Knits",
+        "description": "We offer a wide range of fabrics with conventional knit structures having top of the line technical properties making them a perfect choice for performance applications.",
+        "image": "assets/img/products/conventional-knits.png"
+      },
+      {
         "name": "Raised Fabrics",
         "description": "Having been in the industry for over 40 years, we have mastered the art of offering fabrics engineered to be highly technical while having the best handfeel achievable. Our range of raised fabrics is testimony to exactly that.",
-        "image": "assets/img/products/raised-fabric-rolls.png"
+        "image": "assets/img/products/raised-fabrics.png"
       },
       {
         "name": "3D Fabrics",
-        "description": "With years of R&D we have managed to achieve 3D spacer fabrics available in a wide range of thicknesses starting from 1mm all the way to 3.5mm and above.",
-        "image": "assets/img/products/3d-spacer-stacked.png"
+        "description": "With years of R&D we have managed to achieve 3D spacer fabrics available in a wide range of thicknesses starting from 1mm all the way to 3.5mm.",
+        "image": "assets/img/products/3d-fabrics.png"
       },
       {
         "name": "Fire Retardant Fabrics",
         "description": "As the saying goes, it always seems impossible until it's done and that is exactly what happened with us. With incessant work and round the clock efforts of our technical team, we now manufacture standard FR fabrics.",
-        "image": ""
+        "image": "assets/img/products/fire-retardant.svg",
+        "isIcon": true
       },
       {
         "name": "Coated Fabrics",
-        "description": "Our range of fabrics combined with our range of chemicals puts us in a unique position to offer the most technically advanced products (or product combinations) to our diverse clientele.",
-        "image": ""
+        "description": "Our range of fabrics combined with our range of chemicals puts us in a unique position to offer the most technically advanced product combinations to our diverse clientele.",
+        "image": "assets/img/products/coated-fabrics.png"
       }
-    ]
+    ],
+    "scipp": {
+      "title": "Our Model — SCIPP",
+      "items": [
+        { "letter": "S", "label": "Sustainability", "desc": "Zero discharge, waterless finishing" },
+        { "letter": "C", "label": "Consistency", "desc": "Substrates that behave predictably" },
+        { "letter": "I", "label": "Innovation", "desc": "3D spacer, coated ready knits, raised fabrics" },
+        { "letter": "P", "label": "Precision", "desc": "Every loop engineered" },
+        { "letter": "P", "label": "Partnership", "desc": "Long term relationships with EU manufacturers" }
+      ]
+    },
+    "clients": {
+      "title": "Client List",
+      "logos": [
+        { "name": "Aritas Vinyl", "image": "assets/img/logo/clients/aritas-vinyl.jpg" },
+        { "name": "Kodel", "image": "assets/img/logo/clients/kodel.jpeg" },
+        { "name": "Mayur Uniquoters", "image": "assets/img/logo/clients/mayur.png" },
+        { "name": "Milton", "image": "assets/img/logo/clients/milton.png" },
+        { "name": "Polynova Industries", "image": "assets/img/logo/clients/polynova.png" },
+        { "name": "Rextile Leather", "image": "assets/img/logo/clients/rextile.png" },
+        { "name": "Roseli", "image": "assets/img/logo/clients/roseli.png" },
+        { "name": "Colence", "image": "assets/img/logo/clients/colence.png" },
+        { "name": "Shakti Tex Coaters", "image": "assets/img/logo/clients/shakti.jpg" },
+        { "name": "Klassik", "image": "assets/img/logo/clients/klassik.svg" },
+        { "name": "Lextile", "image": "assets/img/logo/clients/lextile.svg" }
+      ]
+    }
   },
   "footer": {
     "tagline": "Engineered technical textiles for coating, lamination & performance applications. 40 years of precision, consistency, and sustainable innovation.",

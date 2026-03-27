@@ -539,12 +539,12 @@ function renderTextilePage(data) {
     <line x1="8" y1="42" x2="40" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
   </svg>`;
 
-  /* Separate product images from write-ups */
-  const productImages = [
-    { src: 'assets/img/products/raised-fabric-triptych.png', alt: 'Raised Fabric Textures', label: 'Raised Fabrics' },
-    { src: 'assets/img/products/raised-fabric-rolls.png', alt: 'Raised Fabric Rolls', label: 'Fabric Rolls' },
-    { src: 'assets/img/products/3d-spacer-stacked.png', alt: '3D Spacer Fabric Layers', label: '3D Spacer' },
-  ];
+  const scippIcons = {
+    S: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v1m0 16v1m-8-9H3m18 0h-1m-2.636-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>`,
+    C: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+    I: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l.146.146A1.5 1.5 0 0116.5 18h-9a1.5 1.5 0 01-1.182-2.415l.146-.146z"/></svg>`,
+    P: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`
+  };
 
   return `
     ${typeof renderPageBanner === 'function' ? renderPageBanner(textile.banner) : ''}
@@ -563,38 +563,58 @@ function renderTextilePage(data) {
       <div class="container">
         <div class="section-header"><h2 class="section-title">Our Fabrics</h2></div>
         ${textile.products.map((p, i) => `
-          <div class="tx-alt-row">
+          <div class="tx-alt-row${p.image ? ' has-image' : ''}" data-aos="fade-up" data-aos-delay="${i * 80}">
             <div class="tx-alt-num">${String(i + 1).padStart(2, '0')}</div>
             <div class="tx-alt-body">
               <h3 class="tx-alt-title">${p.name}</h3>
               <p class="tx-alt-desc">${p.description}</p>
             </div>
+            ${p.image ? `
+              <div class="tx-alt-image${p.isIcon ? ' is-icon' : ''}">
+                <img src="${p.image}" alt="${p.name}" loading="lazy">
+              </div>
+            ` : ''}
           </div>
         `).join('')}
       </div>
     </section>
 
-    <section class="section" style="background:var(--bg-secondary);">
+    ${textile.scipp ? `
+    <section class="section tx-scipp-section" style="background:var(--bg-secondary);">
       <div class="container">
-        <div class="section-header"><h2 class="section-title">Product Gallery</h2></div>
-        <div class="tx-gallery-3">
-          <div class="tx-gallery-hero">
-            <img src="${productImages[0].src}" alt="${productImages[0].alt}" loading="lazy">
-            <span class="tx-gallery-label">${productImages[0].label}</span>
-          </div>
-          <div class="tx-gallery-pair">
-            <div class="tx-gallery-card">
-              <img src="${productImages[1].src}" alt="${productImages[1].alt}" loading="lazy">
-              <span class="tx-gallery-label">${productImages[1].label}</span>
+        <div class="section-header" data-aos="fade-up">
+          <h2 class="section-title">${textile.scipp.title}</h2>
+        </div>
+        <div class="tx-scipp-grid">
+          ${textile.scipp.items.map((item, i) => `
+            <div class="tx-scipp-card" data-aos="fade-up" data-aos-delay="${i * 100}">
+              <div class="tx-scipp-icon">${scippIcons[item.letter] || ''}</div>
+              <div class="tx-scipp-letter">${item.letter}</div>
+              <h3 class="tx-scipp-label">${item.label}</h3>
+              <p class="tx-scipp-desc">${item.desc}</p>
             </div>
-            <div class="tx-gallery-card">
-              <img src="${productImages[2].src}" alt="${productImages[2].alt}" loading="lazy">
-              <span class="tx-gallery-label">${productImages[2].label}</span>
-            </div>
-          </div>
+          `).join('')}
         </div>
       </div>
     </section>
+    ` : ''}
+
+    ${textile.clients ? `
+    <section class="section tx-clients-section" style="background:var(--bg-card);">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2 class="section-title">${textile.clients.title}</h2>
+        </div>
+        <div class="tx-clients-grid">
+          ${textile.clients.logos.map((logo, i) => `
+            <div class="tx-client-logo" data-aos="fade-up" data-aos-delay="${i * 60}">
+              <img src="${logo.image}" alt="${logo.name}" loading="lazy" title="${logo.name}">
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+    ` : ''}
   `;
 }
 

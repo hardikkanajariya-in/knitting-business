@@ -1316,15 +1316,18 @@ ul, ol {
 /* ===== Textile – Alternating Write-up Rows ===== */
 .tx-alt-row {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto 1fr auto;
   gap: 2rem;
-  align-items: start;
+  align-items: center;
   margin-bottom: 2.5rem;
   padding: 1.5rem;
   padding-bottom: 2.5rem;
   border-bottom: 1px solid var(--border);
   background: var(--bg-card);
   border-radius: var(--radius-lg);
+}
+.tx-alt-row:not(.has-image) {
+  grid-template-columns: auto 1fr;
 }
 .tx-alt-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 .tx-alt-num {
@@ -1343,9 +1346,45 @@ ul, ol {
 .tx-alt-desc {
   font-size: 0.95rem; line-height: 1.75; color: var(--text-primary); opacity: 0.8;
 }
+.tx-alt-image {
+  width: 10rem;
+  height: 8rem;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border);
+}
+.tx-alt-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+.tx-alt-row:hover .tx-alt-image img { transform: scale(1.05); }
+.tx-alt-image.is-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-secondary);
+  padding: 1.25rem;
+}
+.tx-alt-image.is-icon img {
+  object-fit: contain;
+  width: 80%;
+  height: 80%;
+}
 @media (max-width: 767px) {
   .tx-alt-row {
     grid-template-columns: auto 1fr; direction: ltr;
+  }
+  .tx-alt-row.has-image {
+    grid-template-columns: 1fr;
+  }
+  .tx-alt-image {
+    width: 100%;
+    height: 12rem;
+    order: -1;
   }
   .tx-alt-num { font-size: 1.75rem; min-width: 2.5rem; }
 }
@@ -1406,6 +1445,114 @@ ul, ol {
   .tx-gallery-hero { grid-row: auto; aspect-ratio: 16/9; }
   .tx-gallery-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
   .tx-gallery-card { aspect-ratio: 4/3; }
+}
+
+/* ===== Textile – SCIPP Model ===== */
+.tx-scipp-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.25rem;
+}
+.tx-scipp-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+.tx-scipp-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-mid) 100%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+.tx-scipp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+.tx-scipp-card:hover::before { opacity: 1; }
+.tx-scipp-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0 auto 1rem;
+  color: var(--accent);
+}
+.tx-scipp-icon svg { width: 100%; height: 100%; }
+.tx-scipp-letter {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+.tx-scipp-label {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+.tx-scipp-desc {
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+@media (max-width: 1024px) {
+  .tx-scipp-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 640px) {
+  .tx-scipp-grid { grid-template-columns: repeat(2, 1fr); }
+  .tx-scipp-card { padding: 1.5rem 1rem; }
+  .tx-scipp-letter { font-size: 2rem; }
+}
+
+/* ===== Textile – Client Logos ===== */
+.tx-clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1.5rem;
+  align-items: center;
+}
+.tx-client-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  min-height: 6rem;
+  transition: transform var(--transition-base), box-shadow var(--transition-base), filter var(--transition-base);
+  filter: grayscale(100%);
+  opacity: 0.7;
+}
+.tx-client-logo:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.tx-client-logo img {
+  max-width: 100%;
+  max-height: 3.5rem;
+  object-fit: contain;
+}
+
+@media (max-width: 640px) {
+  .tx-clients-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .tx-client-logo {
+    padding: 1rem;
+    min-height: 4.5rem;
+  }
+  .tx-client-logo img { max-height: 2.5rem; }
 }
 
 .product-grid {
