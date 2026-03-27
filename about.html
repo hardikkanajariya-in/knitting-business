@@ -72,33 +72,11 @@
         ${team ? '<section class="team-section section"><div class="container"><div class="section-header" data-aos="fade-up"><h2 class="section-title">' + (team.sectionTitle || 'People and Capability') + '</h2><p class="section-subtitle">' + (team.sectionSubtitle || '') + '</p></div><div class="team-grid">' + (typeof renderTeamCards === 'function' ? renderTeamCards(team.leadership) : '') + '</div></div></section>' : ''}
       `;
 
-      const clientList = about.clientList;
-      const clientMarqueeHTML = clientList && clientList.logos && clientList.logos.length ? `
-        <section class="section tx-clients-section" style="background:var(--bg-card);">
-          <div class="container">
-            <div class="section-header" data-aos="fade-up">
-              <p class="section-subtitle">${clientList.subtitle || ''}</p>
-              <h2 class="section-title">${clientList.title || 'Our Clients'}</h2>
-            </div>
-            <div class="tx-clients-marquee">
-              <div class="tx-clients-track">
-                ${[...clientList.logos, ...clientList.logos].map(logo => `
-                  <div class="tx-client-logo">
-                    <img src="${logo.image}" alt="${logo.name}" loading="lazy" title="${logo.name}">
-                  </div>
-                `).join('')}
-              </div>
-            </div>
-          </div>
-        </section>
-      ` : '';
-
       const v4El = document.getElementById('version-sui-dhaga');
       v4El.innerHTML = `
         ${typeof renderAboutJourneyV4 === 'function' ? renderAboutJourneyV4(about.journeySection) : ''}
         ${typeof renderAboutStoryV4 === 'function' && about.story ? renderAboutStoryV4(about.story) : ''}
         ${typeof renderStrengthsGrid === 'function' && about.strengths ? renderStrengthsGrid(about.strengths) : ''}
-        ${clientMarqueeHTML}
         ${sharedSections}
       `;
 
