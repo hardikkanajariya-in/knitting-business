@@ -1523,6 +1523,23 @@
   .sd-patchwork {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  .sd-patch:last-child:nth-child(3n + 1),
+  .sd-patch:last-child:nth-child(3n + 2) {
+    grid-column: auto;
+  }
+
+  .sd-patch:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+
+  .sd-strengths-section {
+    padding: 4rem 1.25rem;
+  }
+
+  .sd-patch {
+    padding: 1.6rem 1.4rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1542,6 +1559,39 @@
 
   .sd-patchwork {
     grid-template-columns: 1fr;
+  }
+
+  .sd-patch:last-child:nth-child(3n + 1),
+  .sd-patch:last-child:nth-child(3n + 2),
+  .sd-patch:last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+
+  .sd-patch {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .sd-patch-icon-wrap {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+  }
+
+  .sd-patch-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .sd-patch-title {
+    font-size: 0.95rem;
+  }
+
+  .sd-patch-desc {
+    font-size: 0.82rem;
+  }
+
+  .sd-patch-number {
+    font-size: 2rem;
   }
 
   .sd-story-badge {
