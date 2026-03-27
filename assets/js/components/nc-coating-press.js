@@ -44,7 +44,7 @@ function renderNCHero(nc) {
       <div class="nc-hero-ring nc-hero-ring--inner" aria-hidden="true"></div>
 
       <div class="nc-hero-annotations" aria-hidden="true">
-        <span class="nc-hero-anno nc-hero-anno--1" data-aos="fade" data-aos-delay="700">Coating for Lamination</span>
+        <span class="nc-hero-anno nc-hero-anno--1" data-aos="fade" data-aos-delay="700">For Coating & Lamination</span>
         <span class="nc-hero-anno nc-hero-anno--2" data-aos="fade" data-aos-delay="800">Since 2020</span>
         <span class="nc-hero-anno nc-hero-anno--3" data-aos="fade" data-aos-delay="900">ISO Certified</span>
       </div>

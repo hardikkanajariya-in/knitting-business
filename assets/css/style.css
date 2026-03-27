@@ -2038,6 +2038,67 @@ ul, ol {
   color: var(--footer-text-secondary, var(--text-secondary));
 }
 
+.footer-partner-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding: 0.5rem 0.5rem 0.5rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent, #0A2A43);
+  background: linear-gradient(100deg, rgba(28, 109, 208, 0.18) 0%, rgba(10, 42, 67, 0.08) 55%, rgba(200, 215, 240, 0.25) 100%);
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-partner-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50px;
+  background: linear-gradient(100deg, rgba(28, 109, 208, 0.28) 0%, rgba(10, 42, 67, 0.14) 50%, rgba(180, 200, 230, 0.30) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.footer-partner-btn:hover::before {
+  opacity: 1;
+}
+
+.footer-partner-btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+.footer-partner-btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  color: var(--accent, #0A2A43);
+  flex-shrink: 0;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-partner-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(28, 109, 208, 0.18);
+}
+
+.footer-partner-btn:hover .footer-partner-btn-arrow {
+  transform: translateX(3px);
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(10, 42, 67, 0.12);
+}
+
 .footer-heading {
   display: flex;
   align-items: center;

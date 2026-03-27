@@ -105,6 +105,7 @@ function renderFooter(data) {
               Partner With Us
             </h4>
             <p class="footer-partner-text">Let's discuss your next technical textile requirement.</p>
+            ${window.location.pathname.endsWith('contact.html') ? '' : '<a href="contact.html" class="footer-partner-btn"><span>Start a Discussion</span><span class="footer-partner-btn-arrow"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></a>'}
           </div>
         </div>
 

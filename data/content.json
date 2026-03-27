@@ -13,7 +13,7 @@
     "metaDescription": "Nirbhay Knitting Industries — Engineered technical textiles for coating, lamination & performance applications. 40 years of precision, consistency, and sustainable innovation.",
     "themeColor": "#0A2A43",
     "socialLinks": [
-      { "name": "LinkedIn", "icon": "linkedin", "url": "https://www.linkedin.com/company/nirbhay-knitting" }
+      { "name": "LinkedIn", "icon": "linkedin", "url": "https://www.linkedin.com/company/nkipl" }
     ]
   },
   "navigation": [
@@ -77,7 +77,7 @@
         "panels": [
           {
             "title": "Knitted Fabric Platform",
-            "description": "Base fabrics, 3D spacer constructions, raised fabrics, recycled fabrics developments, and FR fabrics designed around end-use performance.",
+            "description": "Base fabrics, 3D spacer constructions, Raised Fabrics, Sustainable Fabrics, and FR fabrics designed around end-use performance.",
             "badge": "NK"
           },
           {
@@ -87,7 +87,7 @@
           },
           {
             "title": "Environmental, Social and Governance",
-            "description": "Zero discharge, water-free finishing, efficient utilities, and lower-footprint product development support future-facing customer expectations.",
+            "description": "Zero discharge, water-free finishing, efficient utilities, and lower-footprint product development support forward looking customer expectations.",
             "badge": "ESG"
           }
         ]
