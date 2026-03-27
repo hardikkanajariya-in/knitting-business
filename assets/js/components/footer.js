@@ -112,6 +112,7 @@ function renderFooter(data) {
         <div class="footer-divider" aria-hidden="true"></div>
         <div class="footer-bottom">
           <p class="footer-copyright">${footer.copyright.replace(/\d{4}/, new Date().getFullYear())}</p>
+          <p class="footer-credit">Designed By <a href="http://niftysolutions.co.in/" target="_blank" rel="noopener noreferrer">Nifty Solutions</a></p>
         </div>
       </div>
     </footer>

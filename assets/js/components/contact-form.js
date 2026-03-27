@@ -1,5 +1,5 @@
-const WEB3FORMS_ACCESS_KEY = '3064cd8e-c4a4-479e-a0d5-fda67955ab06';
-const RECAPTCHA_SITE_KEY = '6LfcC5UsAAAAAIECQw97Q1FwEDZI4y1kLwkHCM9e';
+const WEB3FORMS_ACCESS_KEY = '2c26b364-f076-4523-861e-33c33a2b5b7b';
+const RECAPTCHA_SITE_KEY = '6Lfu7JksAAAAANHlEqVNyw2GBeNutDvHgzaZkhzi';
 
 function renderContactForm(fields) {
   return `
@@ -24,9 +24,7 @@ function renderContactForm(fields) {
         <label for="contact-message" class="form-label">${fields.message}</label>
         <textarea id="contact-message" name="message" class="form-textarea" placeholder="Tell us about your project or inquiry..." required></textarea>
       </div>
-      <div class="form-group" style="display:flex;justify-content:center;">
-        <div class="g-recaptcha" data-sitekey="${RECAPTCHA_SITE_KEY}"></div>
-      </div>
+      <input type="hidden" name="recaptcha_token" id="recaptcha-token">
       <div class="mt-2">
         <button type="submit" class="btn-primary w-full justify-center" id="contact-submit-btn">
           <span class="btn-text">${fields.submit}</span>
@@ -58,13 +56,15 @@ async function handleContactSubmit(e) {
     return;
   }
 
-  // reCAPTCHA v2 validation (client-side gate)
-  const recaptchaResponse = typeof grecaptcha !== 'undefined' ? grecaptcha.getResponse() : '';
-  if (!recaptchaResponse) {
+  // reCAPTCHA v3 — get token
+  try {
+    const recaptchaToken = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'contact_submit' });
+    form.querySelector('#recaptcha-token').value = recaptchaToken;
+  } catch {
     status.style.display = 'block';
     status.style.background = '#fff3e0';
     status.style.color = '#e65100';
-    status.textContent = 'Please complete the reCAPTCHA verification.';
+    status.textContent = 'reCAPTCHA verification failed. Please refresh the page and try again.';
     return;
   }
 
@@ -77,8 +77,8 @@ async function handleContactSubmit(e) {
 
   try {
     const formData = new FormData(form);
-    // Remove reCAPTCHA response from payload (Web3Forms free plan doesn't support it)
-    formData.delete('g-recaptcha-response');
+    // Remove reCAPTCHA token from payload (verified separately / Web3Forms doesn't use it)
+    formData.delete('recaptcha_token');
     const response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
       body: formData
@@ -91,7 +91,6 @@ async function handleContactSubmit(e) {
       status.style.color = 'var(--accent, #2e7d32)';
       status.textContent = 'Thank you! Your message has been sent successfully. We will get back to you shortly.';
       form.reset();
-      if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
     } else {
       throw new Error(result.message || 'Submission failed');
     }
@@ -100,7 +99,6 @@ async function handleContactSubmit(e) {
     status.style.background = '#ffeaea';
     status.style.color = '#c62828';
     status.textContent = 'Something went wrong. Please try again or email us directly at info@nirbhayknits.com';
-    if (typeof grecaptcha !== 'undefined') grecaptcha.reset();
   } finally {
     btn.disabled = false;
     btnText.textContent = form.querySelector('#contact-form-status').style.color === 'rgb(198, 40, 40)' ? 'Send Message' : 'Send Message';

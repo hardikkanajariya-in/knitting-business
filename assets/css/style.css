@@ -2279,6 +2279,23 @@ ul, ol {
   letter-spacing: 0.01em;
 }
 
+.footer-credit {
+  font-size: 0.78rem;
+  color: var(--footer-text-muted);
+  letter-spacing: 0.01em;
+}
+
+.footer-credit a {
+  color: var(--footer-link, #4da3ff);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.footer-credit a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
 @media (max-width: 639px) {
   .site-footer { padding: 3rem 0 1.5rem; }
 
