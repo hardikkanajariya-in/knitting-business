@@ -1988,7 +1988,7 @@ ul, ol {
   .site-footer { padding: 5rem 0 1.5rem; }
 
   .footer-grid {
-    grid-template-columns: 1.3fr 0.7fr 1fr;
+    grid-template-columns: 1.3fr 0.7fr 1fr 0.9fr;
     gap: 2.5rem;
   }
 
@@ -2026,6 +2026,16 @@ ul, ol {
 .footer-col:hover {
   border-color: var(--footer-col-hover-border);
   background: var(--footer-col-hover-bg);
+}
+
+.footer-col--partner .footer-heading {
+  white-space: nowrap;
+}
+
+.footer-partner-text {
+  font-size: 0.925rem;
+  line-height: 1.6;
+  color: var(--footer-text-secondary, var(--text-secondary));
 }
 
 .footer-heading {

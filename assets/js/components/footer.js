@@ -97,6 +97,15 @@ function renderFooter(data) {
               </a>
             </div>
           </div>
+
+          
+          <div class="footer-col footer-col--partner">
+            <h4 class="footer-heading">
+              <span class="footer-heading-accent"></span>
+              Partner With Us
+            </h4>
+            <p class="footer-partner-text">Let's discuss your next technical textile requirement.</p>
+          </div>
         </div>
 
         
