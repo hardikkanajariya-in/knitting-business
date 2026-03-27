@@ -554,7 +554,7 @@ function renderTextilePage(data) {
         <div class="tx-wf-strip-icon">${waterFreeSVG}</div>
         <div class="tx-wf-strip-content">
           <h2 class="tx-wf-strip-title">100% Water-Free Manufacturing</h2>
-          <p class="tx-wf-strip-text">${textile.intro} — Making us a Zero Discharge Company.</p>
+          <p class="tx-wf-strip-text">${textile.intro}</p>
         </div>
       </div>
     </section>
