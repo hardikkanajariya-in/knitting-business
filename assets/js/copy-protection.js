@@ -84,7 +84,11 @@
   });
 
   /* ── 7. DevTools detection via debugger + timing ──────────────── */
+  /* Skipped on mobile/tablet — browser chrome causes false positives */
   (function detectDevTools() {
+    var isMobile = /Mobi|Android|iPhone|iPad|iPod|webOS|BlackBerry|Opera Mini|IEMobile/i.test(navigator.userAgent);
+    if (isMobile) return;
+
     var threshold = 160;
     var check = function () {
       var w = window.outerWidth - window.innerWidth > threshold;
