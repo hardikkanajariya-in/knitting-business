@@ -605,12 +605,14 @@ function renderTextilePage(data) {
         <div class="section-header" data-aos="fade-up">
           <h2 class="section-title">${textile.clients.title}</h2>
         </div>
-        <div class="tx-clients-grid">
-          ${textile.clients.logos.map((logo, i) => `
-            <div class="tx-client-logo" data-aos="fade-up" data-aos-delay="${i * 60}">
-              <img src="${logo.image}" alt="${logo.name}" loading="lazy" title="${logo.name}">
-            </div>
-          `).join('')}
+        <div class="tx-clients-marquee">
+          <div class="tx-clients-track">
+            ${[...textile.clients.logos, ...textile.clients.logos].map(logo => `
+              <div class="tx-client-logo">
+                <img src="${logo.image}" alt="${logo.name}" loading="lazy" title="${logo.name}">
+              </div>
+            `).join('')}
+          </div>
         </div>
       </div>
     </section>
