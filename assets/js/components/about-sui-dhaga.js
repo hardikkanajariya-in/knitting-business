@@ -12,18 +12,20 @@ function renderAboutJourneyV4(section) {
       return `<div class="sd-cross" style="left:${x}%;top:${y}%;transition-delay:${ci * 80 + 200}ms"></div>`;
     }).join('');
 
+    const isIcon = m.isIcon || (m.image && m.image.endsWith('.svg'));
+
     return `
       <div class="sd-milestone" data-index="${i}">
         <div class="sd-milestone-card">
           <div class="sd-hoop">
             <div class="sd-hoop-ring"></div>
-            <div class="sd-hoop-fabric">
-              ${m.image ? `<img src="${m.image}" alt="${m.title}" class="sd-hoop-img" loading="lazy">` : ''}
+            <div class="sd-hoop-fabric${isIcon ? ' sd-hoop-icon' : ''}">
+              ${m.image ? `<img src="${m.image}" alt="${m.title}" class="sd-hoop-img${isIcon ? ' sd-icon-img' : ''}" loading="lazy">` : ''}
             </div>
             <div class="sd-cross-stitches">${crosses}</div>
           </div>
           <div class="sd-milestone-text">
-            <div class="sd-year-tag">
+            <div class="sd-year-tag${m.year.length > 6 ? ' sd-year-tag-wide' : ''}">
               <span class="sd-tag-label">${m.year}</span>
               <span class="sd-tag-thread"></span>
             </div>
@@ -599,7 +601,7 @@ function renderAboutStoryV4(story) {
           </div>
         </div>
         <div class="sd-story-text-block" data-aos="fade-left">
-          <div class="sd-tag-eyebrow">Our Story</div>
+          <div class="sd-tag-eyebrow">${story.tag || 'Our Story'}</div>
           <h2>${story.title}</h2>
           ${(story.paragraphs || []).map(p => '<p>' + p + '</p>').join('')}
         </div>
