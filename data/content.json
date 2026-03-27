@@ -383,7 +383,7 @@
     "title": "Contact Us",
     "subtitle": "Let us discuss your fabric, coating, or development requirement",
     "description": "Reach out for knitted fabrics, coated textiles, PU coating, laminating support, sampling discussions, or broader partnership opportunities. We would be glad to understand your requirement and guide the next step.",
-    "address": "81, Noorpura, P.O. Baska, Tal. Halol - 389 350, Dist. Panchmahals, Gujarat, India.",
+    "address": "81, Noorpura, P.O. Baska,<br> Tal. Halol - 389 350,<br>Dist. Panchmahals, Gujarat, India.",
     "email": "info@nirbhayknits.com",
     "phone": "+91 93756 17878",
     "mapEmbedUrl": "",
@@ -436,7 +436,7 @@
       { "label": "Contact Us", "href": "contact.html" }
     ],
     "contactInfo": {
-      "address": "81, Noorpura, P.O. Baska, Tal. Halol - 389 350, Dist. Panchmahals, Gujarat, India.",
+      "address": "81, Noorpura, P.O. Baska,<br> Tal. Halol - 389 350,<br>Dist. Panchmahals, Gujarat, India.",
       "email": "info@nirbhayknits.com",
       "phone": "+91 93756 17878"
     },
