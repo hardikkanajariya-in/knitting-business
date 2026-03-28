@@ -13,6 +13,7 @@ function renderAboutJourneyV4(section) {
     }).join('');
 
     const isIcon = m.isIcon || (m.image && m.image.endsWith('.svg'));
+    const imagePosition = m.imagePosition ? ` style="object-position:${m.imagePosition}"` : '';
 
     return `
       <div class="sd-milestone" data-index="${i}">
@@ -20,7 +21,7 @@ function renderAboutJourneyV4(section) {
           <div class="sd-hoop">
             <div class="sd-hoop-ring"></div>
             <div class="sd-hoop-fabric${isIcon ? ' sd-hoop-icon' : ''}">
-              ${m.image ? `<img src="${m.image}" alt="${m.title}" class="sd-hoop-img${isIcon ? ' sd-icon-img' : ''}" loading="lazy">` : ''}
+              ${m.image ? `<img src="${m.image}" alt="${m.title}" class="sd-hoop-img${isIcon ? ' sd-icon-img' : ''}" loading="lazy"${imagePosition}>` : ''}
             </div>
             <div class="sd-cross-stitches">${crosses}</div>
           </div>

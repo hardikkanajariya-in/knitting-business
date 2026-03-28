@@ -134,7 +134,8 @@
           "year": "2011",
           "title": "Commencement of Processing Facilities",
           "description": "Established in-house processing capabilities with stenter and finishing lines, enabling complete fabric processing under one roof.",
-          "image": "assets/img/factory/stenter.jpg"
+          "image": "assets/img/factory/stenter.jpg",
+          "imagePosition": "8% center"
         },
         {
           "year": "2015",
@@ -147,7 +148,7 @@
           "year": "2018",
           "title": "Development of 3D Spacer Fabric",
           "description": "With years of R&D we managed to achieve 3D spacer fabrics available in a wide range of thicknesses starting from 1mm all the way to 3.5mm and above.",
-          "image": "assets/img/products/3d-spacer-stacked.png"
+          "image": "assets/img/products/3d-fabrics.png"
         },
         {
           "year": "2020",
