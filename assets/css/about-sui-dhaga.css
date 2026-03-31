@@ -293,7 +293,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 7rem 2rem 5rem;
+  padding: 4.5rem 2rem 3rem;
 }
 
 .sd-hero-content {
@@ -760,12 +760,12 @@
 .sd-milestones {
   position: relative;
   z-index: 2;
-  padding-bottom: 6rem;
+  padding-bottom: 3rem;
 }
 
 .sd-milestone {
   position: relative;
-  padding: 6rem 2rem;
+  padding: 3.5rem 2rem;
   display: flex;
   justify-content: center;
 }
@@ -1197,7 +1197,7 @@
 .sd-story-section {
   position: relative;
   z-index: 2;
-  padding: 6rem 2rem;
+  padding: 3.5rem 2rem;
 }
 
 .sd-story-container {
@@ -1308,7 +1308,7 @@
 .sd-strengths-section {
   position: relative;
   z-index: 2;
-  padding: 5rem 2rem;
+  padding: 3rem 2rem;
   background: var(--bg-secondary);
 }
 
@@ -1463,7 +1463,7 @@
 .sd-gallery-section {
   position: relative;
   z-index: 2;
-  padding: 5rem 2rem;
+  padding: 3rem 2rem;
 }
 
 .sd-gallery-header {

@@ -49,7 +49,7 @@
   --nc-shadow-lift:   0 16px 40px rgba(10,42,67,0.14), 0 6px 12px rgba(10,42,67,0.08);
 
   
-  --nc-section-pad:   6rem 1.5rem;
+  --nc-section-pad:   3.5rem 1.5rem;
   --nc-section-max:   72rem;
   --nc-gap:           2rem;
   --nc-radius:        8px;
@@ -176,7 +176,7 @@
   align-items: center;
   background: var(--nc-hero-bg);
   overflow: hidden;
-  padding: 8rem 6rem 5rem;
+  padding: 5rem 6rem 3rem;
 }
 
 .nc-hero::before {
@@ -1011,7 +1011,7 @@
 }
 
 .nc-partnership {
-  padding: 2rem 1.5rem;
+  padding: 1.5rem 1.5rem;
   background: var(--nc-surface);
   position: relative;
 }
