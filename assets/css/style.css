@@ -265,6 +265,7 @@ ul, ol {
   background: #ffffff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   transition: box-shadow var(--transition-base);
+  overflow: hidden;
 }
 
 .site-header.scrolled {
@@ -367,12 +368,35 @@ ul, ol {
 .dark .header-nc-logo-img.logo-light { display: block; }
 .dark .header-nc-logo-img.logo-dark { display: none; }
 
+/* NC-only logo: trim excess whitespace from the image */
+.nc-only-logo {
+  object-fit: contain;
+  height: clamp(7rem, 12vw, 9.5rem) !important;
+  max-width: none;
+  margin-top: clamp(-0.8rem, -2.5vw, -2rem);
+  margin-bottom: clamp(-1.7rem, -3vw, -2.5rem);
+}
+.header-nc-only-logo-mark {
+  overflow: hidden;
+  max-height: clamp(3.5rem, 6vw, 4.8rem);
+}
+
 
 
 @media (max-width: 767px) {
   .header-logo-image {
     max-width: min(58vw, 14rem);
     height: 2rem;
+  }
+
+  .nc-only-logo {
+    height: 5.8rem !important;
+    margin-top: -1.1rem;
+    margin-bottom: -1.3rem;
+  }
+
+  .header-nc-only-logo-mark {
+    max-height: 3.2rem;
   }
 
   .header-logo-mark {
@@ -1144,6 +1168,10 @@ ul, ol {
   z-index: 1;
 }
 
+[data-page="textile"] .page-banner-overlay {
+  background: linear-gradient(180deg, rgba(7, 17, 38, 0.4) 0%, rgba(23, 50, 110, 0.25) 100%);
+}
+
 .division-brand-section {
   padding: 2rem 0 0;
 }
@@ -1347,8 +1375,8 @@ ul, ol {
   font-size: 0.95rem; line-height: 1.75; color: var(--text-primary); opacity: 0.8;
 }
 .tx-alt-image {
-  width: 10rem;
-  height: 8rem;
+  width: 14rem;
+  height: 11rem;
   border-radius: var(--radius-lg);
   overflow: hidden;
   flex-shrink: 0;
@@ -1519,7 +1547,7 @@ ul, ol {
 }
 .tx-clients-track {
   display: flex;
-  gap: 3rem;
+  gap: 3.5rem;
   align-items: center;
   animation: tx-client-scroll 30s linear infinite;
   width: max-content;
@@ -1533,11 +1561,15 @@ ul, ol {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  width: 11rem;
+  height: 5rem;
+  padding: 0.5rem;
 }
 .tx-client-logo img {
-  max-height: 3.5rem;
+  max-height: 100%;
+  max-width: 100%;
   width: auto;
+  height: auto;
   object-fit: contain;
 }
 
@@ -1545,7 +1577,7 @@ ul, ol {
   .tx-clients-track {
     gap: 2rem;
   }
-  .tx-client-logo img { max-height: 2.5rem; }
+  .tx-client-logo { width: 8rem; height: 3.5rem; }
 }
 
 .product-grid {

@@ -51,16 +51,21 @@ function renderHeader(data) {
             >
   `;
 
+  const ncOnlyLogoMarkup = isNCPage ? `
+          <span class="header-logo-mark header-nc-only-logo-mark">
+            <img src="assets/img/logo/nc-nirchem-logo.png" alt="NirChem — Polyurethane Systems" class="header-logo-image nc-only-logo" width="720" height="180" loading="eager">
+          </span>
+  ` : '';
+
   return `
     <header class="site-header" role="banner">
       <div class="container header-inner">
-        <a href="index.html" class="header-logo" aria-label="${site.name} — Home">
-          <span class="header-logo-mark">
+        <a href="${isNCPage ? 'nc.html' : 'index.html'}" class="header-logo" aria-label="${isNCPage ? 'NirChem — Polyurethane Systems' : site.name + ' — Home'}">
+          ${isNCPage ? ncOnlyLogoMarkup : `<span class="header-logo-mark">
             ${logoMarkup}
             <span class="header-logo-fallback" style="display:none;">${site.name}</span>
           </span>
-          <span class="header-logo-company-name"><span class="header-company-line1">Nirbhay Knitting</span><span class="header-company-line2">Industries Pvt. Ltd</span></span>
-          ${isNCPage && ncLogo ? `<span class="header-nc-logo"><img src="${ncLogo}" alt="NirChem" class="header-nc-logo-img logo-dark">${ncLogoDark !== ncLogo ? `<img src="${ncLogoDark}" alt="NirChem" class="header-nc-logo-img logo-light">` : ''}</span>` : ''}
+          <span class="header-logo-company-name"><span class="header-company-line1">Nirbhay Knitting</span><span class="header-company-line2">Industries Pvt. Ltd</span></span>`}
         </a>
 
         <nav class="nav-desktop" role="navigation" aria-label="Main navigation">

@@ -244,34 +244,12 @@ function renderAboutJourneyV4(section) {
 
           <!-- Right column: visual feature card -->
           <div class="sd-hero-right">
-            <div class="sd-hero-feature-card">
-              <div class="sd-feature-visual">
-                <svg class="sd-feature-loom-icon" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Outer ring -->
-                  <circle cx="60" cy="60" r="54" stroke="var(--sd-thread)" stroke-width="1" stroke-dasharray="6 4" opacity="0.3"/>
-                  <circle cx="60" cy="60" r="46" stroke="var(--sd-thread)" stroke-width="0.5" opacity="0.15"/>
-                  <!-- Fabric weave grid -->
-                  <g opacity="0.25" stroke="var(--sd-thread)" stroke-width="0.8">
-                    <line x1="35" y1="38" x2="85" y2="38"/><line x1="35" y1="48" x2="85" y2="48"/>
-                    <line x1="35" y1="58" x2="85" y2="58"/><line x1="35" y1="68" x2="85" y2="68"/>
-                    <line x1="35" y1="78" x2="85" y2="78"/>
-                    <line x1="40" y1="33" x2="40" y2="83"/><line x1="50" y1="33" x2="50" y2="83"/>
-                    <line x1="60" y1="33" x2="60" y2="83"/><line x1="70" y1="33" x2="70" y2="83"/>
-                    <line x1="80" y1="33" x2="80" y2="83"/>
-                  </g>
-                  <!-- Center highlight knot -->
-                  <circle cx="60" cy="58" r="8" fill="rgba(28,109,208,0.08)" stroke="var(--sd-thread)" stroke-width="1.2"/>
-                  <path d="M56 54l8 8M64 54l-8 8" stroke="var(--sd-thread)" stroke-width="1.5" stroke-linecap="round"/>
-                  <!-- Accent dots at weave intersections -->
-                  <circle cx="40" cy="48" r="2" fill="var(--sd-thread)" opacity="0.2"/>
-                  <circle cx="50" cy="58" r="2" fill="var(--sd-thread-gold)" opacity="0.25"/>
-                  <circle cx="70" cy="48" r="2" fill="var(--sd-thread)" opacity="0.2"/>
-                  <circle cx="80" cy="68" r="2" fill="var(--sd-thread-gold)" opacity="0.2"/>
-                  <circle cx="50" cy="78" r="2" fill="var(--sd-thread)" opacity="0.15"/>
-                  <circle cx="70" cy="68" r="2" fill="var(--sd-thread-gold)" opacity="0.2"/>
-                </svg>
+            <div class="sd-hero-feature-card sd-hero-image-card">
+              <img src="assets/img/factory/Main Entry.JPG" alt="Nirbhay Knitting Factory Main Entry" class="sd-hero-card-img" loading="eager">
+              <div class="sd-years-badge">
+                <span class="sd-years-number">40+</span>
+                <span class="sd-years-label">Years</span>
               </div>
-              <div class="sd-feature-subtitle">${section.storyTitle || 'Engineering precision with sustainable innovation for over 40 years'}</div>
             </div>
           </div>
         </div>

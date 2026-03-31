@@ -75,12 +75,9 @@
       const v4El = document.getElementById('version-sui-dhaga');
       v4El.innerHTML = `
         ${typeof renderAboutJourneyV4 === 'function' ? renderAboutJourneyV4(about.journeySection) : ''}
-        ${typeof renderAboutStoryV4 === 'function' && about.story ? renderAboutStoryV4(about.story) : ''}
         ${typeof renderStrengthsGrid === 'function' && about.strengths ? renderStrengthsGrid(about.strengths) : ''}
         ${sharedSections}
       `;
-
-
 
       const header = document.querySelector('.site-header');
       if (header) header.classList.add('hero-overlay-mode');

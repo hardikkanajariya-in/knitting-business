@@ -29,7 +29,7 @@ function renderContactForm(fields) {
         <button type="submit" class="btn-primary w-full justify-center" id="contact-submit-btn">
           <span class="btn-text">${fields.submit}</span>
           <svg class="w-4 h-4 btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z"/>
           </svg>
           <svg class="w-4 h-4 btn-spinner" style="display:none;animation:spin 1s linear infinite;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" d="M12 2a10 10 0 0 1 10 10"/>
