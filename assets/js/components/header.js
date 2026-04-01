@@ -52,9 +52,10 @@ function renderHeader(data) {
   `;
 
   const ncOnlyLogoMarkup = isNCPage ? `
-          <span class="header-logo-mark header-nc-only-logo-mark">
-            <img src="assets/img/logo/nc-nirchem-logo.png" alt="NirChem — Polyurethane Systems" class="header-logo-image nc-only-logo" width="720" height="180" loading="eager">
+          <span class="header-logo-mark">
+            <img src="assets/img/logo/nc-logo.png" alt="NirChem" class="header-logo-image nc-logo-icon" width="180" height="180" loading="eager">
           </span>
+          <span class="header-logo-company-name"><span class="header-company-line1 nc-company-line1">NirChem</span><span class="header-company-line2 nc-company-line2">Polyurethane Systems</span></span>
   ` : '';
 
   return `

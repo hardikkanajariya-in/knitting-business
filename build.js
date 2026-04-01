@@ -45,10 +45,10 @@ const OBF_OPTIONS = {
   numbersToExpressions: true,
   simplify: true,
   transformObjectKeys: true,
-  selfDefending: true,             // breaks if anyone tries to prettify
-  debugProtection: true,           // debugger trap if DevTools open
-  debugProtectionInterval: 0,      // ↓ from 2000 — no polling timer
-  disableConsoleOutput: true,      // console.* → no-ops
+  selfDefending: false,            // OFF — breaks on Vercel/CDN edge networks
+  debugProtection: false,          // OFF — can freeze tabs in some environments
+  debugProtectionInterval: 0,
+  disableConsoleOutput: false,     // OFF — allow console for debugging deploy issues
 
   // ── Misc ──
   target: 'browser',
