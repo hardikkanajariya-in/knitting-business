@@ -21,7 +21,7 @@ const VIDEO_CDN_FALLBACK = {
   'assets/video/hero-automotive-interior.mp4': 'https://videos.pexels.com/video-files/6872084/6872084-uhd_2560_1440_25fps.mp4',
   'assets/video/textile-factory.mp4': 'https://videos.pexels.com/video-files/5304551/5304551-hd_1920_1080_30fps.mp4',
 };
-document.addEventListener('error', function(e) {
+document.addEventListener('error', function (e) {
   if (e.target.tagName === 'IMG') {
     const src = e.target.getAttribute('src');
     const cdnUrl = IMAGE_CDN_FALLBACK[src];
@@ -33,7 +33,7 @@ document.addEventListener('error', function(e) {
   }
 }, true);
 
-document.addEventListener('error', function(e) {
+document.addEventListener('error', function (e) {
   if (e.target.tagName !== 'VIDEO' && e.target.tagName !== 'SOURCE') return;
 
   const video = e.target.tagName === 'VIDEO' ? e.target : e.target.parentElement;
@@ -51,7 +51,7 @@ document.addEventListener('error', function(e) {
     video.playbackRate = 0.6;
     const playPromise = video.play();
     if (playPromise && typeof playPromise.catch === 'function') {
-      playPromise.catch(() => {});
+      playPromise.catch(() => { });
     }
   }
 }, true);
@@ -304,43 +304,43 @@ function initHeroBAnimations() {
     ease: 'power3.out',
     clearProps: 'opacity,y',
   })
-  .from('.hero-b-title-line', {
-    y: 60,
-    opacity: 0,
-    duration: 1,
-    stagger: 0.15,
-    ease: 'power3.out',
-    clearProps: 'opacity,y',
-  }, '-=0.28')
-  .from('.hero-b-desc', {
-    y: 30,
-    opacity: 0,
-    duration: 0.6,
-    ease: 'power3.out',
-    clearProps: 'opacity,y',
-  }, '-=0.3')
-  .from('.hero-b-cta-row > *', {
-    y: 20,
-    opacity: 0,
-    duration: 0.5,
-    stagger: 0.1,
-    ease: 'power3.out',
-    clearProps: 'opacity,y',
-  }, '-=0.2')
-  .from('.hero-b-anno', {
-    opacity: 0,
-    duration: 0.6,
-    stagger: 0.12,
-    ease: 'power2.out',
-    clearProps: 'opacity',
-  }, '-=0.3')
-  .from('.hero-b-scroll', {
-    opacity: 0,
-    y: 10,
-    duration: 0.5,
-    ease: 'power2.out',
-    clearProps: 'opacity,y',
-  }, '-=0.2');
+    .from('.hero-b-title-line', {
+      y: 60,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.15,
+      ease: 'power3.out',
+      clearProps: 'opacity,y',
+    }, '-=0.28')
+    .from('.hero-b-desc', {
+      y: 30,
+      opacity: 0,
+      duration: 0.6,
+      ease: 'power3.out',
+      clearProps: 'opacity,y',
+    }, '-=0.3')
+    .from('.hero-b-cta-row > *', {
+      y: 20,
+      opacity: 0,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: 'power3.out',
+      clearProps: 'opacity,y',
+    }, '-=0.2')
+    .from('.hero-b-anno', {
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.12,
+      ease: 'power2.out',
+      clearProps: 'opacity',
+    }, '-=0.3')
+    .from('.hero-b-scroll', {
+      opacity: 0,
+      y: 10,
+      duration: 0.5,
+      ease: 'power2.out',
+      clearProps: 'opacity,y',
+    }, '-=0.2');
 }
 
 /* ── Temporary Video Switcher ── */
@@ -377,7 +377,7 @@ function initVideoSwitcher() {
     `;
 
     const thumb = card.querySelector('video');
-    card.addEventListener('mouseenter', () => { thumb.currentTime = 0; thumb.play().catch(() => {}); });
+    card.addEventListener('mouseenter', () => { thumb.currentTime = 0; thumb.play().catch(() => { }); });
     card.addEventListener('mouseleave', () => { thumb.pause(); });
 
     card.addEventListener('click', () => {
@@ -389,7 +389,7 @@ function initVideoSwitcher() {
       if (source) source.src = v.src;
       heroVideo.src = v.src;
       heroVideo.load();
-      heroVideo.play().catch(() => {});
+      heroVideo.play().catch(() => { });
       heroVideo.playbackRate = 0.6;
       heroVideo.addEventListener('loadeddata', () => { heroVideo.playbackRate = 0.6; }, { once: true });
     });
@@ -439,7 +439,7 @@ function initScrollToTop() {
   btn.className = 'scroll-to-top';
   btn.setAttribute('aria-label', 'Scroll to top');
   btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>';
-  btn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  btn.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
   document.body.appendChild(btn);
 
   let ticking = false;
@@ -565,8 +565,8 @@ function renderTextilePage(data) {
         <div class="section-header"><h2 class="section-title">Our Fabrics</h2></div>
         ${textile.products.map((p, i) => `
           <div class="tx-alt-row${p.image ? ' has-image' : ''}" data-aos="fade-up" data-aos-delay="${i * 80}">
-            <div class="tx-alt-num">${String(i + 1).padStart(2, '0')}</div>
             <div class="tx-alt-body">
+              <div class="tx-alt-num">${String(i + 1).padStart(2, '0')}</div>
               <h3 class="tx-alt-title">${p.name}</h3>
               <p class="tx-alt-desc">${p.description}</p>
             </div>
@@ -630,8 +630,8 @@ function renderSustainabilityPage(data) {
         <div class="max-w-3xl mx-auto">
           <h2 class="section-title mb-6">${sus.intro.title}</h2>
           ${sus.intro.paragraphs.map((p, i) =>
-            `<p class="text-base md:text-lg leading-relaxed mb-4" style="color: var(--text-secondary);">${p}</p>`
-          ).join('')}
+    `<p class="text-base md:text-lg leading-relaxed mb-4" style="color: var(--text-secondary);">${p}</p>`
+  ).join('')}
         </div>
       </div>
     </section>
@@ -642,12 +642,12 @@ function renderSustainabilityPage(data) {
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           ${sus.pillars.map((pillar, i) =>
-            `<div class="pillar-card">
+    `<div class="pillar-card">
               <div class="pillar-icon">${getPillarIcon(pillar.icon)}</div>
               <h3 class="pillar-title">${pillar.title}</h3>
               <p class="pillar-desc">${pillar.description}</p>
             </div>`
-          ).join('')}
+  ).join('')}
         </div>
       </div>
     </section>
@@ -655,11 +655,11 @@ function renderSustainabilityPage(data) {
       <div class="container">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
           ${sus.stats.map((stat, i) =>
-            `<div class="stat-card">
+    `<div class="stat-card">
               <div class="stat-value">${stat.value}</div>
               <div class="stat-label">${stat.label}</div>
             </div>`
-          ).join('')}
+  ).join('')}
         </div>
       </div>
     </section>
