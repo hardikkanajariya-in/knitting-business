@@ -45,7 +45,7 @@
           { "name": "Footwear", "icon": "shoe", "image": "assets/img/industries/footwear.jpg", "tag": "Comfort and structure" },
           { "name": "Home Furnishings", "icon": "sofa", "image": "assets/img/industries/furnishing.jpg", "tag": "Durable fabric systems" },
           { "name": "Protective Applications", "icon": "shield", "image": "assets/img/industries/protective.jpg", "tag": "FR fabrics and safety textiles" },
-          { "name": "Luggage", "icon": "shield", "image": "assets/img/industries/luggage.jpg", "tag": "FR fabrics and safety textiles" }
+          { "name": "Luggage", "icon": "luggage", "image": "assets/img/industries/luggage.jpg", "tag": "Durable and lightweight materials" }
         ]
       },
       "statsBand": [

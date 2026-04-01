@@ -20,7 +20,9 @@ function getIndustryIcon(icon) {
     anchor: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="5" r="3"/><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v13M5 12H2a10 10 0 0020 0h-3"/></svg>',
     layers: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4l8 4-8 4-8-4 8-4zM4 12l8 4 8-4M4 16l8 4 8-4"/></svg>',
     shirt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 4l3 2 3-2 4 3-2 4v9H7v-9L5 7l4-3z"/></svg>',
-    flask: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10 2v5l-5 9a3 3 0 002.6 4.5h8.8A3 3 0 0019 16l-5-9V2M9 9h6M8 14c1.2-.8 2.3-1.2 4-1.2s2.8.4 4 1.2"/></svg>'
+    flask: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10 2v5l-5 9a3 3 0 002.6 4.5h8.8A3 3 0 0019 16l-5-9V2M9 9h6M8 14c1.2-.8 2.3-1.2 4-1.2s2.8.4 4 1.2"/></svg>',
+    shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
+    luggage: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 20V7a2 2 0 012-2h8a2 2 0 012 2v13M6 20h12M6 20H4M18 20h2M9 5V3a1 1 0 011-1h4a1 1 0 011 1v2M10 9h4M10 13h4"/></svg>'
   };
   return icons[icon] || icons.car;
 }
