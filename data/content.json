@@ -122,7 +122,7 @@
           "year": "1984",
           "title": "Commencement",
           "description": "Founded by Late Mr. Rohit D. Kamdar, Nirbhay Knitting Industries began its journey offering high-quality polyester fabrics for the synthetic leather industry.",
-          "image": "assets/img/factory/Main Entry.JPG"
+          "image": "assets/img/team/rohit-kamdar.jpg"
         },
         {
           "year": "1988, 1992 & 2005",
@@ -394,15 +394,15 @@
     "sectionSubtitle": "The teams supporting leadership, development, operations, and customer needs",
     "leadership": [
       {
-        "name": "Leadership and Strategy",
+        "name": "Mr. Prathit Kamdar",
         "designation": "Management Team",
-        "photo": "assets/img/team/rajeev-kumar.jpg",
+        "photo": "assets/img/team/prathit-kamdar.jpg",
         "bio": "The management team guides Nirbhay's direction as an integrated materials and coatings partner, with emphasis on engineering precision, sustainable innovation, and long-term partnerships."
       },
       {
-        "name": "Technical and Commercial Team",
+        "name": "Mr. Rajeev Kamdar",
         "designation": "Operations, Development, and Customer Support",
-        "photo": "assets/img/team/prathit-kamdar.jpg",
+        "photo": "assets/img/team/rajeev-kamdar.jpg",
         "bio": "From substrate development and coating trials to production follow-through and customer coordination, the broader team helps translate industrial requirements into practical, tested manufacturing outcomes."
       }
     ]
