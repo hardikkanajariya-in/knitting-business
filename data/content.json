@@ -122,7 +122,8 @@
           "year": "1984",
           "title": "Commencement",
           "description": "Founded by Late Mr. Rohit D. Kamdar, Nirbhay Knitting Industries began its journey offering high-quality polyester fabrics for the synthetic leather industry.",
-          "image": "assets/img/team/rohit-kamdar.jpg"
+          "image": "assets/img/team/rohit-kamdar.jpg",
+          "imagePosition": "center 15%"
         },
         {
           "year": "1988, 1992 & 2005",
