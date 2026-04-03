@@ -394,16 +394,18 @@
     "sectionSubtitle": "The teams supporting leadership, development, operations, and customer needs",
     "leadership": [
       {
-        "name": "Mr. Prathit Kamdar",
-        "designation": "Management Team",
-        "photo": "assets/img/team/prathit-kamdar.jpg",
-        "bio": "The management team guides Nirbhay's direction as an integrated materials and coatings partner, with emphasis on engineering precision, sustainable innovation, and long-term partnerships."
+        "name": "Mr. Rajeev Kamdar",
+        "designation": "Chairman & MD",
+        "photo": "assets/img/team/rajeev-kamdar.jpg",
+        "photoPosition": "center 20%",
+        "bio": "With a legacy rooted in expertise and innovation, Mr. Rajeev has been a driving force in the textile industry since 1995. Having received specialized training in technical textiles from the UK and Taiwan, he brings a global perspective combined with decades of hands-on industry experience. His deep understanding of advanced textile technologies, coupled with a strong commitment to quality and continuous improvement, has played a pivotal role in shaping the company's technical capabilities and long-term growth."
       },
       {
-        "name": "Mr. Rajeev Kamdar",
-        "designation": "Operations, Development, and Customer Support",
-        "photo": "assets/img/team/rajeev-kamdar.jpg",
-        "bio": "From substrate development and coating trials to production follow-through and customer coordination, the broader team helps translate industrial requirements into practical, tested manufacturing outcomes."
+        "name": "Mr. Prathit Kamdar",
+        "designation": "Head of Marketing",
+        "photo": "assets/img/team/prathit-kamdar.jpg",
+        "photoPosition": "60% 15%",
+        "bio": "He represents the new generation of leadership, blending technical knowledge with strategic business acumen. He has undergone specialized training in Turkey in polyurethane chemicals for coating applications, giving him a strong foundation in advanced textile finishing technologies. As the Marketing Head of the company, he leads brand development & client relations."
       }
     ]
   },
@@ -465,7 +467,7 @@
         { "letter": "C", "label": "Consistency", "desc": "Substrates that behave predictably" },
         { "letter": "I", "label": "Innovation", "desc": "3D spacer, coated ready knits, raised fabrics" },
         { "letter": "P", "label": "Precision", "desc": "Every loop engineered" },
-        { "letter": "P", "label": "Partnership", "desc": "Long term relationships with EU manufacturers" }
+        { "letter": "P", "label": "Partnership", "desc": "Long lasting relationships with all our working partners" }
       ]
     },
     "clients": {

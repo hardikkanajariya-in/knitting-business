@@ -6,7 +6,7 @@ function renderAboutJourneyV4(section) {
     const crossCount = 12;
     const crosses = Array.from({ length: crossCount }, (_, ci) => {
       const angle = (ci / crossCount) * 360 + (i * 15);
-      const r = 130;
+      const r = 108;
       const x = 50 + r * Math.cos((angle * Math.PI) / 180) / 2.4;
       const y = 50 + r * Math.sin((angle * Math.PI) / 180) / 2.4;
       return `<div class="sd-cross" style="left:${x}%;top:${y}%;transition-delay:${ci * 80 + 200}ms"></div>`;

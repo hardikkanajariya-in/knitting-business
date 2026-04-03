@@ -8,6 +8,7 @@ function renderTeamCards(members) {
           width="180"
           height="180"
           loading="lazy"
+          ${member.photoPosition ? `style="object-position:${member.photoPosition}"` : ''}
           onerror="this.parentElement.innerHTML='<div class=\\'img-placeholder\\' style=\\'width:100%;height:100%;border-radius:9999px;\\'>Photo</div>'"
         >
       </div>
