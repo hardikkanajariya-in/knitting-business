@@ -292,6 +292,13 @@
         "lottie": "assets/lottie/factory.lottie",
         "gauge": { "label": "Application", "value": "Industrial", "fill": 88 },
         "layerIndex": 2
+      },{
+        "number": "04",
+        "title": "Adhesives",
+        "description": "Single component, two component, water based & thermally activated catering to a wide range of applications.",
+        "lottie": "assets/lottie/partnership.lottie",
+        "gauge": { "label": "Sustainability", "value": "Bio-based PUs", "fill": 82 },
+        "layerIndex": 3
       }
     ],
     "products": [
@@ -451,7 +458,7 @@
       },
       {
         "name": "Fire Retardant Fabrics",
-        "description": "As the saying goes, it always seems impossible until it's done and that is exactly what happened with us. With incessant work and round the clock efforts of our technical team, we now manufacture standard FR fabrics.",
+        "description": "As the saying goes, it always seems impossible until it's done and that is exactly what happened with us. With incessant work and round the clock efforts of our technical team, we now manufacture high-end FR fabrics.",
         "image": "assets/img/products/fire-retardant.svg",
         "isIcon": true
       },
@@ -459,6 +466,13 @@
         "name": "Coated Fabrics",
         "description": "Our range of fabrics combined with our range of chemicals puts us in a unique position to offer the most technically advanced product combinations to our diverse clientele.",
         "image": "assets/img/products/coated-fabrics.png"
+      },
+      {
+        "name": "Sustainable Fabrics",
+        "description": "Our new range of recycled fabrics with great great feel and performance achieved without the use of water, is testimony to our commitment to responsible manufacturing & environmental conservation.",
+        "image": "assets/img/products/n-mark.png",
+        "imageZoom": true,
+        "imagePosition": "80% 15%"
       }
     ],
     "scipp": {

@@ -571,7 +571,7 @@ function renderTextilePage(data) {
               <p class="tx-alt-desc">${p.description}</p>
             </div>
             ${p.image ? `
-              <div class="tx-alt-image${p.isIcon ? ' is-icon' : ''}">
+              <div class="tx-alt-image${p.isIcon ? ' is-icon' : ''}${p.imageZoom === false ? ' no-zoom' : ''}"${p.imagePosition ? ` style="--tx-image-position: ${p.imagePosition};"` : ''}>
                 <img src="${p.image}" alt="${p.name}" loading="lazy">
               </div>
             ` : ''}
