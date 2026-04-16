@@ -1593,7 +1593,6 @@ ol {
 .tx-alt-specs {
   margin-top: 1.25rem;
   padding: 1rem 1.1rem 1.1rem;
-  background: linear-gradient(180deg, rgba(11, 61, 122, 0.05), rgba(11, 61, 122, 0.02));
 }
 
 .tx-alt-specs-label {
@@ -1632,7 +1631,6 @@ ol {
   margin: 0;
   padding: 0.85rem 1rem 0.25rem 2.3rem;
   line-height: 1.65;
-  background: rgba(255, 255, 255, 0.72);
   border-radius: 1rem;
 }
 
