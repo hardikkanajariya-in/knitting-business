@@ -444,35 +444,60 @@
       {
         "name": "Conventional Knits",
         "description": "We offer a wide range of fabrics with conventional knit structures having top of the line technical properties making them a perfect choice for performance applications.",
-        "image": "assets/img/products/conventional-knits.png"
+        "image": "assets/img/products/conventional-knits.png",
+        "bullets": [
+          "Single Jersey: 50 gsm to 200 gsm",
+          "Double Jersey: 100 gsm to 250 gsm",
+          "Terry Fabrics: 120 gsm to 180 gsm"
+        ]
       },
       {
         "name": "Raised Fabrics",
         "description": "Having been in the industry for over 40 years, we have mastered the art of offering fabrics engineered to be highly technical while having the best handfeel achievable. Our range of raised fabrics is testimony to exactly that.",
-        "image": "assets/img/products/raised-fabrics.png"
+        "image": "assets/img/products/raised-fabrics.png",
+        "bullets": [
+          "110 gsm to 240 gsm"
+        ]
       },
       {
         "name": "3D Fabrics",
         "description": "With years of R&D we have managed to achieve 3D spacer fabrics available in a wide range of thicknesses starting from 1mm all the way to 3.5mm.",
-        "image": "assets/img/products/3d-fabrics.png"
+        "image": "assets/img/products/3d-fabrics.png",
+        "bullets": [
+          "High Stretch: designed for excellent stretch and outstanding recovery. 240 - 300 gsm. 1.00 mm to 1.40 mm.",
+          "Non-stretch: engineered for high dimensional stability and structural strength. 200 - 400 gsm. 1.00 mm to 1.40 mm.",
+          "High loft: 200 - 480 gsm. 2.00 mm to 3.50 mm."
+        ]
       },
       {
         "name": "Fire Retardant Fabrics",
         "description": "As the saying goes, it always seems impossible until it's done and that is exactly what happened with us. With incessant work and round the clock efforts of our technical team, we now manufacture high-end FR fabrics.",
         "image": "assets/img/products/fire-retardant.svg",
-        "isIcon": true
+        "isIcon": true,
+        "bullets": [
+          "140 - 300 gsm",
+          "Test reports on request",
+          "EN ISO 15025:2002 - vertical",
+          "ASTM D 6413 - vertical"
+        ]
       },
       {
         "name": "Coated Fabrics",
         "description": "Our range of fabrics combined with our range of chemicals puts us in a unique position to offer the most technically advanced product combinations to our diverse clientele.",
-        "image": "assets/img/products/coated-fabrics.png"
+        "image": "assets/img/products/coated-fabrics.png",
+        "bullets": [
+          "Customized solutions"
+        ]
       },
       {
         "name": "Sustainable Fabrics",
         "description": "Our new range of recycled fabrics with great great feel and performance achieved without the use of water, is testimony to our commitment to responsible manufacturing & environmental conservation.",
         "image": "assets/img/products/n-mark.png",
         "imageZoom": true,
-        "imagePosition": "80% 15%"
+        "imagePosition": "80% 15%",
+        "bullets": [
+          "100 - 225 gsm"
+        ]
       }
     ],
     "scipp": {

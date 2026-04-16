@@ -569,6 +569,14 @@ function renderTextilePage(data) {
               <div class="tx-alt-num">${String(i + 1).padStart(2, '0')}</div>
               <h3 class="tx-alt-title">${p.name}</h3>
               <p class="tx-alt-desc">${p.description}</p>
+              ${p.bullets?.length ? `
+                <div class="tx-alt-specs">
+                  <div class="tx-alt-specs-label">Key Specifications</div>
+                  <ul class="tx-alt-bullets">
+                    ${p.bullets.map(item => `<li>${item}</li>`).join('')}
+                  </ul>
+                </div>
+              ` : ''}
             </div>
             ${p.image ? `
               <div class="tx-alt-image${p.isIcon ? ' is-icon' : ''}${p.imageZoom === false ? ' no-zoom' : ''}"${p.imagePosition ? ` style="--tx-image-position: ${p.imagePosition};"` : ''}>
