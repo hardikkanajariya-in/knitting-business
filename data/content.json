@@ -514,6 +514,33 @@
         ]
       }
     ],
+    "materialSpecs": {
+      "title": "Yarns and Testing",
+      "cards": [
+        {
+          "kicker": "In House",
+          "title": "Testing Facilities",
+          "items": [
+            "Tensile",
+            "Elongation",
+            "Tear",
+            "Stretch",
+            "Dimensional stability to heat"
+          ]
+        },
+        {
+          "kicker": "Materials",
+          "title": "Yarns Used",
+          "items": [
+            "Cotton",
+            "Polyester (spun and filament)",
+            "Nylon (on order only)",
+            "Polyester cotton blends",
+            "Recycled polyesters"
+          ]
+        }
+      ]
+    },
     "scipp": {
       "title": "Our Model — SCIPP",
       "items": [

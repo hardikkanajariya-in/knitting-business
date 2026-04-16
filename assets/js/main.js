@@ -588,6 +588,29 @@ function renderTextilePage(data) {
       </div>
     </section>
 
+    ${textile.materialSpecs ? `
+    <section class="section" style="background:var(--bg-secondary);">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up">
+          <h2 class="section-title">${textile.materialSpecs.title || 'Materials and Testing'}</h2>
+        </div>
+        <div class="tx-dual-cards">
+          ${(textile.materialSpecs.cards || []).map((card, i) => `
+            <article class="tx-dual-card" data-aos="fade-up" data-aos-delay="${i * 100}">
+              <div class="tx-dual-card-head">
+                <div class="tx-dual-card-kicker">${card.kicker || 'Technical Overview'}</div>
+                <h3 class="tx-dual-card-title">${card.title}</h3>
+              </div>
+              <ul class="tx-dual-card-list">
+                ${(card.items || []).map(item => `<li>${item}</li>`).join('')}
+              </ul>
+            </article>
+          `).join('')}
+        </div>
+      </div>
+    </section>
+    ` : ''}
+
     ${textile.scipp ? `
     <section class="section tx-scipp-section" style="background:var(--bg-secondary);">
       <div class="container">
