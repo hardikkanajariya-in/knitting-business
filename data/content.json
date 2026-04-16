@@ -460,9 +460,9 @@
         "description": "We offer a wide range of fabrics with conventional knit structures having top of the line technical properties making them a perfect choice for performance applications.",
         "image": "assets/img/products/conventional-knits.png",
         "bullets": [
-          "Single Jersey: 50 gsm to 200 gsm",
-          "Double Jersey: 100 gsm to 250 gsm",
-          "Terry Fabrics: 120 gsm to 180 gsm"
+          "Single Jersey: 50gsm to 200gsm",
+          "Double Jersey: 100gsm to 250gsm",
+          "Terry Fabrics: 120gsm to 180gsm"
         ]
       },
       {
@@ -470,7 +470,7 @@
         "description": "Having been in the industry for over 40 years, we have mastered the art of offering fabrics engineered to be highly technical while having the best handfeel achievable. Our range of raised fabrics is testimony to exactly that.",
         "image": "assets/img/products/raised-fabrics.png",
         "bullets": [
-          "110 gsm to 240 gsm"
+          "110gsm to 240gsm"
         ]
       },
       {
@@ -478,9 +478,9 @@
         "description": "With years of R&D we have managed to achieve 3D spacer fabrics available in a wide range of thicknesses starting from 1mm all the way to 3.5mm.",
         "image": "assets/img/products/3d-fabrics.png",
         "bullets": [
-          "High Stretch: designed for excellent stretch and outstanding recovery. 240 - 300 gsm. 1.00 mm to 1.40 mm.",
-          "Non-stretch: engineered for high dimensional stability and structural strength. 200 - 400 gsm. 1.00 mm to 1.40 mm.",
-          "High loft: 200 - 480 gsm. 2.00 mm to 3.50 mm."
+          "High Stretch: designed for excellent stretch and outstanding recovery. 240-300gsm, 1.00mm to 1.40mm.",
+          "Non-stretch: engineered for high dimensional stability and structural strength. 200-400gsm, 1.00mm to 1.40mm.",
+          "High loft: 200-480gsm, 2.00mm to 3.50mm."
         ]
       },
       {
@@ -489,7 +489,7 @@
         "image": "assets/img/products/fire-retardant.svg",
         "isIcon": true,
         "bullets": [
-          "140 - 300 gsm",
+          "140-300gsm",
           "Test reports on request",
           "EN ISO 15025:2002 - vertical",
           "ASTM D 6413 - vertical"
@@ -510,7 +510,7 @@
         "imageZoom": true,
         "imagePosition": "80% 15%",
         "bullets": [
-          "100 - 225 gsm"
+          "100-225gsm"
         ]
       }
     ],
