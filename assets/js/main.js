@@ -666,11 +666,33 @@ function renderSustainabilityPage(data) {
     `<div class="stat-card">
               <div class="stat-value">${stat.value}</div>
               <div class="stat-label">${stat.label}</div>
-            </div>`
+          </div>`
   ).join('')}
         </div>
       </div>
     </section>
+    ${sus.certificate ? `
+    <section class="section" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="sus-cert-shell">
+          <div class="sus-cert-copy">
+            <div class="section-header" style="text-align:left;max-width:none;margin-bottom:1.25rem;">
+              <h2 class="section-title">${sus.certificate.title}</h2>
+            </div>
+            ${sus.certificate.description ? `<p class="sus-cert-desc">${sus.certificate.description}</p>` : ''}
+          </div>
+          <div class="sus-cert-card">
+            <img
+              src="${sus.certificate.image}"
+              alt="${sus.certificate.alt || sus.certificate.title}"
+              class="sus-cert-image"
+              loading="lazy"
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    ` : ''}
     ${data.nc && data.nc.innovation ? `
     <section class="section" style="background: var(--bg-secondary);">
       <div class="container">

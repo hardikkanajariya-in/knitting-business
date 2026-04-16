@@ -7,6 +7,7 @@ function renderHomePremiumSections(data) {
     ${renderHomeTrustStrip(premium.trustStrip)}
     ${renderHomeIndustries(premium.industries)}
     ${renderHomeSpotlight(premium.spotlight)}
+    ${renderHomeCertificate(premium.isoCertificate)}
   `;
 }
 
@@ -214,6 +215,32 @@ function renderHomeSpotlight(section) {
                 <p class="home-spotlight-desc">${panel.description || ''}</p>
               </article>
             `).join('')}
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderHomeCertificate(section) {
+  if (!section?.image) return '';
+
+  return `
+    <section class="home-certificate section" data-parallax-section>
+      <div class="container">
+        <div class="home-certificate-shell" data-parallax-card data-delay="0.08">
+          <div class="home-certificate-copy reveal-up">
+            <p class="home-section-eyebrow">${section.eyebrow || 'Certification'}</p>
+            <h2 class="home-section-title">${section.title || section.label || ''}</h2>
+            <p class="home-section-desc">${section.description || ''}</p>
+          </div>
+          <div class="home-certificate-card reveal-up">
+            <img
+              src="${section.image}"
+              alt="${section.label || 'ISO Certificate'}"
+              class="home-certificate-image"
+              loading="lazy"
+            >
           </div>
         </div>
       </div>

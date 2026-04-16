@@ -43,6 +43,7 @@
         "items": [
           { "name": "Automotive", "icon": "car", "image": "assets/img/industries/automotive.jpg", "tag": "Interior and technical uses" },
           { "name": "Footwear", "icon": "shoe", "image": "assets/img/industries/footwear.jpg", "tag": "Comfort and structure" },
+          { "name": "Acoustic", "icon": "sofa", "image": "assets/img/industries/furnishing.jpg", "tag": "Sound absorption and insulation" },
           { "name": "Home Furnishings", "icon": "sofa", "image": "assets/img/industries/furnishing.jpg", "tag": "Durable fabric systems" },
           { "name": "Protective Applications", "icon": "shield", "image": "assets/img/industries/protective.jpg", "tag": "FR fabrics and safety textiles" },
           { "name": "Luggage", "icon": "luggage", "image": "assets/img/industries/luggage.jpg", "tag": "Durable and lightweight materials" }
@@ -91,6 +92,13 @@
             "badge": "ESG"
           }
         ]
+      },
+      "isoCertificate": {
+        "eyebrow": "Certification",
+        "title": "ISO 9001:2015 Certified",
+        "label": "ISO 9001:2015 Certificate",
+        "description": "Our quality systems are backed by ISO 9001:2015 certification, reinforcing process discipline, consistency, and dependable execution across customer programs.",
+        "image": "assets/certificates/ISO_9001-2015.svg"
       },
       "finalCta": {
         "title": "Ready to develop a material program with us?",
@@ -395,7 +403,13 @@
       { "value": "Water-free", "label": "All fabrics made without the use of water" },
       { "value": "Electricity & Gas", "label": "Only sources of energy" },
       { "value": "Bio-based", "label": "PUs via NirChem" }
-    ]
+    ],
+    "certificate": {
+      "title": "ZED Certification",
+      "description": "Our sustainability and manufacturing practices are also reflected in our ZED certification, reinforcing our commitment to efficient processes, responsible production, and continuous improvement.",
+      "image": "assets/certificates/ZED.png",
+      "alt": "ZED Certificate"
+    }
   },
   "team": {
     "sectionTitle": "People and Capability",
