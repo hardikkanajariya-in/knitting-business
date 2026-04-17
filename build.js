@@ -57,9 +57,24 @@ const OBF_OPTIONS = {
   log: false,
 };
 
-/* ── Files / folders to skip ────────────────────────────────────── */
-const SKIP = new Set([
-  'node_modules', 'dist', '.git', '.vscode',
+/* ── Build copy rules ────────────────────────────────────────────── */
+const ROOT_DIRS_TO_COPY = new Set([
+  'assets',
+  'data',
+]);
+
+const ROOT_FILES_TO_COPY = new Set([
+  'vercel.json',
+  'robots.txt',
+  'sitemap.xml',
+  'favicon.ico',
+  'site.webmanifest',
+  'manifest.json',
+  'CNAME',
+]);
+
+const RECURSIVE_SKIP = new Set([
+  'node_modules', 'dist', '.git', '.vscode', '.codex',
   'package.json', 'package-lock.json', 'build.js',
 ]);
 
@@ -68,13 +83,29 @@ function ensureDir(dir) {
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
 }
 
-function copyRecursive(src, dest) {
+function shouldCopyRootEntry(entry) {
+  if (entry.isDirectory()) {
+    return ROOT_DIRS_TO_COPY.has(entry.name);
+  }
+
+  if (entry.name.endsWith('.html')) {
+    return true;
+  }
+
+  return ROOT_FILES_TO_COPY.has(entry.name);
+}
+
+function copyRecursive(src, dest, isRoot = false) {
   const entries = fs.readdirSync(src, { withFileTypes: true });
 
   ensureDir(dest);
 
   for (const entry of entries) {
-    if (SKIP.has(entry.name)) continue;
+    if (isRoot) {
+      if (!shouldCopyRootEntry(entry)) continue;
+    } else if (RECURSIVE_SKIP.has(entry.name)) {
+      continue;
+    }
 
     const srcPath = path.join(src, entry.name);
     const destPath = path.join(dest, entry.name);
@@ -123,9 +154,9 @@ if (fs.existsSync(DIST)) {
   console.log('  Cleaned old dist/');
 }
 
-// 2. Copy everything
-copyRecursive(SRC, DIST);
-console.log('  Copied source files\n');
+// 2. Copy only deployable site files
+copyRecursive(SRC, DIST, true);
+console.log('  Copied deployable site files\n');
 
 // 3. Obfuscate JS
 console.log('  Obfuscating JavaScript…\n');
