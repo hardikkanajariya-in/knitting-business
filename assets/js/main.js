@@ -589,7 +589,7 @@ function renderTextilePage(data) {
     </section>
 
     ${textile.materialSpecs ? `
-    <section class="section" style="background:var(--bg-secondary);">
+    <section class="section tx-material-specs-section" style="background:var(--bg-secondary);">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
           <h2 class="section-title">${textile.materialSpecs.title || 'Materials and Testing'}</h2>

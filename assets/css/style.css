@@ -1482,7 +1482,16 @@ ol {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 2rem;
+  text-align: center;
+}
+
+.tx-wf-strip-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 42rem;
 }
 
 .tx-wf-strip-icon {
@@ -1621,7 +1630,7 @@ ol {
   margin: 0;
   padding: 0;
   display: grid;
-  gap: 0.7rem;
+  gap: 0.1rem;
   color: var(--text-primary);
   opacity: 0.85;
 }
@@ -1629,7 +1638,7 @@ ol {
 .tx-alt-bullets li {
   position: relative;
   margin: 0;
-  padding: 0.85rem 1rem 0.25rem 2.3rem;
+  padding: 0.45rem 1rem 0.25rem 2.3rem;
   line-height: 1.65;
   border-radius: 1rem;
 }
@@ -1637,7 +1646,7 @@ ol {
 .tx-alt-bullets li::before {
   content: "";
   position: absolute;
-  top: 1.18rem;
+  top: 1rem;
   left: 1rem;
   width: 0.55rem;
   height: 0.55rem;
@@ -1743,6 +1752,19 @@ ol {
   gap: 1.5rem;
 }
 
+.tx-material-specs-section {
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+
+.tx-material-specs-section .section-header {
+  margin-bottom: 1.25rem;
+}
+
+.tx-material-specs-section .tx-dual-cards {
+  gap: 1.1rem;
+}
+
 .tx-dual-card {
   padding: clamp(1.35rem, 2.4vw, 2rem);
   border-radius: 1.6rem;
@@ -1753,8 +1775,17 @@ ol {
   box-shadow: 0 20px 48px rgba(10, 42, 67, 0.08);
 }
 
+.tx-material-specs-section .tx-dual-card {
+  padding: clamp(1.1rem, 2vw, 1.5rem);
+  border-radius: 1.35rem;
+}
+
 .tx-dual-card-head {
   margin-bottom: 1rem;
+}
+
+.tx-material-specs-section .tx-dual-card-head {
+  margin-bottom: 0.75rem;
 }
 
 .tx-dual-card-kicker {
@@ -1773,12 +1804,20 @@ ol {
   line-height: 1.2;
 }
 
+.tx-material-specs-section .tx-dual-card-title {
+  font-size: clamp(1.15rem, 1.8vw, 1.35rem);
+}
+
 .tx-dual-card-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   gap: 0.8rem;
+}
+
+.tx-material-specs-section .tx-dual-card-list {
+  gap: 0.4rem;
 }
 
 .tx-dual-card-list li {
@@ -1791,6 +1830,11 @@ ol {
   line-height: 1.65;
 }
 
+.tx-material-specs-section .tx-dual-card-list li {
+  padding: 0.52rem 0.8rem 0.52rem 2rem;
+  line-height: 1.42;
+}
+
 .tx-dual-card-list li::before {
   content: "";
   position: absolute;
@@ -1801,6 +1845,10 @@ ol {
   border-radius: 999px;
   background: var(--accent);
   box-shadow: 0 0 0 4px rgba(11, 61, 122, 0.08);
+}
+
+.tx-material-specs-section .tx-dual-card-list li::before {
+  top: 0.78rem;
 }
 
 /* ===== Textile – Product Gallery (3 images) ===== */
@@ -1874,13 +1922,30 @@ ol {
     grid-template-columns: 1fr;
   }
 
+  .tx-material-specs-section {
+    padding-top: 0.75rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .tx-material-specs-section .section-header {
+    margin-bottom: 1rem;
+  }
+
   .tx-dual-card {
     padding: 1.2rem;
     border-radius: 1.3rem;
   }
 
+  .tx-material-specs-section .tx-dual-card {
+    padding: 1rem;
+  }
+
   .tx-dual-card-list li {
     padding: 0.8rem 0.85rem 0.8rem 2.15rem;
+  }
+
+  .tx-material-specs-section .tx-dual-card-list li {
+    padding: 0.52rem 0.75rem 0.52rem 1.9rem;
   }
 
   .tx-gallery-3 {
