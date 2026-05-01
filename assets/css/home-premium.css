@@ -17,6 +17,17 @@
   contain: layout style;
 }
 
+
+[data-parallax-card].is-revealed,
+.reveal-up.is-revealed,
+.reveal-left.is-revealed,
+.reveal-right.is-revealed,
+.reveal-scale.is-revealed,
+.home-process-step.is-active {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 .hero-a-webgl {
   position: absolute;
   inset: 0;

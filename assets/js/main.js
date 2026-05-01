@@ -595,7 +595,13 @@ async function initPage(pageKey) {
       case 'home':
         initHeroBAnimations();
         initStatCounters();
-        runAfterFirstPaint(() => initHomeInteractiveFX());
+        initHomeInteractiveFX();
+
+        requestAnimationFrame(() => {
+          if (typeof ScrollTrigger !== 'undefined') {
+            ScrollTrigger.refresh();
+          }
+        });
         break;
       case 'sustainability':
         initStatCounters();
