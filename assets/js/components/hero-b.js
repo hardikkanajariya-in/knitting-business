@@ -1,8 +1,4 @@
 function renderHeroB(data) {
-  const hasVideo = Boolean(data.heroVideo);
-  const posterImage = data.posterImage || data.backgroundImage || '';
-  const heroVideoFallback = data.heroVideo === 'assets/video/video.mp4';
-
   const titleWords = data.title.split(' ');
   const titleLine1 = titleWords.slice(0, 3).join(' ');
   const titleLine2 = titleWords.slice(3).join(' ');
@@ -10,19 +6,9 @@ function renderHeroB(data) {
   return `
     <section class="hero-b">
       <div class="hero-b-bg">
-        ${hasVideo ? `
-          <video class="hero-b-bg-video" autoplay muted loop playsinline preload="metadata" poster="${posterImage}" data-video-src="${data.heroVideo}"${heroVideoFallback ? ` data-video-fallback="${heroVideoFallback}"` : ''}>
-            <source data-src="${data.heroVideo}" type="video/mp4">
+        <video class="hero-b-bg-video" autoplay muted loop playsinline preload="metadata" poster="${data.posterImage}">
+            <source src="${data.heroVideo}" type="video/mp4">
           </video>
-        ` : `
-          <img
-            src="${data.backgroundImage}"
-            alt="${data.title}"
-            width="1920"
-            height="1080"
-            onerror="this.style.display='none';this.parentElement.style.background='var(--bg-tertiary)'"
-          >
-        `}
       </div>
       <div class="hero-b-overlay"></div>
 
@@ -33,12 +19,10 @@ function renderHeroB(data) {
       </div>
 
       <div class="hero-b-content">
-        ${data.eyebrow ? `
-          <div class="hero-b-eyebrow">
-            <span class="hero-b-eyebrow-line"></span>
-            ${data.eyebrow}
-          </div>
-        ` : ''}
+        <div class="hero-b-eyebrow">
+          <span class="hero-b-eyebrow-line"></span>
+          ${data.eyebrow}
+        </div>
 
         <h1 class="hero-b-title">
           <span class="hero-b-title-line">${titleLine1}</span>

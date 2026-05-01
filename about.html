@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Learn how Nirbhay Knitting Industries Pvt. Ltd. is evolving through knitting, coating, laminating, in-house testing, and sustainable material innovation.">
+  <meta name="description"
+    content="Learn how Nirbhay Knitting Industries Pvt. Ltd. is evolving through knitting, coating, laminating, in-house testing, and sustainable material innovation.">
   <meta name="theme-color" content="#0A2A43">
   <title>About Us — Nirbhay Knitting Industries Pvt. Ltd.</title>
   <link rel="icon" type="image/jpeg" href="assets/img/logo/nk-logo.jpg">
 
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="assets/css/tailwind.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/about-sui-dhaga.css">
 </head>
+
 <body data-page="about">
   <div id="site-header"></div>
   <div class="page-transition">
     <main>
-      
+
       <div id="version-sui-dhaga"></div>
     </main>
     <div id="site-footer"></div>
@@ -49,20 +53,30 @@
 
       const headerEl = document.getElementById('site-header');
       const footerEl = document.getElementById('site-footer');
-      if (headerEl && typeof renderHeader === 'function') headerEl.innerHTML = renderHeader(data);
-      if (footerEl && typeof renderFooter === 'function') footerEl.innerHTML = renderFooter(data);
+      if (headerEl) headerEl.innerHTML = renderHeader(data);
+      if (footerEl) footerEl.innerHTML = renderFooter(data);
 
       const about = data.about;
       const team = data.team;
 
       const sharedSections = `
-        ${team ? '<section class="team-section section"><div class="container"><div class="section-header" data-aos="fade-up"><h2 class="section-title">' + (team.sectionTitle || 'People and Capability') + '</h2><p class="section-subtitle">' + (team.sectionSubtitle || '') + '</p></div><div class="team-grid">' + (typeof renderTeamCards === 'function' ? renderTeamCards(team.leadership) : '') + '</div></div></section>' : ''}
+        <section class="team-section section">
+          <div class="container">
+            <div class="section-header" data-aos="fade-up">
+              <h2 class="section-title">${team.sectionTitle}</h2>
+              <p class="section-subtitle">${team.sectionSubtitle}</p>
+            </div>
+            <div class="team-grid">
+              ${renderTeamCards(team.leadership)}
+            </div>
+          </div>
+        </section>
       `;
 
       const v4El = document.getElementById('version-sui-dhaga');
       v4El.innerHTML = `
-        ${typeof renderAboutJourneyV4 === 'function' ? renderAboutJourneyV4(about.journeySection) : ''}
-        ${typeof renderStrengthsGrid === 'function' && about.strengths ? renderStrengthsGrid(about.strengths) : ''}
+        ${renderAboutJourneyV4(about.journeySection)}
+        ${renderStrengthsGrid(about.strengths)}
         ${sharedSections}
       `;
 
@@ -74,10 +88,10 @@
       initLenis();
       initAOS();
       initGSAP();
-      if (typeof initScrollToTop === 'function') initScrollToTop();
-      if (typeof initGlobalBackground === 'function') initGlobalBackground();
-      if (typeof initAboutJourneyV4Animations === 'function') initAboutJourneyV4Animations();
-      if (typeof initStrengthsAnimations === 'function') initStrengthsAnimations();
+      initScrollToTop();
+      initGlobalBackground();
+      initAboutJourneyV4Animations();
+      initStrengthsAnimations();
 
       document.body.classList.add('loaded');
       const pt = document.querySelector('.page-transition');
@@ -85,4 +99,5 @@
     });
   </script>
 </body>
+
 </html>

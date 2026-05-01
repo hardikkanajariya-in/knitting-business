@@ -1,24 +1,3 @@
-const IMAGE_CDN_FALLBACK = {
-  'assets/img/hero/hero-bg.jpg': 'https://images.pexels.com/photos/36327501/pexels-photo-36327501.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  'assets/img/hero/about-bg.jpg': 'https://images.pexels.com/photos/8246487/pexels-photo-8246487.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  'assets/img/hero/nc-bg.jpg': 'https://images.pexels.com/photos/4149333/pexels-photo-4149333.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  'assets/img/products/raised.jpg': 'https://images.pexels.com/photos/925706/pexels-photo-925706.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'assets/img/products/3d.jpg': 'https://images.pexels.com/photos/4863009/pexels-photo-4863009.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'assets/img/products/fr.jpg': 'https://images.pexels.com/photos/6717035/pexels-photo-6717035.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'assets/img/products/coated.jpg': 'https://images.pexels.com/photos/236748/pexels-photo-236748.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'assets/img/products/synthetic-leather.jpg': 'https://images.pexels.com/photos/3778766/pexels-photo-3778766.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'assets/img/products/genuine-leather.jpg': 'https://images.pexels.com/photos/3894048/pexels-photo-3894048.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'assets/img/products/direct-coating.jpg': 'https://images.pexels.com/photos/32613926/pexels-photo-32613926.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'assets/img/products/others.jpg': 'https://images.pexels.com/photos/14786437/pexels-photo-14786437.jpeg?auto=compress&cs=tinysrgb&w=800',
-  'assets/img/factory/Pailung 1.jpg': 'https://images.pexels.com/photos/8246480/pexels-photo-8246480.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'assets/img/factory/stenter.jpg': 'https://images.pexels.com/photos/3544567/pexels-photo-3544567.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'assets/img/factory/Main Entry.JPG': 'https://images.pexels.com/photos/31090804/pexels-photo-31090804.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'assets/img/team/rajeev-kumar.jpg': 'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=400',
-  'assets/img/team/prathit-kamdar.jpg': 'https://images.pexels.com/photos/7580937/pexels-photo-7580937.jpeg?auto=compress&cs=tinysrgb&w=400',
-};
-
-const VIDEO_CDN_FALLBACK = 'assets/video/video.mp4';
-
 function prefersReducedMotion() {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
@@ -68,24 +47,6 @@ function setHeroVideoPlayback(video) {
   video.playbackRate = 0.6;
 }
 
-function shouldUseHighResHeroVideo() {
-  const hasLargeViewport = window.matchMedia('(min-width: 1600px)').matches;
-  const hasDenseScreen = window.devicePixelRatio > 1.25;
-  const saveDataEnabled = navigator.connection && navigator.connection.saveData;
-  return hasLargeViewport && hasDenseScreen && !saveDataEnabled;
-}
-
-function resolveHeroVideoSource(video) {
-  const preferredSrc = video.dataset.videoSrc || '';
-  const fallbackSrc = video.dataset.videoFallback || '';
-
-  if (fallbackSrc && preferredSrc === 'assets/video/video.mp4' && !shouldUseHighResHeroVideo()) {
-    return fallbackSrc;
-  }
-
-  return preferredSrc || fallbackSrc;
-}
-
 function initHeroMedia() {
   const heroVideo = document.querySelector('.hero-b-bg-video');
   if (!heroVideo || heroVideo.dataset.mediaInit === 'true') return;
@@ -97,18 +58,6 @@ function initHeroMedia() {
     return;
   }
 
-  const source = heroVideo.querySelector('source');
-  const resolvedSrc = resolveHeroVideoSource(heroVideo);
-  if (!resolvedSrc) return;
-
-  if (source) {
-    source.src = resolvedSrc;
-  } else {
-    heroVideo.src = resolvedSrc;
-  }
-
-  heroVideo.preload = 'metadata';
-  heroVideo.load();
   setHeroVideoPlayback(heroVideo);
 
   const playPromise = heroVideo.play();
@@ -117,40 +66,6 @@ function initHeroMedia() {
   }
 }
 
-document.addEventListener('error', function (e) {
-  if (e.target.tagName === 'IMG') {
-    const src = e.target.getAttribute('src');
-    const cdnUrl = IMAGE_CDN_FALLBACK[src];
-    if (cdnUrl && !e.target.dataset.cdnAttempted) {
-      e.target.dataset.cdnAttempted = 'true';
-      e.target.onerror = null;
-      e.target.src = cdnUrl;
-    }
-  }
-}, true);
-
-document.addEventListener('error', function (e) {
-  if (e.target.tagName !== 'VIDEO' && e.target.tagName !== 'SOURCE') return;
-
-  const video = e.target.tagName === 'VIDEO' ? e.target : e.target.parentElement;
-  const source = video?.querySelector('source');
-  if (!video || !source) return;
-
-  const src = source.getAttribute('src') || video.currentSrc || video.dataset.videoSrc;
-  const cdnUrl = VIDEO_CDN_FALLBACK[src];
-
-  if (cdnUrl && !video.dataset.cdnAttempted) {
-    video.dataset.cdnAttempted = 'true';
-    source.src = cdnUrl;
-    video.load();
-
-    setHeroVideoPlayback(video);
-    const playPromise = video.play();
-    if (playPromise && typeof playPromise.catch === 'function') {
-      playPromise.catch(() => { });
-    }
-  }
-}, true);
 let _contentCache = null;
 
 async function loadContent() {
@@ -539,13 +454,8 @@ async function initPage(pageKey) {
     const headerEl = document.getElementById('site-header');
     const footerEl = document.getElementById('site-footer');
 
-    if (headerEl && typeof renderHeader === 'function') {
-      headerEl.innerHTML = renderHeader(data);
-    }
-
-    if (footerEl && typeof renderFooter === 'function') {
-      footerEl.innerHTML = renderFooter(data);
-    }
+    if (headerEl) headerEl.innerHTML = renderHeader(data);
+    if (footerEl) footerEl.innerHTML = renderFooter(data);
 
     const contentEl = document.getElementById('page-content');
     if (contentEl) {
@@ -584,17 +494,14 @@ async function initPage(pageKey) {
     if (pageKey !== 'home') {
       runAfterFirstPaint(() => initLenis());
     }
-    if (typeof initGlobalBackground === 'function') {
-      runAfterFirstPaint(() => initGlobalBackground());
-    }
+
+    runAfterFirstPaint(() => initGlobalBackground());
 
     switch (pageKey) {
       case 'home':
         initHeroBAnimations();
         initStatCounters();
-        if (typeof initHomeInteractiveFX === 'function') {
-          runAfterFirstPaint(() => initHomeInteractiveFX());
-        }
+        runAfterFirstPaint(() => initHomeInteractiveFX());
         break;
       case 'sustainability':
         initStatCounters();
@@ -615,8 +522,8 @@ function renderHomePage(data) {
   const heroVariantB = data.home.heroVariantB;
 
   return `
-    ${typeof renderHeroB === 'function' ? renderHeroB(heroVariantB) : ''}
-    ${typeof renderHomePremiumSections === 'function' ? renderHomePremiumSections(data) : ''}
+    ${renderHeroB(heroVariantB)}
+    ${renderHomePremiumSections(data)}
   `;
 }
 
@@ -637,7 +544,7 @@ function renderTextilePage(data) {
   ];
 
   return `
-    ${typeof renderPageBanner === 'function' ? renderPageBanner(textile.banner) : ''}
+    ${renderPageBanner(textile.banner)}
 
     <section class="tx-wf-strip">
       <div class="tx-wf-strip-inner">
@@ -653,54 +560,47 @@ function renderTextilePage(data) {
       <div class="container">
         <div class="section-header"><h2 class="section-title">Our Fabrics</h2></div>
         ${textile.products.map((p, i) => `
-          <div class="tx-alt-row${p.image ? ' has-image' : ''}" data-aos="fade-up" data-aos-delay="${i * 80}">
+          <div class="tx-alt-row has-image" data-aos="fade-up" data-aos-delay="${i * 80}">
             <div class="tx-alt-body">
               <div class="tx-alt-num">${String(i + 1).padStart(2, '0')}</div>
               <h3 class="tx-alt-title">${p.name}</h3>
               <p class="tx-alt-desc">${p.description}</p>
-              ${p.bullets?.length ? `
-                <div class="tx-alt-specs">
-                  <div class="tx-alt-specs-label">Key Specifications</div>
-                  <ul class="tx-alt-bullets">
-                    ${p.bullets.map(item => `<li>${item}</li>`).join('')}
-                  </ul>
-                </div>
-              ` : ''}
-            </div>
-            ${p.image ? `
-              <div class="tx-alt-image${p.isIcon ? ' is-icon' : ''}${p.imageZoom === false ? ' no-zoom' : ''}"${p.imagePosition ? ` style="--tx-image-position: ${p.imagePosition};"` : ''}>
-                <img src="${p.image}" alt="${p.name}" loading="lazy">
+              <div class="tx-alt-specs">
+                <div class="tx-alt-specs-label">Key Specifications</div>
+                <ul class="tx-alt-bullets">
+                  ${p.bullets.map(item => `<li>${item}</li>`).join('')}
+                </ul>
               </div>
-            ` : ''}
+            </div>
+            <div class="tx-alt-image${p.isIcon ? ' is-icon' : ''}${p.imageZoom === false ? ' no-zoom' : ''}"${p.imagePosition ? ` style="--tx-image-position: ${p.imagePosition};"` : ''}>
+              <img src="${p.image}" alt="${p.name}" loading="lazy">
+            </div>
           </div>
         `).join('')}
       </div>
     </section>
 
-    ${textile.materialSpecs ? `
     <section class="section tx-material-specs-section" style="background:var(--bg-secondary);">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
-          <h2 class="section-title">${textile.materialSpecs.title || 'Materials and Testing'}</h2>
+          <h2 class="section-title">${textile.materialSpecs.title}</h2>
         </div>
         <div class="tx-dual-cards">
-          ${(textile.materialSpecs.cards || []).map((card, i) => `
+          ${textile.materialSpecs.cards.map((card, i) => `
             <article class="tx-dual-card" data-aos="fade-up" data-aos-delay="${i * 100}">
               <div class="tx-dual-card-head">
-                <div class="tx-dual-card-kicker">${card.kicker || 'Technical Overview'}</div>
+                <div class="tx-dual-card-kicker">${card.kicker}</div>
                 <h3 class="tx-dual-card-title">${card.title}</h3>
               </div>
               <ul class="tx-dual-card-list">
-                ${(card.items || []).map(item => `<li>${item}</li>`).join('')}
+                ${card.items.map(item => `<li>${item}</li>`).join('')}
               </ul>
             </article>
           `).join('')}
         </div>
       </div>
     </section>
-    ` : ''}
 
-    ${textile.scipp ? `
     <section class="section tx-scipp-section" style="background:var(--bg-secondary);">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
@@ -709,7 +609,7 @@ function renderTextilePage(data) {
         <div class="tx-scipp-grid">
           ${textile.scipp.items.map((item, i) => `
             <div class="tx-scipp-card" data-aos="fade-up" data-aos-delay="${i * 100}">
-              <div class="tx-scipp-icon">${scippIcons[i] || ''}</div>
+              <div class="tx-scipp-icon">${scippIcons[i]}</div>
               <div class="tx-scipp-letter">${item.letter}</div>
               <h3 class="tx-scipp-label">${item.label}</h3>
               <p class="tx-scipp-desc">${item.desc}</p>
@@ -718,9 +618,7 @@ function renderTextilePage(data) {
         </div>
       </div>
     </section>
-    ` : ''}
 
-    ${textile.clients ? `
     <section class="section tx-clients-section" style="background:var(--bg-card);">
       <div class="container">
         <div class="section-header" data-aos="fade-up">
@@ -737,14 +635,13 @@ function renderTextilePage(data) {
         </div>
       </div>
     </section>
-    ` : ''}
   `;
 }
 
 function renderSustainabilityPage(data) {
   const sus = data.sustainability;
   return `
-    ${typeof renderPageBanner === 'function' ? renderPageBanner(sus.banner) : ''}
+    ${renderPageBanner(sus.banner)}
     <section class="section">
       <div class="container">
         <div class="max-w-3xl mx-auto">
@@ -783,7 +680,7 @@ function renderSustainabilityPage(data) {
         </div>
       </div>
     </section>
-    ${sus.certificate ? `
+    
     <section class="section" style="background: var(--bg-secondary);">
       <div class="container">
         <div class="sus-cert-shell">
@@ -791,12 +688,12 @@ function renderSustainabilityPage(data) {
             <div class="section-header" style="text-align:left;max-width:none;margin-bottom:1.25rem;">
               <h2 class="section-title">${sus.certificate.title}</h2>
             </div>
-            ${sus.certificate.description ? `<p class="sus-cert-desc">${sus.certificate.description}</p>` : ''}
+            <p class="sus-cert-desc">${sus.certificate.description}</p>
           </div>
           <div class="sus-cert-card">
             <img
               src="${sus.certificate.image}"
-              alt="${sus.certificate.alt || sus.certificate.title}"
+              alt="${sus.certificate.title}"
               class="sus-cert-image"
               loading="lazy"
             >
@@ -804,8 +701,7 @@ function renderSustainabilityPage(data) {
         </div>
       </div>
     </section>
-    ` : ''}
-    ${data.nc && data.nc.innovation ? `
+    
     <section class="section" style="background: var(--bg-secondary);">
       <div class="container">
         <div class="max-w-4xl mx-auto">
@@ -815,18 +711,17 @@ function renderSustainabilityPage(data) {
           </div>
           <h2 class="section-title mb-4">${data.nc.innovation.title}</h2>
           <p class="text-base md:text-lg leading-relaxed mb-4" style="color:var(--text-secondary);">${data.nc.innovation.description}</p>
-          ${data.nc.innovation.detail ? `<p class="text-base leading-relaxed" style="color:var(--text-secondary);">${data.nc.innovation.detail}</p>` : ''}
+          <p class="text-base leading-relaxed" style="color:var(--text-secondary);">${data.nc.innovation.detail}</p>
         </div>
       </div>
     </section>
-    ` : ''}
   `;
 }
 
 function renderContactPage(data) {
   const contact = data.contact;
   return `
-    ${typeof renderPageBanner === 'function' ? renderPageBanner({ title: contact.title, subtitle: contact.subtitle, backgroundImage: 'assets/img/factory/stenter.jpg' }) : ''}
+    ${renderPageBanner({ title: contact.title, subtitle: contact.subtitle, backgroundImage: 'assets/img/factory/stenter.jpg' })}
 
     <section class="contact-section section">
       <div class="container">
@@ -871,7 +766,7 @@ function renderContactPage(data) {
           <div class="contact-form-panel">
             <h3 class="contact-form-heading">Send Us a Message</h3>
             <p class="contact-form-subtext">Fill the form below and we will get back to you shortly.</p>
-            ${typeof renderContactForm === 'function' ? renderContactForm(contact.formFields) : ''}
+            ${renderContactForm(contact.formFields)}
           </div>
         </div>
       </div>

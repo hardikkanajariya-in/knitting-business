@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Discover Nirbhay Chemicals coating, laminating, vinyl coated textile, and chemistry-backed material solutions from Nirbhay Knitting Industries Pvt. Ltd.">
+  <meta name="description"
+    content="Discover Nirbhay Chemicals coating, laminating, vinyl coated textile, and chemistry-backed material solutions from Nirbhay Knitting Industries Pvt. Ltd.">
   <meta name="theme-color" content="#0A2A43">
   <title>Nirbhay Chemicals — Coating and Laminating Solutions</title>
   <link rel="icon" type="image/jpeg" href="assets/img/logo/nk-logo.jpg">
 
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preconnect" href="https://cdn.jsdelivr.net">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="assets/css/tailwind.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/nc-coating-press.css">
 </head>
+
 <body>
   <div id="site-header"></div>
   <div class="page-transition">
@@ -31,81 +35,67 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" defer></script>
 
-  
+
   <script src="assets/js/components/header.js" defer></script>
   <script src="assets/js/components/footer.js" defer></script>
   <script src="assets/js/components/global-bg.js" defer></script>
 
-  
+
   <script src="assets/js/components/nc-coating-press.js" defer></script>
   <script src="assets/js/components/nc-coating-engine.js" defer></script>
 
-  
+
   <script src="assets/js/main.js" defer></script>
 
   <script defer>
     document.addEventListener('DOMContentLoaded', async () => {
       try {
-        const res  = await fetch('data/content.json');
+        const res = await fetch('data/content.json');
         const data = await res.json();
-        const nc   = data.nc;
+        const nc = data.nc;
         if (!nc) { console.error('NC data not found in content.json'); return; }
 
-        
+
         const contentEl = document.getElementById('page-content');
         if (!contentEl) return;
 
         contentEl.innerHTML = [
-          typeof renderNCHero === 'function'         ? renderNCHero(nc) : '',
-          typeof renderNCPartnership === 'function'  ? renderNCPartnership(nc) : '',
-          typeof renderNCProcessFlow === 'function'  ? renderNCProcessFlow(nc.processStages) : '',
-          typeof renderNCProducts === 'function'     ? renderNCProducts(nc.products) : '',
-          typeof renderNCCapabilities === 'function' ? renderNCCapabilities(nc.capabilities) : '',
-          typeof renderNCContentBlock === 'function' ? renderNCContentBlock(nc.contentBlock) : ''
+          renderNCHero(nc),
+          renderNCPartnership(nc),
+          renderNCProcessFlow(nc.processStages),
+          renderNCProducts(nc.products),
+          renderNCCapabilities(nc.capabilities),
+          renderNCContentBlock(nc.contentBlock)
         ].join('');
 
-        
-        if (typeof renderNCLayerIndicator === 'function') {
-          document.body.insertAdjacentHTML('beforeend', renderNCLayerIndicator());
-        }
+        document.body.insertAdjacentHTML('beforeend', renderNCLayerIndicator());
 
-        
-        if (typeof renderHeader === 'function') {
-          const headerEl = document.getElementById('site-header');
-          if (headerEl) headerEl.innerHTML = renderHeader(data);
-        }
-        if (typeof renderFooter === 'function') {
-          const footerEl = document.getElementById('site-footer');
-          if (footerEl) footerEl.innerHTML = renderFooter(data);
-        }
+        const headerEl = document.getElementById('site-header');
+        if (headerEl) headerEl.innerHTML = renderHeader(data);
 
-        
-        if (typeof initTheme === 'function')      initTheme();
-        if (typeof initMobileMenu === 'function') initMobileMenu();
-        if (typeof initLenis === 'function')      initLenis();
+        const footerEl = document.getElementById('site-footer');
+        if (footerEl) footerEl.innerHTML = renderFooter(data);
 
-        
+        initTheme();
+        initMobileMenu();
+        initLenis();
+
+
         if (typeof AOS !== 'undefined') {
           AOS.init({ duration: 700, once: true, offset: 80 });
         }
 
-        
         if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
           gsap.registerPlugin(ScrollTrigger);
         }
 
-        
-        if (typeof initScrollToTop === 'function') initScrollToTop();
-        if (typeof initGlobalBackground === 'function') initGlobalBackground();
+        initScrollToTop();
+        initGlobalBackground();
 
-        
         const header = document.querySelector('.site-header');
         if (header) header.classList.add('hero-overlay-mode');
 
-        
-        if (typeof initNCCoatingAnimations === 'function') {
-          initNCCoatingAnimations();
-        }
+        initNCCoatingAnimations();
 
         gsap.utils.toArray('#site-footer .reveal-up').forEach(el => {
           gsap.to(el, {
@@ -128,4 +118,5 @@
     });
   </script>
 </body>
+
 </html>

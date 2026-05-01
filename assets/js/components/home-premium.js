@@ -1,6 +1,5 @@
 function renderHomePremiumSections(data) {
-  const premium = data.home?.premium;
-  if (!premium) return '';
+  const premium = data.home.premium;
 
   return `
     ${renderHomeStatsBand(premium.statsBand)}
@@ -92,16 +91,14 @@ function renderHomeStatsBand(stats) {
 }
 
 function renderHomeTrustStrip(section) {
-  if (!section) return '';
-
-  const marquee = [...(section.items || []), ...(section.items || [])]
+  const marquee = [...section.items, ...section.items]
     .map(item => `<span class="home-trust-pill">${item}</span>`)
     .join('');
 
   return `
     <section class="home-trust-strip" data-parallax-section>
       <div class="container home-trust-shell">
-        <p class="home-trust-label">${section.label || ''}</p>
+        <p class="home-trust-label">${section.label}</p>
       </div>
       <div class="home-trust-marquee" data-scroll-marquee>
         <div class="home-trust-track">${marquee}</div>
@@ -111,8 +108,6 @@ function renderHomeTrustStrip(section) {
 }
 
 function renderHomeShowcase(section) {
-  if (!section) return '';
-
   return `
     <section class="home-showcase section" data-parallax-section>
       <div class="home-showcase-bg" aria-hidden="true">
@@ -122,22 +117,22 @@ function renderHomeShowcase(section) {
         <div class="home-section-intro reveal-up">
           <p class="home-section-eyebrow">${section.eyebrow || ''}</p>
           <h2 class="home-section-title">${section.title || ''}</h2>
-          <p class="home-section-desc">${section.description || ''}</p>
+          <p class="home-section-desc">${section.description}</p>
         </div>
 
         <div class="home-showcase-grid">
-          ${(section.cards || []).map((card, index) => `
+          ${section.cards.map((card, index) => `
             <article class="home-showcase-card" data-tilt-card data-parallax-card data-depth="${0.06 + index * 0.01}" data-delay="${index * 0.12}">
               <div class="home-showcase-media">
                 <img src="${card.image}" alt="${card.title}" width="1200" height="800" loading="lazy" onerror="this.style.display='none'">
               </div>
               <div class="home-showcase-overlay"></div>
               <div class="home-showcase-content">
-                <div class="home-showcase-category">${card.category || ''}</div>
-                <h3 class="home-showcase-title">${card.title || ''}</h3>
-                <p class="home-showcase-desc">${card.description || ''}</p>
+                <div class="home-showcase-category">${card.category}</div>
+                <h3 class="home-showcase-title">${card.title}</h3>
+                <p class="home-showcase-desc">${card.description}</p>
                 <a href="${card.href}" class="home-inline-link magnetic-btn">
-                  ${card.cta || 'Explore'}
+                  ${card.cta}
                   <span aria-hidden="true">&rarr;</span>
                 </a>
               </div>
