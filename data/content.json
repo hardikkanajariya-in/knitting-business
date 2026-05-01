@@ -34,7 +34,7 @@
       "secondaryCta": { "label": "Explore NirChem", "href": "nc.html" },
       "backgroundImage": "assets/img/hero/hero-bg.jpg",
       "posterImage": "assets/img/hero/hero-bg.jpg",
-      "heroVideo": "assets/video/hero-video-hd.mp4"
+      "heroVideo": "assets/video/video.mp4"
     },
     "premium": {
       "industries": {

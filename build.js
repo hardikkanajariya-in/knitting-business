@@ -1,61 +1,13 @@
 /**
- * Build script — copies the site into dist/ and obfuscates every JS file
- * with aggressive settings so reverse-engineering is impractical.
+ * Build script — copies the deployable static site into dist/.
  *
- * Usage:  node build.js
+ * Usage: node build.js
  */
 const fs = require('fs');
 const path = require('path');
-const JavaScriptObfuscator = require('javascript-obfuscator');
 
 const SRC = __dirname;
 const DIST = path.join(__dirname, 'dist');
-
-/* ── Obfuscator config (balanced: strong protection, low perf cost) ── */
-const OBF_OPTIONS = {
-  // ── Core transforms ──
-  compact: true,
-  controlFlowFlattening: true,
-  controlFlowFlatteningThreshold: 0.4,   // ↓ from 0.75 — less runtime overhead
-  deadCodeInjection: false,              // ↓ OFF — biggest size bloat source
-
-  // ── Identifier mangling ──
-  identifierNamesGenerator: 'hexadecimal',
-  renameGlobals: false,            // keep globals so cross-file calls work
-  renameProperties: false,
-
-  // ── String protection ──
-  stringArray: true,
-  stringArrayCallsTransform: true,
-  stringArrayCallsTransformThreshold: 0.5,
-  stringArrayEncoding: ['base64'],       // ↓ base64 instead of rc4 — faster decode
-  stringArrayIndexShift: true,
-  stringArrayRotate: true,
-  stringArrayShuffle: true,
-  stringArrayWrappersCount: 1,           // ↓ from 2 — less wrapper overhead
-  stringArrayWrappersChainedCalls: true,
-  stringArrayWrappersParametersMaxCount: 2,
-  stringArrayWrappersType: 'function',
-  stringArrayThreshold: 0.75,
-  splitStrings: true,
-  splitStringsChunkLength: 15,           // ↑ from 5 — fewer concat ops
-  unicodeEscapeSequence: false,          // ↓ OFF — saves size, hex IDs are enough
-
-  // ── Extra layers ──
-  numbersToExpressions: true,
-  simplify: true,
-  transformObjectKeys: true,
-  selfDefending: false,            // OFF — breaks on Vercel/CDN edge networks
-  debugProtection: false,          // OFF — can freeze tabs in some environments
-  debugProtectionInterval: 0,
-  disableConsoleOutput: false,     // OFF — allow console for debugging deploy issues
-
-  // ── Misc ──
-  target: 'browser',
-  seed: 0,
-  sourceMap: false,
-  log: false,
-};
 
 /* ── Build copy rules ────────────────────────────────────────────── */
 const ROOT_DIRS_TO_COPY = new Set([
@@ -118,35 +70,8 @@ function copyRecursive(src, dest, isRoot = false) {
   }
 }
 
-function obfuscateFile(filePath) {
-  const code = fs.readFileSync(filePath, 'utf8');
-  if (!code.trim()) return; // skip empty files
-
-  try {
-    const result = JavaScriptObfuscator.obfuscate(code, OBF_OPTIONS);
-    fs.writeFileSync(filePath, result.getObfuscatedCode(), 'utf8');
-  } catch (err) {
-    console.error(`  ✗ Failed: ${filePath}\n    ${err.message}`);
-  }
-}
-
-function obfuscateAll(dir) {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
-  for (const entry of entries) {
-    const full = path.join(dir, entry.name);
-    if (entry.isDirectory()) {
-      obfuscateAll(full);
-    } else if (entry.name.endsWith('.js')) {
-      const rel = path.relative(DIST, full);
-      process.stdout.write(`  ⟳ ${rel} …`);
-      obfuscateFile(full);
-      console.log(' ✓');
-    }
-  }
-}
-
 /* ── Main ───────────────────────────────────────────────────────── */
-console.log('\n🔨  Building protected site into dist/\n');
+console.log('\n🔨  Building site into dist/\n');
 
 // 1. Clean previous build
 if (fs.existsSync(DIST)) {
@@ -157,10 +82,6 @@ if (fs.existsSync(DIST)) {
 // 2. Copy only deployable site files
 copyRecursive(SRC, DIST, true);
 console.log('  Copied deployable site files\n');
-
-// 3. Obfuscate JS
-console.log('  Obfuscating JavaScript…\n');
-obfuscateAll(DIST);
 
 console.log('\n✅  Build complete → dist/\n');
 console.log('Deploy the dist/ folder. Original source is untouched.\n');

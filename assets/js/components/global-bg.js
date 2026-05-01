@@ -1,5 +1,7 @@
 function initGlobalBackground() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(max-width: 1023px)').matches) return;
+  if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
   if (document.querySelector('.global-bg-canvas')) return;
 
   const canvas = document.createElement('div');
@@ -10,7 +12,7 @@ function initGlobalBackground() {
   const SHAPES = ['circle', 'square', 'diamond', 'ring', 'cross', 'triangle', 'dots', 'hexagon'];
   const COLORS = ['gbg-blue', 'gbg-purple', 'gbg-teal', 'gbg-pink', 'gbg-amber', 'gbg-green', 'gbg-red'];
   const FLOATS = ['gbgFloat1', 'gbgFloat2', 'gbgFloat3', 'gbgFloat4'];
-  const ELEMENT_COUNT = 16;
+  const ELEMENT_COUNT = 10;
 
   const elements = [];
 
@@ -63,36 +65,38 @@ function initGlobalBackground() {
     canvas.appendChild(el);
     elements.push({ el, x, y, size });
   }
-  let mouseX = 0.5, mouseY = 0.5;
-  let rafActive = false;
+  let mouseX = 0.5;
+  let mouseY = 0.5;
+  let mouseRaf = 0;
+  let scrollRaf = 0;
+  let viewportWidth = window.innerWidth;
+  let viewportHeight = window.innerHeight;
+  let scrollOffset = 0;
 
   function onMouseMove(e) {
-    mouseX = e.clientX / window.innerWidth;
-    mouseY = e.clientY / window.innerHeight;
+    mouseX = e.clientX / viewportWidth;
+    mouseY = e.clientY / viewportHeight;
 
-    if (!rafActive) {
-      rafActive = true;
-      requestAnimationFrame(updateParallax);
+    if (!mouseRaf) {
+      mouseRaf = requestAnimationFrame(updateParallax);
     }
   }
 
   function updateParallax() {
-    rafActive = false;
-    const cx = window.innerWidth / 2;
-    const cy = window.innerHeight / 2;
+    mouseRaf = 0;
 
     elements.forEach((item, i) => {
       const depth = 0.3 + (i % 5) * 0.1;
       const dx = (mouseX - 0.5) * depth * 25;
       const dy = (mouseY - 0.5) * depth * 25;
-      item.el.style.marginLeft = dx + 'px';
-      item.el.style.marginTop = dy + 'px';
-      const elRect = item.el.getBoundingClientRect();
-      const elCX = elRect.left + elRect.width / 2;
-      const elCY = elRect.top + elRect.height / 2;
+      const shift = scrollOffset * item.scrollSpeed;
+      item.el.style.transform = `translate3d(${dx}px, ${dy - shift}px, 0)`;
+
+      const elCX = (item.x / 100) * viewportWidth + dx + item.size / 2;
+      const elCY = (item.y / 100) * viewportHeight + dy - shift + item.size / 2;
       const dist = Math.sqrt(
-        Math.pow(elCX - (mouseX * window.innerWidth), 2) +
-        Math.pow(elCY - (mouseY * window.innerHeight), 2)
+        Math.pow(elCX - (mouseX * viewportWidth), 2) +
+        Math.pow(elCY - (mouseY * viewportHeight), 2)
       );
 
       if (dist < 150) {
@@ -102,24 +106,28 @@ function initGlobalBackground() {
       }
     });
   }
-  if (!('ontouchstart' in window) && navigator.maxTouchPoints === 0) {
-    window.addEventListener('mousemove', onMouseMove, { passive: true });
-  }
-  let lastScroll = 0;
+
   function onScroll() {
-    const scrollY = window.scrollY || window.pageYOffset;
-    const delta = scrollY - lastScroll;
-    lastScroll = scrollY;
-
-    elements.forEach((item, i) => {
-      const speed = 0.02 + (i % 4) * 0.008;
-      const currentTop = parseFloat(item.el.style.top);
-      const shift = scrollY * speed * 0.1;
-      item.el.style.transform = `translateY(${-shift}px)`;
-    });
+    scrollOffset = (window.scrollY || window.pageYOffset) * 0.1;
+    if (!scrollRaf) {
+      scrollRaf = requestAnimationFrame(() => {
+        scrollRaf = 0;
+        updateParallax();
+      });
+    }
   }
 
+  window.addEventListener('mousemove', onMouseMove, { passive: true });
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => {
+    viewportWidth = window.innerWidth;
+    viewportHeight = window.innerHeight;
+    updateParallax();
+  }, { passive: true });
+  elements.forEach((item, i) => {
+    item.scrollSpeed = 0.02 + (i % 4) * 0.008;
+  });
+  updateParallax();
 }
 function getTriangleColor(cls) {
   const map = {

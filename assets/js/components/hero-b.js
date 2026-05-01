@@ -1,6 +1,7 @@
 function renderHeroB(data) {
   const hasVideo = Boolean(data.heroVideo);
   const posterImage = data.posterImage || data.backgroundImage || '';
+  const heroVideoFallback = data.heroVideo === 'assets/video/video.mp4';
 
   const titleWords = data.title.split(' ');
   const titleLine1 = titleWords.slice(0, 3).join(' ');
@@ -10,8 +11,8 @@ function renderHeroB(data) {
     <section class="hero-b">
       <div class="hero-b-bg">
         ${hasVideo ? `
-          <video class="hero-b-bg-video" autoplay muted loop playsinline poster="${posterImage}" data-video-src="${data.heroVideo}">
-            <source src="${data.heroVideo}" type="video/mp4">
+          <video class="hero-b-bg-video" autoplay muted loop playsinline preload="metadata" poster="${posterImage}" data-video-src="${data.heroVideo}"${heroVideoFallback ? ` data-video-fallback="${heroVideoFallback}"` : ''}>
+            <source data-src="${data.heroVideo}" type="video/mp4">
           </video>
         ` : `
           <img
