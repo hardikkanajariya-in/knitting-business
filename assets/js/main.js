@@ -443,11 +443,17 @@ function initScrollToTop() {
   document.body.appendChild(btn);
 
   let ticking = false;
+  // Cache the threshold to avoid Forced Synchronous Layouts reading window.innerHeight on scroll
+  let scrollThreshold = window.innerHeight * 0.35;
+  window.addEventListener('resize', () => {
+    scrollThreshold = window.innerHeight * 0.35;
+  }, { passive: true });
+
   const onScroll = () => {
     if (ticking) return;
     ticking = true;
     requestAnimationFrame(() => {
-      btn.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.35);
+      btn.classList.toggle('is-visible', window.scrollY > scrollThreshold);
       ticking = false;
     });
   };

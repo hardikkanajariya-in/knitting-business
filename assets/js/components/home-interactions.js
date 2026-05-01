@@ -87,6 +87,8 @@ function initHomeSectionScrollFX() {
   const processSteps = gsap.utils.toArray('.home-process-step');
   const progressFill = document.querySelector('.home-process-progress-fill');
 
+  let activeCount = 0;
+
   processSteps.forEach((step, i) => {
     if (step.dataset.stepTrigger === 'true') return;
     step.dataset.stepTrigger = 'true';
@@ -96,13 +98,11 @@ function initHomeSectionScrollFX() {
       start: 'top 70%',
       end: 'bottom 40%',
       toggleClass: { targets: step, className: 'is-active' },
-      onUpdate: () => {
+      onToggle: (self) => {
         if (progressFill && processSteps.length > 0) {
-          let activeCount = 0;
-          processSteps.forEach(s => {
-            if (s.classList.contains('is-active')) activeCount++;
-          });
-          const pct = ((activeCount) / processSteps.length) * 100;
+          // Increment or decrement based on toggle state instead of querying DOM
+          activeCount += self.isActive ? 1 : -1;
+          const pct = (activeCount / processSteps.length) * 100;
           progressFill.style.height = Math.min(pct, 100) + '%';
         }
       }
