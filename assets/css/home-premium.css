@@ -4,7 +4,6 @@
 .hero-b-bg,
 .home-ind-track,
 .home-trust-track {
-  will-change: transform;
   transform: translateZ(0);
 }
 
@@ -63,7 +62,7 @@
   transform: translateY(40px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+  backface-visibility: hidden;
 }
 
 [data-parallax-card].is-revealed {

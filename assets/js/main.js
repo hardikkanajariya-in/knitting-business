@@ -1,9 +1,17 @@
 function prefersReducedMotion() {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  return (
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
 }
 
 function isTouchDevice() {
-  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+    return false;
+  }
+
+  return window.matchMedia('(hover: none), (pointer: coarse)').matches || navigator.maxTouchPoints > 0;
 }
 
 function canUseDesktopMotionEffects() {
@@ -212,69 +220,145 @@ function initGSAP() {
       onLeaveBack: () => header.classList.remove('scrolled'),
     });
   }
+
   if (prefersReducedMotion()) {
     clearRevealStates();
     return;
   }
 
-  gsap.utils.toArray('.reveal-up').forEach(el => {
-    gsap.to(el, {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 85%',
-        toggleActions: 'play none none none',
-      }
-    });
+  // Batch reveal triggers instead of creating one ScrollTrigger per element.
+  initRevealBatch('.reveal-up', {
+    y: 0,
+    opacity: 1,
+    duration: 0.75,
+    ease: 'power3.out',
   });
 
-  gsap.utils.toArray('.reveal-left').forEach(el => {
-    gsap.to(el, {
-      x: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 85%',
-        toggleActions: 'play none none none',
-      }
-    });
+  initRevealBatch('.reveal-left', {
+    x: 0,
+    opacity: 1,
+    duration: 0.75,
+    ease: 'power3.out',
   });
 
-  gsap.utils.toArray('.reveal-right').forEach(el => {
-    gsap.to(el, {
-      x: 0,
-      opacity: 1,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 85%',
-        toggleActions: 'play none none none',
-      }
-    });
+  initRevealBatch('.reveal-right', {
+    x: 0,
+    opacity: 1,
+    duration: 0.75,
+    ease: 'power3.out',
   });
 
-  gsap.utils.toArray('.reveal-scale').forEach(el => {
-    gsap.to(el, {
-      scale: 1,
-      opacity: 1,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 85%',
-        toggleActions: 'play none none none',
-      }
-    });
+  initRevealBatch('.reveal-scale', {
+    scale: 1,
+    opacity: 1,
+    duration: 0.75,
+    ease: 'power3.out',
   });
 
-  ScrollTrigger.refresh();
+  requestAnimationFrame(() => ScrollTrigger.refresh());
 }
+
+function initScrollPerformanceMode() {
+  if (document.body.dataset.scrollPerformanceInit === 'true') return;
+  document.body.dataset.scrollPerformanceInit = 'true';
+
+  let scrollTimer = null;
+
+  window.addEventListener('scroll', () => {
+    document.body.classList.add('is-scrolling', 'is-fast-scrolling');
+
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      document.body.classList.remove('is-scrolling', 'is-fast-scrolling');
+    }, 160);
+  }, { passive: true });
+}
+
+function injectHomePerformanceStyles() {
+  if (document.getElementById('home-performance-patch')) return;
+
+  const style = document.createElement('style');
+  style.id = 'home-performance-patch';
+  style.textContent = `
+    body.is-scrolling .home-trust-track,
+    body.is-scrolling .home-ind-track,
+    body.is-scrolling .home-client-track,
+    body.is-fast-scrolling .home-trust-track,
+    body.is-fast-scrolling .home-ind-track,
+    body.is-fast-scrolling .home-client-track {
+      animation-play-state: paused !important;
+    }
+
+    .home-industries-shape {
+      filter: blur(42px) !important;
+    }
+
+    .home-showcase-gradient,
+    .home-spotlight-glow,
+    .home-stats-band-glow {
+      filter: blur(36px) !important;
+    }
+
+    .home-spotlight-panel,
+    .home-stats-band-item {
+      -webkit-backdrop-filter: none !important;
+      backdrop-filter: none !important;
+    }
+
+    .hero-a-bg,
+    .hero-a-media-frame,
+    .hero-a-copy-panel,
+    .hero-b-bg,
+    .home-ind-track,
+    .home-trust-track,
+    [data-parallax-card] {
+      will-change: auto !important;
+    }
+
+    .hero-b-bg,
+    .home-ind-track,
+    .home-trust-track {
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+  `;
+
+  document.head.appendChild(style);
+}
+
+function initRevealBatch(selector, vars) {
+  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+  const elements = gsap.utils.toArray(selector);
+  if (!elements.length) return;
+
+  ScrollTrigger.batch(elements, {
+    start: 'top 88%',
+    once: true,
+    interval: 0.08,
+    batchMax: 6,
+    onEnter: (batch) => {
+      gsap.to(batch, {
+        ...vars,
+        stagger: 0.08,
+        overwrite: 'auto',
+        force3D: true,
+        onStart: () => {
+          batch.forEach((el) => el.classList.add('is-revealing'));
+        },
+        onComplete: () => {
+          batch.forEach((el) => {
+            el.classList.remove('is-revealing');
+            el.classList.add('is-revealed');
+            el.style.opacity = '1';
+            el.style.transform = 'none';
+          });
+        },
+      });
+    },
+  });
+}
+
 function initHeroBAnimations() {
   initHeroMedia();
   if (typeof gsap === 'undefined') return;
@@ -299,30 +383,37 @@ function initHeroBAnimations() {
   if (canUseDesktopMotionEffects() && heroB.dataset.scrollFxInit !== 'true') {
     heroB.dataset.scrollFxInit = 'true';
 
+    // Do not scrub the full-screen video/media layer. Keep it stable and promoted.
+    // Scrubbing a video layer is one of the most common reasons for fast-scroll jank.
     if (heroBgMedia) {
-      gsap.to(heroBgMedia, {
-        y: '20%',
-        ease: 'none',
-        scrollTrigger: {
-          trigger: heroB,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-        }
+      gsap.set(heroBgMedia, {
+        scale: 1.04,
+        transformOrigin: 'center center',
+        force3D: true,
       });
     }
 
+    // Keep a small GSAP scroll feel on the text only.
+    // quickTo avoids creating a new tween on every ScrollTrigger update.
     if (heroContent) {
-      gsap.to(heroContent, {
-        yPercent: -10,
-        opacity: 0.78,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: heroB,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-        }
+      const heroY = gsap.quickTo(heroContent, 'yPercent', {
+        duration: 0.18,
+        ease: 'power1.out',
+      });
+      const heroOpacity = gsap.quickTo(heroContent, 'opacity', {
+        duration: 0.18,
+        ease: 'power1.out',
+      });
+
+      ScrollTrigger.create({
+        trigger: heroB,
+        start: 'top top',
+        end: 'bottom top',
+        onUpdate: (self) => {
+          const progress = Math.min(self.progress, 0.75);
+          heroY(-4 * progress);
+          heroOpacity(1 - progress * 0.12);
+        },
       });
     }
   }
@@ -379,6 +470,9 @@ function initHeroBAnimations() {
 
 function initStatCounters() {
   if (typeof gsap === 'undefined') return;
+  if (!registerScrollPlugin()) return;
+  if (document.body.dataset.statCountersInit === 'true') return;
+  document.body.dataset.statCountersInit = 'true';
 
   gsap.utils.toArray('.stat-value').forEach(el => {
     const text = el.textContent;
@@ -488,12 +582,15 @@ async function initPage(pageKey) {
     initTheme();
     initMobileMenu();
     initAOS();
+    initScrollPerformanceMode();
+    if (pageKey === 'home') injectHomePerformanceStyles();
     initGSAP();
     initScrollToTop();
     runAfterFirstPaint(() => initLenis());
 
-    runAfterFirstPaint(() => initGlobalBackground());
-
+    if (pageKey !== 'home') {
+      runAfterFirstPaint(() => initGlobalBackground());
+    }
     switch (pageKey) {
       case 'home':
         initHeroBAnimations();
@@ -534,7 +631,7 @@ function renderTextilePage(data) {
 
   const scippIcons = [
     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v1m0 16v1m-8-9H3m18 0h-1m-2.636-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>`,
-    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
+    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 01112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>`,
     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l.146.146A1.5 1.5 0 0116.5 18h-9a1.5 1.5 0 01-1.182-2.415l.146-.146z"/></svg>`,
     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M6 21V3h4v18M14 21V8h4v13M10 7H6M18 12h-4"/><path d="M3 3h2M3 7h1M3 11h1M3 15h1M3 19h1" stroke-linecap="round"/></svg>`,
     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`
