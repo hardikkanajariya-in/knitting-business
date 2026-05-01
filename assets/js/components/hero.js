@@ -1,4 +1,4 @@
-function renderHeroB(data) {
+function renderHero(data) {
   const titleWords = data.title.split(' ');
   const titleLine1 = titleWords.slice(0, 3).join(' ');
   const titleLine2 = titleWords.slice(3).join(' ');

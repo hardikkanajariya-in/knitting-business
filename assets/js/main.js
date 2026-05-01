@@ -141,7 +141,6 @@ function initMobileMenu() {
 }
 
 function initLenis() {
-  if (document.body.dataset.page === 'home') return;
   if (typeof Lenis === 'undefined') return;
   if (!canUseDesktopMotionEffects()) {
     window._lenis = null;
@@ -491,9 +490,7 @@ async function initPage(pageKey) {
     initAOS();
     initGSAP();
     initScrollToTop();
-    if (pageKey !== 'home') {
-      runAfterFirstPaint(() => initLenis());
-    }
+    runAfterFirstPaint(() => initLenis());
 
     runAfterFirstPaint(() => initGlobalBackground());
 
@@ -522,7 +519,7 @@ function renderHomePage(data) {
   const heroVariantB = data.home.heroVariantB;
 
   return `
-    ${renderHeroB(heroVariantB)}
+    ${renderHero(heroVariantB)}
     ${renderHomePremiumSections(data)}
   `;
 }

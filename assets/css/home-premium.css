@@ -1137,6 +1137,18 @@
   filter: grayscale(0) opacity(1);
 }
 
+.magnetic-btn {
+  transform: translate(var(--magnetic-x, 0), var(--magnetic-y, 0));
+}
+
+[data-tilt-card] {
+  transform:
+    perspective(800px)
+    rotateX(var(--tilt-rotate-x, 0deg))
+    rotateY(var(--tilt-rotate-y, 0deg))
+    translateY(var(--tilt-y, 0));
+}
+
 .home-client-fallback {
   font-size: 0.85rem;
   color: var(--text-secondary);

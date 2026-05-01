@@ -1,19 +1,55 @@
 function initHomeInteractiveFX() {
   initHomeSectionScrollFX();
   initParallaxCards();
+
   if (canUseHoverFX()) {
     initMagneticButtons();
     initInteractiveCards();
-    initParallaxBackgrounds();
   }
 }
 
 function prefersReducedMotion() {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  return (
+    typeof window !== 'undefined' &&
+    typeof window.matchMedia === 'function' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
+}
+
+function isTouchDevice() {
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') {
+    return false;
+  }
+
+  return window.matchMedia('(hover: none), (pointer: coarse)').matches;
 }
 
 function canUseHoverFX() {
   return !prefersReducedMotion() && !isTouchDevice();
+}
+
+function safelyRegisterScrollPlugin() {
+  if (typeof registerScrollPlugin === 'function') {
+    registerScrollPlugin();
+  }
+
+  return typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined';
+}
+
+function revealMotionFallbackContent() {
+  document
+    .querySelectorAll('[data-parallax-card], .home-process-step, .home-spotlight-shell, .home-final-cta-card')
+    .forEach((element) => {
+      element.classList.add('is-revealed');
+      element.classList.add('is-active');
+      element.style.opacity = '';
+      element.style.transform = '';
+    });
+
+  const progressFill = document.querySelector('.home-process-progress-fill');
+  if (progressFill) {
+    progressFill.style.height = '100%';
+  }
 }
 
 function initMagneticButtons() {
@@ -22,35 +58,64 @@ function initMagneticButtons() {
   document.querySelectorAll('.magnetic-btn').forEach((button) => {
     if (button.dataset.magneticInit === 'true') return;
     button.dataset.magneticInit = 'true';
+
     let frameId = 0;
+    let rect = null;
+    let latestEvent = null;
 
-    button.addEventListener('mousemove', (event) => {
-      if (frameId) return;
-
-      frameId = requestAnimationFrame(() => {
-        frameId = 0;
-        const rect = button.getBoundingClientRect();
-        const x = event.clientX - rect.left - rect.width / 2;
-        const y = event.clientY - rect.top - rect.height / 2;
-        button.style.transform = `translate(${x * 0.12}px, ${y * 0.18}px)`;
-      });
-    });
-
-    button.addEventListener('mouseleave', () => {
+    const resetButton = () => {
       if (frameId) {
         cancelAnimationFrame(frameId);
         frameId = 0;
       }
-      button.style.transform = '';
+
+      rect = null;
+      latestEvent = null;
+      button.style.removeProperty('--magnetic-x');
+      button.style.removeProperty('--magnetic-y');
+    };
+
+    button.addEventListener('mouseenter', () => {
+      rect = button.getBoundingClientRect();
     });
+
+    button.addEventListener('mousemove', (event) => {
+      latestEvent = event;
+
+      if (frameId) return;
+
+      frameId = requestAnimationFrame(() => {
+        frameId = 0;
+
+        if (!rect || !latestEvent) {
+          rect = button.getBoundingClientRect();
+        }
+
+        const x = latestEvent.clientX - rect.left - rect.width / 2;
+        const y = latestEvent.clientY - rect.top - rect.height / 2;
+
+        button.style.setProperty('--magnetic-x', `${x * 0.12}px`);
+        button.style.setProperty('--magnetic-y', `${y * 0.18}px`);
+      });
+    });
+
+    button.addEventListener('mouseleave', resetButton);
+    button.addEventListener('blur', resetButton);
   });
 }
 
 function initParallaxCards() {
-  if (typeof registerScrollPlugin === 'function' && !registerScrollPlugin()) return;
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
   if (prefersReducedMotion()) {
-    document.querySelectorAll('[data-parallax-card]').forEach(el => el.classList.add('is-revealed'));
+    document.querySelectorAll('[data-parallax-card]').forEach((element) => {
+      element.classList.add('is-revealed');
+    });
+    return;
+  }
+
+  if (!safelyRegisterScrollPlugin()) {
+    document.querySelectorAll('[data-parallax-card]').forEach((element) => {
+      element.classList.add('is-revealed');
+    });
     return;
   }
 
@@ -58,124 +123,128 @@ function initParallaxCards() {
     if (card.dataset.parallaxRevealInit === 'true') return;
     card.dataset.parallaxRevealInit = 'true';
 
-    const delay = parseFloat(card.dataset.delay || 0);
+    const delay = Number.parseFloat(card.dataset.delay || '0');
 
     ScrollTrigger.create({
       trigger: card,
       start: 'top 88%',
       once: true,
       onEnter: () => {
-        gsap.delayedCall(delay, () => {
+        gsap.delayedCall(Number.isFinite(delay) ? delay : 0, () => {
           card.classList.add('is-revealed');
         });
-      }
-    });
-  });
-}
-
-function initParallaxBackgrounds() {
-  if (typeof registerScrollPlugin === 'function' && !registerScrollPlugin()) return;
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-  if (!canUseHoverFX()) return;
-  document.querySelectorAll('[data-scroll-gallery]').forEach((row) => {
-    if (row.dataset.galleryInit === 'true') return;
-    row.dataset.galleryInit = 'true';
-
-    const track = row.querySelector('.home-ind-track');
-    if (!track) return;
-    const dir = row.dataset.scrollGallery;
-    track.style.animation = 'none';
-
-    const totalW = track.scrollWidth / 3;
-    const duration = dir === 'left' ? 35 : 40;
-    if (dir === 'right') gsap.set(track, { x: -totalW });
-    gsap.to(track, {
-      x: dir === 'left' ? -totalW : 0,
-      duration,
-      ease: 'none',
-      repeat: -1,
+      },
     });
   });
 }
 
 function initHomeSectionScrollFX() {
-  if (typeof registerScrollPlugin === 'function' && !registerScrollPlugin()) return;
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
-  if (prefersReducedMotion()) return;
-  const processSteps = gsap.utils.toArray('.home-process-step');
+  const processSteps = gsapSafeArray('.home-process-step');
   const progressFill = document.querySelector('.home-process-progress-fill');
+  const spotlightShell = document.querySelector('.home-spotlight-shell');
+  const ctaCard = document.querySelector('.home-final-cta-card');
 
-  let activeCount = 0;
+  if (prefersReducedMotion()) {
+    revealMotionFallbackContent();
+    return;
+  }
 
-  processSteps.forEach((step, i) => {
-    if (step.dataset.stepTrigger === 'true') return;
-    step.dataset.stepTrigger = 'true';
+  if (!safelyRegisterScrollPlugin()) {
+    revealMotionFallbackContent();
+    return;
+  }
 
-    ScrollTrigger.create({
-      trigger: step,
-      start: 'top 70%',
-      end: 'bottom 40%',
-      toggleClass: { targets: step, className: 'is-active' },
-      onToggle: (self) => {
-        if (progressFill && processSteps.length > 0) {
-          // Increment or decrement based on toggle state instead of querying DOM
-          activeCount += self.isActive ? 1 : -1;
-          const pct = (activeCount / processSteps.length) * 100;
-          progressFill.style.height = Math.min(pct, 100) + '%';
-        }
-      }
-    });
-  });
-  const spotlight = document.querySelector('.home-spotlight-shell');
-  if (spotlight && spotlight.dataset.floatInit !== 'true' && canUseHoverFX()) {
-    spotlight.dataset.floatInit = 'true';
+  if (processSteps.length && progressFill) {
+    processSteps.forEach((step, index) => {
+      if (step.dataset.stepTrigger === 'true') return;
+      step.dataset.stepTrigger = 'true';
 
-    gsap.utils.toArray('.home-spotlight-panel').forEach((panel, index) => {
-      gsap.to(panel, {
-        y: index % 2 === 0 ? -8 : 8,
-        duration: 3.6 + index * 0.3,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut',
+      ScrollTrigger.create({
+        trigger: step,
+        start: 'top 70%',
+        end: 'bottom 40%',
+        toggleClass: { targets: step, className: 'is-active' },
+        onEnter: () => updateProcessProgress(progressFill, index, processSteps.length),
+        onEnterBack: () => updateProcessProgress(progressFill, index, processSteps.length),
+        onLeaveBack: () => updateProcessProgress(progressFill, index - 1, processSteps.length),
       });
     });
+  } else {
+    processSteps.forEach((step) => step.classList.add('is-active'));
   }
-  const showcaseShell = document.querySelector('.home-spotlight-shell');
-  if (showcaseShell && showcaseShell.dataset.scaleInit !== 'true') {
-    showcaseShell.dataset.scaleInit = 'true';
+
+  initSpotlightFloatFX(spotlightShell);
+  initRevealScaleFX(spotlightShell, 'spotlightScaleInit', 'top 85%', {
+    scale: 0.92,
+    opacity: 0.6,
+    duration: 0.8,
+    ease: 'power2.out',
+  });
+  initRevealScaleFX(ctaCard, 'ctaScaleInit', 'top 90%', {
+    scale: 0.88,
+    opacity: 0,
+    duration: 0.8,
+    ease: 'power2.out',
+  });
+}
+
+function gsapSafeArray(selector) {
+  if (typeof gsap !== 'undefined' && gsap.utils && typeof gsap.utils.toArray === 'function') {
+    return gsap.utils.toArray(selector);
+  }
+
+  return Array.from(document.querySelectorAll(selector));
+}
+
+function updateProcessProgress(progressFill, activeIndex, totalSteps) {
+  if (!progressFill || totalSteps <= 0) return;
+
+  const safeIndex = Math.max(-1, Math.min(activeIndex, totalSteps - 1));
+  const percent = safeIndex < 0 ? 0 : ((safeIndex + 1) / totalSteps) * 100;
+
+  progressFill.style.height = `${Math.max(0, Math.min(percent, 100))}%`;
+}
+
+function initSpotlightFloatFX(spotlightShell) {
+  if (!spotlightShell || spotlightShell.dataset.floatInit === 'true' || !canUseHoverFX()) return;
+
+  spotlightShell.dataset.floatInit = 'true';
+
+  gsap.utils.toArray('.home-spotlight-panel').forEach((panel, index) => {
+    const tween = gsap.to(panel, {
+      y: index % 2 === 0 ? -8 : 8,
+      duration: 3.6 + index * 0.3,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut',
+      paused: true,
+    });
 
     ScrollTrigger.create({
-      trigger: showcaseShell,
-      start: 'top 85%',
-      once: true,
-      onEnter: () => {
-        gsap.from(showcaseShell, {
-          scale: 0.92,
-          opacity: 0.6,
-          duration: 0.8,
-          ease: 'power2.out',
-        });
-      }
+      trigger: panel,
+      start: 'top bottom',
+      end: 'bottom top',
+      onEnter: () => tween.play(),
+      onEnterBack: () => tween.play(),
+      onLeave: () => tween.pause(),
+      onLeaveBack: () => tween.pause(),
     });
-  }
-  const ctaCard = document.querySelector('.home-final-cta-card');
-  if (ctaCard && ctaCard.dataset.scaleInit !== 'true') {
-    ctaCard.dataset.scaleInit = 'true';
+  });
+}
 
-    ScrollTrigger.create({
-      trigger: ctaCard,
-      start: 'top 90%',
-      once: true,
-      onEnter: () => {
-        gsap.from(ctaCard, {
-          scale: 0.88,
-          opacity: 0,
-          duration: 0.8,
-          ease: 'power2.out',
-        });
-      }
-    });
-  }
+function initRevealScaleFX(element, datasetKey, start, fromVars) {
+  if (!element || element.dataset[datasetKey] === 'true') return;
+
+  element.dataset[datasetKey] = 'true';
+
+  ScrollTrigger.create({
+    trigger: element,
+    start,
+    once: true,
+    onEnter: () => {
+      gsap.from(element, fromVars);
+    },
+  });
 }
 
 function initInteractiveCards() {
@@ -184,28 +253,53 @@ function initInteractiveCards() {
   document.querySelectorAll('[data-tilt-card]').forEach((card) => {
     if (card.dataset.tiltInit === 'true') return;
     card.dataset.tiltInit = 'true';
+
     let frameId = 0;
+    let rect = null;
+    let latestEvent = null;
 
-    card.addEventListener('mousemove', (event) => {
-      if (frameId) return;
-
-      frameId = requestAnimationFrame(() => {
-        frameId = 0;
-        const rect = card.getBoundingClientRect();
-        const px = (event.clientX - rect.left) / rect.width;
-        const py = (event.clientY - rect.top) / rect.height;
-        const rotateY = (px - 0.5) * 12;
-        const rotateX = (0.5 - py) * 10;
-        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-      });
-    });
-
-    card.addEventListener('mouseleave', () => {
+    const resetCard = () => {
       if (frameId) {
         cancelAnimationFrame(frameId);
         frameId = 0;
       }
-      card.style.transform = '';
+
+      rect = null;
+      latestEvent = null;
+      card.style.removeProperty('--tilt-rotate-x');
+      card.style.removeProperty('--tilt-rotate-y');
+      card.style.removeProperty('--tilt-y');
+    };
+
+    card.addEventListener('mouseenter', () => {
+      rect = card.getBoundingClientRect();
+      card.style.setProperty('--tilt-y', '-6px');
     });
+
+    card.addEventListener('mousemove', (event) => {
+      latestEvent = event;
+
+      if (frameId) return;
+
+      frameId = requestAnimationFrame(() => {
+        frameId = 0;
+
+        if (!rect || !latestEvent) {
+          rect = card.getBoundingClientRect();
+        }
+
+        const px = (latestEvent.clientX - rect.left) / rect.width;
+        const py = (latestEvent.clientY - rect.top) / rect.height;
+        const rotateY = (px - 0.5) * 12;
+        const rotateX = (0.5 - py) * 10;
+
+        card.style.setProperty('--tilt-rotate-x', `${rotateX}deg`);
+        card.style.setProperty('--tilt-rotate-y', `${rotateY}deg`);
+        card.style.setProperty('--tilt-y', '-6px');
+      });
+    });
+
+    card.addEventListener('mouseleave', resetCard);
+    card.addEventListener('blur', resetCard);
   });
 }
