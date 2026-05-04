@@ -62,11 +62,43 @@ function initHeroMedia() {
   heroVideo.dataset.mediaInit = 'true';
 
   if (!canUseDesktopMotionEffects() || !window.matchMedia('(min-width: 768px)').matches) {
-    heroVideo.removeAttribute('autoplay');
     return;
   }
 
+  const videoSrc = heroVideo.dataset.videoSrc;
+  if (!heroVideo.querySelector('source') && videoSrc) {
+    const source = document.createElement('source');
+    source.src = videoSrc;
+    source.type = 'video/mp4';
+    heroVideo.appendChild(source);
+    heroVideo.load();
+  }
+
+  heroVideo.autoplay = true;
+
+  const markReady = () => heroVideo.classList.add('is-ready');
+  heroVideo.addEventListener('loadeddata', markReady, { once: true });
+  heroVideo.addEventListener('playing', markReady, { once: true });
+
   setHeroVideoPlayback(heroVideo);
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const playPromise = heroVideo.play();
+          if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(() => { });
+          }
+          return;
+        }
+
+        heroVideo.pause();
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(heroVideo);
+  }
 
   const playPromise = heroVideo.play();
   if (playPromise && typeof playPromise.catch === 'function') {
@@ -75,13 +107,73 @@ function initHeroMedia() {
 }
 
 let _contentCache = null;
+let _homeMotionLibrariesPromise = null;
+
+const HOME_GSAP_URL = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js';
+const HOME_SCROLL_TRIGGER_URL = 'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js';
+
+function loadInlineContent() {
+  const inlineContent = document.getElementById('site-content-data');
+  if (!inlineContent) return null;
+
+  try {
+    return JSON.parse(inlineContent.textContent);
+  } catch (error) {
+    console.warn('Failed to parse inline site content.', error);
+    return null;
+  }
+}
 
 async function loadContent() {
   if (_contentCache) return _contentCache;
+
+  const inlineContent = loadInlineContent();
+  if (inlineContent) {
+    _contentCache = inlineContent;
+    return _contentCache;
+  }
+
   const basePath = getBasePath();
   const res = await fetch(basePath + 'data/content.json');
   _contentCache = await res.json();
   return _contentCache;
+}
+
+function shouldLoadHomeMotionLibraries() {
+  return canUseDesktopMotionEffects() && window.matchMedia('(min-width: 768px)').matches;
+}
+
+function ensureScript(src) {
+  if (document.querySelector(`script[src="${src}"]`)) {
+    return Promise.resolve(true);
+  }
+
+  return new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.defer = true;
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.head.appendChild(script);
+  });
+}
+
+function ensureHomeMotionLibraries() {
+  if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+    return Promise.resolve(true);
+  }
+
+  if (_homeMotionLibrariesPromise) {
+    return _homeMotionLibrariesPromise;
+  }
+
+  _homeMotionLibrariesPromise = ensureScript(HOME_GSAP_URL)
+    .then((loaded) => {
+      if (!loaded) return false;
+      return ensureScript(HOME_SCROLL_TRIGGER_URL);
+    });
+
+  return _homeMotionLibrariesPromise;
 }
 
 function getBasePath() {
@@ -552,24 +644,31 @@ async function initPage(pageKey) {
 
     const contentEl = document.getElementById('page-content');
     if (contentEl) {
-      let html = '';
+      if (pageKey === 'home' && contentEl.dataset.staticPage === 'home') {
+        const premiumRoot = contentEl.querySelector('[data-home-premium-root]');
+        if (premiumRoot && premiumRoot.childElementCount === 0) {
+          premiumRoot.innerHTML = renderHomePremiumSections(data);
+        }
+      } else {
+        let html = '';
 
-      switch (pageKey) {
-        case 'home':
-          html = renderHomePage(data);
-          break;
-        case 'sustainability':
-          html = renderSustainabilityPage(data);
-          break;
-        case 'contact':
-          html = renderContactPage(data);
-          break;
-        case 'textile':
-          html = renderTextilePage(data);
-          break;
+        switch (pageKey) {
+          case 'home':
+            html = renderHomePage(data);
+            break;
+          case 'sustainability':
+            html = renderSustainabilityPage(data);
+            break;
+          case 'contact':
+            html = renderContactPage(data);
+            break;
+          case 'textile':
+            html = renderTextilePage(data);
+            break;
+        }
+
+        contentEl.innerHTML = html;
       }
-
-      contentEl.innerHTML = html;
     }
 
     const header = document.querySelector('.site-header');
@@ -584,27 +683,40 @@ async function initPage(pageKey) {
     initAOS();
     initScrollPerformanceMode();
     if (pageKey === 'home') injectHomePerformanceStyles();
-    initGSAP();
     initScrollToTop();
     runAfterFirstPaint(() => initLenis());
 
     if (pageKey !== 'home') {
+      // initGSAP();
       runAfterFirstPaint(() => initGlobalBackground());
     }
     switch (pageKey) {
       case 'home':
-        initHeroBAnimations();
-        initStatCounters();
-        initHomeInteractiveFX();
+        initHeroMedia();
+        runAfterFirstPaint(async () => {
+          if (!shouldLoadHomeMotionLibraries()) return;
 
-        requestAnimationFrame(() => {
-          if (typeof ScrollTrigger !== 'undefined') {
-            ScrollTrigger.refresh();
-          }
+          const librariesLoaded = await ensureHomeMotionLibraries();
+          if (!librariesLoaded) return;
+
+          // initGSAP();
+          initHeroBAnimations();
+          initStatCounters();
+          initHomeInteractiveFX();
+
+          requestAnimationFrame(() => {
+            if (typeof ScrollTrigger !== 'undefined') {
+              ScrollTrigger.refresh();
+            }
+          });
         });
         break;
       case 'sustainability':
+        // initGSAP();
         initStatCounters();
+        break;
+      default:
+        // initGSAP();
         break;
     }
 

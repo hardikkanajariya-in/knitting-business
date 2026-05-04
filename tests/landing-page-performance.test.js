@@ -16,6 +16,8 @@ test('home page avoids unnecessary runtime libraries and page-specific scripts',
   assert.ok(!indexHtml.includes('lenis.min.js'), 'home page should not load Lenis');
   assert.ok(!indexHtml.includes('aos.css'), 'home page should not load AOS CSS');
   assert.ok(!indexHtml.includes('aos.js'), 'home page should not load AOS JS');
+  assert.ok(!indexHtml.includes('gsap.min.js'), 'home page should not eagerly load GSAP');
+  assert.ok(!indexHtml.includes('ScrollTrigger.min.js'), 'home page should not eagerly load ScrollTrigger');
   assert.ok(!indexHtml.includes('dotlottie-player'), 'home page should not load DotLottie runtime');
   assert.ok(!indexHtml.includes('product-grid.js'), 'home page should not load product grid script');
   assert.ok(!indexHtml.includes('page-banner.js'), 'home page should not load page banner script');
@@ -51,4 +53,13 @@ test('copy protection is removed from source and landing page logic no longer co
   assert.ok(!styleCss.includes('user-select: none'), 'global text selection should not be disabled');
   assert.ok(!styleCss.includes('pointer-events: none;\n}'), 'global image interaction should not be disabled');
   assert.ok(!styleCss.includes('@media print'), 'printing should not be globally blocked');
+});
+
+test('home page prerenders the hero and hydrates remaining content from inline JSON', () => {
+  const indexHtml = read('index.html');
+
+  assert.ok(indexHtml.includes('data-static-page="home"'), 'home page should mark prerendered home content');
+  assert.ok(indexHtml.includes('class="hero-b"'), 'home page should prerender the hero markup');
+  assert.ok(indexHtml.includes('id="site-content-data"'), 'home page should inline the initial content payload');
+  assert.ok(indexHtml.includes('data-home-premium-root'), 'home page should keep a dedicated mount for deferred sections');
 });

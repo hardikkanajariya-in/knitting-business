@@ -7,46 +7,315 @@
   <meta name="theme-color" content="#0A2A43">
   <title>Nirbhay Knitting Industries Pvt. Ltd. — Knitted Fabrics and Coating Solutions</title>
   <link rel="icon" type="image/jpeg" href="assets/img/logo/nk-logo.jpg">
-
-  
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preload" href="assets/img/hero/hero-bg.jpg" as="image" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap">
+  </noscript>
   <link rel="stylesheet" href="assets/css/tailwind.css">
-
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/home-premium.css">
 </head>
 <body>
-  
   <div id="site-header"></div>
-
   <div class="page-transition">
-    
-    <main id="page-content"></main>
+    <main id="page-content" data-static-page="home">
+      <section class="hero-b">
+        <div class="hero-b-bg">
+          <img
+            class="hero-b-bg-poster"
+            src="assets/img/hero/hero-bg.jpg"
+            alt=""
+            width="1600"
+            height="900"
+            fetchpriority="high"
+            decoding="async"
+          >
+          <video
+            class="hero-b-bg-video"
+            muted
+            loop
+            playsinline
+            preload="none"
+            poster="assets/img/hero/hero-bg.jpg"
+            data-video-src="assets/video/video.mp4"
+            aria-hidden="true"
+          ></video>
+        </div>
+        <div class="hero-b-overlay"></div>
 
-    
+        <div class="hero-b-annotations" aria-hidden="true">
+          <span class="hero-b-anno hero-b-anno--1">Technical Textiles</span>
+          <span class="hero-b-anno hero-b-anno--2">Since 1984</span>
+          <span class="hero-b-anno hero-b-anno--3">Zero Discharge</span>
+        </div>
+
+        <div class="hero-b-content">
+          <div class="hero-b-eyebrow">
+            <span class="hero-b-eyebrow-line"></span>
+            40 Years of Engineering Excellence
+          </div>
+
+          <h1 class="hero-b-title">
+            <span class="hero-b-title-line">Engineered Technical Textiles</span>
+            <span class="hero-b-title-line hero-b-title-accent">for Coating, Lamination &amp; Performance</span>
+          </h1>
+
+          <div class="hero-b-desc">
+            <p>Consistent substrates. Predictable performance.</p>
+          </div>
+        </div>
+
+        <div class="hero-b-scroll" aria-hidden="true">
+          <div class="hero-b-mouse"><div class="hero-b-mouse-dot"></div></div>
+          <span class="hero-b-scroll-label">Scroll</span>
+        </div>
+      </section>
+      <div data-home-premium-root></div>
+    </main>
     <div id="site-footer"></div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script id="site-content-data" type="application/json">
+{
+  "site": {
+    "name": "Nirbhay Knitting Industries Pvt. Ltd.",
+    "tagline": "Consistent substrates. Predictable performance.",
+    "logo": "assets/img/logo/nk-logo.jpg",
+    "logoDark": "assets/img/logo/nk-logo.jpg",
+    "pageLogos": {
+      "nc.html": "assets/img/logo/nc-logo.png"
+    },
+    "pageLogosDark": {
+      "nc.html": "assets/img/logo/nc-logo-light.png"
+    },
+    "metaDescription": "Nirbhay Knitting Industries — Engineered technical textiles for coating, lamination & performance applications. 40 years of precision, consistency, and sustainable innovation.",
+    "themeColor": "#0A2A43",
+    "socialLinks": [
+      {
+        "name": "LinkedIn",
+        "icon": "linkedin",
+        "url": "https://www.linkedin.com/company/nkipl"
+      }
+    ]
+  },
+  "navigation": [
+    {
+      "label": "Home",
+      "href": "index.html"
+    },
+    {
+      "label": "About Us",
+      "href": "about.html"
+    },
+    {
+      "label": "Textile",
+      "href": "textile.html"
+    },
+    {
+      "label": "NirChem",
+      "href": "nc.html"
+    },
+    {
+      "label": "Sustainability",
+      "href": "sustainability.html"
+    },
+    {
+      "label": "Contact Us",
+      "href": "contact.html"
+    }
+  ],
+  "home": {
+    "heroVariantB": {
+      "eyebrow": "40 Years of Engineering Excellence",
+      "title": "Engineered Technical Textiles for Coating, Lamination & Performance",
+      "subtitle": "Consistent substrates. Predictable performance.",
+      "description": "Founded by Late Mr. Rohit D. Kamdar, NKI started off as a company offering high-quality polyester fabrics for the synthetic leather industry. Under the leadership of our CMD, Mr. Rajeev Kamdar, the company has expanded across horizons — never compromising on Quality and Sustainability. Today, we are proud to say that we are a certified ZERO DISCHARGE COMPANY.",
+      "cta": {
+        "label": "Start a Project",
+        "href": "contact.html"
+      },
+      "secondaryCta": {
+        "label": "Explore NirChem",
+        "href": "nc.html"
+      },
+      "backgroundImage": "assets/img/hero/hero-bg.jpg",
+      "posterImage": "assets/img/hero/hero-bg.jpg",
+      "heroVideo": "assets/video/video.mp4"
+    },
+    "premium": {
+      "industries": {
+        "title": "Industries We Serve",
+        "subtitle": "Trusted across industrial applications",
+        "items": [
+          {
+            "name": "Automotive",
+            "icon": "car",
+            "image": "assets/img/industries/automotive.jpg",
+            "tag": "Interior and technical uses"
+          },
+          {
+            "name": "Footwear",
+            "icon": "shoe",
+            "image": "assets/img/industries/footwear.jpg",
+            "tag": "Comfort and structure"
+          },
+          {
+            "name": "Acoustic",
+            "icon": "sofa",
+            "image": "assets/img/industries/furnishing.jpg",
+            "tag": "Sound absorption and insulation"
+          },
+          {
+            "name": "Home Furnishings",
+            "icon": "sofa",
+            "image": "assets/img/industries/furnishing.jpg",
+            "tag": "Durable fabric systems"
+          },
+          {
+            "name": "Protective Applications",
+            "icon": "shield",
+            "image": "assets/img/industries/protective.jpg",
+            "tag": "FR fabrics and safety textiles"
+          },
+          {
+            "name": "Luggage",
+            "icon": "luggage",
+            "image": "assets/img/industries/luggage.jpg",
+            "tag": "Durable and lightweight materials"
+          }
+        ]
+      },
+      "statsBand": [
+        {
+          "value": "150 MT",
+          "label": "Monthly capacity"
+        },
+        {
+          "value": "45,000+",
+          "label": "Sq. Ft. Infrastructure"
+        },
+        {
+          "value": "70,000",
+          "label": "Sq. Ft. Of Green Space"
+        },
+        {
+          "value": "Water-free",
+          "label": "Finishing processes"
+        }
+      ],
+      "trustStrip": {
+        "label": "Built for industrial applications",
+        "items": [
+          "Knitted Base Fabrics",
+          "Vinyl Coated Textiles",
+          "3D Spacer Fabrics",
+          "Raised Fabrics",
+          "Sustainable Fabrics",
+          "FR Fabrics",
+          "PU Coating",
+          "Laminating",
+          "Contract Manufacturing",
+          "In-house Testing",
+          "PU Resins"
+        ]
+      },
+      "spotlight": {
+        "eyebrow": "Why customers choose us",
+        "title": "Full in-house production, coating Solutions, and sustainability discipline",
+        "description": "Nirbhay's strength comes from connecting fabric expertise with coating knowledge, process control, responsive delivery, and customization — built on trust, transparency, and technical excellence.",
+        "panels": [
+          {
+            "title": "Knitted Fabric Platform",
+            "description": "Base fabrics, 3D spacer constructions, Raised Fabrics, Sustainable Fabrics, and FR fabrics designed around end-use performance.",
+            "badge": "NK"
+          },
+          {
+            "title": "Chemical Trading and Support",
+            "description": "Certified agents for Interplast Kimya. Solvent-based, water-based, and bio-based chemicals for synthetic leather, genuine leather, and direct coating.",
+            "badge": "NC"
+          },
+          {
+            "title": "Environmental, Social and Governance",
+            "description": "Zero discharge, water-free finishing, efficient utilities, and lower-footprint product development support forward looking customer expectations.",
+            "badge": "ESG"
+          }
+        ]
+      },
+      "isoCertificate": {
+        "eyebrow": "Certification",
+        "title": "ISO 9001:2015 Certified",
+        "label": "ISO 9001:2015 Certificate",
+        "description": "Our quality systems are backed by ISO 9001:2015 certification, reinforcing process discipline, consistency, and dependable execution across customer programs.",
+        "image": "assets/certificates/ISO_9001-2015.svg"
+      },
+      "finalCta": {
+        "title": "Ready to develop a material program with us?",
+        "description": "Talk to our team about knitted substrates, coated textiles, PU coating, laminating, recycled yarn options, FR developments, or contract manufacturing for your next project.",
+        "primary": {
+          "label": "Contact our team",
+          "href": "contact.html"
+        },
+        "secondary": {
+          "label": "Explore capabilities",
+          "href": "textile.html"
+        }
+      },
+      "clientList": {
+        "title": "Our Clients",
+        "subtitle": "Trusted by industry leaders",
+        "clients": []
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Engineered technical textiles for coating, lamination & performance applications. 40 years of precision, consistency, and sustainable innovation.",
+    "quickLinks": [
+      {
+        "label": "Home",
+        "href": "index.html"
+      },
+      {
+        "label": "About Us",
+        "href": "about.html"
+      },
+      {
+        "label": "Textile",
+        "href": "textile.html"
+      },
+      {
+        "label": "Nirchem",
+        "href": "nc.html"
+      },
+      {
+        "label": "Sustainability",
+        "href": "sustainability.html"
+      },
+      {
+        "label": "Contact Us",
+        "href": "contact.html"
+      }
+    ],
+    "contactInfo": {
+      "address": "81, Noorpura, P.O. Baska,<br> Tal. Halol - 389 350,<br>Dist. Panchmahals, Gujarat, India.",
+      "email": "info@nirbhayknits.com",
+      "phone": "+91 93756 17878"
+    },
+    "copyright": "© 2026 Nirbhay Knitting Industries Pvt. Ltd. All rights reserved."
+  }
+}
+  </script>
 
-  
   <script src="assets/js/components/header.js" defer></script>
   <script src="assets/js/components/footer.js" defer></script>
   <script src="assets/js/components/hero.js" defer></script>
   <script src="assets/js/components/home-premium.js" defer></script>
   <script src="assets/js/components/home-interactions.js" defer></script>
-
-  
   <script src="assets/js/components/global-bg.js" defer></script>
   <script src="assets/js/main.js" defer></script>
-
-  
   <script defer>
     document.addEventListener('DOMContentLoaded', () => initPage('home'));
   </script>

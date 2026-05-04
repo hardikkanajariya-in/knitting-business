@@ -6,9 +6,25 @@ function renderHero(data) {
   return `
     <section class="hero-b">
       <div class="hero-b-bg">
-        <video class="hero-b-bg-video" autoplay muted loop playsinline preload="metadata" poster="${data.posterImage}">
-            <source src="${data.heroVideo}" type="video/mp4">
-          </video>
+        <img
+          class="hero-b-bg-poster"
+          src="${data.posterImage}"
+          alt=""
+          width="1600"
+          height="900"
+          fetchpriority="high"
+          decoding="async"
+        >
+        <video
+          class="hero-b-bg-video"
+          muted
+          loop
+          playsinline
+          preload="none"
+          poster="${data.posterImage}"
+          data-video-src="${data.heroVideo}"
+          aria-hidden="true"
+        ></video>
       </div>
       <div class="hero-b-overlay"></div>
 

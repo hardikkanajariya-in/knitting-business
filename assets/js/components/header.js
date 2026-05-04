@@ -14,12 +14,12 @@ function renderHeader(data) {
   const navLinks = nav.map(item => {
     const isActive = currentPage === item.href || (currentPage === '' && item.href === 'index.html');
     const logoHtml = item.navLogo ? `<span class="nav-link-logo">${item.navLogoDark ? `<img src="${item.navLogo}" alt="" class="nav-logo-img logo-dark"><img src="${item.navLogoDark}" alt="" class="nav-logo-img logo-light">` : `<img src="${item.navLogo}" alt="" class="nav-logo-img">`}</span>` : '';
-    return `<a href="${item.href}" class="nav-link${isActive ? ' active' : ''}${item.navLogo ? ' has-nav-logo' : ''}" ${item.title ? `title="${item.title}"` : ''}>${logoHtml}<span class="nav-link-label">${item.label}</span></a>`;
+    return `<a href="${item.href}" class="nav-link${isActive ? ' active' : ''}${item.navLogo ? ' has-nav-logo' : ''}" ${isActive ? 'aria-current="page"' : ''} ${item.title ? `title="${item.title}"` : ''}>${logoHtml}<span class="nav-link-label">${item.label}</span></a>`;
   }).join('');
 
   const mobileLinks = nav.map(item => {
     const isActive = currentPage === item.href || (currentPage === '' && item.href === 'index.html');
-    return `<a href="${item.href}" class="mobile-link${isActive ? ' active' : ''}">${item.label}</a>`;
+    return `<a href="${item.href}" class="mobile-link${isActive ? ' active' : ''}" ${isActive ? 'aria-current="page"' : ''}>${item.label}</a>`;
   }).join('');
 
   const logoMarkup = hasDarkVariant ? `
@@ -74,7 +74,7 @@ function renderHeader(data) {
         </nav>
 
         <div class="header-actions">
-          <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark theme">
+          <button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark theme">
             <svg class="theme-icon-moon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
             </svg>
@@ -84,7 +84,7 @@ function renderHeader(data) {
             </svg>
           </button>
 
-          <button class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+          <button type="button" class="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>
             <span class="hamburger-line"></span>

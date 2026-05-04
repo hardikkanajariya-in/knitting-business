@@ -16,6 +16,7 @@ const ROOT_DIRS_TO_COPY = new Set([
 ]);
 
 const ROOT_FILES_TO_COPY = new Set([
+  '.htaccess',
   'vercel.json',
   'robots.txt',
   'sitemap.xml',
