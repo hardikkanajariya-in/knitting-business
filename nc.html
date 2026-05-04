@@ -97,14 +97,15 @@
 
         initNCCoatingAnimations();
 
-        gsap.utils.toArray('#site-footer .reveal-up').forEach(el => {
-          gsap.to(el, {
-            y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
-            scrollTrigger: { trigger: el, start: 'top 95%', toggleActions: 'play none none none' }
+        if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+          gsap.utils.toArray('#site-footer .reveal-up').forEach(el => {
+            gsap.to(el, {
+              y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+              scrollTrigger: { trigger: el, start: 'top 95%', toggleActions: 'play none none none' }
+            });
           });
-        });
-
-        ScrollTrigger.refresh();
+          ScrollTrigger.refresh();
+        }
 
         document.body.classList.add('loaded');
         const pageTransition = document.querySelector('.page-transition');

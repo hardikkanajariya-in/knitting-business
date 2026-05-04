@@ -1,9 +1,5 @@
 function prefersReducedMotion() {
-  return (
-    typeof window !== 'undefined' &&
-    typeof window.matchMedia === 'function' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  );
+  return true;
 }
 
 function isTouchDevice() {
@@ -29,12 +25,7 @@ function runAfterFirstPaint(callback) {
 }
 
 function registerScrollPlugin() {
-  if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return false;
-  if (window.__scrollTriggerRegistered !== true) {
-    gsap.registerPlugin(ScrollTrigger);
-    window.__scrollTriggerRegistered = true;
-  }
-  return true;
+  return false;
 }
 
 function clearRevealStates() {
@@ -140,7 +131,7 @@ async function loadContent() {
 }
 
 function shouldLoadHomeMotionLibraries() {
-  return canUseDesktopMotionEffects() && window.matchMedia('(min-width: 768px)').matches;
+  return false;
 }
 
 function ensureScript(src) {
@@ -694,12 +685,21 @@ async function initPage(pageKey) {
       case 'home':
         initHeroMedia();
         runAfterFirstPaint(async () => {
-          if (!shouldLoadHomeMotionLibraries()) return;
+          if (!shouldLoadHomeMotionLibraries()) {
+            initHeroBAnimations();
+            initStatCounters();
+            initHomeInteractiveFX();
+            return;
+          }
 
           const librariesLoaded = await ensureHomeMotionLibraries();
-          if (!librariesLoaded) return;
+          if (!librariesLoaded) {
+            initHeroBAnimations();
+            initStatCounters();
+            initHomeInteractiveFX();
+            return;
+          }
 
-          // initGSAP();
           initHeroBAnimations();
           initStatCounters();
           initHomeInteractiveFX();
@@ -720,6 +720,7 @@ async function initPage(pageKey) {
         break;
     }
 
+    clearRevealStates();
     document.body.classList.add('loaded');
     document.body.dataset.pageInitialized = pageKey;
     const pageTransition = document.querySelector('.page-transition');
